@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Hutch — a multi-tool macOS utility. Window Manager, Stash, Toggles, Browser Picker.">
+<title>Hutch — multi-tool macOS utility</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --fg: #111;
+    --muted: #666;
+    --accent: #007aff;
+    --bg: #fff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root { --fg: #f5f5f7; --muted: #999; --bg: #000; }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+    background: var(--bg);
+    color: var(--fg);
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 96px 24px 48px;
+  }
+  h1 {
+    font-size: 48px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin: 0 0 12px;
+  }
+  .tagline {
+    font-size: 20px;
+    color: var(--muted);
+    margin: 0 0 40px;
+  }
+  .download {
+    display: inline-block;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: #fff;
+    border-radius: 12px;
+    text-decoration: none;
+    font-size: 17px;
+    font-weight: 500;
+  }
+  .download:hover { opacity: 0.9; }
+  .meta {
+    margin: 16px 0 64px;
+    color: var(--muted);
+    font-size: 14px;
+  }
+  h2 {
+    font-size: 22px;
+    font-weight: 600;
+    margin: 48px 0 16px;
+    letter-spacing: -0.01em;
+  }
+  ul {
+    padding-left: 0;
+    list-style: none;
+  }
+  li {
+    padding: 12px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+  }
+  li:last-child { border-bottom: none; }
+  li strong { display: block; margin-bottom: 4px; }
+  li span { color: var(--muted); font-size: 15px; }
+  footer {
+    margin-top: 96px;
+    padding-top: 24px;
+    border-top: 1px solid color-mix(in srgb, var(--muted) 30%, transparent);
+    color: var(--muted);
+    font-size: 13px;
+  }
+  footer a { color: var(--muted); }
+</style>
+</head>
+<body>
+<main>
+  <h1>Hutch</h1>
+  <p class="tagline">Multi-tool macOS utility — window tiling, file shelf, system toggles, browser routing.</p>
+
+  <a class="download" href="https://github.com/Coursion-Studio/hutch/releases/latest">Download for Mac</a>
+  <p class="meta">Requires macOS 15 (Sequoia) or later · Free during beta</p>
+
+  <h2>What's inside</h2>
+  <ul>
+    <li><strong>Window Manager</strong><span>Keyboard-first window tiling and snapping.</span></li>
+    <li><strong>Stash</strong><span>A quick shelf for files you're moving between apps.</span></li>
+    <li><strong>Toggles</strong><span>One-click access to system toggles — appearance, AirPods, more.</span></li>
+    <li><strong>Browser Picker</strong><span>Route http(s) links to the right browser by rule.</span></li>
+  </ul>
+
+  <footer>
+    Made by <a href="https://github.com/Coursion-Studio">Coursion Studio</a> · © 2026
+  </footer>
+</main>
+</body>
+</html>
