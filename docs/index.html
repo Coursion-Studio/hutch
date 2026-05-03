@@ -48,10 +48,13 @@
     </header>
 
     <section class="tight" style="padding-top:0">
-      <div class="hero-stats three">
+      <div class="hero-stats three" id="hero-stats">
         <div class="stat"><strong>4</strong><span>tools</span></div>
         <div class="stat"><strong>100%</strong><span>native SwiftUI</span></div>
         <div class="stat"><strong>Free</strong><span>during beta</span></div>
+        <div class="stat" id="stat-downloads" hidden>
+          <strong id="dl-count">—</strong><span>downloads</span>
+        </div>
       </div>
     </section>
 
@@ -172,5 +175,35 @@
       <div>© 2026 Coursion · Made in SwiftUI</div>
     </footer>
   </div>
+
+  <script>
+    // Pull download count across all releases from the public GitHub API.
+    // Unauthenticated calls are rate-limited to 60/hr per IP — fine for a
+    // landing page. Hides the stat if there are no downloads yet so we
+    // don't ship "0 downloads" before launch.
+    (function () {
+      var fmt = function (n) {
+        if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
+        if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
+        return String(n);
+      };
+      fetch("https://api.github.com/repos/Coursion-Studio/hutch/releases")
+        .then(function (r) { return r.ok ? r.json() : []; })
+        .then(function (releases) {
+          var total = (releases || []).reduce(function (sum, rel) {
+            return sum + (rel.assets || []).reduce(function (s, a) {
+              return s + (a.download_count || 0);
+            }, 0);
+          }, 0);
+          if (total > 0) {
+            document.getElementById("dl-count").textContent = fmt(total);
+            document.getElementById("stat-downloads").hidden = false;
+            // Promote the strip back to 4 columns once we have downloads.
+            document.getElementById("hero-stats").classList.remove("three");
+          }
+        })
+        .catch(function () { /* no-op: keep the strip at 3 stats */ });
+    })();
+  </script>
 </body>
 </html>
