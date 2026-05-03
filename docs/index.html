@@ -121,6 +121,15 @@
 
     <hr class="sep" />
 
+    <section id="releases" class="tight" hidden>
+      <div class="section-label">Releases</div>
+      <h2>Every version, every download.</h2>
+      <p class="lede">Public counts straight from the GitHub Releases API.</p>
+      <ol class="releases" id="releases-list"></ol>
+    </section>
+
+    <hr class="sep" id="releases-sep" hidden />
+
     <section id="why" class="tight">
       <div class="section-label">Why Hutch</div>
       <h2>Native. Private. Out of the way.</h2>
@@ -177,32 +186,76 @@
   </div>
 
   <script>
-    // Pull download count across all releases from the public GitHub API.
+    // Pulls every public release from GitHub. Two things happen with the result:
+    //   1. The hero "downloads" stat shows the sum across all assets.
+    //   2. The Releases section lists each version with its own download count.
     // Unauthenticated calls are rate-limited to 60/hr per IP — fine for a
-    // landing page. Hides the stat if there are no downloads yet so we
-    // don't ship "0 downloads" before launch.
+    // landing page. Both surfaces stay hidden if there are no releases yet,
+    // so we never ship a "0 downloads" page pre-launch.
     (function () {
-      var fmt = function (n) {
+      var fmtCount = function (n) {
         if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
         if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
         return String(n);
       };
+      var fmtDate = function (iso) {
+        try {
+          return new Date(iso).toLocaleDateString("en-US", {
+            year: "numeric", month: "short", day: "numeric"
+          });
+        } catch (_) { return ""; }
+      };
+      var pickDmg = function (assets) {
+        return (assets || []).find(function (a) {
+          return /\.dmg$/i.test(a.name || "");
+        }) || (assets || [])[0];
+      };
+
       fetch("https://api.github.com/repos/Coursion-Studio/hutch/releases")
         .then(function (r) { return r.ok ? r.json() : []; })
         .then(function (releases) {
-          var total = (releases || []).reduce(function (sum, rel) {
-            return sum + (rel.assets || []).reduce(function (s, a) {
+          releases = releases || [];
+          var total = 0;
+          var rows = releases.map(function (rel) {
+            var assets = rel.assets || [];
+            var count = assets.reduce(function (s, a) {
               return s + (a.download_count || 0);
             }, 0);
-          }, 0);
+            total += count;
+            var dmg = pickDmg(assets);
+            var li = document.createElement("li");
+            li.className = "release-row";
+            li.innerHTML =
+              '<div class="release-meta">' +
+                '<span class="release-tag">' + (rel.tag_name || rel.name || "") + '</span>' +
+                '<span class="release-date">' + fmtDate(rel.published_at) + '</span>' +
+              '</div>' +
+              '<div class="release-count">' +
+                '<strong>' + count.toLocaleString("en-US") + '</strong>' +
+                '<span>downloads</span>' +
+              '</div>' +
+              (dmg
+                ? '<a class="release-link" href="' + dmg.browser_download_url + '">Download</a>'
+                : '<a class="release-link" href="' + rel.html_url + '">Release page</a>');
+            return li;
+          });
+
+          // Hero stat — total across everything.
           if (total > 0) {
-            document.getElementById("dl-count").textContent = fmt(total);
+            document.getElementById("dl-count").textContent = fmtCount(total);
             document.getElementById("stat-downloads").hidden = false;
-            // Promote the strip back to 4 columns once we have downloads.
             document.getElementById("hero-stats").classList.remove("three");
           }
+
+          // Releases section — only show when there's something to show.
+          if (rows.length > 0) {
+            var list = document.getElementById("releases-list");
+            rows.forEach(function (li) { list.appendChild(li); });
+            document.getElementById("releases").hidden = false;
+            document.getElementById("releases-sep").hidden = false;
+          }
         })
-        .catch(function () { /* no-op: keep the strip at 3 stats */ });
+        .catch(function () { /* no-op: leave hero strip at 3 stats, releases section hidden */ });
     })();
   </script>
 </body>
