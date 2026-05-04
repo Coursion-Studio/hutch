@@ -300,6 +300,13 @@ nav.top a:hover { color: var(--text-primary); }
   gap: 2px;
 }
 
+/* The HTML `hidden` attribute on the downloads stat needs to win over
+   the .stat { display: flex } above. Without this it stays visible
+   with a "—" placeholder before the GitHub API responds. */
+.hero-stats .stat[hidden] {
+  display: none;
+}
+
 .hero-stats .stat strong {
   font-size: 22px;
   font-weight: 700;
