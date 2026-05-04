@@ -7,7 +7,17 @@
     <language>en</language>
   
 
+    
     <item>
+      <title>Version 0.1.2</title>
+      <pubDate>Mon, 04 May 2026 10:47:09 +0300</pubDate>
+      <sparkle:version>4</sparkle:version>
+      <sparkle:shortVersionString>0.1.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[First public release. Window Manager (snap windows by hotkey or click, multi-display), Stash (drag-and-drop file shelf with cursor-shake summon), Browser Picker (route http(s) links by rule), Toggles (one panel for the macOS switches that hide three menus deep). Unified Permissions tab in Settings with auto-cleanup of stale Hutch.app entries on launch — Accessibility grants land on the first try. macOS 15+. Free during beta. Auto-updates via Sparkle.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.1.2/Hutch-0.1.2.dmg" type="application/octet-stream" sparkle:edSignature="P6pD2V9FTFgcKoxSw4qCYXW3tyzFDvwgS6dicmIP3TG8Lk2831WL1OuaTmHflMe/Kpvp52bfV5PIRXyEDkyVDQ==" length="9649076" />
+    </item>
+<item>
       <title>Version 0.1.1</title>
       <pubDate>Mon, 04 May 2026 09:49:44 +0300</pubDate>
       <sparkle:version>3</sparkle:version>
