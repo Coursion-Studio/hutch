@@ -169,8 +169,8 @@ nav.top a:hover { color: var(--text-primary); }
 .install-cmd {
   display: flex;
   align-items: center;
-  gap: 12px;
-  padding: 10px 12px 10px 14px;
+  gap: 10px;
+  padding: 0 12px 0 14px;
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--radius-btn);
@@ -178,27 +178,13 @@ nav.top a:hover { color: var(--text-primary); }
   font-size: 13px;
   text-align: left;
   min-width: 0;
+  height: 48px;
   transition: border-color 0.2s ease, background 0.2s ease;
 }
 
 .install-cmd:hover {
   border-color: rgba(255, 255, 255, 0.18);
   background: rgba(255, 255, 255, 0.07);
-}
-
-.install-cmd-lines {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-  flex: 1;
-  min-width: 0;
-}
-
-.install-cmd-line {
-  display: flex;
-  align-items: baseline;
-  gap: 8px;
-  min-width: 0;
 }
 
 .install-cmd .prompt {
@@ -280,9 +266,9 @@ nav.top a:hover { color: var(--text-primary); }
 }
 .btn.outline:hover { background: rgba(255, 255, 255, 0.09); }
 
-/* Match the install-cmd box height when the button is paired in the CTA grid. */
+/* Match the install-cmd row height when the button is paired in the CTA grid. */
 .cta-grid .btn {
-  align-self: stretch;
+  height: 48px;
   padding: 0 22px;
 }
 
