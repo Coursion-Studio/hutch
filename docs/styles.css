@@ -155,14 +155,85 @@ nav.top a:hover { color: var(--text-primary); }
   margin: 0 auto 36px;
 }
 
-/* ─── buttons ─── */
+/* ─── CTA grid: brew install (left) + download (right) ─── */
 
-.cta-row {
-  display: flex;
-  gap: 14px;
-  justify-content: center;
-  flex-wrap: wrap;
+.cta-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 12px;
+  align-items: stretch;
+  max-width: 680px;
+  margin: 0 auto;
 }
+
+.install-cmd {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px 0 14px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: var(--radius-btn);
+  font-family: "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-size: 13px;
+  text-align: left;
+  min-width: 0;
+  height: 48px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.install-cmd:hover {
+  border-color: rgba(255, 255, 255, 0.18);
+  background: rgba(255, 255, 255, 0.07);
+}
+
+.install-cmd .prompt {
+  color: var(--text-tertiary);
+  flex-shrink: 0;
+  font-weight: 600;
+}
+
+.install-cmd code {
+  color: var(--text-primary);
+  flex: 1;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.copy-btn {
+  flex-shrink: 0;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.2px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 7px;
+  cursor: pointer;
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+
+.copy-btn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: rgba(255, 255, 255, 0.24);
+}
+
+.copy-btn.copied {
+  color: #6EE7B7;
+  border-color: rgba(110, 231, 183, 0.4);
+  background: rgba(110, 231, 183, 0.08);
+}
+
+@media (max-width: 560px) {
+  .cta-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ─── buttons ─── */
 
 .btn {
   display: inline-flex;
@@ -194,6 +265,12 @@ nav.top a:hover { color: var(--text-primary); }
   color: rgba(255, 255, 255, 0.9);
 }
 .btn.outline:hover { background: rgba(255, 255, 255, 0.09); }
+
+/* Match the install-cmd row height when the button is paired in the CTA grid. */
+.cta-grid .btn {
+  height: 48px;
+  padding: 0 22px;
+}
 
 /* ─── hero stats ─── */
 

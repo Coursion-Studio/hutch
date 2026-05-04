@@ -6,14 +6,5 @@
     <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
     <language>en</language>
   
-    <item>
-      <title>Version 0.1.0</title>
-      <pubDate>Mon, 04 May 2026 09:19:21 +0300</pubDate>
-      <sparkle:version>2</sparkle:version>
-      <sparkle:shortVersionString>0.1.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[First public release. Window Manager, Stash, Browser Picker, Toggles.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.1.0/Hutch-0.1.0.dmg" type="application/octet-stream" sparkle:edSignature="CrK16EdDzfL9rta4J/5UXNnqKi1rxyxD01cEaSfQmdsjd4I9N4NK5nNskzUf7ukKVCUVX+PACA74yp2ogGkaBA==" length="9625161" />
-    </item>
 </channel>
 </rss>

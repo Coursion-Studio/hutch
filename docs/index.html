@@ -38,13 +38,17 @@
         smart browser picker — all native SwiftUI, all running on your Mac.
         No Electron, no accounts, no subscription.
       </p>
-      <div class="cta-row">
+      <div class="cta-grid">
+        <div class="install-cmd" data-copy="brew install --cask coursion-studio/hutch/hutch">
+          <span class="prompt" aria-hidden="true">$</span>
+          <code>brew install --cask coursion-studio/hutch/hutch</code>
+          <button class="copy-btn" type="button" aria-label="Copy install command">Copy</button>
+        </div>
         <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest">
-          Download for Mac
+          Download&nbsp;.dmg
         </a>
-        <a class="btn outline" href="#tools">See the tools</a>
       </div>
-      <p class="req-note">macOS 15 (Sequoia) or later · Direct .dmg · Auto-updates via Sparkle</p>
+      <p class="req-note">macOS 15 (Sequoia) or later · Auto-updates via Sparkle · <a href="#tools">See the tools</a></p>
     </header>
 
     <section class="tight" style="padding-top:0">
@@ -186,6 +190,25 @@
   </div>
 
   <script>
+    // Copy-to-clipboard for the brew install code block.
+    (function () {
+      document.querySelectorAll(".copy-btn").forEach(function (btn) {
+        btn.addEventListener("click", function () {
+          var box = btn.closest("[data-copy]");
+          if (!box || !navigator.clipboard) return;
+          navigator.clipboard.writeText(box.getAttribute("data-copy")).then(function () {
+            btn.classList.add("copied");
+            var original = btn.textContent;
+            btn.textContent = "Copied";
+            setTimeout(function () {
+              btn.classList.remove("copied");
+              btn.textContent = original;
+            }, 1400);
+          }).catch(function () { /* clipboard blocked — no-op */ });
+        });
+      });
+    })();
+
     // Pulls every public release from GitHub. Two things happen with the result:
     //   1. The hero "downloads" stat shows the sum across all assets.
     //   2. The Releases section lists each version with its own download count.
