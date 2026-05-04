@@ -9,7 +9,8 @@ A drawer of Mac utilities — window tiling, file shelf, system toggles, and a s
 ### Homebrew
 
 ```sh
-brew install --cask coursion-studio/hutch/hutch
+brew tap coursion-studio/hutch
+brew install --cask hutch
 ```
 
 ### Direct download

@@ -39,10 +39,13 @@
         No Electron, no accounts, no subscription.
       </p>
       <div class="cta-grid">
-        <div class="install-cmd" data-copy="brew install --cask coursion-studio/hutch/hutch">
-          <span class="prompt" aria-hidden="true">$</span>
-          <code>brew install --cask coursion-studio/hutch/hutch</code>
-          <button class="copy-btn" type="button" aria-label="Copy install command">Copy</button>
+        <div class="install-cmd" data-copy="brew tap coursion-studio/hutch
+brew install --cask hutch">
+          <div class="install-cmd-lines">
+            <div class="install-cmd-line"><span class="prompt" aria-hidden="true">$</span><code>brew tap coursion-studio/hutch</code></div>
+            <div class="install-cmd-line"><span class="prompt" aria-hidden="true">$</span><code>brew install --cask hutch</code></div>
+          </div>
+          <button class="copy-btn" type="button" aria-label="Copy install commands">Copy</button>
         </div>
         <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest">
           Download&nbsp;.dmg
