@@ -9,7 +9,17 @@
 
     
     
+    
     <item>
+      <title>Version 0.1.4</title>
+      <pubDate>Mon, 04 May 2026 11:28:29 +0300</pubDate>
+      <sparkle:version>6</sparkle:version>
+      <sparkle:shortVersionString>0.1.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Polish: Permissions sidebar attention dot is a single circle with a soft amber glow — properly centered. More from us: AIStats now links to its Mac App Store page.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.1.4/Hutch-0.1.4.dmg" type="application/octet-stream" sparkle:edSignature="KxocpzAYKRSdGIIz24b3RJgW0cxDREw03DBABkKJCaPMPVTZ9tU7AgXkqLYBmpUFqj4DSoWfZ2blPOTCidP7Cw==" length="9633217" />
+    </item>
+<item>
       <title>Version 0.1.3</title>
       <pubDate>Mon, 04 May 2026 10:58:59 +0300</pubDate>
       <sparkle:version>5</sparkle:version>
