@@ -4,12 +4,12 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hutch — A drawer of Mac utilities</title>
-  <meta name="description" content="Window tiling, file shelf, system toggles, and a smart browser picker — four small Mac tools in one menu bar app. Native, on-device, free." />
+  <meta name="description" content="Window tiling, file shelf, system toggles, browser picker — small Mac tools in one menu bar app. Native, on-device, free. New tools added over time." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
-  <meta property="og:description" content="Window tiling, file shelf, system toggles, browser picker. Four tools, one menu bar app. Native macOS." />
+  <meta property="og:description" content="Small Mac tools, one menu bar app. Native macOS. Built to grow." />
   <meta property="og:image" content="icon.png" />
   <meta name="theme-color" content="#100B1C" />
 </head>
@@ -32,7 +32,7 @@
     <header class="hero">
       <img class="app-icon" src="icon.png" alt="Hutch app icon" />
       <div class="eyebrow">A drawer of Mac utilities</div>
-      <h1>Four small tools,<br /><span class="grad">one menu bar app.</span></h1>
+      <h1>A drawer of small Mac tools,<br /><span class="grad">one menu bar.</span></h1>
       <p class="sub">
         Window tiling, a file shelf for drag-and-drop, system toggles, and a
         smart browser picker — all native SwiftUI, all running on your Mac.
@@ -52,8 +52,7 @@
     </header>
 
     <section class="tight" style="padding-top:0">
-      <div class="hero-stats" id="hero-stats">
-        <div class="stat"><strong>4</strong><span>tools</span></div>
+      <div class="hero-stats three" id="hero-stats">
         <div class="stat"><strong>100%</strong><span>native SwiftUI</span></div>
         <div class="stat"><strong>Free</strong><span>forever</span></div>
         <div class="stat" id="stat-downloads">
@@ -64,8 +63,8 @@
 
     <section id="tools">
       <div class="section-label">What's inside</div>
-      <h2>One window, four tools.</h2>
-      <p class="lede">Each tool earns its place. None of them are placeholders.</p>
+      <h2>What's in the drawer today.</h2>
+      <p class="lede">Each tool earns its place. None of them are placeholders. More on the way.</p>
 
       <div class="grid">
         <div class="card">
@@ -128,7 +127,7 @@
     <section id="releases" class="tight" hidden>
       <div class="section-label">Releases</div>
       <h2>Every version, every download.</h2>
-      <p class="lede">Public counts straight from the GitHub Releases API.</p>
+      <p class="lede">Live count, every channel — site, brew, in-app updates.</p>
       <ol class="releases" id="releases-list"></ol>
     </section>
 
@@ -165,7 +164,7 @@
             </svg>
           </div>
           <h3>Lives in the menu bar</h3>
-          <p>One tray icon, four tools. Hutch only joins the Dock and Cmd+Tab while the dashboard is open.</p>
+          <p>One tray icon, every tool. Hutch only joins the Dock and Cmd+Tab while the dashboard is open.</p>
         </div>
         <div class="card">
           <div class="tile c-blue">
@@ -267,7 +266,6 @@
           if (total > 0) {
             document.getElementById("dl-count").textContent = fmtCount(total);
             document.getElementById("stat-downloads").hidden = false;
-            document.getElementById("hero-stats").classList.remove("three");
           }
 
           // Releases section — only show when there's something to show.
