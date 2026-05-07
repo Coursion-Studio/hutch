@@ -53,6 +53,7 @@
 
     <section class="tight" style="padding-top:0">
       <div class="hero-stats three" id="hero-stats">
+        <div class="stat"><strong>4</strong><span>tools</span></div>
         <div class="stat"><strong>100%</strong><span>native SwiftUI</span></div>
         <div class="stat"><strong>Free</strong><span>forever</span></div>
         <div class="stat" id="stat-downloads">
@@ -266,6 +267,7 @@
           if (total > 0) {
             document.getElementById("dl-count").textContent = fmtCount(total);
             document.getElementById("stat-downloads").hidden = false;
+            document.getElementById("hero-stats").classList.remove("three");
           }
 
           // Releases section — only show when there's something to show.
