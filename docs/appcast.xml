@@ -7,7 +7,17 @@
     <language>en</language>
 
     
+    
     <item>
+      <title>Version 0.2.2</title>
+      <pubDate>Mon, 11 May 2026 22:22:52 +0300</pubDate>
+      <sparkle:version>13</sparkle:version>
+      <sparkle:shortVersionString>0.2.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Sidebar tab names (Window Manager, Stash, Browser Picker) now render in the selected language instead of staying English.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.2.2/Hutch-0.2.2.dmg" type="application/octet-stream" sparkle:edSignature="Bl4vkwN+z579eZI/5sRPlkKXnCmadSKn9885pe6aLvWxpGOlhJxaflXQFYkUyqY4+hcwYLb2yiJgoDNQxaRlDw==" length="9727683" />
+    </item>
+<item>
       <title>Version 0.2.1</title>
       <pubDate>Mon, 11 May 2026 17:11:26 +0300</pubDate>
       <sparkle:version>11</sparkle:version>
