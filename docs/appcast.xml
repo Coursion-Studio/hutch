@@ -8,7 +8,17 @@
 
     
     
+    
     <item>
+      <title>Version 0.2.3</title>
+      <pubDate>Mon, 11 May 2026 22:46:48 +0300</pubDate>
+      <sparkle:version>15</sparkle:version>
+      <sparkle:shortVersionString>0.2.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Toggles panel rows now light up in their semantic color (Dark Mode indigo, Keep Awake orange, Lock Screen red, etc.) instead of the global accent. Plus an in-app banner when a Sparkle update is found.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.2.3/Hutch-0.2.3.dmg" type="application/octet-stream" sparkle:edSignature="NlqiaGG72XNJ3/XHkK5rv78QOSCnK96W4+5jZAWaoPLlfLizZQ6OdFo+/vbfoO/3nFAN4dVvOOi70+7YPHhYDg==" length="9736662" />
+    </item>
+<item>
       <title>Version 0.2.2</title>
       <pubDate>Mon, 11 May 2026 22:22:52 +0300</pubDate>
       <sparkle:version>13</sparkle:version>
