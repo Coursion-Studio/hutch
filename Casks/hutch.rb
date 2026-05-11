@@ -1,6 +1,6 @@
 cask "hutch" do
-  version "0.2.1"
-  sha256 "8face07e39b333270a39e7e15b7637a9f3e45026e9afb7bde5498dfb775f9d39"
+  version "0.2.2"
+  sha256 "0312583deb2a41dfae6ca923462ac168a5ee7456ba4055203cdf560b996b01bf"
 
   url "https://github.com/Coursion-Studio/hutch/releases/download/v#{version}/Hutch-#{version}.dmg",
       verified: "github.com/Coursion-Studio/hutch/"
