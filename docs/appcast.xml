@@ -7,16 +7,6 @@
     <language>en</language>
 
     <item>
-      <title>Version 0.2.0</title>
-      <pubDate>Mon, 11 May 2026 16:18:44 +0300</pubDate>
-      <sparkle:version>9</sparkle:version>
-      <sparkle:shortVersionString>0.2.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Localization (28 langs), wake-from-sleep AX fix, language picker, contrast pass, Stash thumbnail + cross-app image drag fixes.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.2.0/Hutch-0.2.0.dmg" type="application/octet-stream" sparkle:edSignature="CD/xV0hJJCLlHKdg5ILJCEc8xbAt2xSYmZl+RKm6inzcDPuOQT+HF7fHd4z4F6JqynrBcffxZV52YrL+nn1lCQ==" length="9678253" />
-    </item>
-
-    <item>
       <title>Version 0.1.4</title>
       <pubDate>Mon, 04 May 2026 11:28:29 +0300</pubDate>
       <sparkle:version>6</sparkle:version>
