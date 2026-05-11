@@ -6,7 +6,17 @@
     <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
     <language>en</language>
 
+    
     <item>
+      <title>Version 0.2.1</title>
+      <pubDate>Mon, 11 May 2026 17:11:26 +0300</pubDate>
+      <sparkle:version>11</sparkle:version>
+      <sparkle:shortVersionString>0.2.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Full UI localization across 28 languages — Toggles panel, sidebar tabs, status text, and remaining onboarding strings now respect the chosen language. Re-release of 0.2.0 with complete coverage.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.2.1/Hutch-0.2.1.dmg" type="application/octet-stream" sparkle:edSignature="i6Br9q5RoKTim5cd3VmNpj0t/JmwG4eV+J32tPUpLGehvDtBzMKtUhI1qvtkUwUK/akI/V3j3x5lFLTThmyAAQ==" length="9727350" />
+    </item>
+<item>
       <title>Version 0.1.4</title>
       <pubDate>Mon, 04 May 2026 11:28:29 +0300</pubDate>
       <sparkle:version>6</sparkle:version>
