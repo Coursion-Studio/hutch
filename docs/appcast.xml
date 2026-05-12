@@ -9,7 +9,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.3.0</title>
+      <pubDate>Tue, 12 May 2026 16:08:58 +0300</pubDate>
+      <sparkle:version>17</sparkle:version>
+      <sparkle:shortVersionString>0.3.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[New tool — Pounce: ⌘Space-summoned launcher that searches apps, Hutch toggles, system actions, Spotlight files, and inline calculator. Frecency ranking. Web search fallback via Browser Picker. New Settings tab and Spotlight-collision detection.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.3.0/Hutch-0.3.0.dmg" type="application/octet-stream" sparkle:edSignature="afJlCKRwm9zQG3n/stfCspQt/v3LvCNq1j7Ajs11faO59sJHDraVNMjlkPmDNvG3WrIkVV9Kq171ayoJV1hBBA==" length="9922676" />
+    </item>
+<item>
       <title>Version 0.2.3</title>
       <pubDate>Mon, 11 May 2026 22:46:48 +0300</pubDate>
       <sparkle:version>15</sparkle:version>
