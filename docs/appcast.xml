@@ -5,8 +5,17 @@
     <link>https://hutch.coursion.studio/appcast.xml</link>
     <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
     <language>en</language>
+  
+    <item>
+      <title>Version 0.4.0</title>
+      <pubDate>Fri, 15 May 2026 00:18:05 +0300</pubDate>
+      <sparkle:version>20</sparkle:version>
+      <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Pounce: themes (10 variants) + new sources (emoji, network info, process kill, timer, stopwatch, theme switcher). Stash: filename preservation + auto-resize. Sidebar regrouped.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.0/Hutch-0.4.0.dmg" type="application/octet-stream" sparkle:edSignature="v/7Oyhg02YXQRJ7LKbW+TAliXG4T7DKQBkiH6kFVZpVlwvWJwN2grnAhS/oJWrTxyedGM+oI19E8uexq1FiBDw==" length="10284461" />
+    </item>
 
-    
     <item>
       <title>Version 0.3.1</title>
       <pubDate>Tue, 12 May 2026 21:57:40 +0300</pubDate>
@@ -16,7 +25,8 @@
       <description><![CDATA[Pounce v2 — recents, running-app dot, switch-vs-launch, modifier hints, clipboard history, custom commands, calculator, conversions (live FX), markdown preview, music control, recent downloads, window switcher (jumps to specific window), inline window-snap commands, web-search bangs (g/gh/w/npm/yt/mdn/so/amz/map), URL/email detection, iOS simulator picker with inline Boot/Shutdown/Delete buttons, Reset Audio + Xcode-junk cleanup actions, AI prompts via your own Anthropic/OpenAI/Ollama keys (Keychain-stored), help cheatsheet ("?" inside Pounce). Plus a wake-fix for Window Manager hotkeys clobbering Pounce/Stash/Toggles.]]></description>
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.3.1/Hutch-0.3.1.dmg" type="application/octet-stream" sparkle:edSignature="v4E56Q0i5QXnmdMF3w7HHkscaPBlrOneOazOq0dWUvDv/m/XVdaVk7FDk8Z7vVbiRevDosm2GApfgjdqI3umBg==" length="10219558" />
     </item>
-<item>
+
+    <item>
       <title>Version 0.2.3</title>
       <pubDate>Mon, 11 May 2026 22:46:48 +0300</pubDate>
       <sparkle:version>15</sparkle:version>
@@ -25,7 +35,8 @@
       <description><![CDATA[Toggles panel rows now light up in their semantic color (Dark Mode indigo, Keep Awake orange, Lock Screen red, etc.) instead of the global accent. Plus an in-app banner when a Sparkle update is found.]]></description>
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.2.3/Hutch-0.2.3.dmg" type="application/octet-stream" sparkle:edSignature="NlqiaGG72XNJ3/XHkK5rv78QOSCnK96W4+5jZAWaoPLlfLizZQ6OdFo+/vbfoO/3nFAN4dVvOOi70+7YPHhYDg==" length="9736662" />
     </item>
-<item>
+
+    <item>
       <title>Version 0.1.4</title>
       <pubDate>Mon, 04 May 2026 11:28:29 +0300</pubDate>
       <sparkle:version>6</sparkle:version>
