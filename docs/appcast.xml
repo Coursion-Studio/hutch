@@ -6,7 +6,17 @@
     <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
     <language>en</language>
   
+    
     <item>
+      <title>Version 0.4.1</title>
+      <pubDate>Sat, 16 May 2026 20:56:31 +0300</pubDate>
+      <sparkle:version>21</sparkle:version>
+      <sparkle:shortVersionString>0.4.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Pounce ⌘Space hotkey now works (was silently failing). New Spotlight-swap walkthrough in Pounce settings. Hotkey recorder accepts Space/Return/Tab/Escape.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.1/Hutch-0.4.1.dmg" type="application/octet-stream" sparkle:edSignature="DVP750XXGiV1ytO5ikLnvoHnMgy/xOsEcNVWwrjSF/sv+dmlxRwLVJliSBThQeE8oSUQDpMUs9qPSb4MY8U2Cg==" length="10320529" />
+    </item>
+<item>
       <title>Version 0.4.0</title>
       <pubDate>Fri, 15 May 2026 00:18:05 +0300</pubDate>
       <sparkle:version>20</sparkle:version>
