@@ -17,16 +17,6 @@
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.1/Hutch-0.4.1.dmg" type="application/octet-stream" sparkle:edSignature="DVP750XXGiV1ytO5ikLnvoHnMgy/xOsEcNVWwrjSF/sv+dmlxRwLVJliSBThQeE8oSUQDpMUs9qPSb4MY8U2Cg==" length="10320529" />
     </item>
 <item>
-      <title>Version 0.4.0</title>
-      <pubDate>Fri, 15 May 2026 00:18:05 +0300</pubDate>
-      <sparkle:version>20</sparkle:version>
-      <sparkle:shortVersionString>0.4.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Pounce: themes (10 variants) + new sources (emoji, network info, process kill, timer, stopwatch, theme switcher). Stash: filename preservation + auto-resize. Sidebar regrouped.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.0/Hutch-0.4.0.dmg" type="application/octet-stream" sparkle:edSignature="v/7Oyhg02YXQRJ7LKbW+TAliXG4T7DKQBkiH6kFVZpVlwvWJwN2grnAhS/oJWrTxyedGM+oI19E8uexq1FiBDw==" length="10284461" />
-    </item>
-
-    <item>
       <title>Version 0.3.1</title>
       <pubDate>Tue, 12 May 2026 21:57:40 +0300</pubDate>
       <sparkle:version>19</sparkle:version>
