@@ -11,7 +11,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.6</title>
+      <pubDate>Thu, 21 May 2026 00:50:58 +0300</pubDate>
+      <sparkle:version>26</sparkle:version>
+      <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Update prompt now also appears in the Toggles popover and Pounce launcher footer, so you see new versions without opening Settings.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.6/Hutch-0.4.6.dmg" type="application/octet-stream" sparkle:edSignature="nsZJbGTUYFRwz7IGLJXO98u5uitYIf+eDxJKQ4f8ICVKivz2l3QFCLV/FDceuyXB6p5BCsV4g2DJnmNT6sBcAQ==" length="10310688" />
+    </item>
+<item>
       <title>Version 0.4.5</title>
       <pubDate>Thu, 21 May 2026 00:46:05 +0300</pubDate>
       <sparkle:version>25</sparkle:version>
