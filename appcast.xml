@@ -10,7 +10,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.5</title>
+      <pubDate>Thu, 21 May 2026 00:46:05 +0300</pubDate>
+      <sparkle:version>25</sparkle:version>
+      <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Hutch now checks for updates 5s after launch so the 'Update available' prompt surfaces without waiting for the hourly tick.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.5/Hutch-0.4.5.dmg" type="application/octet-stream" sparkle:edSignature="XUwyr9umVw3Y/o+NEma5HiWMTSsTOm2nQJ+qZ9IzcEM3A6PXhTt02EZj3jBe8eA+NC9yy0pGHhnR3i8eTr44Ag==" length="10319304" />
+    </item>
+<item>
       <title>Version 0.4.4</title>
       <pubDate>Thu, 21 May 2026 00:09:25 +0300</pubDate>
       <sparkle:version>24</sparkle:version>
