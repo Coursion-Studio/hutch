@@ -22,42 +22,6 @@
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.6/Hutch-0.4.6.dmg" type="application/octet-stream" sparkle:edSignature="nsZJbGTUYFRwz7IGLJXO98u5uitYIf+eDxJKQ4f8ICVKivz2l3QFCLV/FDceuyXB6p5BCsV4g2DJnmNT6sBcAQ==" length="10310688" />
     </item>
 <item>
-      <title>Version 0.4.5</title>
-      <pubDate>Thu, 21 May 2026 00:46:05 +0300</pubDate>
-      <sparkle:version>25</sparkle:version>
-      <sparkle:shortVersionString>0.4.5</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Hutch now checks for updates 5s after launch so the 'Update available' prompt surfaces without waiting for the hourly tick.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.5/Hutch-0.4.5.dmg" type="application/octet-stream" sparkle:edSignature="XUwyr9umVw3Y/o+NEma5HiWMTSsTOm2nQJ+qZ9IzcEM3A6PXhTt02EZj3jBe8eA+NC9yy0pGHhnR3i8eTr44Ag==" length="10319304" />
-    </item>
-<item>
-      <title>Version 0.4.4</title>
-      <pubDate>Thu, 21 May 2026 00:09:25 +0300</pubDate>
-      <sparkle:version>24</sparkle:version>
-      <sparkle:shortVersionString>0.4.4</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Updates now surface a visible 'Update available' prompt instead of installing silently in the background. Sparkle check interval lowered to hourly so new releases reach you within an hour.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.4/Hutch-0.4.4.dmg" type="application/octet-stream" sparkle:edSignature="YddEPJAjSbNgBi3TD6/ShE1/kEK6z4/73pxSg3by/P/HutYOlgjppv7qqPLkQmGgdOrqUhzH7hKTft6TUZWpCQ==" length="10318478" />
-    </item>
-<item>
-      <title>Version 0.4.3</title>
-      <pubDate>Thu, 21 May 2026 00:03:13 +0300</pubDate>
-      <sparkle:version>23</sparkle:version>
-      <sparkle:shortVersionString>0.4.3</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Stash now preserves original filenames on Finder drops. Clearer mode descriptions in Stash settings (cut+paste / copy+paste). About → Coursion button updated to coursion.studio.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.3/Hutch-0.4.3.dmg" type="application/octet-stream" sparkle:edSignature="tcL7aYkdNirHI+xdA9eyjJhDmQ1UG6W8/1i81BGNfNSzVOjeMHihQ0o8w3sxUaB/6m1yB1kGV6TM3aP37MRxCA==" length="10318176" />
-    </item>
-<item>
-      <title>Version 0.4.2</title>
-      <pubDate>Sun, 17 May 2026 14:34:19 +0300</pubDate>
-      <sparkle:version>22</sparkle:version>
-      <sparkle:shortVersionString>0.4.2</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Fix: 1Password and other menu-bar-only apps now open from Pounce.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.2/Hutch-0.4.2.dmg" type="application/octet-stream" sparkle:edSignature="1qMDnSivNOZndkKjKQaMEJKP1tCEhvtgEuse84VszO1b+fvc19pvlU//PcMN1POypka6/S6o2aeIApIPQ8uIBQ==" length="10319759" />
-    </item>
-<item>
       <title>Version 0.3.1</title>
       <pubDate>Tue, 12 May 2026 21:57:40 +0300</pubDate>
       <sparkle:version>19</sparkle:version>
