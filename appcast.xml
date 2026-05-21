@@ -12,7 +12,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.7</title>
+      <pubDate>Thu, 21 May 2026 17:11:08 +0300</pubDate>
+      <sparkle:version>27</sparkle:version>
+      <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Redesigned onboarding with per-tool deep-dives, cheat-sheet HUD, and hotkey conflict detection.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.7/Hutch-0.4.7.dmg" type="application/octet-stream" sparkle:edSignature="QDyQIQm5oQf0a1iHPua6kGQFpzsLljlLfXgzd9oVAnoQVoiWs7yeXGGsYZd0Hcdb0cXohEtCqS5ujph125HUDQ==" length="10359950" />
+    </item>
+<item>
       <title>Version 0.4.6</title>
       <pubDate>Thu, 21 May 2026 00:50:58 +0300</pubDate>
       <sparkle:version>26</sparkle:version>
