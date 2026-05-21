@@ -23,15 +23,6 @@
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.7/Hutch-0.4.7.dmg" type="application/octet-stream" sparkle:edSignature="QDyQIQm5oQf0a1iHPua6kGQFpzsLljlLfXgzd9oVAnoQVoiWs7yeXGGsYZd0Hcdb0cXohEtCqS5ujph125HUDQ==" length="10359950" />
     </item>
 <item>
-      <title>Version 0.4.6</title>
-      <pubDate>Thu, 21 May 2026 00:50:58 +0300</pubDate>
-      <sparkle:version>26</sparkle:version>
-      <sparkle:shortVersionString>0.4.6</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[Update prompt now also appears in the Toggles popover and Pounce launcher footer, so you see new versions without opening Settings.]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.6/Hutch-0.4.6.dmg" type="application/octet-stream" sparkle:edSignature="nsZJbGTUYFRwz7IGLJXO98u5uitYIf+eDxJKQ4f8ICVKivz2l3QFCLV/FDceuyXB6p5BCsV4g2DJnmNT6sBcAQ==" length="10310688" />
-    </item>
-<item>
       <title>Version 0.3.1</title>
       <pubDate>Tue, 12 May 2026 21:57:40 +0300</pubDate>
       <sparkle:version>19</sparkle:version>
