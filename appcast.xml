@@ -15,6 +15,17 @@
     
     
     <item>
+      <title>Version 0.4.9</title>
+      <pubDate>Thu, 04 Jun 2026 23:53:30 +0300</pubDate>
+      <sparkle:version>29</sparkle:version>
+      <sparkle:shortVersionString>0.4.9</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul>
+  <li><strong>Stash</strong>: Accept image drags from browsers (Safari, Chrome) and sharpen tile previews.</li>
+</ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.9/Hutch-0.4.9.dmg" type="application/octet-stream" sparkle:edSignature="6R6VIrXNSc2nh+bn0+Zb1MTT9lUJt49+6Dtu2F8PjVxboB7qcaeojIiJx88M7KaDM1Cx8unBvAfMYBlelvZhBg==" length="11986830" />
+    </item>
+    <item>
       <title>Version 0.4.8</title>
       <pubDate>Tue, 02 Jun 2026 12:41:19 +0300</pubDate>
       <sparkle:version>28</sparkle:version>
