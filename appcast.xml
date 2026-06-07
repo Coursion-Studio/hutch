@@ -14,7 +14,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.10</title>
+      <pubDate>Sun, 07 Jun 2026 14:55:57 +0300</pubDate>
+      <sparkle:version>30</sparkle:version>
+      <sparkle:shortVersionString>0.4.10</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Focus Mode toggle, Camera/Mic In Use privacy indicators, Window Manager drag-to-snap with preview overlay and per-app snap presets</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.10/Hutch-0.4.10.dmg" type="application/octet-stream" sparkle:edSignature="XMUe7Ko3AKGKwCSNXZXyXr91P8tPH67JXYOIAnScZrdtjuOb9fT6cNEdwyQ6GhiPjYi2rF8bpVQCSDbpWodADg==" length="12201001" />
+    </item>
+<item>
       <title>Version 0.4.9</title>
       <pubDate>Thu, 04 Jun 2026 23:53:30 +0300</pubDate>
       <sparkle:version>29</sparkle:version>
