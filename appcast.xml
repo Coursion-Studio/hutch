@@ -15,7 +15,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.11</title>
+      <pubDate>Sun, 07 Jun 2026 23:10:57 +0300</pubDate>
+      <sparkle:version>31</sparkle:version>
+      <sparkle:shortVersionString>0.4.11</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Pounce: port killer — type 'ports' or 'kill port 3000' to find and kill processes on listening TCP ports</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.11/Hutch-0.4.11.dmg" type="application/octet-stream" sparkle:edSignature="y1Sl2j++pfH72E/XqiDNQ8Di8ZsTe+y7RomRnRQMP60FlTqGqfQZQxxmnC9OaZMIevQta3H+RUfj+wlzwKPlBA==" length="12209022" />
+    </item>
+<item>
       <title>Version 0.4.10</title>
       <pubDate>Sun, 07 Jun 2026 14:55:57 +0300</pubDate>
       <sparkle:version>30</sparkle:version>
