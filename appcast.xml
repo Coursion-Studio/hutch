@@ -35,6 +35,24 @@
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.10/Hutch-0.4.10.dmg" type="application/octet-stream" sparkle:edSignature="XMUe7Ko3AKGKwCSNXZXyXr91P8tPH67JXYOIAnScZrdtjuOb9fT6cNEdwyQ6GhiPjYi2rF8bpVQCSDbpWodADg==" length="12201001" />
     </item>
 <item>
+      <title>Version 0.4.8</title>
+      <pubDate>Tue, 02 Jun 2026 12:41:19 +0300</pubDate>
+      <sparkle:version>28</sparkle:version>
+      <sparkle:shortVersionString>0.4.8</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Fix intermittent crash on macOS 26 (Tahoe) during launcher and menu-bar interactions.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.8/Hutch-0.4.8.dmg" type="application/octet-stream" sparkle:edSignature="8YAkOwHsf/siovFgkBW6zZpjSRaJRSCnaQ9t+0QQ2vH8MS+vAR7s6GCHUQ/2TlPBi37SIbXVBDbrBHdFXoyHAw==" length="11980328" />
+    </item>
+<item>
+      <title>Version 0.4.7</title>
+      <pubDate>Thu, 21 May 2026 17:11:08 +0300</pubDate>
+      <sparkle:version>27</sparkle:version>
+      <sparkle:shortVersionString>0.4.7</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[Redesigned onboarding with per-tool deep-dives, cheat-sheet HUD, and hotkey conflict detection.]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.7/Hutch-0.4.7.dmg" type="application/octet-stream" sparkle:edSignature="QDyQIQm5oQf0a1iHPua6kGQFpzsLljlLfXgzd9oVAnoQVoiWs7yeXGGsYZd0Hcdb0cXohEtCqS5ujph125HUDQ==" length="10359950" />
+    </item>
+<item>
       <title>Version 0.3.1</title>
       <pubDate>Tue, 12 May 2026 21:57:40 +0300</pubDate>
       <sparkle:version>19</sparkle:version>
