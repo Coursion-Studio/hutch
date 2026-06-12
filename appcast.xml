@@ -31,55 +31,6 @@
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.15/Hutch-0.4.15.dmg" type="application/octet-stream" sparkle:edSignature="8oOssBdv5AsDwqsg5mbPXkRN7UxG/1oGLiQBl4FhWONgUcRFE4gEOf+Iq0DuopdTA5QGkPaBU3W6GrbUH5B3Aw==" length="12652728" />
     </item>
 <item>
-      <title>Version 0.4.14</title>
-      <pubDate>Fri, 12 Jun 2026 10:21:29 +0300</pubDate>
-      <sparkle:version>34</sparkle:version>
-      <sparkle:shortVersionString>0.4.14</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li><strong>Run Shortcuts &amp; AppleScripts from Pounce</strong> — Run a Shortcut or AppleScript by name straight from the launcher (⌘⏎ edits/reveals). Type &quot;shortcuts&quot; or &quot;scripts&quot; to list them all.</li><li><strong>Tune your Pounce sources</strong> — New panel to drag-reorder which source wins, switch sources off, set a per-source minimum query length, and bias ranking weight.</li><li><strong>Stash copy &amp; reference modes</strong> — Pick Move, Copy, or Reference per drop from a segmented control in the shelf — and long-press the menu bar icon to summon the shelf.</li><li><strong>iCloud settings sync</strong> — Opt in to sync Toggles, Window Manager, Browser Picker, Stash, and Pounce settings across your Macs via iCloud Drive.</li><li><strong>Browser Picker hotkey</strong> — Assign a shortcut that opens the picker for the link on your clipboard.</li><li><strong>Tool status at a glance</strong> — The Toggles panel shows a live active/inactive chip for every Hutch tool.</li><li><strong>What&#x27;s New</strong> — Release notes after every update.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.14/Hutch-0.4.14.dmg" type="application/octet-stream" sparkle:edSignature="JiYjaSz53eIAh8bRtzbxZ2+A1bliei4B65KyO5Zlyt25tzcTmruG62AN+ukac67GLDGPw11ZMtuwefpuSxSWCQ==" length="12652622" />
-    </item>
-<item>
-      <title>Version 0.4.13</title>
-      <pubDate>Wed, 10 Jun 2026 11:50:49 +0300</pubDate>
-      <sparkle:version>33</sparkle:version>
-      <sparkle:shortVersionString>0.4.13</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>### New in 0.4.13
-
-- **Pounce — Recent files:** New source surfacing files you opened recently, system-wide and ranked by last use. Toggle under Settings → Pounce → Sources.
-- **Pounce — Source ranking:** Weight which sources surface first with per-source sliders (Settings → Pounce → Source ranking).
-- **Pounce — AI providers:** A Test Connection button validates your endpoint, model, and key on save; new show/hide toggle on the API key field.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.13/Hutch-0.4.13.dmg" type="application/octet-stream" sparkle:edSignature="IY53pIPl3GYstelv4cxv3lZwWyRnKrTviEUy6iVEEPQlpFszOZBmzK7dGjvDjS6yfqTPRa8W60ZRfEij0HWnBQ==" length="12311941" />
-    </item>
-<item>
-      <title>Version 0.4.12</title>
-      <pubDate>Mon, 08 Jun 2026 16:31:09 +0300</pubDate>
-      <sparkle:version>32</sparkle:version>
-      <sparkle:shortVersionString>0.4.12</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>Fixed calculator crash on incomplete expressions; Pounce ranks app names higher so second-word matches like chrome for Google Chrome surface first.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.12/Hutch-0.4.12.dmg" type="application/octet-stream" sparkle:edSignature="19wnljCTqg+gi5u8kaGIAnK5bIRWnOlk2VNhNdPqSVi5bS6IjocdxWdVIPGztOS3S9fhyg2BxAYnhyvN9v05CQ==" length="12224103" />
-    </item>
-<item>
-      <title>Version 0.4.11</title>
-      <pubDate>Sun, 07 Jun 2026 23:10:57 +0300</pubDate>
-      <sparkle:version>31</sparkle:version>
-      <sparkle:shortVersionString>0.4.11</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>Pounce: port killer — type 'ports' or 'kill port 3000' to find and kill processes on listening TCP ports</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.11/Hutch-0.4.11.dmg" type="application/octet-stream" sparkle:edSignature="y1Sl2j++pfH72E/XqiDNQ8Di8ZsTe+y7RomRnRQMP60FlTqGqfQZQxxmnC9OaZMIevQta3H+RUfj+wlzwKPlBA==" length="12209022" />
-    </item>
-<item>
-      <title>Version 0.4.10</title>
-      <pubDate>Sun, 07 Jun 2026 14:55:57 +0300</pubDate>
-      <sparkle:version>30</sparkle:version>
-      <sparkle:shortVersionString>0.4.10</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>Focus Mode toggle, Camera/Mic In Use privacy indicators, Window Manager drag-to-snap with preview overlay and per-app snap presets</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.10/Hutch-0.4.10.dmg" type="application/octet-stream" sparkle:edSignature="XMUe7Ko3AKGKwCSNXZXyXr91P8tPH67JXYOIAnScZrdtjuOb9fT6cNEdwyQ6GhiPjYi2rF8bpVQCSDbpWodADg==" length="12201001" />
-    </item>
-<item>
       <title>Version 0.4.8</title>
       <pubDate>Tue, 02 Jun 2026 12:41:19 +0300</pubDate>
       <sparkle:version>28</sparkle:version>
