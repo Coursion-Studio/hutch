@@ -20,7 +20,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.15</title>
+      <pubDate>Fri, 12 Jun 2026 11:07:03 +0300</pubDate>
+      <sparkle:version>35</sparkle:version>
+      <sparkle:shortVersionString>0.4.15</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Cleaner update prompts</strong> — Release notes in the &quot;update available&quot; dialog now render as formatted text — bold feature names and bullet lists — instead of raw Markdown symbols.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.15/Hutch-0.4.15.dmg" type="application/octet-stream" sparkle:edSignature="8oOssBdv5AsDwqsg5mbPXkRN7UxG/1oGLiQBl4FhWONgUcRFE4gEOf+Iq0DuopdTA5QGkPaBU3W6GrbUH5B3Aw==" length="12652728" />
+    </item>
+<item>
       <title>Version 0.4.14</title>
       <pubDate>Fri, 12 Jun 2026 10:21:29 +0300</pubDate>
       <sparkle:version>34</sparkle:version>
