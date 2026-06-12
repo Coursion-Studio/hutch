@@ -26,15 +26,7 @@
       <sparkle:version>34</sparkle:version>
       <sparkle:shortVersionString>0.4.14</sparkle:shortVersionString>
       <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>### New in 0.4.14
-
-- **Run Shortcuts & AppleScripts from Pounce** — Run a Shortcut or AppleScript by name straight from the launcher (⌘⏎ edits/reveals). Type "shortcuts" or "scripts" to list them all.
-- **Tune your Pounce sources** — New panel to drag-reorder which source wins, switch sources off, set a per-source minimum query length, and bias ranking weight.
-- **Stash copy & reference modes** — Pick Move, Copy, or Reference per drop from a segmented control in the shelf — and long-press the menu bar icon to summon the shelf.
-- **iCloud settings sync** — Opt in to sync Toggles, Window Manager, Browser Picker, Stash, and Pounce settings across your Macs via iCloud Drive.
-- **Browser Picker hotkey** — Assign a shortcut that opens the picker for the link on your clipboard.
-- **Tool status at a glance** — The Toggles panel shows a live active/inactive chip for every Hutch tool.
-- **What's New** — Release notes after every update.</li></ul>]]></description>
+      <description><![CDATA[<ul><li><strong>Run Shortcuts &amp; AppleScripts from Pounce</strong> — Run a Shortcut or AppleScript by name straight from the launcher (⌘⏎ edits/reveals). Type &quot;shortcuts&quot; or &quot;scripts&quot; to list them all.</li><li><strong>Tune your Pounce sources</strong> — New panel to drag-reorder which source wins, switch sources off, set a per-source minimum query length, and bias ranking weight.</li><li><strong>Stash copy &amp; reference modes</strong> — Pick Move, Copy, or Reference per drop from a segmented control in the shelf — and long-press the menu bar icon to summon the shelf.</li><li><strong>iCloud settings sync</strong> — Opt in to sync Toggles, Window Manager, Browser Picker, Stash, and Pounce settings across your Macs via iCloud Drive.</li><li><strong>Browser Picker hotkey</strong> — Assign a shortcut that opens the picker for the link on your clipboard.</li><li><strong>Tool status at a glance</strong> — The Toggles panel shows a live active/inactive chip for every Hutch tool.</li><li><strong>What&#x27;s New</strong> — Release notes after every update.</li></ul>]]></description>
       <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.14/Hutch-0.4.14.dmg" type="application/octet-stream" sparkle:edSignature="JiYjaSz53eIAh8bRtzbxZ2+A1bliei4B65KyO5Zlyt25tzcTmruG62AN+ukac67GLDGPw11ZMtuwefpuSxSWCQ==" length="12652622" />
     </item>
 <item>
