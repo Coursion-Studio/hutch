@@ -21,7 +21,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.16</title>
+      <pubDate>Mon, 22 Jun 2026 15:36:30 +0300</pubDate>
+      <sparkle:version>36</sparkle:version>
+      <sparkle:shortVersionString>0.4.16</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Fix sustained CPU growth after extended use — AX trust polling, drag-event task spam, Pounce rebuild debounce, and simulator polling all reduced. Stash CDN image downloads now include browser headers for better compatibility.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.16/Hutch-0.4.16.dmg" type="application/octet-stream" sparkle:edSignature="aPYQFNFS2WOm5RZ/Di+cKjuctUHOpz1y5R2ztqebdSAsQxS9jr4rOhyAx0+knjnGM2xMbjnIRijl20HMTC8yAw==" length="12661853" />
+    </item>
+<item>
       <title>Version 0.4.15</title>
       <pubDate>Fri, 12 Jun 2026 11:07:03 +0300</pubDate>
       <sparkle:version>35</sparkle:version>
