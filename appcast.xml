@@ -23,7 +23,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.17</title>
+      <pubDate>Wed, 24 Jun 2026 15:32:49 +0300</pubDate>
+      <sparkle:version>40</sparkle:version>
+      <sparkle:shortVersionString>0.4.17</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Add hover highlight on Toggles rows</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.17/Hutch-0.4.17.dmg" type="application/octet-stream" sparkle:edSignature="xigccTpmoM7myVYQIps07WqJq/RQwZja27iQr32Zt2it+k0NRTNxs+nd3ovAbYQ6gAVK1wuQlzVvSk64j5xqAw==" length="12669557" />
+    </item>
+<item>
       <title>Version 0.4.16</title>
       <pubDate>Wed, 24 Jun 2026 15:24:22 +0300</pubDate>
       <sparkle:version>39</sparkle:version>
