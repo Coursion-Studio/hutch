@@ -24,7 +24,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.4.18</title>
+      <pubDate>Wed, 24 Jun 2026 16:20:21 +0300</pubDate>
+      <sparkle:version>41</sparkle:version>
+      <sparkle:shortVersionString>0.4.18</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Scoped search: type file:, app:, clip:, win:, toggle:, &gt; (actions), shortcut:, script:, sim: to filter Pounce to one source. A coloured chip appears left of the field; backspace or Esc clears it. Bare : shows a scope picker.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.4.18/Hutch-0.4.18.dmg" type="application/octet-stream" sparkle:edSignature="gYBl7zsA5FRq9LI8/CHEJ86+kvoUiVSJ1G2z8bsSGnCvwOI0zBkRXiuIpdHralgd3K6wmt0Kg4HCiAHFfabdDQ==" length="12693446" />
+    </item>
+<item>
       <title>Version 0.4.17</title>
       <pubDate>Wed, 24 Jun 2026 15:32:49 +0300</pubDate>
       <sparkle:version>40</sparkle:version>
