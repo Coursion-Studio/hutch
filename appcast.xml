@@ -25,7 +25,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.5.0</title>
+      <pubDate>Wed, 24 Jun 2026 19:11:43 +0300</pubDate>
+      <sparkle:version>43</sparkle:version>
+      <sparkle:shortVersionString>0.5.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Scope prefixes</strong> — Narrow Pounce to one category by typing a prefix: app: for apps, file: for files, clip: for clipboard, win: for windows, toggle: for toggles, &gt; for actions, sc: for Shortcuts, script: for AppleScripts, sim: for simulators. Type : to browse all scopes interactively.</li><li><strong>Default scope</strong> — Pick a scope that activates automatically every time Pounce opens. Clear it anytime to return to open search.</li><li><strong>Scope prefix guide</strong> — A floating reference panel lists all prefixes and their aliases, auto-shows on first launch, accessible via the ? button in the footer.</li><li><strong>Apps always rank first</strong> — App results now win over every non-detector result regardless of query length.</li><li><strong>Instant app availability</strong> — App catalog pre-caches at launch for immediate results on the first keystroke.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.5.0/Hutch-0.5.0.dmg" type="application/octet-stream" sparkle:edSignature="4novnrdiU6gdbsAz58BODgXuH6XToMdzsfXr9316RmbG3Cv9sonPCLkpKIuCm5Togu5R+Smy0iYHDdHPv1aUAg==" length="12777027" />
+    </item>
+<item>
       <title>Version 0.4.18</title>
       <pubDate>Wed, 24 Jun 2026 16:20:21 +0300</pubDate>
       <sparkle:version>41</sparkle:version>
