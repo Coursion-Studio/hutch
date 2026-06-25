@@ -26,7 +26,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.6.0</title>
+      <pubDate>Thu, 25 Jun 2026 21:47:17 +0300</pubDate>
+      <sparkle:version>44</sparkle:version>
+      <sparkle:shortVersionString>0.6.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>App-wide themes</strong> — Recolor Hutch&#x27;s panels and accents across every tool from Settings.</li><li><strong>Frosted-glass Pounce</strong> — Raycast-style redesign with fresh themes for a cleaner launcher.</li><li><strong>Draggable Pounce panel</strong> — Drag the window anywhere; it remembers the position.</li><li><strong>Sleep &amp; Shutdown timers</strong> — Schedule a sleep or shutdown after a set number of minutes.</li><li><strong>Clearer What&#x27;s New</strong> — Styled inline code, brighter text, roomier rows.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.6.0/Hutch-0.6.0.dmg" type="application/octet-stream" sparkle:edSignature="vgo2nTFfi60TC4mSgT6erBMrNTpIECTv/b2mxw3bx8BvSaGfylHwgF5t6iFNXVN8XLBX/CUJxc5QeDs+DmbaCQ==" length="12867644" />
+    </item>
+<item>
       <title>Version 0.5.0</title>
       <pubDate>Wed, 24 Jun 2026 19:11:43 +0300</pubDate>
       <sparkle:version>43</sparkle:version>
