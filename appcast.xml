@@ -27,7 +27,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.6.1</title>
+      <pubDate>Sat, 27 Jun 2026 11:11:06 +0300</pubDate>
+      <sparkle:version>45</sparkle:version>
+      <sparkle:shortVersionString>0.6.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Pounce: darker backdrop scrim so search text stays readable when the panel floats over very light pages. Theme translucency preserved.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.6.1/Hutch-0.6.1.dmg" type="application/octet-stream" sparkle:edSignature="RtirQURefNMLhBJ0vyv69GR77gAECp5TR+uGb3fvKy4m7gCOkUt2udVXDWpKmBMzAsN5QLKhvodi1plJ15yKCQ==" length="12867592" />
+    </item>
+<item>
       <title>Version 0.6.0</title>
       <pubDate>Thu, 25 Jun 2026 21:47:17 +0300</pubDate>
       <sparkle:version>44</sparkle:version>
