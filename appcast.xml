@@ -28,7 +28,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.6.2</title>
+      <pubDate>Sun, 28 Jun 2026 19:20:41 +0300</pubDate>
+      <sparkle:version>46</sparkle:version>
+      <sparkle:shortVersionString>0.6.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Fixed a major memory leak and hang.</strong> Background helpers (simulators, shortcuts, AppleScripts) were leaking processes and file handles, and the file-search query never released its results — Hutch could grow to several GB and stop responding. All fixed.</li><li><strong>Single instance.</strong> Hutch no longer launches a second copy of itself; opening it again just brings the running one to the front.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.6.2/Hutch-0.6.2.dmg" type="application/octet-stream" sparkle:edSignature="/1c61862IbGY7nqcq7/fkCRV09injY3uDBJAgPYkh83/vRZpLJtH9d/YnX8TvETi4GNk9EVaEPgplNOL0MTIDg==" length="12889449" />
+    </item>
+<item>
       <title>Version 0.6.1</title>
       <pubDate>Sat, 27 Jun 2026 11:11:06 +0300</pubDate>
       <sparkle:version>45</sparkle:version>
