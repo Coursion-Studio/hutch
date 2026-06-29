@@ -29,7 +29,17 @@
     
     
     
+    
     <item>
+      <title>Version 0.6.3</title>
+      <pubDate>Mon, 29 Jun 2026 15:42:59 +0300</pubDate>
+      <sparkle:version>47</sparkle:version>
+      <sparkle:shortVersionString>0.6.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Fix Pounce panel backdrop to stay dark on any wallpaper colour. The panel now uses a pinned-dark NSVisualEffectView instead of an adaptive SwiftUI material, so it no longer washes out on light or white desktop backgrounds.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v0.6.3/Hutch-0.6.3.dmg" type="application/octet-stream" sparkle:edSignature="x9Ysycovt12xVui9UImNx1hwe75clSXpYO6P4njdGX8EGJdIzv0/qwwh2P6udyCMmyms9+gpPYFocAAFbMiMCg==" length="12829358" />
+    </item>
+<item>
       <title>Version 0.6.2</title>
       <pubDate>Sun, 28 Jun 2026 19:20:41 +0300</pubDate>
       <sparkle:version>46</sparkle:version>
