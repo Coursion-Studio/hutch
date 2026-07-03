@@ -30,7 +30,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.0.0</title>
+      <pubDate>Fri, 03 Jul 2026 14:37:57 +0300</pubDate>
+      <sparkle:version>49</sparkle:version>
+      <sparkle:shortVersionString>1.0.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>A custom icon set, everywhere</strong> — Every tool, Pounce source, settings screen, and Stash mode now has its own hand-crafted 3D glyph. A new 3D / flat toggle in Settings → General swaps the whole set at once.</li><li><strong>What&#x27;s New, on demand</strong> — A dedicated &quot;What&#x27;s New&quot; page in Settings (just above About) shows the latest release notes any time, not only after an update.</li><li><strong>Safer Stash &quot;Move&quot;</strong> — Your original file stays exactly where it was while the item sits on the shelf, and only leaves once you drag it out. Nothing goes missing mid-drag.</li><li><strong>A new Hutch theme, punchier looks</strong> — A new &quot;Hutch&quot; theme (deep purple with a coral glow) joins the lineup, and existing themes got richer backdrops.</li><li><strong>Polished Browser Picker</strong> — The &quot;Remember for…&quot; options in the Open-in panel are now clean, tappable accent pills.</li><li><strong>Steadier and lighter</strong> — Launching Hutch again just focuses the running window instead of opening a second copy, plus subprocess and Spotlight memory/port leak fixes.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.0.0/Hutch-1.0.0.dmg" type="application/octet-stream" sparkle:edSignature="Vx65kBPfZfdkfOqQ/2gtojoAPR/klK3abZara+kHKZpg2FxTqubjPdJLJT/OUXkOfNeye5aClDMjSn/BPjwgDQ==" length="12978901" />
+    </item>
+<item>
       <title>Version 0.6.3</title>
       <pubDate>Mon, 29 Jun 2026 15:42:59 +0300</pubDate>
       <sparkle:version>47</sparkle:version>
