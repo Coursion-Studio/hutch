@@ -31,7 +31,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.0.1</title>
+      <pubDate>Sat, 04 Jul 2026 01:04:14 +0300</pubDate>
+      <sparkle:version>50</sparkle:version>
+      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>⌘K — actions, anywhere</strong> — Press ⌘K on any Pounce result for a keyboard-driven menu of what you can do with it: reveal in Finder, copy its path, quit a running app, and more — all without leaving the launcher.</li><li><strong>A sharper Toggles popover</strong> — It now aims a pointer right at its menu-bar icon, opens with a clean header, and adds a search field up top so you can filter to the switch you want in a single keystroke. Whatever&#x27;s on is highlighted at a glance.</li><li><strong>Make results move your way</strong> — Choose how Pounce&#x27;s list animates as you type — Slide, Fade, Pop, or None — in Settings → Pounce. Toggles, Stash, and the launcher all feel livelier and springier too.</li><li><strong>Panel width, fixed</strong> — Compact / Standard / Wide for the Pounce launcher finally resizes it for real.</li><li><strong>Your clipboard keeps its secrets</strong> — Anything a password manager marks as concealed (1Password, Keychain, and friends) is never captured into Pounce&#x27;s clipboard history.</li><li><strong>The right result, every keystroke</strong> — Pounce&#x27;s highlight snaps back to the best match as you type, so Return always launches exactly what you meant.</li><li><strong>A tidier app</strong> — Custom-styled dropdowns across Settings, plus we retired the icon-style switch (the 3D glyphs are always on now) and the redundant Tools page.</li><li><strong>Lighter and steadier</strong> — The port killer now lists in the background instead of stalling the launcher, the AI window stops streaming when you close it, and duplicate emoji are gone from the picker.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.0.1/Hutch-1.0.1.dmg" type="application/octet-stream" sparkle:edSignature="aMwbSv9mmy2slIp6VJom6N2qvmJZtFQWNqtgFEzIV8qQZ0FKc3WF9Fel9TJwr3Qp5fPMW6a+WmPuYpwmTH8ICg==" length="13100037" />
+    </item>
+<item>
       <title>Version 1.0.0</title>
       <pubDate>Fri, 03 Jul 2026 14:37:57 +0300</pubDate>
       <sparkle:version>49</sparkle:version>
