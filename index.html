@@ -4,13 +4,13 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hutch — A drawer of Mac utilities</title>
-  <meta name="description" content="Pounce launcher, window tiling, file shelf, system toggles, browser picker — Mac tools in one menu bar app. Native, on-device, free, BYO API keys for AI." />
+  <meta name="description" content="A ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, and a smart browser picker — five native Mac tools in one menu bar app. On-device, free, BYO API keys for AI." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
-  <meta property="og:description" content="Small Mac tools, one menu bar app. Native macOS. Built to grow." />
-  <meta property="og:image" content="icon.png" />
+  <meta property="og:description" content="Five native Mac tools, one menu bar app. On-device. No Electron, no accounts, no subscription." />
+  <meta property="og:image" content="screenshots/hero-dashboard.png" />
   <meta name="theme-color" content="#100B1C" />
 </head>
 <body>
@@ -23,6 +23,7 @@
         <span>Hutch</span>
       </div>
       <div class="links">
+        <a href="#tour">Tour</a>
         <a href="#tools">Tools</a>
         <a href="#why">Why Hutch</a>
         <a href="https://github.com/Coursion-Studio/hutch/releases/latest">Download</a>
@@ -34,10 +35,10 @@
       <div class="eyebrow">A drawer of Mac utilities</div>
       <h1>A drawer of Mac tools,<br /><span class="grad">one menu bar.</span></h1>
       <p class="sub">
-        A ⌘-Space launcher, window tiling, a file shelf for drag-and-drop,
-        system toggles, and a smart browser picker — all native SwiftUI,
-        all running on your Mac. AI runs on your own keys. No Electron,
-        no accounts, no subscription.
+        A ⌘Space launcher, window snapping, a drag-and-drop shelf, system
+        toggles, and a smart browser picker — five native tools in one
+        menu-bar app. Everything runs on your Mac. AI on your own keys.
+        No Electron, no accounts, no subscription.
       </p>
       <div class="cta-grid">
         <div class="install-cmd" data-copy="brew install --cask coursion-studio/tap/hutch">
@@ -49,171 +50,218 @@
           Download&nbsp;.dmg
         </a>
       </div>
-      <p class="req-note">macOS 15 (Sequoia) or later · Auto-updates via Sparkle · <a href="#tools">See the tools</a></p>
+      <p class="req-note">macOS 15 (Sequoia) or later · Auto-updates via Sparkle · <a href="#tour">Take the tour</a></p>
     </header>
+  </div>
 
-    <section class="tight" style="padding-top:0">
-      <div class="hero-stats three" id="hero-stats">
+  <!-- ─── hero shot: real capture of the dashboard with the ⌘Space launcher over it ─── -->
+  <section id="tour" class="hero-shot-wrap">
+    <div class="container">
+      <figure class="window shot-hero hero-composite">
+        <img class="base" src="screenshots/hero-dashboard.png"
+             alt="The Hutch settings dashboard — a sidebar of five tools with the theme picker open"
+             width="1020" height="720"
+             loading="eager" decoding="async" fetchpriority="high" />
+        <img class="float" src="screenshots/pounce.png"
+             alt="The Pounce launcher summoned with ⌘Space, browsing every search scope"
+             width="800" height="480" loading="eager" decoding="async" />
+      </figure>
+      <div class="hero-stats three">
         <div class="stat"><strong>5</strong><span>tools</span></div>
         <div class="stat"><strong>100%</strong><span>native SwiftUI</span></div>
         <div class="stat"><strong>Free</strong><span>forever</span></div>
-        <div class="stat" id="stat-downloads">
-          <strong id="dl-count">0</strong><span>downloads</span>
-        </div>
       </div>
+    </div>
+  </section>
+
+  <div class="container">
+    <section id="tools" class="showcase-intro">
+      <div class="section-label">See it in action</div>
+      <h2>Every pixel, native to macOS.</h2>
+      <p class="lede">No Electron. No web views. Real screenshots of the five tools in the drawer today — more on the way.</p>
     </section>
 
-    <section id="tools">
-      <div class="section-label">What's inside</div>
-      <h2>What's in the drawer today.</h2>
-      <p class="lede">Each tool earns its place. None of them are placeholders. More on the way.</p>
+    <section class="showcase">
 
-      <div class="grid">
-        <div class="card">
-          <div class="tile c-pink">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <path d="M9 2.5 L10.4 6.7 L14.6 8.1 L10.4 9.5 L9 13.7 L7.6 9.5 L3.4 8.1 L7.6 6.7 Z"/>
-              <path d="M17.5 11 L18.4 13.6 L21 14.5 L18.4 15.4 L17.5 18 L16.6 15.4 L14 14.5 L16.6 13.6 Z"/>
-              <path d="M19 18.5 L19.6 20.2 L21.3 20.8 L19.6 21.4 L19 23 L18.4 21.4 L16.7 20.8 L18.4 20.2 Z"/>
-            </svg>
+      <!-- 1 · Pounce -->
+      <div class="showcase-row">
+        <div class="showcase-copy">
+          <div class="chip chip-pink">
+            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+            Pounce — the command bar
           </div>
-          <h3>Pounce — the command bar</h3>
-          <p>⌘-Space and start typing. Apps, system actions, your toggles, files, recent downloads, browser tabs — every workflow in one keystroke. Press ⌘K on any result for a menu of quick actions. Math, currency, units, even AI prompts to your own provider. Like Raycast, except everything is local and BYO key.</p>
+          <h3>One keystroke.<br />Everything.</h3>
+          <p>Hit ⌘Space, then search apps, files, clipboard and open windows — do inline math, run system actions, or ask your own AI. Type <code>:</code> to browse every scope, ⌘K on any result for quick actions.</p>
           <ul class="pills">
-            <li>⌘K action palette</li>
-            <li>App launcher (with switch &amp; quit)</li>
-            <li>Window switcher</li>
-            <li>Clipboard history</li>
-            <li>Scope search (app: file: clip: win: …)</li>
-            <li>Default scope on open</li>
-            <li>Live FX + units calc</li>
-            <li>iOS simulator picker</li>
-            <li>AI · BYO Anthropic / OpenAI / Ollama</li>
-            <li>Web bangs (g, gh, w, npm, …)</li>
-            <li>Shortcuts &amp; AppleScripts</li>
-            <li>Custom commands</li>
-            <li>Markdown preview</li>
-            <li>Kill apps &amp; ports</li>
+            <li>Apps &amp; files</li><li>Inline math</li><li>Live currency &amp; units</li><li>Ask AI · BYO key</li><li>⌘K quick actions</li><li>System actions</li><li>Clipboard history</li><li>Window switcher</li><li>Web search &amp; bangs</li><li>iOS simulators</li><li>Emoji &amp; snippets</li><li>Scope prefixes</li>
           </ul>
         </div>
+        <figure class="stage glow-pink">
+          <img src="screenshots/pounce.png" alt="Pounce showing all nine search scopes — apps, files, clipboard, windows, toggles, actions, shortcuts, scripts, simulators"
+               width="800" height="480" loading="lazy" decoding="async" />
+          <img class="inset" src="screenshots/pounce-math.png" alt="Pounce doing inline math: 1280 × 0.15 = 192"
+               width="800" height="480" loading="lazy" decoding="async" />
+        </figure>
+      </div>
 
-        <div class="card">
-          <div class="tile c-violet">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
-              <rect x="3" y="4.5" width="18" height="7" rx="2"/>
-              <rect x="3" y="12.5" width="18" height="7" rx="2"/>
-            </svg>
-          </div>
-          <h3>Window Manager</h3>
-          <p>Snap windows to halves, quarters, thirds, or any ratio you like. Drag a window to a screen edge for a live snap preview, click a tile, or hit a hotkey — they fire globally, in any app.</p>
-          <ul class="pills">
-            <li>Halves &amp; quarters</li><li>Thirds</li><li>Custom ratios</li><li>Drag-to-snap preview</li><li>Per-app presets</li><li>Global hotkeys</li><li>Multi-display</li>
-          </ul>
+      <!-- Pounce feature gallery -->
+      <div class="pounce-gallery">
+        <div class="gallery-head">
+          <div class="section-label">Pounce, up close</div>
+          <h3>One bar, a dozen tricks.</h3>
+          <p>Type a few characters and Pounce works out what you mean — a sum, a currency, an action, an app.</p>
         </div>
-
-        <div class="card">
-          <div class="tile c-coral">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="4" y="3" width="16" height="6" rx="1.6" fill="currentColor"/>
-              <rect x="4" y="15" width="16" height="6" rx="1.6" fill="currentColor"/>
-              <path d="M12 9.5 V13.5"/>
-              <path d="M8.6 11.6 L12 14.8 L15.4 11.6"/>
-            </svg>
-          </div>
-          <h3>Stash</h3>
-          <p>A floating shelf for files mid-drag. Drag from one app, drop on Stash, drag out into another — even images straight from the browser. Or summon it on a hotkey when you need it.</p>
-          <ul class="pills">
-            <li>Drag-and-drop shelf</li><li>Browser image drops</li><li>Cursor-shake summon</li><li>Hotkey ⌃⌥⌘V</li><li>Pin items</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="tile c-pink">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M6 4 V11 a3 3 0 0 0 3 3 H15 a3 3 0 0 1 3 3 V20"/>
-              <path d="M3.6 6 L6 3.6 L8.4 6"/>
-              <path d="M15.6 18 L18 20.4 L20.4 18"/>
-            </svg>
-          </div>
-          <h3>Browser Picker</h3>
-          <p>Set Hutch as your default browser and route every link by rule — work URLs to Chrome, personal to Safari, anything weird to a picker. Five seconds of setup, hours saved.</p>
-          <ul class="pills">
-            <li>Per-domain rules</li><li>Picker prompt</li><li>App-source rules</li><li>Ordered fallbacks</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <div class="tile c-amber">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true">
-              <rect x="2.5" y="5.5" width="19" height="5" rx="2.5"/>
-              <circle cx="7.5" cy="8" r="1.6" fill="currentColor" stroke="none"/>
-              <rect x="2.5" y="13.5" width="19" height="5" rx="2.5"/>
-              <circle cx="16.5" cy="16" r="1.6" fill="currentColor" stroke="none"/>
-            </svg>
-          </div>
-          <h3>Toggles</h3>
-          <p>One panel for the macOS switches that hide three menus deep — Dark Mode, Focus Mode, Stage Manager, Hot Corners, AirPods, Bluetooth. Search to jump straight to the one you want. Plus live camera and mic in-use indicators, so you always know who's listening.</p>
-          <ul class="pills">
-            <li>Toggle search</li><li>Appearance</li><li>Focus Mode</li><li>Stage Manager</li><li>Hot Corners</li><li>AirPods</li><li>Bluetooth</li><li>Camera/Mic indicators</li>
-          </ul>
+        <div class="gallery-grid">
+          <figure class="gcard">
+            <img src="screenshots/pounce-convert.png" alt="Pounce converting 100 USD to 87.73 EUR at a live exchange rate" width="800" height="480" loading="lazy" decoding="async" />
+            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Live currency &amp; unit conversion</figcaption>
+          </figure>
+          <figure class="gcard">
+            <img src="screenshots/pounce-cmdk.png" alt="The ⌘K action palette on a result — Reveal in Finder, Copy Path, Quit" width="800" height="480" loading="lazy" decoding="async" />
+            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 9V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v3m0 6v3a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3v-3"/></svg>⌘K quick-action palette</figcaption>
+          </figure>
+          <figure class="gcard">
+            <img src="screenshots/pounce-actions.png" alt="Pounce running the Empty Trash system action" width="800" height="480" loading="lazy" decoding="async" />
+            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 14h10l1-14"/></svg>System actions &amp; power</figcaption>
+          </figure>
+          <figure class="gcard">
+            <img src="screenshots/pounce-apps.png" alt="Pounce as an app launcher and switcher listing running apps" width="800" height="480" loading="lazy" decoding="async" />
+            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Launch, switch &amp; quit apps</figcaption>
+          </figure>
         </div>
       </div>
+
+      <!-- 2 · Window Manager -->
+      <div class="showcase-row reverse">
+        <div class="showcase-copy">
+          <div class="chip chip-violet">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="7" rx="2"/><rect x="3" y="12.5" width="18" height="7" rx="2"/></svg>
+            Window Manager
+          </div>
+          <h3>Snap any window<br />into place.</h3>
+          <p>Halves, quarters, thirds, or a custom split. Click a region on the grid or fire a ⌃⌥ hotkey — it works in any app, drag-to-snap at the screen edge, and remembers a preset per app.</p>
+          <ul class="pills">
+            <li>Halves &amp; quarters</li><li>Thirds &amp; ⅔</li><li>⌃⌥ global hotkeys</li><li>Drag-to-snap</li><li>Per-app presets</li>
+          </ul>
+        </div>
+        <figure class="window glow-violet">
+          <img src="screenshots/window-manager.png" alt="Hutch's Snap Layout grid — a 3×3 region picker with keyboard shortcuts and a Fullscreen bar"
+               width="1020" height="720" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
+      <!-- 3 · Stash -->
+      <div class="showcase-row">
+        <div class="showcase-copy">
+          <div class="chip chip-coral">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="6" rx="1.6" fill="currentColor"/><rect x="4" y="15" width="16" height="6" rx="1.6" fill="currentColor"/><path d="M12 9.5V13.5"/><path d="M8.6 11.6 12 14.8l3.4-3.2"/></svg>
+            Stash
+          </div>
+          <h3>Catch it. Carry it.<br />Drop it.</h3>
+          <p>A floating shelf that appears right where you're dragging. Pile up files and images from any app — even straight from the browser — then drop them where they belong. Shake or hotkey to summon.</p>
+          <ul class="pills">
+            <li>Drag from any app</li><li>Move · Copy · Reference</li><li>Shake to summon</li><li>Live thumbnails</li><li>Stack multiple shelves</li>
+          </ul>
+        </div>
+        <figure class="stage narrow glow-coral">
+          <img src="screenshots/stash.png" alt="The Stash shelf ready to receive files, with Move / Copy / Reference ingest modes"
+               width="320" height="216" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
+      <!-- 4 · Toggles -->
+      <div class="showcase-row reverse">
+        <div class="showcase-copy">
+          <div class="chip chip-amber">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="5" rx="2.5"/><circle cx="7.5" cy="8" r="1.6" fill="currentColor" stroke="none"/><rect x="2.5" y="13.5" width="19" height="5" rx="2.5"/><circle cx="16.5" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg>
+            Toggles
+          </div>
+          <h3>System switches,<br />one tap away.</h3>
+          <p>A menu-bar popover for the switches buried three menus deep — Dark Mode, Keep Awake, Focus, sleep and shutdown timers, mic mute — plus live camera and mic in-use indicators. Search to jump straight to one.</p>
+          <ul class="pills">
+            <li>29 switches</li><li>Dark Mode</li><li>Keep Awake</li><li>Sleep timer</li><li>Live mic &amp; cam</li>
+          </ul>
+        </div>
+        <figure class="stage narrow glow-amber">
+          <img src="screenshots/toggles.png" alt="The Toggles popover with switches for Hide Desktop, Dark Mode, Keep Awake, AirPods and Focus"
+               width="320" height="480" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
+      <!-- 5 · Browser Picker -->
+      <div class="showcase-row">
+        <div class="showcase-copy">
+          <div class="chip chip-blue">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
+            Browser Picker
+          </div>
+          <h3>Every link,<br />the right browser.</h3>
+          <p>Make Hutch your default browser and route every link by rule — work URLs to Chrome, personal to Safari — or pop a keyboard-driven picker and press 1–9 to launch. Rules by site or by the app the link came from.</p>
+          <ul class="pills">
+            <li>Per-site rules</li><li>Per-app rules</li><li>1–9 to launch</li><li>Remember a choice</li><li>Most-used first</li>
+          </ul>
+        </div>
+        <figure class="window glow-blue">
+          <img src="screenshots/browser-picker.png" alt="The Browser Picker settings — Hutch set as default browser, routing links across six detected browsers"
+               width="1020" height="720" loading="lazy" decoding="async" />
+        </figure>
+      </div>
+
     </section>
 
     <hr class="sep" />
 
-    <section id="releases" class="tight" hidden>
-      <div class="section-label">Releases</div>
-      <h2>Every version, every download.</h2>
-      <p class="lede">Live count, every channel — site, brew, in-app updates.</p>
-      <ol class="releases" id="releases-list"></ol>
-    </section>
-
-    <hr class="sep" id="releases-sep" hidden />
-
     <section id="why" class="tight">
       <div class="section-label">Why Hutch</div>
       <h2>Native. Private. Out of the way.</h2>
-      <p class="lede">Hutch is a paid utility's worth of tools — free, forever.</p>
+      <p class="lede">A paid utility's worth of tools — free, forever, as a Coursion portfolio project.</p>
 
       <div class="grid why-grid">
         <div class="card">
           <div class="tile c-coral">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M13 2L4 14h7l-1 8 9-12h-7z"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
           </div>
           <h3>100% native SwiftUI</h3>
-          <p>No Electron. No web views. Cold-starts in milliseconds, feels like macOS because it is macOS.</p>
+          <p>No Electron, no web views. Cold-starts in milliseconds and feels like macOS — because it is macOS.</p>
         </div>
         <div class="card">
           <div class="tile c-green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg>
           </div>
           <h3>Runs on your Mac</h3>
-          <p>No accounts, no telemetry, no uploads. Hutch's only network call is checking for app updates.</p>
+          <p>No accounts, no telemetry, no uploads. Hutch's only network call is checking for its own updates.</p>
         </div>
         <div class="card">
           <div class="tile c-violet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <rect x="2" y="3" width="20" height="4" rx="1"/><path d="M7 7v4M12 7v4M17 7v4"/><rect x="6" y="13" width="12" height="8" rx="2"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="4" rx="1"/><path d="M7 7v4M12 7v4M17 7v4"/><rect x="6" y="13" width="12" height="8" rx="2"/></svg>
           </div>
           <h3>Lives in the menu bar</h3>
-          <p>One tray icon, every tool. Hutch only joins the Dock and Cmd+Tab while the dashboard is open.</p>
+          <p>One tray icon, every tool. Hutch only joins the Dock and ⌘-Tab while its dashboard is open.</p>
         </div>
         <div class="card">
           <div class="tile c-blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-              <path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/>
-            </svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
           </div>
           <h3>Auto-updates</h3>
           <p>Sparkle-signed updates ship over the air. Apple-notarized DMGs, EdDSA-verified — no App Store middleman.</p>
         </div>
       </div>
+    </section>
+
+    <section class="cta-band tight">
+      <h2>Open the drawer.</h2>
+      <p class="lede">Free, notarized, and ready in one command.</p>
+      <div class="cta-grid">
+        <div class="install-cmd" data-copy="brew install --cask coursion-studio/tap/hutch">
+          <span class="prompt" aria-hidden="true">$</span>
+          <code>brew install --cask coursion-studio/tap/hutch</code>
+          <button class="copy-btn" type="button" aria-label="Copy install command">Copy</button>
+        </div>
+        <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest">
+          Download&nbsp;.dmg
+        </a>
+      </div>
+      <p class="req-note">macOS 15 (Sequoia) or later · Developer ID signed &amp; notarized</p>
     </section>
 
     <footer>
@@ -227,7 +275,7 @@
   </div>
 
   <script>
-    // Copy-to-clipboard for the brew install code block.
+    // Copy-to-clipboard for the brew install code blocks.
     (function () {
       document.querySelectorAll(".copy-btn").forEach(function (btn) {
         btn.addEventListener("click", function () {
@@ -244,78 +292,6 @@
           }).catch(function () { /* clipboard blocked — no-op */ });
         });
       });
-    })();
-
-    // Pulls every public release from GitHub. Two things happen with the result:
-    //   1. The hero "downloads" stat shows the sum across all assets.
-    //   2. The Releases section lists each version with its own download count.
-    // Unauthenticated calls are rate-limited to 60/hr per IP — fine for a
-    // landing page. Both surfaces stay hidden if there are no releases yet,
-    // so we never ship a "0 downloads" page pre-launch.
-    (function () {
-      var fmtCount = function (n) {
-        if (n >= 1e6) return (n / 1e6).toFixed(1).replace(/\.0$/, "") + "M";
-        if (n >= 1e3) return (n / 1e3).toFixed(1).replace(/\.0$/, "") + "K";
-        return String(n);
-      };
-      var fmtDate = function (iso) {
-        try {
-          return new Date(iso).toLocaleDateString("en-US", {
-            year: "numeric", month: "short", day: "numeric"
-          });
-        } catch (_) { return ""; }
-      };
-      var pickDmg = function (assets) {
-        return (assets || []).find(function (a) {
-          return /\.dmg$/i.test(a.name || "");
-        }) || (assets || [])[0];
-      };
-
-      fetch("https://api.github.com/repos/Coursion-Studio/hutch/releases")
-        .then(function (r) { return r.ok ? r.json() : []; })
-        .then(function (releases) {
-          releases = releases || [];
-          var total = 0;
-          var rows = releases.map(function (rel) {
-            var assets = rel.assets || [];
-            var count = assets.reduce(function (s, a) {
-              return s + (a.download_count || 0);
-            }, 0);
-            total += count;
-            var dmg = pickDmg(assets);
-            var li = document.createElement("li");
-            li.className = "release-row";
-            li.innerHTML =
-              '<div class="release-meta">' +
-                '<span class="release-tag">' + (rel.tag_name || rel.name || "") + '</span>' +
-                '<span class="release-date">' + fmtDate(rel.published_at) + '</span>' +
-              '</div>' +
-              '<div class="release-count">' +
-                '<strong>' + count.toLocaleString("en-US") + '</strong>' +
-                '<span>downloads</span>' +
-              '</div>' +
-              (dmg
-                ? '<a class="release-link" href="' + dmg.browser_download_url + '">Download</a>'
-                : '<a class="release-link" href="' + rel.html_url + '">Release page</a>');
-            return li;
-          });
-
-          // Hero stat — total across everything.
-          if (total > 0) {
-            document.getElementById("dl-count").textContent = fmtCount(total);
-            document.getElementById("stat-downloads").hidden = false;
-            document.getElementById("hero-stats").classList.remove("three");
-          }
-
-          // Releases section — only show when there's something to show.
-          if (rows.length > 0) {
-            var list = document.getElementById("releases-list");
-            rows.forEach(function (li) { list.appendChild(li); });
-            document.getElementById("releases").hidden = false;
-            document.getElementById("releases-sep").hidden = false;
-          }
-        })
-        .catch(function () { /* no-op: leave hero strip at 3 stats, releases section hidden */ });
     })();
   </script>
 </body>
