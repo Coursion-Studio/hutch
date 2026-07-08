@@ -5,7 +5,17 @@
     <link>https://hutch.coursion.studio/appcast.xml</link>
     <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
     <language>en</language>
+    
     <item>
+      <title>Version 1.1.0</title>
+      <pubDate>Wed, 08 Jul 2026 11:24:12 +0300</pubDate>
+      <sparkle:version>51</sparkle:version>
+      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Caffeinate toggle</strong> — keep your Mac awake indefinitely, or for a set duration you dial in; it counts down and releases the assertion automatically. Replaces Keep Awake.</li><li><strong>Drag to reorder</strong> — long-press any toggle in the panel and drag to rearrange it; your order is remembered across launches.</li><li><strong>Fixed</strong> a crash when tapping the +/− steppers on the Caffeinate and Sleep / Shutdown timers.</li><li>Lighter, more legible search-field text in the Toggles panel.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.1.0/Hutch-1.1.0.dmg" type="application/octet-stream" sparkle:edSignature="J8367Soi79M2+B0HzuulP7pes5H1IxBMPVnwLim9pIT8/IXE0ZE0/UOfwKs7tkTNiFy0wvwdF/hiUYXhmgvMDA==" length="13166593" />
+    </item>
+<item>
       <title>Version 1.0.1</title>
       <pubDate>Sat, 04 Jul 2026 01:04:14 +0300</pubDate>
       <sparkle:version>50</sparkle:version>
