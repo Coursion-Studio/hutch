@@ -6,7 +6,17 @@
     <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
     <language>en</language>
     
+    
     <item>
+      <title>Version 1.2.0</title>
+      <pubDate>Mon, 27 Jul 2026 23:09:49 +0300</pubDate>
+      <sparkle:version>52</sparkle:version>
+      <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Reaper — a new tool that finds what&#x27;s eating your Mac&#x27;s CPU, memory and GPU, then walks you through quitting it one app at a time. Plus live-state highlighting in Toggles and slider-based thresholds.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.2.0/Hutch-1.2.0.dmg" type="application/octet-stream" sparkle:edSignature="JFF0oOPut54eVVot7Jdo4oFisgWJhLscg/nqET6IYxMmRJTIO36/zNY7zkzwkmAVRDKN+jT0uY1f1nJrJDi9Bw==" length="13877756" />
+    </item>
+<item>
       <title>Version 1.1.0</title>
       <pubDate>Wed, 08 Jul 2026 11:24:12 +0300</pubDate>
       <sparkle:version>51</sparkle:version>
