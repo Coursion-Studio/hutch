@@ -615,10 +615,10 @@ footer a:hover { color: var(--text-primary); }
     0 10px 28px rgba(0, 0, 0, 0.45),
     0 0 0 1px rgba(255, 255, 255, 0.06),
     0 0 170px rgba(155, 89, 182, 0.24);
-  transform: perspective(2400px) rotateX(1.2deg);
+  transform: translateY(0);
   transition: transform 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
 }
-.shot-hero:hover { transform: perspective(2400px) rotateX(0deg) translateY(-3px); }
+.shot-hero:hover { transform: translateY(-3px); }
 
 /* Composite hero: dashboard window with the Pounce launcher floating over it */
 .hero-composite {
