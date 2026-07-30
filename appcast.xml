@@ -8,6 +8,15 @@
     
     
     <item>
+      <title>Version 1.2.1</title>
+      <pubDate>Thu, 30 Jul 2026 15:18:12 +0300</pubDate>
+      <sparkle:version>53</sparkle:version>
+      <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Added Rift and Forge to <strong>More from us</strong> in Settings.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.2.1/Hutch-1.2.1.dmg" type="application/octet-stream" sparkle:edSignature="yX2eF/06MssMhbZ6WLhGUVTL+UsFe946zOwPq5d9PPL7BeraedSKTU5svXjjansOtc97seCAFt7VxyfgnB5cCA==" length="14378663" />
+    </item>
+    <item>
       <title>Version 1.2.0</title>
       <pubDate>Mon, 27 Jul 2026 23:09:49 +0300</pubDate>
       <sparkle:version>52</sparkle:version>
