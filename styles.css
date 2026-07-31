@@ -242,6 +242,54 @@ nav.top a:hover { color: var(--text-primary); }
   }
 }
 
+/* ─── early access signup ─── */
+
+.signup {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  flex-wrap: wrap;
+  max-width: 520px;
+  margin: 0 auto;
+}
+
+.signup-field {
+  flex: 1 1 260px;
+  min-width: 0;
+  height: 48px;
+  padding: 0 16px;
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: var(--radius-btn);
+  font-family: inherit;
+  font-size: 14px;
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.signup-field::placeholder { color: var(--text-tertiary); }
+
+.signup-field:focus {
+  outline: none;
+  border-color: rgba(255, 122, 89, 0.55);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.signup .btn {
+  height: 48px;
+  padding: 0 22px;
+  border: none;
+  font-family: inherit;
+}
+
+.signup-status {
+  margin: 14px auto 0;
+  font-size: 13px;
+  text-align: center;
+}
+.signup-status.ok    { color: #6EE7B7; }
+.signup-status.error { color: #FCA5A5; }
+
 /* ─── buttons ─── */
 
 .btn {

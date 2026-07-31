@@ -264,12 +264,15 @@
 
     <section id="early-access" class="cta-band tight">
       <h2>Open the drawer.</h2>
-      <p class="lede">$29 once. All 1.x updates included, no subscription. Toggles and Window Manager stay free forever — the other four tools need the licence. Downloads are paused while we get the paid release ready.</p>
-      <div class="cta-grid single">
-        <a class="btn primary" href="mailto:kuraydev.io@gmail.com?subject=Hutch%20early%20access">
-          Request early access
-        </a>
-      </div>
+      <p class="lede">Hutch is getting ready for its next release. Leave your email and you'll be first to know.</p>
+      <form class="signup" id="early-access-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+        <input class="signup-field" type="email" name="email" placeholder="you@example.com"
+               required autocomplete="email" aria-label="Email address" />
+        <input type="hidden" name="_subject" value="Hutch — early access request" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" />
+        <button class="btn primary" type="submit">Request early access</button>
+      </form>
+      <p class="signup-status" id="signup-status" role="status" aria-live="polite" hidden></p>
       <p class="req-note">macOS 15 (Sequoia) or later · Developer ID signed &amp; notarized</p>
     </section>
 
@@ -284,6 +287,51 @@
   </div>
 
   <script>
+    // Early access: post to Formspree in the background so the page never
+    // navigates away to a plain confirmation screen.
+    (function () {
+      var form = document.getElementById("early-access-form");
+      var status = document.getElementById("signup-status");
+      if (!form || !status) return;
+
+      function show(message, ok) {
+        status.textContent = message;
+        status.className = "signup-status" + (ok ? " ok" : " error");
+        status.hidden = false;
+      }
+
+      form.addEventListener("submit", function (event) {
+        event.preventDefault();
+        var button = form.querySelector("button");
+        button.disabled = true;
+        button.textContent = "Sending…";
+
+        fetch(form.action, {
+          method: "POST",
+          body: new FormData(form),
+          headers: { Accept: "application/json" }
+        }).then(function (response) {
+          if (response.ok) {
+            form.reset();
+            show("You're on the list — we'll be in touch.", true);
+            button.textContent = "Request early access";
+          } else {
+            return response.json().then(function (data) {
+              var problem = (data && data.errors && data.errors[0] && data.errors[0].message)
+                || "Something went wrong. Try again, or email kuraydev.io@gmail.com.";
+              show(problem, false);
+              button.textContent = "Request early access";
+            });
+          }
+        }).catch(function () {
+          show("Couldn't reach the server. Email kuraydev.io@gmail.com instead.", false);
+          button.textContent = "Request early access";
+        }).finally(function () {
+          button.disabled = false;
+        });
+      });
+    })();
+
     // Copy-to-clipboard for the brew install code blocks.
     (function () {
       document.querySelectorAll(".copy-btn").forEach(function (btn) {
