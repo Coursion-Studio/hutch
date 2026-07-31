@@ -6,15 +6,9 @@ A drawer of Mac utilities — window tiling, file shelf, system toggles, and a s
 
 ## Install
 
-### Homebrew
-
-```sh
-brew install --cask coursion-studio/tap/hutch
-```
-
-### Direct download
-
-Grab the latest signed `.dmg` from [Releases](https://github.com/Coursion-Studio/hutch/releases/latest), drag `Hutch.app` into `/Applications`.
+Hutch isn't publicly available right now. Downloads are paused while a paid
+release is prepared — the Homebrew cask and the signed `.dmg` will return
+when it ships.
 
 Requires **macOS 15 (Sequoia)** or later.
 
@@ -31,7 +25,7 @@ Each tool is independently toggleable from Settings. None depend on each other.
 
 ## Updates
 
-Hutch ships with [Sparkle](https://sparkle-project.org). Updates download silently and apply on the next quit. The cask declares `auto_updates true`, so `brew upgrade --cask hutch` is unnecessary unless you've turned in-app updates off.
+Hutch ships with [Sparkle](https://sparkle-project.org). The feed is currently empty, so existing installs keep working and are offered no updates.
 
 The Sparkle feed is [`hutch.coursion.studio/appcast.xml`](https://hutch.coursion.studio/appcast.xml). DMGs are EdDSA-signed; Hutch verifies the signature against an embedded public key before installing anything.
 
