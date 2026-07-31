@@ -229,6 +229,13 @@ nav.top a:hover { color: var(--text-primary); }
   background: rgba(110, 231, 183, 0.08);
 }
 
+/* Single-CTA variant — used while downloads are paused. */
+.cta-grid.single {
+  grid-template-columns: auto;
+  justify-content: center;
+  max-width: none;
+}
+
 @media (max-width: 560px) {
   .cta-grid {
     grid-template-columns: 1fr;

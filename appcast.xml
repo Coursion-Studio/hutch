@@ -3,45 +3,7 @@
   <channel>
     <title>Hutch</title>
     <link>https://hutch.coursion.studio/appcast.xml</link>
-    <description>Updates for Hutch — multi-tool macOS utility from Coursion.</description>
+    <description>Updates for Hutch — multi-tool macOS utility from Coursion. Public downloads are paused.</description>
     <language>en</language>
-    
-    
-    <item>
-      <title>Version 1.2.1</title>
-      <pubDate>Thu, 30 Jul 2026 15:18:12 +0300</pubDate>
-      <sparkle:version>53</sparkle:version>
-      <sparkle:shortVersionString>1.2.1</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>Added Rift and Forge to <strong>More from us</strong> in Settings.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.2.1/Hutch-1.2.1.dmg" type="application/octet-stream" sparkle:edSignature="yX2eF/06MssMhbZ6WLhGUVTL+UsFe946zOwPq5d9PPL7BeraedSKTU5svXjjansOtc97seCAFt7VxyfgnB5cCA==" length="14378663" />
-    </item>
-    <item>
-      <title>Version 1.2.0</title>
-      <pubDate>Mon, 27 Jul 2026 23:09:49 +0300</pubDate>
-      <sparkle:version>52</sparkle:version>
-      <sparkle:shortVersionString>1.2.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li>Reaper — a new tool that finds what&#x27;s eating your Mac&#x27;s CPU, memory and GPU, then walks you through quitting it one app at a time. Plus live-state highlighting in Toggles and slider-based thresholds.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.2.0/Hutch-1.2.0.dmg" type="application/octet-stream" sparkle:edSignature="JFF0oOPut54eVVot7Jdo4oFisgWJhLscg/nqET6IYxMmRJTIO36/zNY7zkzwkmAVRDKN+jT0uY1f1nJrJDi9Bw==" length="13877756" />
-    </item>
-<item>
-      <title>Version 1.1.0</title>
-      <pubDate>Wed, 08 Jul 2026 11:24:12 +0300</pubDate>
-      <sparkle:version>51</sparkle:version>
-      <sparkle:shortVersionString>1.1.0</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li><strong>Caffeinate toggle</strong> — keep your Mac awake indefinitely, or for a set duration you dial in; it counts down and releases the assertion automatically. Replaces Keep Awake.</li><li><strong>Drag to reorder</strong> — long-press any toggle in the panel and drag to rearrange it; your order is remembered across launches.</li><li><strong>Fixed</strong> a crash when tapping the +/− steppers on the Caffeinate and Sleep / Shutdown timers.</li><li>Lighter, more legible search-field text in the Toggles panel.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.1.0/Hutch-1.1.0.dmg" type="application/octet-stream" sparkle:edSignature="J8367Soi79M2+B0HzuulP7pes5H1IxBMPVnwLim9pIT8/IXE0ZE0/UOfwKs7tkTNiFy0wvwdF/hiUYXhmgvMDA==" length="13166593" />
-    </item>
-<item>
-      <title>Version 1.0.1</title>
-      <pubDate>Sat, 04 Jul 2026 01:04:14 +0300</pubDate>
-      <sparkle:version>50</sparkle:version>
-      <sparkle:shortVersionString>1.0.1</sparkle:shortVersionString>
-      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
-      <description><![CDATA[<ul><li><strong>⌘K — actions, anywhere</strong> — Press ⌘K on any Pounce result for a keyboard-driven menu of what you can do with it: reveal in Finder, copy its path, quit a running app, and more — all without leaving the launcher.</li><li><strong>A sharper Toggles popover</strong> — It now aims a pointer right at its menu-bar icon, opens with a clean header, and adds a search field up top so you can filter to the switch you want in a single keystroke. Whatever&#x27;s on is highlighted at a glance.</li><li><strong>Make results move your way</strong> — Choose how Pounce&#x27;s list animates as you type — Slide, Fade, Pop, or None — in Settings → Pounce. Toggles, Stash, and the launcher all feel livelier and springier too.</li><li><strong>Panel width, fixed</strong> — Compact / Standard / Wide for the Pounce launcher finally resizes it for real.</li><li><strong>Your clipboard keeps its secrets</strong> — Anything a password manager marks as concealed (1Password, Keychain, and friends) is never captured into Pounce&#x27;s clipboard history.</li><li><strong>The right result, every keystroke</strong> — Pounce&#x27;s highlight snaps back to the best match as you type, so Return always launches exactly what you meant.</li><li><strong>A tidier app</strong> — Custom-styled dropdowns across Settings, plus we retired the icon-style switch (the 3D glyphs are always on now) and the redundant Tools page.</li><li><strong>Lighter and steadier</strong> — The port killer now lists in the background instead of stalling the launcher, the AI window stops streaming when you close it, and duplicate emoji are gone from the picker.</li></ul>]]></description>
-      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.0.1/Hutch-1.0.1.dmg" type="application/octet-stream" sparkle:edSignature="aMwbSv9mmy2slIp6VJom6N2qvmJZtFQWNqtgFEzIV8qQZ0FKc3WF9Fel9TJwr3Qp5fPMW6a+WmPuYpwmTH8ICg==" length="13100037" />
-    </item>
   </channel>
 </rss>
