@@ -290,6 +290,69 @@ nav.top a:hover { color: var(--text-primary); }
 .signup-status.ok    { color: #6EE7B7; }
 .signup-status.error { color: #FCA5A5; }
 
+/* ─── hero facts strip ─── */
+
+.facts {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2px;
+  margin: 10px auto 0;
+  padding: 0;
+  max-width: 940px;
+  list-style: none;
+  background: var(--card-stroke);
+  border: 1px solid var(--card-stroke);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+}
+
+.facts li {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 16px 18px;
+  background: rgba(21, 14, 34, 0.92);
+  transition: background 0.18s ease;
+}
+
+.facts li:hover { background: rgba(31, 19, 48, 0.96); }
+
+.facts svg {
+  width: 19px;
+  height: 19px;
+  flex-shrink: 0;
+  color: var(--hutch-coral);
+}
+
+.facts li:nth-child(2) svg { color: var(--hutch-pink); }
+.facts li:nth-child(3) svg { color: var(--hutch-purple); }
+.facts li:nth-child(4) svg { color: var(--hutch-blue); }
+
+.facts span {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  min-width: 0;
+  font-size: 12px;
+  line-height: 1.35;
+  color: var(--text-tertiary);
+}
+
+.facts strong {
+  font-size: 14px;
+  font-weight: 650;
+  letter-spacing: -0.01em;
+  color: var(--text-primary);
+}
+
+@media (max-width: 900px) {
+  .facts { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@media (max-width: 520px) {
+  .facts { grid-template-columns: 1fr; }
+}
+
 /* ─── success modal ─── */
 
 .modal-backdrop {
@@ -397,64 +460,6 @@ nav.top a:hover { color: var(--text-primary); }
 .cta-grid .btn {
   height: 48px;
   padding: 0 22px;
-}
-
-/* ─── hero stats ─── */
-
-.hero-stats {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 8px;
-  margin: 8px auto 0;
-  max-width: 720px;
-  padding: 18px 24px;
-  background: var(--card-fill);
-  border: 1px solid var(--card-stroke);
-  border-radius: var(--radius-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-}
-
-.hero-stats.three {
-  grid-template-columns: repeat(3, 1fr);
-  max-width: 560px;
-}
-
-.hero-stats .stat {
-  text-align: center;
-  display: flex;
-  flex-direction: column;
-  gap: 2px;
-}
-
-/* The HTML `hidden` attribute on the downloads stat needs to win over
-   the .stat { display: flex } above. Without this it stays visible
-   with a "—" placeholder before the GitHub API responds. */
-.hero-stats .stat[hidden] {
-  display: none;
-}
-
-.hero-stats .stat strong {
-  font-size: 22px;
-  font-weight: 700;
-  letter-spacing: -0.02em;
-  background: var(--brand-gradient);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.hero-stats .stat span {
-  font-size: 12px;
-  color: var(--text-tertiary);
-  letter-spacing: 0.3px;
-}
-
-@media (max-width: 640px) {
-  .hero-stats {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 14px;
-  }
 }
 
 /* ─── section headers ─── */
@@ -772,7 +777,7 @@ footer a:hover { color: var(--text-primary); }
     drop-shadow(0 0 60px rgba(255, 81, 136, 0.22));
 }
 
-.hero-shot-wrap .hero-stats { margin-top: 34px; }
+.hero-shot-wrap .facts { margin-top: 34px; }
 
 /* ─── showcase ─── */
 
