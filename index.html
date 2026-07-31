@@ -40,11 +40,14 @@
         tools in one menu-bar app. Everything runs on your Mac. AI on your own keys.
         No Electron. No web views. Everything on your Mac.
       </p>
-      <div class="cta-grid single">
-        <a class="btn primary" href="#early-access">
-          Get early access
-        </a>
-      </div>
+      <form class="signup js-signup" action="https://formspree.io/f/xpqvevra" method="POST">
+        <input class="signup-field" type="email" name="email" placeholder="you@example.com"
+               required autocomplete="email" aria-label="Email address" />
+        <input type="hidden" name="_subject" value="Hutch — early access request" />
+        <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" />
+        <button class="btn primary" type="submit">Get early access</button>
+      </form>
+      <p class="signup-status" role="status" aria-live="polite" hidden></p>
       <p class="req-note">macOS 15 (Sequoia) or later · Downloads are paused while we prepare the next release · <a href="#tour">Take the tour</a></p>
     </header>
   </div>
@@ -265,14 +268,14 @@
     <section id="early-access" class="cta-band tight">
       <h2>Open the drawer.</h2>
       <p class="lede">Hutch is getting ready for its next release. Leave your email and you'll be first to know.</p>
-      <form class="signup" id="early-access-form" action="https://formspree.io/f/xpqvevra" method="POST">
+      <form class="signup js-signup" action="https://formspree.io/f/xpqvevra" method="POST">
         <input class="signup-field" type="email" name="email" placeholder="you@example.com"
                required autocomplete="email" aria-label="Email address" />
         <input type="hidden" name="_subject" value="Hutch — early access request" />
         <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" />
         <button class="btn primary" type="submit">Request early access</button>
       </form>
-      <p class="signup-status" id="signup-status" role="status" aria-live="polite" hidden></p>
+      <p class="signup-status" role="status" aria-live="polite" hidden></p>
       <p class="req-note">macOS 15 (Sequoia) or later · Developer ID signed &amp; notarized</p>
     </section>
 
@@ -286,48 +289,89 @@
     </footer>
   </div>
 
+
+  <div class="modal-backdrop" id="signup-modal" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
+      <div class="modal-badge" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
+             stroke-linecap="round" stroke-linejoin="round">
+          <path d="M20 6 9 17l-5-5" />
+        </svg>
+      </div>
+      <h3 id="signup-modal-title">You're on the list</h3>
+      <p>We'll email you the moment Hutch is ready to download. No newsletter, no noise — just the one message.</p>
+      <button class="btn primary modal-close" type="button">Nice</button>
+    </div>
+  </div>
+
   <script>
     // Early access: post to Formspree in the background so the page never
-    // navigates away to a plain confirmation screen.
+    // navigates away to a plain confirmation screen. Runs for every signup
+    // form on the page — hero and closing band — reporting into the status
+    // line that follows each one.
+    // Success modal — shared by every signup form.
+    var modal = document.getElementById("signup-modal");
+    function openModal() {
+      if (!modal) return;
+      modal.hidden = false;
+      requestAnimationFrame(function () { modal.classList.add("is-open"); });
+      var close = modal.querySelector(".modal-close");
+      if (close) close.focus();
+    }
+    function closeModal() {
+      if (!modal) return;
+      modal.classList.remove("is-open");
+      setTimeout(function () { modal.hidden = true; }, 180);
+    }
+    if (modal) {
+      modal.addEventListener("click", function (event) {
+        // Backdrop click only — clicks inside the card shouldn't dismiss it.
+        if (event.target === modal || event.target.closest(".modal-close")) closeModal();
+      });
+      document.addEventListener("keydown", function (event) {
+        if (event.key === "Escape" && !modal.hidden) closeModal();
+      });
+    }
+
     (function () {
-      var form = document.getElementById("early-access-form");
-      var status = document.getElementById("signup-status");
-      if (!form || !status) return;
-
-      function show(message, ok) {
-        status.textContent = message;
-        status.className = "signup-status" + (ok ? " ok" : " error");
-        status.hidden = false;
-      }
-
-      form.addEventListener("submit", function (event) {
-        event.preventDefault();
+      document.querySelectorAll(".js-signup").forEach(function (form) {
+        var status = form.nextElementSibling;
         var button = form.querySelector("button");
-        button.disabled = true;
-        button.textContent = "Sending…";
+        var label = button ? button.textContent : "Send";
 
-        fetch(form.action, {
-          method: "POST",
-          body: new FormData(form),
-          headers: { Accept: "application/json" }
-        }).then(function (response) {
-          if (response.ok) {
-            form.reset();
-            show("You're on the list — we'll be in touch.", true);
-            button.textContent = "Request early access";
-          } else {
-            return response.json().then(function (data) {
-              var problem = (data && data.errors && data.errors[0] && data.errors[0].message)
-                || "Something went wrong. Try again, or email kuraydev.io@gmail.com.";
-              show(problem, false);
-              button.textContent = "Request early access";
-            });
-          }
-        }).catch(function () {
-          show("Couldn't reach the server. Email kuraydev.io@gmail.com instead.", false);
-          button.textContent = "Request early access";
-        }).finally(function () {
-          button.disabled = false;
+        function show(message, ok) {
+          if (!status) return;
+          status.textContent = message;
+          status.className = "signup-status" + (ok ? " ok" : " error");
+          status.hidden = false;
+        }
+
+        form.addEventListener("submit", function (event) {
+          event.preventDefault();
+          button.disabled = true;
+          button.textContent = "Sending…";
+
+          fetch(form.action, {
+            method: "POST",
+            body: new FormData(form),
+            headers: { Accept: "application/json" }
+          }).then(function (response) {
+            if (response.ok) {
+              form.reset();
+              if (status) status.hidden = true;
+              openModal();
+            } else {
+              return response.json().then(function (data) {
+                show((data && data.errors && data.errors[0] && data.errors[0].message)
+                  || "Something went wrong. Try again, or email kuraydev.io@gmail.com.", false);
+              });
+            }
+          }).catch(function () {
+            show("Couldn't reach the server. Email kuraydev.io@gmail.com instead.", false);
+          }).finally(function () {
+            button.disabled = false;
+            button.textContent = label;
+          });
         });
       });
     })();

@@ -290,6 +290,76 @@ nav.top a:hover { color: var(--text-primary); }
 .signup-status.ok    { color: #6EE7B7; }
 .signup-status.error { color: #FCA5A5; }
 
+/* ─── success modal ─── */
+
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  z-index: 50;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(8, 5, 16, 0.62);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.modal-backdrop.is-open { opacity: 1; }
+
+.modal {
+  width: min(400px, 100%);
+  padding: 32px 28px 26px;
+  text-align: center;
+  background:
+    radial-gradient(circle at 50% 0%, rgba(255, 122, 89, 0.16), transparent 60%),
+    var(--bg-mid);
+  border: 1px solid var(--card-stroke);
+  border-radius: 18px;
+  box-shadow:
+    0 30px 70px rgba(0, 0, 0, 0.55),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  transform: translateY(10px) scale(0.97);
+  transition: transform 0.22s cubic-bezier(0.2, 0.9, 0.3, 1.2);
+}
+
+.modal-backdrop.is-open .modal { transform: translateY(0) scale(1); }
+
+.modal-badge {
+  width: 56px;
+  height: 56px;
+  margin: 0 auto 18px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #34D399, #10B981);
+  box-shadow: 0 10px 26px rgba(16, 185, 129, 0.4);
+}
+
+.modal-badge svg { width: 26px; height: 26px; }
+
+.modal h3 {
+  margin: 0 0 8px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.modal p {
+  margin: 0 0 22px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text-secondary);
+}
+
+.modal .btn { width: 100%; justify-content: center; }
+
+@media (prefers-reduced-motion: reduce) {
+  .modal-backdrop, .modal { transition: none; }
+}
+
 /* ─── buttons ─── */
 
 .btn {
