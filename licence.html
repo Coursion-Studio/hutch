@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Your licence key — Hutch</title>
+  <meta name="description" content="Get your Hutch licence key emailed to you again." />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#100B1C" />
+  <style>
+    .licence-page { max-width: 560px; margin: 0 auto; padding: 64px 0 96px; text-align: center; }
+    .licence-page h1 { margin-bottom: 12px; }
+    .muted { opacity: .7; font-size: 14px; }
+    .faq { text-align: left; margin: 44px auto 0; line-height: 1.7; }
+    .faq h2 { font-size: 16px; margin: 24px 0 6px; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div class="container">
+    <nav class="top">
+      <div class="brand">
+        <a href="index.html"><img src="icon.png" alt="Hutch" /></a>
+        <span>Hutch</span>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+      </div>
+    </nav>
+
+    <main class="licence-page">
+      <h1>Lost your licence key?</h1>
+      <p class="sub">
+        Enter the email address you bought Hutch with and we'll send the key again.
+      </p>
+
+      <form class="signup" id="resend-form">
+        <input class="signup-field" type="email" name="email" placeholder="you@example.com"
+               required autocomplete="email" aria-label="The email address you bought with" />
+        <button class="btn primary" type="submit">Email me my key</button>
+      </form>
+      <p class="signup-status muted" id="resend-status" role="status" aria-live="polite" hidden></p>
+
+      <div class="faq">
+        <h2>Why can't you just show it here?</h2>
+        <p class="muted">
+          Because anyone could type your address and walk off with your licence.
+          Sending it to the inbox that bought it means the key only ever reaches you.
+        </p>
+
+        <h2>It hasn't arrived</h2>
+        <p class="muted">
+          Check spam first. Requests are limited to one email every ten minutes,
+          so a second attempt straight away won't send another. If it still
+          hasn't turned up, <a href="mailto:kuraydev.io@gmail.com">email us</a>
+          and we'll sort it out by hand.
+        </p>
+
+        <h2>I need it on another Mac</h2>
+        <p class="muted">
+          Your licence covers more than one Mac. If you've run out of seats,
+          open <strong>Settings → Licence</strong> on a Mac you no longer use
+          and release it — the seat comes straight back.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="mailto:kuraydev.io@gmail.com">Support</a>
+      </div>
+      <div>© 2026 Coursion · Made in SwiftUI</div>
+    </footer>
+  </div>
+
+  <script src="licence.js"></script>
+</body>
+</html>

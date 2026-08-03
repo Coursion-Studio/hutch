@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Thanks — Hutch</title>
+  <meta name="description" content="Your Hutch licence key." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="theme-color" content="#100B1C" />
+  <style>
+    .licence-page { max-width: 640px; margin: 0 auto; padding: 64px 0 96px; text-align: center; }
+    .licence-page h1 { margin-bottom: 12px; }
+    .key-box {
+      display: flex; gap: 10px; margin: 28px 0 14px; align-items: stretch;
+    }
+    .key-box input {
+      flex: 1; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+      font-size: 13px; padding: 14px 16px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04);
+      color: inherit;
+    }
+    .steps { text-align: left; margin: 32px auto 0; max-width: 460px; line-height: 1.7; }
+    .muted { opacity: .7; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="bg"></div>
+
+  <div class="container">
+    <nav class="top">
+      <div class="brand">
+        <a href="index.html"><img src="icon.png" alt="Hutch" /></a>
+        <span>Hutch</span>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="licence.html">Lost your key?</a>
+      </div>
+    </nav>
+
+    <main class="licence-page">
+      <h1>Thanks for buying Hutch</h1>
+      <p class="sub">Your licence key is below, and a copy is on its way to your inbox.</p>
+
+      <p id="claim-status" role="status" aria-live="polite">Preparing your licence key…</p>
+
+      <div id="claim-result" hidden>
+        <div class="key-box">
+          <input id="claim-key" type="text" readonly aria-label="Your Hutch licence key" />
+          <button class="btn primary" id="claim-copy" type="button">Copy</button>
+        </div>
+        <p class="muted">Keep this somewhere safe. You can always ask for it again.</p>
+
+        <div class="steps">
+          <p><strong>1.</strong> Download and open Hutch.</p>
+          <p><strong>2.</strong> Go to <strong>Settings → Licence</strong>.</p>
+          <p><strong>3.</strong> Paste the key and activate.</p>
+        </div>
+      </div>
+
+      <p class="muted" style="margin-top:36px">
+        Nothing arrived? <a href="licence.html">Request your key again</a>.
+      </p>
+    </main>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="licence.html">Lost your key?</a>
+        <a href="mailto:kuraydev.io@gmail.com">Support</a>
+      </div>
+      <div>© 2026 Coursion · Made in SwiftUI</div>
+    </footer>
+  </div>
+
+  <script src="licence.js"></script>
+</body>
+</html>
