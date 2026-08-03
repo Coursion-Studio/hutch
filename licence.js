@@ -3,8 +3,13 @@
 // Both talk to the Hutch licensing API on polaris-backend. There is no build
 // step for this site, so the base URL lives here as one constant.
 
-// Set this to the deployed Cloud Run URL, ending in /api/v1/hutch.
-const API_BASE = 'https://polaris-backend-CHANGE-ME.a.run.app/api/v1/hutch';
+// Dev while nothing is for sale. Switch to the production service the same
+// day the checkout goes live — a real buyer landing here against dev would be
+// told their purchase is "still processing" forever, because the purchase
+// happened in a database this URL never reads.
+//
+//   prod: https://polaris-backend-gnavb7tkza-ew.a.run.app/api/v1/hutch
+const API_BASE = 'https://polaris-backend-dev-gnavb7tkza-ew.a.run.app/api/v1/hutch';
 
 // Paddle's redirect can beat its own webhook, so the first claim often comes
 // back "not ready". Poll for about half a minute before giving up — long
