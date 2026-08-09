@@ -105,12 +105,26 @@
         short retention period.
       </p>
 
+      <h2>Crash reports &amp; anonymous usage data (the app)</h2>
+      <p>
+        The Hutch app sends two kinds of anonymous telemetry, both of which you
+        can turn off in Settings → General → Privacy (&ldquo;Share anonymous
+        usage &amp; crash data&rdquo;): <strong>crash reports</strong> via
+        Sentry (EU-hosted) — the app version and a technical stack trace when
+        Hutch crashes, never your window contents, file names, or licence key —
+        and <strong>usage counts</strong> via PostHog (EU-hosted) — anonymous
+        events like &ldquo;a tool was used&rdquo;, never what it was used on.
+        No user profile is created and nothing is linked to your identity.
+      </p>
+
       <h2>Who else touches your data</h2>
       <ul>
         <li><strong>Paddle</strong> — payment, invoicing, tax, and refunds.</li>
         <li><strong>Google Cloud</strong> — hosts the licence records, in the EU.</li>
         <li><strong>Our email provider</strong> — delivers your licence key. It sees your email address and the message.</li>
         <li><strong>GitHub</strong> — serves this website and app downloads.</li>
+        <li><strong>Sentry</strong> (EU) — receives anonymous crash reports from the app, if you leave telemetry on.</li>
+        <li><strong>PostHog</strong> (EU) — receives anonymous feature-usage counts from the app, if you leave telemetry on.</li>
       </ul>
       <p>We don't sell anything to anyone, and there are no advertising or tracking networks involved.</p>
 
