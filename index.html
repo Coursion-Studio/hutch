@@ -74,16 +74,20 @@
      <div class="hero-demo" aria-hidden="true">
        <div class="pounce js-pounce">
          <div class="pounce-bar">
-           <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-           <span class="pounce-q"><span class="js-q"></span><i class="caret"></i></span>
+           <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
            <span class="pounce-scope js-scope"></span>
+           <span class="pounce-q"><span class="js-q"></span><i class="caret"></i></span>
+           <span class="pounce-gear">⚙</span>
          </div>
          <ul class="pounce-results js-results"></ul>
          <div class="pounce-foot">
-           <span><kbd>↩</kbd>Open</span>
+           <span><kbd>↩</kbd>Run</span>
            <span><kbd>⌘K</kbd>Actions</span>
+           <span><kbd>esc</kbd>Dismiss</span>
            <span class="spacer"></span>
-           <span class="pounce-mark">Hutch</span>
+           <span class="count js-count"></span>
+           <span class="help">?</span>
+           <span class="pounce-mark">Pounce</span>
          </div>
        </div>
      </div>
@@ -470,7 +474,8 @@
       if (!root) return;
       var qEl = root.querySelector(".js-q"),
           scopeEl = root.querySelector(".js-scope"),
-          listEl = root.querySelector(".js-results");
+          listEl = root.querySelector(".js-results"),
+          countEl = root.querySelector(".js-count");
 
       var SCENES = [
         { q: "1280 * 0.15", scope: "Calculator", rows: [
@@ -499,7 +504,8 @@
           li.innerHTML =
             '<span class="pounce-mark-box"></span>' +
             '<span class="pounce-text"><span class="pounce-title"></span><span class="pounce-sub"></span></span>' +
-            '<span class="pounce-badge"></span>';
+            '<span class="pounce-badge"></span>' +
+            '<span class="pounce-actions"><b>\u2318K</b>Actions</span>';
           // textContent, not innerHTML — these strings are ours today, but a
           // demo script is exactly the sort of thing someone later feeds a
           // value from elsewhere.
@@ -509,6 +515,7 @@
           li.querySelector(".pounce-badge").textContent = r.b;
           listEl.appendChild(li);
         });
+        countEl.textContent = rows.length + (rows.length === 1 ? " result" : " results");
       }
 
       var still = window.matchMedia("(prefers-reduced-motion: reduce)");
@@ -547,6 +554,7 @@
         var sc = SCENES[i % SCENES.length];
         scopeEl.classList.remove("on");
         listEl.innerHTML = "";
+        countEl.textContent = "";
         type(sc.q, function () {
           scopeEl.textContent = sc.scope;
           scopeEl.classList.add("on");
