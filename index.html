@@ -71,8 +71,8 @@
      <!-- Live replica of the launcher, drawn in HTML rather than screenshotted:
           the hero should demonstrate the product, not describe it. Decorative —
           everything it says is already in the copy — so it is hidden from AT. -->
-     <div class="hero-demo" aria-hidden="true">
-       <div class="pounce js-pounce">
+     <div class="hero-demo">
+       <div class="pounce js-pounce" data-theme="drawer" aria-hidden="true">
          <div class="pounce-bar">
            <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
            <span class="pounce-scope js-scope"></span>
@@ -89,6 +89,11 @@
            <span class="help">?</span>
            <span class="pounce-mark">Pounce</span>
          </div>
+       </div>
+       <div class="theme-strip">
+         <span class="lbl">Theme</span>
+         <div class="theme-dots js-theme-dots" role="group" aria-label="Preview a Pounce theme"></div>
+         <span class="theme-name js-theme-name" aria-live="polite"></span>
        </div>
      </div>
     </header>
@@ -575,6 +580,69 @@
       } else { start(); }
       document.addEventListener("visibilitychange", function () {
         document.hidden ? stop() : start();
+      });
+    })();
+
+    /* ───────────────────────────────────────────────────────────────────
+       Theme picker. Fifteen themes ship and the site showed one.
+       ─────────────────────────────────────────────────────────────────── */
+    (function () {
+      var panel = document.querySelector(".js-pounce"),
+          dots = document.querySelector(".js-theme-dots"),
+          nameEl = document.querySelector(".js-theme-name");
+      if (!panel || !dots) return;
+
+      // Read the themes out of the stylesheet rather than repeating the list
+      // here — the CSS block is generated from PounceTheme.swift, so this stays
+      // correct when a theme is added and nobody remembers to update the site.
+      //
+      // Note: cssRules throws on a cross-origin sheet, and a browser counts a
+      // file:// stylesheet as cross-origin — so this comes up empty when the
+      // page is opened straight off disk, and the strip hides itself rather
+      // than rendering an empty row. Over http(s) it is same-origin and fine.
+      var themes = [];
+      try {
+        Array.prototype.forEach.call(document.styleSheets, function (sheet) {
+          var rules;
+          try { rules = sheet.cssRules; } catch (e) { return; }   // cross-origin
+          Array.prototype.forEach.call(rules || [], function (r) {
+            var m = r.selectorText && r.selectorText.match(/^\[data-theme="(\w+)"\]$/);
+            if (!m) return;
+            var label = (r.style.getPropertyValue("--p-label") || "").trim().replace(/^"|"$/g, "");
+            themes.push({
+              id: m[1],
+              label: label || m[1],
+              base: (r.style.getPropertyValue("--p-base") || "#111").trim(),
+              accent: (r.style.getPropertyValue("--p-accent") || "#fff").trim()
+            });
+          });
+        });
+      } catch (e) { /* leave the picker empty rather than throwing */ }
+      if (!themes.length) { dots.closest(".theme-strip").hidden = true; return; }
+
+      function pick(t, node) {
+        panel.setAttribute("data-theme", t.id);
+        nameEl.innerHTML = "";
+        var b = document.createElement("b");
+        b.textContent = t.label;
+        nameEl.appendChild(b);
+        dots.querySelectorAll("button").forEach(function (n) {
+          n.setAttribute("aria-pressed", n === node ? "true" : "false");
+        });
+      }
+
+      themes.forEach(function (t) {
+        var b = document.createElement("button");
+        b.type = "button";
+        b.className = "theme-dot";
+        b.style.setProperty("--d-base", t.base);
+        b.style.setProperty("--d-accent", t.accent);
+        b.title = t.label;
+        b.setAttribute("aria-label", t.label);
+        b.setAttribute("aria-pressed", "false");
+        b.addEventListener("click", function () { pick(t, b); });
+        dots.appendChild(b);
+        if (t.id === "drawer") pick(t, b);
       });
     })();
 

@@ -1104,10 +1104,13 @@ kbd.key {
 .hero-demo { min-width: 0; perspective: 1400px; }
 
 .pounce {
-  background: var(--ink-900);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  background: var(--p-base);
+  border: 1px solid var(--p-rule);
   border-radius: 12px;
   overflow: hidden;
+  position: relative;
+  isolation: isolate;
+  transition: background 0.3s ease, border-color 0.3s ease;
   box-shadow:
     0 24px 60px rgba(0, 0, 0, 0.5),
     0 2px 8px rgba(0, 0, 0, 0.4),
@@ -1122,10 +1125,10 @@ kbd.key {
   align-items: center;
   gap: 12px;
   padding: 15px 16px;
-  border-bottom: 1px solid var(--rule);
+  border-bottom: 1px solid var(--p-rule);
 }
 
-.pounce-icon { width: 16px; height: 16px; color: var(--accent); opacity: 0.85; flex-shrink: 0; }
+.pounce-icon { width: 16px; height: 16px; color: var(--p-accent); opacity: 0.85; flex-shrink: 0; }
 
 /* The scope reads as a chip at the head of the field, exactly where
    ScopeChipView sits in the real panel — not as a right-hand tag. */
@@ -1138,9 +1141,9 @@ kbd.key {
   font-family: var(--mono);
   font-size: 11px;
   font-weight: 600;
-  color: var(--accent);
-  background: rgba(255, 122, 89, 0.18);
-  border: 1px solid rgba(255, 122, 89, 0.55);
+  color: var(--p-accent);
+  background: color-mix(in srgb, var(--p-accent) 18%, transparent);
+  border: 1px solid color-mix(in srgb, var(--p-accent) 55%, transparent);
   border-radius: 999px;
   max-width: 0;
   opacity: 0;
@@ -1158,7 +1161,7 @@ kbd.key {
   align-items: center;
   height: 22px;
   font-size: 15px;
-  color: var(--text-primary);
+  color: var(--p-text);
   white-space: nowrap;
   overflow: hidden;
 }
@@ -1168,7 +1171,7 @@ kbd.key {
   width: 1.5px;
   height: 17px;
   margin-left: 1px;
-  background: var(--accent);
+  background: var(--p-accent);
   animation: blink 1.1s steps(1) infinite;
 }
 @keyframes blink { 0%, 55% { opacity: 1; } 56%, 100% { opacity: 0; } }
@@ -1180,8 +1183,8 @@ kbd.key {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
+  background: var(--p-chip);
+  color: var(--p-text3);
   font-size: 11px;
 }
 
@@ -1208,7 +1211,7 @@ kbd.key {
 }
 @keyframes row-in { to { opacity: 1; transform: none; } }
 
-.pounce-results li.sel { background: rgba(255, 122, 89, 0.14); }
+.pounce-results li.sel { background: color-mix(in srgb, var(--p-accent) 14%, transparent); }
 
 /* 32×32 icon well at 8pt, tinted on the selected row. */
 .pounce-mark-box {
@@ -1218,21 +1221,21 @@ kbd.key {
   display: grid;
   place-items: center;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
+  background: var(--p-icon);
   font-family: var(--mono);
   font-size: 14px;
-  color: var(--text-secondary);
+  color: var(--p-text2);
 }
 .pounce-results li.sel .pounce-mark-box {
-  background: rgba(255, 122, 89, 0.18);
-  color: var(--accent);
+  background: color-mix(in srgb, var(--p-accent) 18%, transparent);
+  color: var(--p-accent);
 }
 
 .pounce-text { min-width: 0; flex: 1; display: flex; flex-direction: column; gap: 2px; }
 .pounce-title {
   font-size: 14px;
   font-weight: 600;
-  color: var(--text-primary);
+  color: var(--p-text);
   letter-spacing: -0.005em;
   white-space: nowrap;
   overflow: hidden;
@@ -1240,7 +1243,7 @@ kbd.key {
 }
 .pounce-sub {
   font-size: 11px;
-  color: var(--text-secondary);
+  color: var(--p-text2);
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1257,11 +1260,11 @@ kbd.key {
   font-weight: 600;
   letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: var(--text-secondary);
-  opacity: 0.75;
+  color: var(--p-text3);
+  opacity: 0.9;
   padding: 2px 6px;
   background: none;
-  border: 1px solid var(--rule);
+  border: 1px solid var(--p-rule);
   border-radius: 4px;
 }
 
@@ -1274,9 +1277,9 @@ kbd.key {
   align-items: center;
   gap: 4px;
   padding: 3px 8px;
-  color: var(--text-secondary);
-  background: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(255, 255, 255, 0.10);
+  color: var(--p-text2);
+  background: var(--p-chip);
+  border: 1px solid var(--p-rule);
   border-radius: 999px;
   font-size: 10px;
   font-weight: 600;
@@ -1290,10 +1293,10 @@ kbd.key {
   align-items: center;
   gap: 12px;
   padding: 7px 14px;
-  border-top: 1px solid var(--rule);
+  border-top: 1px solid var(--p-rule);
   font-size: 10px;
   font-weight: 500;
-  color: var(--text-secondary);
+  color: var(--p-text3);
   background: rgba(0, 0, 0, 0.2);
 }
 .pounce-foot span { display: inline-flex; align-items: center; gap: 5px; }
@@ -1305,7 +1308,7 @@ kbd.key {
   display: grid;
   place-items: center;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--p-chip);
   font-family: var(--mono);
   font-size: 10px;
   font-weight: 700;
@@ -1317,8 +1320,8 @@ kbd.key {
   font-weight: 700;
   padding: 1px 4px;
   border-radius: 3px;
-  background: rgba(255, 255, 255, 0.08);
-  color: var(--text-secondary);
+  background: var(--p-chip);
+  color: var(--p-text3);
 }
 
 @media (prefers-reduced-motion: reduce) {
@@ -1331,6 +1334,222 @@ kbd.key {
   .hero { grid-template-columns: 1fr; gap: 44px; }
   .hero-copy { max-width: 640px; }
   .pounce { transform: none; max-width: 560px; }
+}
+
+
+/* The two overlays PounceView.backdrop composites on non-flat themes: the
+   theme's own diagonal gradient, then a fixed 22% accent wash on top. Drawer
+   sets both to `none`, which is what makes it the flat one. */
+.pounce::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: var(--p-overcast), var(--p-wash);
+  pointer-events: none;
+  transition: background 0.3s ease;
+}
+.pounce > * { position: relative; z-index: 1; }
+
+/* ─── Pounce themes ───
+   GENERATED by scripts/export-pounce-themes.py in the Hutch repo, from
+   Features/Pounce/PounceTheme.swift. Do not hand-edit: add the theme in
+   Swift and re-run, or the picker starts lying about what ships. */
+
+[data-theme="aurora"] {
+  --p-label: "Aurora";
+  --p-base: #08070D;
+  --p-accent: #FF3D88;
+  --p-wash: linear-gradient(135deg, rgb(255 61 136 / 0.4), rgb(123 71 255 / 0.34), rgb(46 123 255 / 0.3));
+  --p-overcast: linear-gradient(135deg, rgb(255 61 136 / 0.22), rgb(255 61 136 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="hibiscus"] {
+  --p-label: "Hibiscus";
+  --p-base: #130408;
+  --p-accent: #FF2D55;
+  --p-wash: linear-gradient(135deg, rgb(255 45 85 / 0.42), rgb(139 0 0 / 0.24), rgb(0 0 0 / 0.72));
+  --p-overcast: linear-gradient(135deg, rgb(255 45 85 / 0.22), rgb(255 45 85 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="eclipse"] {
+  --p-label: "Eclipse";
+  --p-base: #07050F;
+  --p-accent: #9D4EDD;
+  --p-wash: linear-gradient(135deg, rgb(157 78 221 / 0.28), rgb(75 0 130 / 0.16), rgb(6 4 15 / 0.65));
+  --p-overcast: linear-gradient(135deg, rgb(157 78 221 / 0.22), rgb(157 78 221 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="neon"] {
+  --p-label: "Neon";
+  --p-base: #030D0A;
+  --p-accent: #00F0B5;
+  --p-wash: linear-gradient(135deg, rgb(0 240 181 / 0.22), rgb(0 112 255 / 0.12), rgb(2 10 8 / 0.65));
+  --p-overcast: linear-gradient(135deg, rgb(0 240 181 / 0.22), rgb(0 240 181 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="wildfire"] {
+  --p-label: "Wildfire";
+  --p-base: #120500;
+  --p-accent: #FF4D00;
+  --p-wash: linear-gradient(135deg, rgb(255 77 0 / 0.42), rgb(255 140 0 / 0.24), rgb(15 2 0 / 0.72));
+  --p-overcast: linear-gradient(135deg, rgb(255 77 0 / 0.22), rgb(255 77 0 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="drawer"] {
+  --p-label: "Drawer";
+  --p-base: #0B0A0C;
+  --p-accent: #FF7A59;
+  --p-wash: none;
+  --p-overcast: none;
+  --p-text: #F5F3F2;
+  --p-text2: rgb(245 243 242 / 0.62);
+  --p-text3: rgb(245 243 242 / 0.42);
+  --p-rule: rgb(245 243 242 / 0.09);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="hutch"] {
+  --p-label: "Hutch";
+  --p-base: #100B1C;
+  --p-accent: #FF7A59;
+  --p-wash: linear-gradient(135deg, rgb(42 27 69 / 0.55), rgb(21 14 34 / 0.5), rgb(14 9 24 / 0.82));
+  --p-overcast: linear-gradient(135deg, rgb(255 122 89 / 0.22), rgb(255 122 89 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="coral"] {
+  --p-label: "Coral";
+  --p-base: #150E22;
+  --p-accent: #FF7A59;
+  --p-wash: linear-gradient(135deg, rgb(255 122 89 / 0.16), transparent, rgb(14 9 24 / 0.6));
+  --p-overcast: linear-gradient(135deg, rgb(255 122 89 / 0.22), rgb(255 122 89 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="midnight"] {
+  --p-label: "Midnight";
+  --p-base: #0B1325;
+  --p-accent: #5AAEFF;
+  --p-wash: linear-gradient(135deg, rgb(90 174 255 / 0.18), transparent, rgb(5 8 20 / 0.65));
+  --p-overcast: linear-gradient(135deg, rgb(90 174 255 / 0.22), rgb(90 174 255 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="forest"] {
+  --p-label: "Forest";
+  --p-base: #0D1A14;
+  --p-accent: #3FD485;
+  --p-wash: linear-gradient(135deg, rgb(63 212 133 / 0.14), transparent, rgb(5 13 8 / 0.6));
+  --p-overcast: linear-gradient(135deg, rgb(63 212 133 / 0.22), rgb(63 212 133 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="sunset"] {
+  --p-label: "Sunset";
+  --p-base: #1F0F14;
+  --p-accent: #FFB347;
+  --p-wash: linear-gradient(135deg, rgb(255 122 61 / 0.18), rgb(193 59 122 / 0.08), rgb(15 6 8 / 0.6));
+  --p-overcast: linear-gradient(135deg, rgb(255 179 71 / 0.22), rgb(255 179 71 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="mono"] {
+  --p-label: "Mono";
+  --p-base: #141416;
+  --p-accent: #E0E0E0;
+  --p-wash: linear-gradient(135deg, rgb(255 255 255 / 0.06), transparent, rgb(0 0 0 / 0.55));
+  --p-overcast: linear-gradient(135deg, rgb(224 224 224 / 0.22), rgb(224 224 224 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="candy"] {
+  --p-label: "Candy";
+  --p-base: #1A0E1C;
+  --p-accent: #FF6BB5;
+  --p-wash: linear-gradient(135deg, rgb(255 107 181 / 0.18), rgb(82 197 255 / 0.08), rgb(14 6 18 / 0.6));
+  --p-overcast: linear-gradient(135deg, rgb(255 107 181 / 0.22), rgb(255 107 181 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
+}
+[data-theme="paper"] {
+  --p-label: "Paper";
+  --p-base: #FAFAFA;
+  --p-accent: #4287F5;
+  --p-wash: linear-gradient(135deg, rgb(0 0 0 / 0.02), transparent, rgb(0 0 0 / 0.04));
+  --p-overcast: linear-gradient(135deg, rgb(66 135 245 / 0.22), rgb(66 135 245 / 0.06), transparent);
+  --p-text: #0F1115;
+  --p-text2: #3A3F4A;
+  --p-text3: #6B7180;
+  --p-rule: rgb(0 0 0 / 0.06);
+  --p-icon: rgb(0 0 0 / 0.05);
+  --p-chip: rgb(0 0 0 / 0.08);
+}
+[data-theme="graphite"] {
+  --p-label: "Graphite";
+  --p-base: #1C1C1E;
+  --p-accent: #4287F5;
+  --p-wash: linear-gradient(135deg, rgb(255 255 255 / 0.02), transparent, rgb(0 0 0 / 0.25));
+  --p-overcast: linear-gradient(135deg, rgb(66 135 245 / 0.22), rgb(66 135 245 / 0.06), transparent);
+  --p-text: #FFFFFF;
+  --p-text2: #C9C9D8;
+  --p-text3: rgb(255 255 255 / 0.58);
+  --p-rule: rgb(255 255 255 / 0.06);
+  --p-icon: rgb(255 255 255 / 0.06);
+  --p-chip: rgb(255 255 255 / 0.08);
 }
 
 /* ═══════════════════════════════════════════════════════════════════════
@@ -1604,4 +1823,59 @@ section[id], .hero-shot-wrap[id] { scroll-margin-top: 32px; }
   .pounce-badge { display: none; }
   .pounce-foot span:nth-child(2) { display: none; }
   .index-table a { padding-left: 0; }
+}
+
+/* ─── theme picker under the hero launcher ───
+   Fifteen themes ship and the site showed exactly one. This is the cheapest
+   honest demo of them: the same panel, re-skinned from the real values. */
+
+.theme-strip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 16px;
+  flex-wrap: wrap;
+}
+
+.theme-strip .lbl {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: var(--text-secondary);
+  opacity: 0.7;
+  margin-right: 2px;
+}
+
+.theme-dots { display: flex; gap: 6px; flex-wrap: wrap; }
+
+.theme-dot {
+  width: 19px;
+  height: 19px;
+  padding: 0;
+  border-radius: 5px;
+  border: 1px solid var(--rule);
+  cursor: pointer;
+  position: relative;
+  background:
+    linear-gradient(135deg, var(--d-accent) 0%, var(--d-accent) 42%, var(--d-base) 42%, var(--d-base) 100%);
+  transition: transform 0.14s ease, border-color 0.14s ease;
+}
+.theme-dot:hover { transform: translateY(-1px); border-color: var(--ruleStrong, rgba(245,243,242,0.24)); }
+.theme-dot[aria-pressed="true"] {
+  border-color: var(--d-accent);
+  box-shadow: 0 0 0 1px var(--d-accent);
+}
+
+.theme-name {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--text-secondary);
+  min-width: 74px;
+}
+.theme-name b { color: var(--accent); font-weight: 500; }
+
+@media (max-width: 1020px) { .theme-strip { margin-bottom: 4px; } }
+@media (prefers-reduced-motion: reduce) {
+  .theme-dot, .pounce, .pounce::before { transition: none; }
 }
