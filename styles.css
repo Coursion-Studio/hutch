@@ -653,21 +653,18 @@ hr.sep {
   margin-top: 14px;
 }
 
-/* Pills (compact feature tags under copy) */
+/* Pills (compact feature tags under copy)
+   Twelve floating capsules read as tag soup and say nothing about hierarchy.
+   As a ruled two-column index they read as an inventory — which is what they
+   are, and what the product is.
+
+   One rule rather than two: the capsule version was still sitting underneath,
+   which is the only reason the grid needed `!important` to win. */
 .pills {
   list-style: none;
   padding: 0;
   margin: 0;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 6px;
-}
-
-/* Twelve floating capsules read as tag soup and say nothing about hierarchy.
-   As a ruled two-column index they read as an inventory — which is what they
-   are, and what the product is. */
-.pills {
-  display: grid !important;
+  display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 0 28px;
   border-top: 1px solid var(--rule);
@@ -1719,9 +1716,9 @@ kbd.key {
 
 .index-table a {
   display: grid;
-  grid-template-columns: 34px 168px 92px minmax(0, 1fr);
+  grid-template-columns: 34px 172px minmax(0, 1fr) auto;
   align-items: baseline;
-  gap: 18px;
+  gap: 20px;
   padding: 15px 10px 15px 2px;
   text-decoration: none;
   color: inherit;
@@ -1754,7 +1751,10 @@ kbd.key {
   font-size: 11.5px;
   color: var(--text-secondary);
   white-space: nowrap;
+  text-align: right;
+  justify-self: end;
 }
+.index-table a:hover .ix-key { color: var(--accent); }
 
 .ix-what {
   font-size: 13.5px;
@@ -1768,7 +1768,8 @@ kbd.key {
     gap: 10px 14px;
     row-gap: 3px;
   }
-  .ix-what { grid-column: 2 / -1; }
+  .ix-what { grid-column: 2 / -1; grid-row: 2; }
+  .ix-key { grid-column: 3; grid-row: 1; }
 }
 
 /* Anchored rows shouldn't land jammed under the top of the viewport. */
