@@ -41,6 +41,8 @@
   --brand-gradient-diag: none;
   --brand-soft: var(--accent-wash);
 
+  --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
+          "Inter", system-ui, sans-serif;
   --mono: "Berkeley Mono", "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
 
   /* Squarer than the template default. 999px pills everywhere is the other
@@ -57,8 +59,7 @@ html, body {
   overflow-x: hidden;
   background: var(--bg-top);
   color: var(--text-primary);
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
-               "Inter", system-ui, sans-serif;
+  font-family: var(--sans);
   font-size: 16px;
   line-height: 1.55;
   -webkit-font-smoothing: antialiased;
@@ -230,7 +231,7 @@ nav.top a:hover { color: var(--text-primary); }
   background: rgba(255, 255, 255, 0.05);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: var(--radius-btn);
-  font-family: "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-family: var(--mono);
   font-size: 13px;
   text-align: left;
   min-width: 0;
@@ -269,7 +270,7 @@ nav.top a:hover { color: var(--text-primary); }
   border: 1px solid rgba(255, 255, 255, 0.14);
   border-radius: 7px;
   cursor: pointer;
-  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text", system-ui, sans-serif;
+  font-family: inherit;
   transition: background 0.15s ease, border-color 0.15s ease, color 0.15s ease;
 }
 
@@ -883,7 +884,7 @@ kbd.key {
   margin: 0 0 18px;
 }
 .showcase-copy p code {
-  font-family: "SF Mono", "JetBrains Mono", Menlo, monospace;
+  font-family: var(--mono);
   font-size: 0.86em;
   padding: 1px 6px;
   border-radius: 6px;
