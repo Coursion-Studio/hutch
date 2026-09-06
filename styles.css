@@ -1104,7 +1104,7 @@ kbd.key {
 .hero-demo { min-width: 0; perspective: 1400px; }
 
 .pounce {
-  background: rgba(15, 13, 16, 0.94);
+  background: var(--ink-900);
   border: 1px solid rgba(255, 255, 255, 0.10);
   border-radius: 12px;
   overflow: hidden;
