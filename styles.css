@@ -43,7 +43,16 @@
 
   --sans: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text",
           "Inter", system-ui, sans-serif;
-  --mono: "Berkeley Mono", "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+  /* `ui-monospace` FIRST, because it is the only entry that reliably resolves
+     to the same face the app draws with (SF Mono, which macOS exposes to apps
+     as .AppleSystemUIFontMonospaced but does not publish as an installable
+     family). Naming "Berkeley Mono" ahead of it meant that on any Mac without
+     Berkeley Mono — which is most of them, including the one this was designed
+     on — the stack fell through "SF Mono" (not a resolvable family name
+     either) and landed on Menlo. The site was rendering Menlo while the app
+     rendered SF Mono, which is exactly the mismatch this token existed to
+     prevent. */
+  --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, monospace;
 
   /* Squarer than the template default. 999px pills everywhere is the other
      big tell; drawers have corners. */
@@ -1126,8 +1135,9 @@ kbd.key {
   gap: 4px;
   flex-shrink: 0;
   padding: 4px 8px;
+  font-family: var(--mono);
   font-size: 11px;
-  font-weight: 700;
+  font-weight: 600;
   color: var(--accent);
   background: rgba(255, 122, 89, 0.18);
   border: 1px solid rgba(255, 122, 89, 0.55);
@@ -1236,19 +1246,23 @@ kbd.key {
   text-overflow: ellipsis;
 }
 
-/* Kind badge — capsule, 9pt bold, 0.5 tracking, 15% fill on a 35% border. */
+/* Kind badge — mono, 9pt, hairline. It used to be an accent capsule, which
+   made every row shout its source; the badge only needs to be legible, and the
+   accent belongs to the selection. Matches PounceResultRow.swift. */
 .pounce-badge {
   flex-shrink: 0;
   margin-left: 8px;
+  font-family: var(--mono);
   font-size: 9px;
-  font-weight: 700;
-  letter-spacing: 0.5px;
+  font-weight: 600;
+  letter-spacing: 0.4px;
   text-transform: uppercase;
-  color: var(--accent);
+  color: var(--text-secondary);
+  opacity: 0.75;
   padding: 2px 6px;
-  background: rgba(255, 122, 89, 0.15);
-  border: 1px solid rgba(255, 122, 89, 0.35);
-  border-radius: 999px;
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 4px;
 }
 
 /* The real panel swaps the kind badge for a ⌘K chip on the selected row. */
