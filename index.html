@@ -9,13 +9,26 @@
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
-  <meta property="og:description" content="Six native Mac tools, one menu bar app. On-device. No Electron. No web views. Everything on your Mac." />
+  <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon — and nothing leaves your machine." />
   <meta property="og:image" content="screenshots/hero-dashboard.png" />
   <meta name="theme-color" content="#0B0A0C" />
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
 <body>
+  <a class="skip" href="#tools">Skip to the tools</a>
   <div class="bg"></div>
+
+  <div class="palette-backdrop js-palette" hidden>
+    <div class="palette" role="dialog" aria-modal="true" aria-label="Search this site">
+      <div class="palette-bar">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+        <input class="js-palette-input" type="text" placeholder="Jump to anything…" aria-label="Search this site" autocomplete="off" spellcheck="false" />
+        <kbd>esc</kbd>
+      </div>
+      <ul class="palette-results js-palette-results" role="listbox"></ul>
+      <div class="palette-foot"><span><kbd>↑</kbd><kbd>↓</kbd>Navigate</span><span><kbd>↩</kbd>Open</span><span class="spacer"></span><span>Yes — the website has one too.</span></div>
+    </div>
+  </div>
 
   <div class="container">
     <nav class="top">
@@ -28,12 +41,16 @@
         <a href="#tools">Tools</a>
         <a href="#why">Why Hutch</a>
         <a href="#early-access">Early access</a>
+        <button class="nav-k js-palette-open" type="button" aria-label="Search this site">
+          <span>Search</span><kbd>⌘K</kbd>
+        </button>
       </div>
     </nav>
 
     <header class="hero">
+     <div class="hero-copy">
       <div class="eyebrow">Six tools · one menu bar icon</div>
-      <h1>Everything you keep<br />reaching for, <span class="grad">in one drawer.</span></h1>
+      <h1>Everything you keep reaching for, <span class="grad">in one drawer.</span></h1>
       <p class="sub">
         Press <kbd class="key">⌘</kbd><kbd class="key">Space</kbd> and search your apps, files
         and clipboard. Snap a window. Park a file mid-drag. Flip the switches macOS
@@ -49,6 +66,27 @@
       </form>
       <p class="signup-status" role="status" aria-live="polite" hidden></p>
       <p class="req-note">macOS 15 (Sequoia) or later · Downloads are paused while we prepare the next release · <a href="#tour">Take the tour</a></p>
+     </div>
+
+     <!-- Live replica of the launcher, drawn in HTML rather than screenshotted:
+          the hero should demonstrate the product, not describe it. Decorative —
+          everything it says is already in the copy — so it is hidden from AT. -->
+     <div class="hero-demo" aria-hidden="true">
+       <div class="pounce js-pounce">
+         <div class="pounce-bar">
+           <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+           <span class="pounce-q"><span class="js-q"></span><i class="caret"></i></span>
+           <span class="pounce-scope js-scope"></span>
+         </div>
+         <ul class="pounce-results js-results"></ul>
+         <div class="pounce-foot">
+           <span><kbd>↩</kbd>Open</span>
+           <span><kbd>⌘K</kbd>Actions</span>
+           <span class="spacer"></span>
+           <span class="pounce-mark">Hutch</span>
+         </div>
+       </div>
+     </div>
     </header>
   </div>
 
@@ -92,10 +130,22 @@
       <p class="lede">No Electron. No web views. Real screenshots of the tools in the drawer today — more on the way.</p>
     </section>
 
+    <!-- Contents page. Six full-bleed showcase rows tell you what each tool
+         does but never what the set *is* — you had to scroll the whole page to
+         find that out. -->
+    <ol class="index-table">
+      <li><a href="#t-pounce"><span class="ix-n">01</span><span class="ix-name">Pounce</span><span class="ix-key">⌘Space</span><span class="ix-what">Apps, files, clipboard, windows, maths, AI — one bar</span></a></li>
+      <li><a href="#t-window"><span class="ix-n">02</span><span class="ix-name">Window Manager</span><span class="ix-key">⌃⌥ ←→</span><span class="ix-what">Halves, quarters, thirds and custom splits</span></a></li>
+      <li><a href="#t-stash"><span class="ix-n">03</span><span class="ix-name">Stash</span><span class="ix-key">⌃⌥⌘V</span><span class="ix-what">A shelf that appears where you're already dragging</span></a></li>
+      <li><a href="#t-toggles"><span class="ix-n">04</span><span class="ix-name">Toggles</span><span class="ix-key">⌃⌥⌘1</span><span class="ix-what">29 switches macOS buries three menus deep</span></a></li>
+      <li><a href="#t-browser"><span class="ix-n">05</span><span class="ix-name">Browser Picker</span><span class="ix-key">on click</span><span class="ix-what">Route every link by rule, or pick one per link</span></a></li>
+      <li><a href="#t-reaper"><span class="ix-n">06</span><span class="ix-name">Reaper</span><span class="ix-key">reap</span><span class="ix-what">Find what's draining the battery, review it one at a time</span></a></li>
+    </ol>
+
     <section class="showcase">
 
       <!-- 1 · Pounce -->
-      <div class="showcase-row">
+      <div id="t-pounce" class="showcase-row">
         <div class="showcase-copy">
           <div class="chip chip-pink">
             <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
@@ -143,7 +193,7 @@
       </div>
 
       <!-- 2 · Window Manager -->
-      <div class="showcase-row reverse">
+      <div id="t-window" class="showcase-row reverse">
         <div class="showcase-copy">
           <div class="chip chip-violet">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="7" rx="2"/><rect x="3" y="12.5" width="18" height="7" rx="2"/></svg>
@@ -162,7 +212,7 @@
       </div>
 
       <!-- 3 · Stash -->
-      <div class="showcase-row">
+      <div id="t-stash" class="showcase-row">
         <div class="showcase-copy">
           <div class="chip chip-coral">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="6" rx="1.6" fill="currentColor"/><rect x="4" y="15" width="16" height="6" rx="1.6" fill="currentColor"/><path d="M12 9.5V13.5"/><path d="M8.6 11.6 12 14.8l3.4-3.2"/></svg>
@@ -181,7 +231,7 @@
       </div>
 
       <!-- 4 · Toggles -->
-      <div class="showcase-row reverse">
+      <div id="t-toggles" class="showcase-row reverse">
         <div class="showcase-copy">
           <div class="chip chip-amber">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="5" rx="2.5"/><circle cx="7.5" cy="8" r="1.6" fill="currentColor" stroke="none"/><rect x="2.5" y="13.5" width="19" height="5" rx="2.5"/><circle cx="16.5" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg>
@@ -200,7 +250,7 @@
       </div>
 
       <!-- 5 · Browser Picker -->
-      <div class="showcase-row">
+      <div id="t-browser" class="showcase-row">
         <div class="showcase-copy">
           <div class="chip chip-blue">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
@@ -219,7 +269,7 @@
       </div>
 
       <!-- 6 · Reaper -->
-      <div class="showcase-row">
+      <div id="t-reaper" class="showcase-row">
         <div class="showcase-copy">
           <div class="chip chip-green">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 0-2.6 6.1"/><path d="M20.7 7.4V12h-4.5"/><path d="M12 12 9 9.4"/></svg>
@@ -409,6 +459,259 @@
             }, 1400);
           }).catch(function () { /* clipboard blocked — no-op */ });
         });
+      });
+    })();
+
+    /* ───────────────────────────────────────────────────────────────────
+       The live launcher in the hero.
+       ─────────────────────────────────────────────────────────────────── */
+    (function () {
+      var root = document.querySelector(".js-pounce");
+      if (!root) return;
+      var qEl = root.querySelector(".js-q"),
+          scopeEl = root.querySelector(".js-scope"),
+          listEl = root.querySelector(".js-results");
+
+      var SCENES = [
+        { q: "1280 * 0.15", scope: "Calculator", rows: [
+          { mk: "=", t: "192", s: "1280 × 0.15  ·  ↩ copies the result", b: "Result" } ] },
+        { q: "figma", scope: "Apps", rows: [
+          { mk: "▣", t: "Figma", s: "Applications", b: "Launch" },
+          { mk: "▤", t: "Figma — hutch.coursion.studio", s: "Window · Desktop 2", b: "Switch" } ] },
+        { q: "100 usd to eur", scope: "Convert", rows: [
+          { mk: "€", t: "87.73 EUR", s: "Live rate, cached 4 minutes ago", b: "Copy" } ] },
+        { q: "dark", scope: "Toggles", rows: [
+          { mk: "◐", t: "Dark Mode", s: "Switch system appearance", b: "On" },
+          { mk: "◎", t: "Caffeinate", s: "Keep this Mac awake · 2h left", b: "Off" } ] },
+        { q: "left half", scope: "Windows", rows: [
+          { mk: "▥", t: "Left Half", s: "⌃⌥←  ·  snaps the focused window", b: "Snap" } ] },
+        { q: "clip:", scope: "Clipboard", rows: [
+          { mk: "⧉", t: "#FF7A59", s: "Copied 3 minutes ago from Figma", b: "Paste" },
+          { mk: "⧉", t: "hutch.coursion.studio", s: "Copied 21 minutes ago from Safari", b: "Paste" } ] }
+      ];
+
+      function render(rows) {
+        listEl.innerHTML = "";
+        rows.forEach(function (r, i) {
+          var li = document.createElement("li");
+          if (i === 0) li.className = "sel";
+          li.style.animationDelay = (i * 70) + "ms";
+          li.innerHTML =
+            '<span class="pounce-mark-box"></span>' +
+            '<span class="pounce-text"><span class="pounce-title"></span><span class="pounce-sub"></span></span>' +
+            '<span class="pounce-badge"></span>';
+          // textContent, not innerHTML — these strings are ours today, but a
+          // demo script is exactly the sort of thing someone later feeds a
+          // value from elsewhere.
+          li.querySelector(".pounce-mark-box").textContent = r.mk;
+          li.querySelector(".pounce-title").textContent = r.t;
+          li.querySelector(".pounce-sub").textContent = r.s;
+          li.querySelector(".pounce-badge").textContent = r.b;
+          listEl.appendChild(li);
+        });
+      }
+
+      var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+      if (still.matches) {
+        var one = SCENES[0];
+        qEl.textContent = one.q;
+        scopeEl.textContent = one.scope;
+        scopeEl.classList.add("on");
+        render(one.rows);
+        return;
+      }
+
+      var i = 0, timer = null, running = false;
+      function at(fn, ms) { timer = setTimeout(fn, ms); }
+
+      function type(text, done) {
+        var n = 0;
+        (function step() {
+          qEl.textContent = text.slice(0, ++n);
+          if (n < text.length) at(step, 34 + Math.round(38 * (n % 3 === 0 ? 1 : 0.4)));
+          else at(done, 190);
+        })();
+      }
+
+      function erase(done) {
+        var t = qEl.textContent;
+        (function step() {
+          t = t.slice(0, -1);
+          qEl.textContent = t;
+          if (t) at(step, 16); else at(done, 260);
+        })();
+      }
+
+      function scene() {
+        if (!running) return;
+        var sc = SCENES[i % SCENES.length];
+        scopeEl.classList.remove("on");
+        listEl.innerHTML = "";
+        type(sc.q, function () {
+          scopeEl.textContent = sc.scope;
+          scopeEl.classList.add("on");
+          render(sc.rows);
+          at(function () { erase(function () { i++; scene(); }); }, 2600);
+        });
+      }
+
+      function stop() { running = false; clearTimeout(timer); }
+      function start() { if (running) return; running = true; scene(); }
+
+      // Off-screen or in a background tab it is a loop burning battery for an
+      // audience of nobody.
+      if ("IntersectionObserver" in window) {
+        new IntersectionObserver(function (es) {
+          es[0].isIntersecting ? start() : stop();
+        }, { threshold: 0.25 }).observe(root);
+      } else { start(); }
+      document.addEventListener("visibilitychange", function () {
+        document.hidden ? stop() : start();
+      });
+    })();
+
+    /* ───────────────────────────────────────────────────────────────────
+       ⌘K on the site. Hutch's whole argument is that a keyboard beats a
+       menu; a website you can only click undercuts it.
+       ─────────────────────────────────────────────────────────────────── */
+    (function () {
+      var back = document.querySelector(".js-palette");
+      if (!back) return;
+      var input = back.querySelector(".js-palette-input"),
+          list = back.querySelector(".js-palette-results"),
+          openers = document.querySelectorAll(".js-palette-open");
+
+      var ITEMS = [
+        { g: "Tools", mk: "○", t: "Pounce — the command bar", h: "Tour", go: "#tools" },
+        { g: "Tools", mk: "▥", t: "Window Manager", h: "Tour", go: "#tools" },
+        { g: "Tools", mk: "▧", t: "Stash — the file shelf", h: "Tour", go: "#tools" },
+        { g: "Tools", mk: "◑", t: "Toggles", h: "Tour", go: "#tools" },
+        { g: "Tools", mk: "↗", t: "Browser Picker", h: "Tour", go: "#tools" },
+        { g: "Tools", mk: "◆", t: "Reaper — resource review", h: "Tour", go: "#tools" },
+        { g: "Go", mk: "→", t: "Take the tour", h: "Section", go: "#tour" },
+        { g: "Go", mk: "→", t: "Why Hutch", h: "Section", go: "#why" },
+        { g: "Go", mk: "✉", t: "Request early access", h: "Focus the field", act: "signup" },
+        { g: "Pages", mk: "§", t: "Privacy Policy", h: "Page", go: "privacy.html" },
+        { g: "Pages", mk: "§", t: "Terms of Service", h: "Page", go: "terms.html" },
+        { g: "Pages", mk: "§", t: "Refunds", h: "Page", go: "refunds.html" },
+        { g: "Pages", mk: "⚿", t: "Lost your licence key?", h: "Page", go: "licence.html" },
+        { g: "Pages", mk: "@", t: "@kuraydev on X", h: "External", go: "https://x.com/kuraydev" }
+      ];
+
+      var shown = [], sel = 0;
+
+      // Subsequence match, the same rule the launcher itself uses: "wm" finds
+      // "Window Manager", "rfnd" finds "Refunds".
+      function hit(q, text) {
+        if (!q) return true;
+        var t = text.toLowerCase(), n = 0;
+        for (var c = 0; c < q.length; c++) {
+          n = t.indexOf(q[c], n);
+          if (n === -1) return false;
+          n++;
+        }
+        return true;
+      }
+
+      function draw() {
+        var q = input.value.trim().toLowerCase();
+        shown = ITEMS.filter(function (it) { return hit(q, it.t + " " + it.g); });
+        sel = 0;
+        list.innerHTML = "";
+        if (!shown.length) {
+          var e = document.createElement("li");
+          e.className = "palette-empty";
+          e.textContent = "Nothing here. Hutch itself would have searched your Mac.";
+          list.appendChild(e);
+          return;
+        }
+        var group = null;
+        shown.forEach(function (it, n) {
+          if (it.g !== group) {
+            group = it.g;
+            var h = document.createElement("li");
+            h.className = "group";
+            h.textContent = group;
+            list.appendChild(h);
+          }
+          var li = document.createElement("li");
+          li.className = "item";
+          li.setAttribute("role", "option");
+          li.dataset.n = n;
+          li.innerHTML = '<span class="mk"></span><span class="lb"></span><span class="hint"></span>';
+          li.querySelector(".mk").textContent = it.mk;
+          li.querySelector(".lb").textContent = it.t;
+          li.querySelector(".hint").textContent = it.h;
+          li.addEventListener("mousemove", function () { sel = n; mark(); });
+          li.addEventListener("click", function () { sel = n; run(); });
+          list.appendChild(li);
+        });
+        mark();
+      }
+
+      function mark() {
+        var nodes = list.querySelectorAll(".item");
+        nodes.forEach(function (n) {
+          var on = +n.dataset.n === sel;
+          n.setAttribute("aria-selected", on ? "true" : "false");
+          if (on) n.scrollIntoView({ block: "nearest" });
+        });
+      }
+
+      function run() {
+        var it = shown[sel];
+        if (!it) return;
+        close();
+        if (it.act === "signup") {
+          var f = document.querySelector("#early-access input[type=email]")
+               || document.querySelector(".signup-field");
+          if (f) { f.scrollIntoView({ behavior: "smooth", block: "center" }); setTimeout(function () { f.focus(); }, 420); }
+          return;
+        }
+        if (/^https?:/.test(it.go)) { window.open(it.go, "_blank", "noopener"); return; }
+        if (it.go.charAt(0) === "#") {
+          var target = document.querySelector(it.go);
+          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+        window.location.href = it.go;
+      }
+
+      var lastFocus = null;
+      function open() {
+        lastFocus = document.activeElement;
+        back.hidden = false;
+        requestAnimationFrame(function () { back.classList.add("on"); });
+        input.value = "";
+        draw();
+        input.focus();
+      }
+      function close() {
+        back.classList.remove("on");
+        setTimeout(function () { back.hidden = true; }, 170);
+        if (lastFocus && lastFocus.focus) lastFocus.focus();
+      }
+
+      openers.forEach(function (b) { b.addEventListener("click", open); });
+      input.addEventListener("input", draw);
+      back.addEventListener("mousedown", function (e) { if (e.target === back) close(); });
+
+      document.addEventListener("keydown", function (e) {
+        var openNow = !back.hidden;
+        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
+          e.preventDefault();
+          openNow ? close() : open();
+          return;
+        }
+        // "/" is the other muscle memory, but not while someone is typing.
+        if (!openNow && e.key === "/" && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
+          e.preventDefault(); open(); return;
+        }
+        if (!openNow) return;
+        if (e.key === "Escape") { e.preventDefault(); close(); }
+        else if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(sel + 1, shown.length - 1); mark(); }
+        else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(sel - 1, 0); mark(); }
+        else if (e.key === "Enter") { e.preventDefault(); run(); }
       });
     })();
   </script>
