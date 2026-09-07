@@ -1880,3 +1880,55 @@ section[id], .hero-shot-wrap[id] { scroll-margin-top: 32px; }
 @media (prefers-reduced-motion: reduce) {
   .theme-dot, .pounce, .pounce::before { transition: none; }
 }
+
+/* ─── the page follows the theme ───
+   Pressing a swatch used to re-skin the launcher and nothing else, which made
+   the picker look like a widget rather than a preview of the app. The page
+   tokens now derive from the theme, so the whole site takes the palette —
+   including Paper, which flips it to light.
+
+   Only the neutrals and the accent are remapped. Type scale, rules and layout
+   are the design; the palette is the theme. */
+
+html[data-theme] {
+  --accent: var(--p-accent);
+  --accent-dim: var(--p-accent);
+  --ink-900: var(--p-base);
+  --text-primary: var(--p-text);
+  --text-secondary: var(--p-text2);
+  --text-tertiary: var(--p-text3);
+  --rule: var(--p-rule);
+  --hutch-pink: var(--p-accent);
+  --hutch-purple: var(--p-accent);
+  --hutch-blue: var(--p-accent);
+  --hutch-coral: var(--p-accent);
+}
+
+/* The top-left light is the accent, not a fixed coral. */
+html[data-theme] .bg {
+  background:
+    radial-gradient(120% 80% at 8% -10%,
+      color-mix(in srgb, var(--p-accent) 10%, transparent), transparent 60%),
+    var(--p-base);
+}
+
+/* Paper is the one light theme, and a dark-theme page inverted by variables
+   alone still gets three things wrong: grain tuned for dark, white-tinted
+   surfaces, and dark-on-accent button text that assumed the accent was warm. */
+html[data-theme="paper"] .bg::after { opacity: 0.02; }
+html[data-theme="paper"] .card:hover,
+html[data-theme="paper"] .gcard { background: rgba(0, 0, 0, 0.025); }
+html[data-theme="paper"] .signup-field,
+html[data-theme="paper"] .nav-k { background: rgba(0, 0, 0, 0.03); }
+html[data-theme="paper"] .btn.primary { color: #fff; }
+html[data-theme="paper"] .facts li { background: rgba(0, 0, 0, 0.02); }
+html[data-theme="paper"] .facts { background: var(--p-rule); }
+html[data-theme="paper"] .palette,
+html[data-theme="paper"] .modal { background: #fff; }
+
+/* Repainting the whole page on click is jarring; a short fade is not. */
+html[data-theme] body,
+html[data-theme] .bg { transition: background 0.35s ease, color 0.35s ease; }
+@media (prefers-reduced-motion: reduce) {
+  html[data-theme] body, html[data-theme] .bg { transition: none; }
+}

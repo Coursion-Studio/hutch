@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="drawer">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -72,7 +72,7 @@
           the hero should demonstrate the product, not describe it. Decorative —
           everything it says is already in the copy — so it is hidden from AT. -->
      <div class="hero-demo">
-       <div class="pounce js-pounce" data-theme="drawer" aria-hidden="true">
+       <div class="pounce js-pounce" aria-hidden="true">
          <div class="pounce-bar">
            <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
            <span class="pounce-scope js-scope"></span>
@@ -587,7 +587,7 @@
        Theme picker. Fifteen themes ship and the site showed one.
        ─────────────────────────────────────────────────────────────────── */
     (function () {
-      var panel = document.querySelector(".js-pounce"),
+      var panel = document.documentElement,
           dots = document.querySelector(".js-theme-dots"),
           nameEl = document.querySelector(".js-theme-name");
       if (!panel || !dots) return;
@@ -621,7 +621,7 @@
       if (!themes.length) { dots.closest(".theme-strip").hidden = true; return; }
 
       function pick(t, node) {
-        panel.setAttribute("data-theme", t.id);
+        document.documentElement.setAttribute("data-theme", t.id);
         nameEl.innerHTML = "";
         var b = document.createElement("b");
         b.textContent = t.label;
