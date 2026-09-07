@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="drawer">
+<html lang="en" data-theme="ember" data-style="ledger">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -91,8 +91,17 @@
          </div>
        </div>
        <div class="theme-strip">
-         <span class="lbl">Theme</span>
-         <div class="theme-dots js-theme-dots" role="group" aria-label="Preview a Pounce theme"></div>
+         <div class="style-row">
+           <span class="lbl">Style</span>
+           <button class="style-btn" type="button" data-style-id="ledger" aria-pressed="true">
+             <span class="sw" aria-hidden="true"></span>Ledger
+           </button>
+           <button class="style-btn" type="button" data-style-id="glass" aria-pressed="false">
+             <span class="sw" aria-hidden="true"></span>Glass
+           </button>
+         </div>
+         <span class="lbl">Colour</span>
+         <div class="theme-dots js-theme-dots" role="group" aria-label="Preview a colour"></div>
          <span class="theme-name js-theme-name" aria-live="polite"></span>
        </div>
      </div>
@@ -631,6 +640,15 @@
         });
       }
 
+      document.querySelectorAll(".style-btn").forEach(function (b) {
+        b.addEventListener("click", function () {
+          document.documentElement.setAttribute("data-style", b.dataset.styleId);
+          document.querySelectorAll(".style-btn").forEach(function (o) {
+            o.setAttribute("aria-pressed", String(o === b));
+          });
+        });
+      });
+
       themes.forEach(function (t) {
         var b = document.createElement("button");
         b.type = "button";
@@ -642,7 +660,7 @@
         b.setAttribute("aria-pressed", "false");
         b.addEventListener("click", function () { pick(t, b); });
         dots.appendChild(b);
-        if (t.id === "drawer") pick(t, b);
+        if (t.id === "ember") pick(t, b);
       });
     })();
 

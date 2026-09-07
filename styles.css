@@ -1342,7 +1342,7 @@ kbd.key {
   position: absolute;
   inset: 0;
   z-index: 0;
-  background: var(--p-overcast), var(--p-wash);
+  background: none;
   pointer-events: none;
   transition: background 0.3s ease;
 }
@@ -1418,12 +1418,12 @@ kbd.key {
   --p-icon: rgb(255 255 255 / 0.06);
   --p-chip: rgb(255 255 255 / 0.08);
 }
-[data-theme="drawer"] {
-  --p-label: "Drawer";
+[data-theme="ember"] {
+  --p-label: "Ember";
   --p-base: #0B0A0C;
   --p-accent: #FF7A59;
-  --p-wash: none;
-  --p-overcast: none;
+  --p-wash: linear-gradient(135deg, rgb(255 122 89 / 0.07), transparent, rgb(7 6 9 / 0.55));
+  --p-overcast: linear-gradient(135deg, rgb(255 122 89 / 0.22), rgb(255 122 89 / 0.06), transparent);
   --p-text: #F5F3F2;
   --p-text2: rgb(245 243 242 / 0.62);
   --p-text3: rgb(245 243 242 / 0.42);
@@ -1931,4 +1931,112 @@ html[data-theme] body,
 html[data-theme] .bg { transition: background 0.35s ease, color 0.35s ease; }
 @media (prefers-reduced-motion: reduce) {
   html[data-theme] body, html[data-theme] .bg { transition: none; }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Style — the material, independent of the colour
+   ═══════════════════════════════════════════════════════════════════════
+   Two axes, same as the app. `[data-theme]` says which colour; `[data-style]`
+   says how it is drawn. Glass paints the palette's wash plus the fixed accent
+   overcast PounceView composites over it; Ledger paints neither and lets the
+   rules and the type carry the page. */
+
+html[data-style="glass"] .pounce::before { background: var(--p-overcast), var(--p-wash); }
+html[data-style="ledger"] .pounce::before { background: none; }
+
+/* Labels. Monospace is Ledger's character; under Glass a label is tracked-out
+   bold sans, which is what it was before any of this. */
+html[data-style="glass"] .eyebrow,
+html[data-style="glass"] .section-label,
+html[data-style="glass"] .chip,
+html[data-style="glass"] .ix-key,
+html[data-style="glass"] .pills li,
+html[data-style="glass"] .pounce-badge,
+html[data-style="glass"] .pounce-scope,
+html[data-style="glass"] .theme-strip .lbl {
+  font-family: var(--sans);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+}
+/* A typed literal stays monospace in both — that one carries meaning. */
+html[data-style="glass"] kbd,
+html[data-style="glass"] code,
+html[data-style="glass"] .pounce-q,
+html[data-style="glass"] .pounce-foot .count { font-family: var(--mono); }
+html[data-style="glass"] .chip::before { content: none; }
+html[data-style="glass"] .eyebrow::before,
+html[data-style="glass"] .section-label::before { opacity: 0; width: 0; margin-right: 0; }
+
+/* Surfaces. Glass fills and lights them; Ledger rules them. */
+html[data-style="glass"] .card,
+html[data-style="glass"] .gcard,
+html[data-style="glass"] .stage,
+html[data-style="glass"] .facts li {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.10), rgb(255 255 255 / 0.02));
+  border-radius: 14px;
+}
+html[data-style="glass"] .grid { border-top: 0; gap: 14px; }
+html[data-style="glass"] .card {
+  border: 1px solid rgb(255 255 255 / 0.14);
+  box-shadow: 0 14px 32px rgb(0 0 0 / 0.28);
+}
+html[data-style="glass"] .card:hover { transform: translateY(-4px); }
+html[data-style="glass"] .index-table a:hover { background: rgb(255 255 255 / 0.05); }
+
+/* One accent stays one accent, but Glass makes it glow. */
+html[data-style="glass"] .btn.primary {
+  background: linear-gradient(135deg, var(--p-accent),
+              color-mix(in srgb, var(--p-accent) 62%, transparent));
+  border-radius: 999px;
+  box-shadow: 0 8px 22px color-mix(in srgb, var(--p-accent) 40%, transparent);
+}
+html[data-style="glass"] .pounce { border-radius: 14px; }
+html[data-style="glass"] .pounce-mark-box { border-radius: 9px; }
+html[data-style="glass"] .pounce-badge {
+  border-radius: 999px;
+  opacity: 1;
+  color: var(--p-accent);
+  background: color-mix(in srgb, var(--p-accent) 15%, transparent);
+  border-color: color-mix(in srgb, var(--p-accent) 35%, transparent);
+}
+
+/* Two pickers now, so the strip holds two rows. */
+.theme-strip { flex-wrap: wrap; row-gap: 10px; }
+.style-row { display: flex; align-items: center; gap: 8px; width: 100%; }
+.style-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  padding: 5px 11px;
+  font: inherit;
+  font-size: 12px;
+  color: var(--text-secondary);
+  background: none;
+  border: 1px solid var(--rule);
+  border-radius: 7px;
+  cursor: pointer;
+  transition: color 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+}
+.style-btn:hover { color: var(--text-primary); }
+.style-btn[aria-pressed="true"] {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: color-mix(in srgb, var(--accent) 10%, transparent);
+}
+.style-btn .sw {
+  width: 22px; height: 14px;
+  border-radius: 3px;
+  border: 1px solid var(--rule);
+  background: var(--p-base);
+  position: relative;
+  overflow: hidden;
+}
+.style-btn[data-style-id="glass"] .sw::after {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(135deg, color-mix(in srgb, var(--p-accent) 60%, transparent), transparent 70%);
+}
+.style-btn[data-style-id="ledger"] .sw::after {
+  content: ""; position: absolute; left: 3px; right: 3px; top: 4px; height: 1px;
+  background: var(--p-accent);
+  box-shadow: 0 4px 0 color-mix(in srgb, var(--p-accent) 40%, transparent);
 }
