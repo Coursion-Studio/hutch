@@ -7,7 +7,7 @@
   <meta name="description" content="A ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a smart browser picker, and a resource reaper — six native Mac tools in one menu bar app. On-device, free, BYO API keys for AI." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=734e797c05" />
+  <link rel="stylesheet" href="styles.css?v=51215f9e1f" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
   <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon — and nothing leaves your machine." />
   <meta property="og:image" content="screenshots/hero-dashboard.png" />
@@ -17,6 +17,7 @@
 <body>
   <a class="skip" href="#tools">Skip to the tools</a>
   <div class="bg"></div>
+  <div class="theme-fx" aria-hidden="true"></div>
 
   <div class="palette-backdrop js-palette" hidden>
     <div class="palette" role="dialog" aria-modal="true" aria-label="Search this site">
@@ -716,6 +717,24 @@
       // file:// stylesheet as cross-origin — so this comes up empty when the
       // page is opened straight off disk, and the strip hides itself rather
       // than rendering an empty row. Over http(s) it is same-origin and fine.
+      // One place that changes the theme, so the effect can't be attached to
+      // one picker and forgotten on the other.
+      var fx = document.querySelector(".theme-fx");
+      var still = window.matchMedia("(prefers-reduced-motion: reduce)");
+      function applyWith(origin, mutate) {
+        if (still.matches || !fx) { mutate(); return; }
+        var r = origin.getBoundingClientRect();
+        fx.style.setProperty("--fx-x", (r.left + r.width / 2) + "px");
+        fx.style.setProperty("--fx-y", (r.top + r.height / 2) + "px");
+        origin.classList.remove("pop");
+        fx.classList.remove("run");
+        void fx.offsetWidth;                 // restart the animation
+        // The wash is painted in the *new* accent, so mutate first.
+        mutate();
+        fx.classList.add("run");
+        origin.classList.add("pop");
+      }
+
       var themes = [];
       try {
         Array.prototype.forEach.call(document.styleSheets, function (sheet) {
@@ -749,9 +768,11 @@
 
       document.querySelectorAll(".style-btn").forEach(function (b) {
         b.addEventListener("click", function () {
-          document.documentElement.setAttribute("data-style", b.dataset.styleId);
-          document.querySelectorAll(".style-btn").forEach(function (o) {
-            o.setAttribute("aria-pressed", String(o === b));
+          applyWith(b, function () {
+            document.documentElement.setAttribute("data-style", b.dataset.styleId);
+            document.querySelectorAll(".style-btn").forEach(function (o) {
+              o.setAttribute("aria-pressed", String(o === b));
+            });
           });
         });
       });
@@ -765,7 +786,7 @@
         b.title = t.label;
         b.setAttribute("aria-label", t.label);
         b.setAttribute("aria-pressed", "false");
-        b.addEventListener("click", function () { pick(t, b); });
+        b.addEventListener("click", function () { applyWith(b, function () { pick(t, b); }); });
         dots.appendChild(b);
         if (t.id === "ember") pick(t, b);
       });
