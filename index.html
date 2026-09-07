@@ -7,7 +7,7 @@
   <meta name="description" content="A ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a smart browser picker, and a resource reaper — six native Mac tools in one menu bar app. On-device, free, BYO API keys for AI." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=7f9c523ce2" />
+  <link rel="stylesheet" href="styles.css?v=ac55e6fcf3" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
   <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon — and nothing leaves your machine." />
   <meta property="og:image" content="screenshots/hero-dashboard.png" />
@@ -148,14 +148,159 @@
             </aside>
             <div class="appwin-main">
               <div class="aw-head"><span class="aw-hero"><img class="aw-glyph" src="icons/general.png" alt="" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-gear"/></svg></span><div><b>General</b><span>Hutch preferences for everyday behavior.</span></div></div>
-              <div class="aw-label">Appearance</div>
-              <div class="aw-styles"><span class="aw-style on">Glass</span><span class="aw-style">Ledger</span></div>
-              <div class="aw-swatches">
-                <i style="--c:#FF3D88"></i><i style="--c:#FF2D55"></i><i style="--c:#9D4EDD"></i>
-                <i style="--c:#00F0B5"></i><i style="--c:#FF4D00"></i><i style="--c:#FF7A59"></i>
-                <i style="--c:#5AAEFF"></i><i style="--c:#3FD485"></i><i style="--c:#FFB347"></i><i style="--c:#E0E0E0"></i>
+              <div class="aw-label"><img class="aw-lglyph" src="icons/appearance.png" alt="" />Appearance</div>
+              <div class="aw-styles">
+                <button class="aw-style-card on" type="button">
+                  <span class="aw-style-prev">
+                    <i class="a"></i><i class="b"></i><i class="c"></i>
+                  </span>
+                  <span class="aw-style-txt"><b>Glass</b><span>Frosted and lit, with the colour flowing through.</span></span>
+                </button>
+                <button class="aw-style-card" type="button">
+                  <span class="aw-style-prev flat">
+                    <i class="a"></i><i class="b"></i><i class="c"></i>
+                  </span>
+                  <span class="aw-style-txt"><b>Ledger</b><span>Flat ink, hairline rules, monospace labels.</span></span>
+                </button>
               </div>
-              <div class="aw-label">Startup</div>
+              <div class="aw-swatches">
+                <button class="aw-sw-card on" type="button" style="--sb:#08070D;--sa:#FF3D88">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Aurora<b>NEW</b></span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#130408;--sa:#FF2D55">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Hibiscus<b>NEW</b></span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#07050F;--sa:#9D4EDD">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Eclipse<b>NEW</b></span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#030D0A;--sa:#00F0B5">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Neon<b>NEW</b></span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#120500;--sa:#FF4D00">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Wildfire<b>NEW</b></span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#0B0A0C;--sa:#FF7A59">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Ember<b>NEW</b></span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#100B1C;--sa:#FF7A59">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Hutch</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#150E22;--sa:#FF7A59">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Coral</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#0B1325;--sa:#5AAEFF">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Midnight</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#0D1A14;--sa:#3FD485">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Forest</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#1F0F14;--sa:#FFB347">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Sunset</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#141416;--sa:#E0E0E0">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Mono</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#1A0E1C;--sa:#FF6BB5">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Candy</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#FAFAFA;--sa:#4287F5">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Paper</span>
+                </button>
+                <button class="aw-sw-card" type="button" style="--sb:#1C1C1E;--sa:#4287F5">
+                  <span class="aw-sw-prev">
+                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
+                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
+                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
+                  </span>
+                  <span class="aw-sw-name">Graphite</span>
+                </button>
+              </div>
+              <div class="aw-label"><img class="aw-lglyph" src="icons/startup.png" alt="" />Startup</div>
               <div class="aw-card"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-power"/></svg><img class="aw-glyph" src="icons/launch-at-login.png" alt="" /></span>Launch at login<span class="aw-sw on"></span></div>
               <div class="aw-card"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-update"/></svg><img class="aw-glyph" src="icons/updates.png" alt="" /></span>Check for updates<span class="aw-sw on"></span></div>
             </div>
