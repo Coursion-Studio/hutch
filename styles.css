@@ -2688,3 +2688,31 @@ html[data-style="glass"] .chip {
   letter-spacing: 0.2px;
   font-size: 12px;
 }
+
+/* ─── the app's own glyphs, where the app uses them ───
+   Hutch draws its generated 3D icons under Glass and falls back to SF Symbols
+   under Ledger — that split is half of what makes the two styles feel
+   different in the app. The drawn window now does the same thing: both
+   treatments are in the markup and the style picks one, so the sidebar you see
+   here is the sidebar you get. */
+.aw-glyph { display: none; width: 100%; height: 100%; object-fit: contain; }
+html[data-style="glass"] .aw-i,
+html[data-style="glass"] .aw-hero {
+  background: none;
+  border-color: transparent;
+  box-shadow: none;
+  padding: 0;
+}
+html[data-style="glass"] .aw-i:has(.aw-glyph) svg,
+html[data-style="glass"] .aw-hero:has(.aw-glyph) svg { display: none; }
+/* Fallback for engines without :has() — a well with no glyph keeps its
+   symbol and its outline rather than rendering as an empty box. */
+@supports not selector(:has(*)) {
+  html[data-style="glass"] .aw-glyph { display: none; }
+}
+html[data-style="glass"] .aw-glyph { display: block; }
+html[data-style="glass"] .aw-i { width: 22px; height: 22px; }
+html[data-style="glass"] .aw-hero { width: 42px; height: 42px; }
+
+.aw-logo { overflow: hidden; background: none; }
+.aw-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
