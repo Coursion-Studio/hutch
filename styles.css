@@ -432,6 +432,13 @@ nav.top a:hover { color: var(--text-primary); }
   transition: opacity 0.18s ease;
 }
 
+/* `hidden` sets `display: none` from the UA stylesheet — and any `display`
+   in an author rule beats it. This one says `display: grid`, so the closed
+   backdrop stayed in the layout: invisible at opacity 0, still covering the
+   viewport at z-index 50, and swallowing every click on the page. The theme
+   picker, the style buttons and the email field were all unreachable. */
+.modal-backdrop[hidden] { display: none; }
+
 .modal-backdrop.is-open { opacity: 1; }
 
 .modal {
