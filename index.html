@@ -175,11 +175,21 @@
             <li>Apps &amp; files</li><li>Inline math</li><li>Live currency &amp; units</li><li>Ask AI · BYO key</li><li>⌘K quick actions</li><li>System actions</li><li>Clipboard history</li><li>Window switcher</li><li>Web search &amp; bangs</li><li>iOS simulators</li><li>Emoji &amp; snippets</li><li>Scope prefixes</li>
           </ul>
         </div>
-        <figure class="stage glow-pink">
-          <img src="screenshots/pounce.png" alt="Pounce showing all nine search scopes — apps, files, clipboard, windows, toggles, actions, shortcuts, scripts, simulators"
-               width="800" height="480" loading="lazy" decoding="async" />
-          <img class="inset" src="screenshots/pounce-math.png" alt="Pounce doing inline math: 1280 × 0.15 = 192"
-               width="800" height="480" loading="lazy" decoding="async" />
+        <figure class="demo demo-pounce" aria-hidden="true">
+          <div class="pounce js-pounce-2">
+            <div class="pounce-bar">
+              <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+              <span class="pounce-scope js-scope-2"></span>
+              <span class="pounce-q"><span class="js-q-2"></span><i class="caret"></i></span>
+              <span class="pounce-gear">⚙</span>
+            </div>
+            <ul class="pounce-results js-results-2"></ul>
+            <div class="pounce-foot">
+              <span><kbd>↩</kbd>Run</span><span><kbd>⌘K</kbd>Actions</span>
+              <span class="spacer"></span><span class="count js-count-2"></span>
+              <span class="help">?</span><span class="pounce-mark">Pounce</span>
+            </div>
+          </div>
         </figure>
       </div>
 
@@ -223,9 +233,13 @@
             <li>Halves &amp; quarters</li><li>Thirds &amp; ⅔</li><li>⌃⌥ global hotkeys</li><li>Drag-to-snap</li><li>Per-app presets</li>
           </ul>
         </div>
-        <figure class="window glow-violet">
-          <img src="screenshots/window-manager.png" alt="Hutch's Snap Layout grid — a 3×3 region picker with keyboard shortcuts and a Fullscreen bar"
-               width="1020" height="720" loading="lazy" decoding="async" />
+        <figure class="demo demo-wm" aria-hidden="true">
+          <div class="wm-screen">
+            <span class="wm-cell"></span><span class="wm-cell"></span>
+            <span class="wm-cell"></span><span class="wm-cell"></span>
+            <span class="wm-win"><i></i><i></i><i></i></span>
+          </div>
+          <figcaption class="demo-cap"><kbd>⌃⌥</kbd><kbd>←</kbd> halves, quarters, thirds</figcaption>
         </figure>
       </div>
 
@@ -242,9 +256,16 @@
             <li>Drag from any app</li><li>Move · Copy · Reference</li><li>Shake to summon</li><li>Live thumbnails</li><li>Stack multiple shelves</li>
           </ul>
         </div>
-        <figure class="stage narrow glow-coral">
-          <img src="screenshots/stash.png" alt="The Stash shelf ready to receive files, with Move / Copy / Reference ingest modes"
-               width="320" height="216" loading="lazy" decoding="async" />
+        <figure class="demo demo-stash" aria-hidden="true">
+          <div class="stash-shelf">
+            <div class="stash-head"><span class="stash-dot"></span>Drop<span class="stash-n">3 items</span></div>
+            <div class="stash-items">
+              <span class="stash-chip s1">brief.pdf</span>
+              <span class="stash-chip s2">shot-02.png</span>
+              <span class="stash-chip s3">notes.md</span>
+            </div>
+            <div class="stash-hint">Drag out anywhere</div>
+          </div>
         </figure>
       </div>
 
@@ -261,9 +282,13 @@
             <li>29 switches</li><li>Dark Mode</li><li>Caffeinate — timed keep-awake</li><li>Sleep timer</li><li>Drag to reorder</li><li>Live mic &amp; cam</li>
           </ul>
         </div>
-        <figure class="stage narrow glow-amber">
-          <img src="screenshots/toggles.png" alt="The Toggles popover with a Reap Resources action row plus switches for Hide Desktop Icons, Dark Mode, Caffeinate and a Sleep Timer"
-               width="320" height="480" loading="lazy" decoding="async" />
+        <figure class="demo demo-toggles" aria-hidden="true">
+          <div class="tg-panel">
+            <div class="tg-row"><span class="tg-mark">◐</span>Dark Mode<span class="tg-sw t1"></span></div>
+            <div class="tg-row"><span class="tg-mark">◎</span>Caffeinate<span class="tg-sw t2"></span></div>
+            <div class="tg-row"><span class="tg-mark">▤</span>Hide Desktop<span class="tg-sw t3"></span></div>
+            <div class="tg-row"><span class="tg-mark">⏻</span>Sleep Timer<span class="tg-sw t4"></span></div>
+          </div>
         </figure>
       </div>
 
@@ -280,9 +305,15 @@
             <li>Per-site rules</li><li>Per-app rules</li><li>1–9 to launch</li><li>Remember a choice</li><li>Most-used first</li>
           </ul>
         </div>
-        <figure class="window glow-blue">
-          <img src="screenshots/browser-picker.png" alt="The Browser Picker settings — Hutch set as default browser, routing links across six detected browsers"
-               width="1020" height="720" loading="lazy" decoding="async" />
+        <figure class="demo demo-browser" aria-hidden="true">
+          <div class="bp-url"><span class="bp-lock">⌁</span>figma.com/file/…</div>
+          <div class="bp-list">
+            <span class="bp-b b1">1 <b>Chrome</b></span>
+            <span class="bp-b b2">2 <b>Safari</b></span>
+            <span class="bp-b b3">3 <b>Arc</b></span>
+            <span class="bp-b b4">4 <b>Firefox</b></span>
+          </div>
+          <div class="demo-cap">Press 1–9, or let a rule decide</div>
         </figure>
       </div>
 
@@ -299,9 +330,13 @@
             <li>CPU · memory · GPU</li><li>Real power draw</li><li>Idle app detection</li><li>One-by-one review</li><li>Hourly to weekly scans</li><li>Never-ask list</li><li>No root, no new permissions</li>
           </ul>
         </div>
-        <figure class="window glow-green">
-          <img src="screenshots/reaper.png" alt="The Reaper review panel: WhatsApp flagged as idle for 2 days while holding 222 MB, with live CPU, memory, power and GPU readings and Keep, Quit and Force actions"
-               width="766" height="686" loading="lazy" decoding="async" />
+        <figure class="demo demo-reaper" aria-hidden="true">
+          <div class="rp-head">Reviewing <b>1 of 4</b><span class="rp-tag">6.32 GB reclaimable</span></div>
+          <div class="rp-row flagged"><span class="rp-name">WhatsApp</span><span class="rp-bar"><i style="--w:82%"></i></span><span class="rp-v">222 MB</span></div>
+          <div class="rp-row"><span class="rp-name">Slack</span><span class="rp-bar"><i style="--w:54%"></i></span><span class="rp-v">148 MB</span></div>
+          <div class="rp-row"><span class="rp-name">Docker</span><span class="rp-bar"><i style="--w:38%"></i></span><span class="rp-v">96 MB</span></div>
+          <div class="rp-row"><span class="rp-name">Xcode</span><span class="rp-bar"><i style="--w:21%"></i></span><span class="rp-v">61 MB</span></div>
+          <div class="rp-acts"><span>Keep</span><span class="on">Quit</span><span>Force</span></div>
         </figure>
       </div>
 
@@ -483,13 +518,12 @@
     /* ───────────────────────────────────────────────────────────────────
        The live launcher in the hero.
        ─────────────────────────────────────────────────────────────────── */
-    (function () {
-      var root = document.querySelector(".js-pounce");
+    function runLauncher(root, sel) {
       if (!root) return;
-      var qEl = root.querySelector(".js-q"),
-          scopeEl = root.querySelector(".js-scope"),
-          listEl = root.querySelector(".js-results"),
-          countEl = root.querySelector(".js-count");
+      var qEl = root.querySelector(sel.q),
+          scopeEl = root.querySelector(sel.scope),
+          listEl = root.querySelector(sel.results),
+          countEl = root.querySelector(sel.count);
 
       var SCENES = [
         { q: "1280 * 0.15", scope: "Calculator", rows: [
@@ -590,7 +624,13 @@
       document.addEventListener("visibilitychange", function () {
         document.hidden ? stop() : start();
       });
-    })();
+    }
+
+    runLauncher(document.querySelector(".js-pounce"),
+                { q: ".js-q", scope: ".js-scope", results: ".js-results", count: ".js-count" });
+    // The Pounce showcase row runs the same component instead of a screenshot.
+    runLauncher(document.querySelector(".js-pounce-2"),
+                { q: ".js-q-2", scope: ".js-scope-2", results: ".js-results-2", count: ".js-count-2" });
 
     /* ───────────────────────────────────────────────────────────────────
        Theme picker. Fifteen themes ship and the site showed one.

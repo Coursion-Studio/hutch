@@ -2040,3 +2040,313 @@ html[data-style="glass"] .pounce-badge {
   background: var(--p-accent);
   box-shadow: 0 4px 0 color-mix(in srgb, var(--p-accent) 40%, transparent);
 }
+
+/* ═══════════════════════════════════════════════════════════════════════
+   Animated feature demos
+   ═══════════════════════════════════════════════════════════════════════
+   Replacing the screenshots. A capture of a launcher asks you to imagine
+   using it, goes stale the moment the UI moves, and — the reason this
+   mattered here — is pinned to whatever theme it was shot in, so a page that
+   re-skins on click had six pictures that didn't. These are drawn from the
+   same `--p-*` variables as everything else, so they follow the palette and
+   the style like the rest of the page. */
+
+.demo {
+  margin: 0;
+  padding: 22px;
+  border-radius: 12px;
+  background: var(--p-base);
+  border: 1px solid var(--p-rule);
+  min-height: 260px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 14px;
+  overflow: hidden;
+  position: relative;
+}
+html[data-style="glass"] .demo {
+  border-radius: 16px;
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02)), var(--p-base);
+}
+.demo-cap {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--p-text3);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.demo-cap kbd {
+  font-family: var(--mono);
+  font-size: 9.5px;
+  padding: 1px 5px;
+  border: 1px solid var(--p-rule);
+  border-radius: 3px;
+  color: var(--p-text2);
+}
+.demo-pounce { padding: 0; border: 0; background: none; min-height: 0; }
+
+/* ── Window Manager: one window walking the grid ── */
+.wm-screen {
+  position: relative;
+  aspect-ratio: 16 / 10;
+  border-radius: 8px;
+  border: 1px solid var(--p-rule);
+  padding: 6px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  gap: 6px;
+}
+.wm-cell { border: 1px dashed var(--p-rule); border-radius: 5px; }
+.wm-win {
+  position: absolute;
+  border-radius: 6px;
+  background: color-mix(in srgb, var(--p-accent) 22%, transparent);
+  border: 1px solid var(--p-accent);
+  padding: 6px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  animation: wm-walk 9s cubic-bezier(0.5, 0, 0.2, 1) infinite;
+}
+.wm-win i {
+  height: 3px;
+  border-radius: 2px;
+  background: var(--p-accent);
+  opacity: 0.55;
+}
+.wm-win i:nth-child(1) { width: 60%; opacity: 0.85; }
+.wm-win i:nth-child(2) { width: 40%; }
+.wm-win i:nth-child(3) { width: 50%; }
+@keyframes wm-walk {
+  0%, 18%   { left: 6px;   top: 6px;   right: 50%;  bottom: 6px; }   /* left half */
+  25%, 43%  { left: 50%;   top: 6px;   right: 6px;  bottom: 50%; }   /* top-right quarter */
+  50%, 68%  { left: 50%;   top: 50%;   right: 6px;  bottom: 6px; }   /* bottom-right */
+  75%, 93%  { left: 6px;   top: 6px;   right: 6px;  bottom: 6px; }   /* full */
+  100%      { left: 6px;   top: 6px;   right: 50%;  bottom: 6px; }
+}
+
+/* ── Stash: the shelf filling up ── */
+.stash-shelf {
+  border: 1px solid var(--p-rule);
+  border-radius: 10px;
+  padding: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+.stash-head {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--p-text);
+}
+.stash-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--p-accent); }
+.stash-n {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--p-text3);
+}
+.stash-items { display: flex; flex-direction: column; gap: 6px; min-height: 96px; }
+.stash-chip {
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--p-text2);
+  padding: 7px 10px;
+  border-radius: 6px;
+  border: 1px solid var(--p-rule);
+  background: color-mix(in srgb, var(--p-accent) 7%, transparent);
+  opacity: 0;
+  animation: stash-in 6s ease infinite;
+}
+.stash-chip.s2 { animation-delay: 0.5s; }
+.stash-chip.s3 { animation-delay: 1s; }
+@keyframes stash-in {
+  0%          { opacity: 0; transform: translateX(26px) scale(0.96); }
+  12%, 82%    { opacity: 1; transform: none; }
+  94%, 100%   { opacity: 0; transform: translateX(-14px); }
+}
+.stash-hint {
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--p-text3);
+  border-top: 1px dashed var(--p-rule);
+  padding-top: 9px;
+}
+
+/* ── Toggles: switches flipping in sequence ── */
+.tg-panel { display: flex; flex-direction: column; gap: 6px; }
+.tg-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid var(--p-rule);
+  font-size: 12.5px;
+  color: var(--p-text);
+}
+.tg-mark {
+  width: 22px; height: 22px;
+  display: grid; place-items: center;
+  border-radius: 5px;
+  border: 1px solid var(--p-rule);
+  font-family: var(--mono);
+  font-size: 11px;
+  color: var(--p-text2);
+}
+.tg-sw {
+  margin-left: auto;
+  width: 30px; height: 17px;
+  border-radius: 999px;
+  border: 1px solid var(--p-rule);
+  background: color-mix(in srgb, var(--p-text) 8%, transparent);
+  position: relative;
+  animation: tg-bg 8s ease infinite;
+}
+.tg-sw::after {
+  content: "";
+  position: absolute;
+  top: 2px; left: 2px;
+  width: 11px; height: 11px;
+  border-radius: 50%;
+  background: var(--p-text2);
+  animation: tg-knob 8s ease infinite;
+}
+.tg-sw.t2, .tg-sw.t2::after { animation-delay: 0.9s; }
+.tg-sw.t3, .tg-sw.t3::after { animation-delay: 1.8s; }
+.tg-sw.t4, .tg-sw.t4::after { animation-delay: 2.7s; }
+@keyframes tg-knob {
+  0%, 8%     { transform: none; background: var(--p-text2); }
+  16%, 74%   { transform: translateX(13px); background: #fff; }
+  82%, 100%  { transform: none; background: var(--p-text2); }
+}
+@keyframes tg-bg {
+  0%, 8%     { background: color-mix(in srgb, var(--p-text) 8%, transparent); border-color: var(--p-rule); }
+  16%, 74%   { background: var(--p-accent); border-color: var(--p-accent); }
+  82%, 100%  { background: color-mix(in srgb, var(--p-text) 8%, transparent); border-color: var(--p-rule); }
+}
+
+/* ── Browser Picker: the choice cycling ── */
+.bp-url {
+  display: flex; align-items: center; gap: 8px;
+  font-family: var(--mono);
+  font-size: 11.5px;
+  color: var(--p-text2);
+  padding: 9px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--p-rule);
+}
+.bp-lock { color: var(--p-accent); }
+.bp-list { display: grid; grid-template-columns: 1fr 1fr; gap: 7px; }
+.bp-b {
+  display: flex; align-items: center; gap: 8px;
+  padding: 10px 11px;
+  border-radius: 7px;
+  border: 1px solid var(--p-rule);
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--p-text3);
+  animation: bp-pick 8s ease infinite;
+}
+.bp-b b { font-family: var(--sans); font-size: 12.5px; color: var(--p-text); font-weight: 600; }
+.bp-b.b2 { animation-delay: 2s; }
+.bp-b.b3 { animation-delay: 4s; }
+.bp-b.b4 { animation-delay: 6s; }
+@keyframes bp-pick {
+  0%, 2%    { border-color: var(--p-rule); background: transparent; }
+  6%, 20%   { border-color: var(--p-accent);
+              background: color-mix(in srgb, var(--p-accent) 12%, transparent); }
+  26%, 100% { border-color: var(--p-rule); background: transparent; }
+}
+
+/* ── Reaper: the meters settling ── */
+.rp-head {
+  display: flex; align-items: center; gap: 8px;
+  font-size: 12px; color: var(--p-text2);
+}
+.rp-head b { color: var(--p-text); }
+.rp-tag {
+  margin-left: auto;
+  font-family: var(--mono);
+  font-size: 10px;
+  color: var(--p-accent);
+  border: 1px solid color-mix(in srgb, var(--p-accent) 35%, transparent);
+  border-radius: 4px;
+  padding: 2px 6px;
+}
+.rp-row {
+  display: flex; align-items: center; gap: 10px;
+  padding: 8px 10px;
+  border-radius: 7px;
+  border: 1px solid transparent;
+  font-size: 12px;
+  color: var(--p-text);
+}
+.rp-row.flagged {
+  border-color: color-mix(in srgb, var(--p-accent) 32%, transparent);
+  background: color-mix(in srgb, var(--p-accent) 9%, transparent);
+}
+.rp-name { width: 74px; flex: none; }
+.rp-bar {
+  flex: 1;
+  height: 5px;
+  border-radius: 3px;
+  background: color-mix(in srgb, var(--p-text) 8%, transparent);
+  overflow: hidden;
+}
+.rp-bar i {
+  display: block;
+  height: 100%;
+  width: var(--w);
+  border-radius: 3px;
+  background: var(--p-accent);
+  transform-origin: left;
+  animation: rp-fill 5s cubic-bezier(0.3, 0, 0.2, 1) infinite;
+}
+.rp-row:nth-child(3) .rp-bar i { animation-delay: 0.25s; }
+.rp-row:nth-child(4) .rp-bar i { animation-delay: 0.5s; }
+.rp-row:nth-child(5) .rp-bar i { animation-delay: 0.75s; }
+@keyframes rp-fill {
+  0%        { transform: scaleX(0.15); }
+  35%, 78%  { transform: scaleX(1); }
+  100%      { transform: scaleX(0.15); }
+}
+.rp-v {
+  font-family: var(--mono);
+  font-size: 10.5px;
+  color: var(--p-text3);
+  width: 54px;
+  text-align: right;
+}
+.rp-acts { display: flex; gap: 7px; margin-top: 2px; }
+.rp-acts span {
+  font-size: 11px;
+  padding: 5px 12px;
+  border-radius: 6px;
+  border: 1px solid var(--p-rule);
+  color: var(--p-text2);
+}
+.rp-acts .on {
+  color: var(--p-accent);
+  border-color: var(--p-accent);
+  background: color-mix(in srgb, var(--p-accent) 12%, transparent);
+}
+
+/* Six looping animations on one page is a lot to inflict on someone who has
+   asked for less motion. They all hold their finished frame instead. */
+@media (prefers-reduced-motion: reduce) {
+  .wm-win, .stash-chip, .tg-sw, .tg-sw::after, .bp-b, .rp-bar i {
+    animation: none !important;
+  }
+  .stash-chip { opacity: 1; transform: none; }
+  .wm-win { left: 6px; top: 6px; right: 50%; bottom: 6px; }
+  .tg-sw { background: var(--p-accent); border-color: var(--p-accent); }
+  .tg-sw::after { transform: translateX(13px); background: #fff; }
+  .bp-b.b1 { border-color: var(--p-accent); }
+}
