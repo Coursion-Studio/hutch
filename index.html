@@ -111,14 +111,50 @@
   <!-- ─── hero shot: real capture of the dashboard with the ⌘Space launcher over it ─── -->
   <section id="tour" class="hero-shot-wrap">
     <div class="container">
-      <figure class="window shot-hero hero-composite">
-        <img class="base" src="screenshots/hero-dashboard.png"
-             alt="The Hutch settings dashboard — a sidebar of six tools with the theme picker open"
-             width="1020" height="720"
-             loading="eager" decoding="async" fetchpriority="high" />
-        <img class="float" src="screenshots/pounce.png"
-             alt="The Pounce launcher summoned with ⌘Space, browsing every search scope"
-             width="800" height="480" loading="eager" decoding="async" />
+      <figure class="demo-app hero-composite" aria-hidden="true">
+        <div class="appwin">
+          <div class="appwin-bar"><i class="r"></i><i class="y"></i><i class="g"></i></div>
+          <div class="appwin-body">
+            <aside class="appwin-side">
+              <div class="aw-brand"><span class="aw-logo"></span>Hutch</div>
+              <div class="aw-sec">Tools</div>
+              <div class="aw-row a1"><span class="aw-i"></span>Pounce</div>
+              <div class="aw-row a2"><span class="aw-i"></span>Window Manager</div>
+              <div class="aw-row a3"><span class="aw-i"></span>Stash</div>
+              <div class="aw-row a4"><span class="aw-i"></span>Browser Picker</div>
+              <div class="aw-row a5"><span class="aw-i"></span>Toggles</div>
+              <div class="aw-row a6"><span class="aw-i"></span>Reaper</div>
+              <div class="aw-sec">Settings</div>
+              <div class="aw-row"><span class="aw-i"></span>General</div>
+              <div class="aw-row"><span class="aw-i"></span>Permissions</div>
+            </aside>
+            <div class="appwin-main">
+              <div class="aw-head"><span class="aw-hero"></span><div><b>General</b><span>Hutch preferences for everyday behavior.</span></div></div>
+              <div class="aw-label">Appearance</div>
+              <div class="aw-styles"><span class="aw-style on">Glass</span><span class="aw-style">Ledger</span></div>
+              <div class="aw-swatches">
+                <i style="--c:#FF3D88"></i><i style="--c:#FF2D55"></i><i style="--c:#9D4EDD"></i>
+                <i style="--c:#00F0B5"></i><i style="--c:#FF4D00"></i><i style="--c:#FF7A59"></i>
+                <i style="--c:#5AAEFF"></i><i style="--c:#3FD485"></i><i style="--c:#FFB347"></i><i style="--c:#E0E0E0"></i>
+              </div>
+              <div class="aw-label">Startup</div>
+              <div class="aw-card"><span class="aw-i"></span>Launch at login<span class="aw-sw on"></span></div>
+              <div class="aw-card"><span class="aw-i"></span>Check for updates<span class="aw-sw on"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="appwin-float">
+          <div class="pounce js-pounce-3">
+            <div class="pounce-bar">
+              <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+              <span class="pounce-scope js-scope-3"></span>
+              <span class="pounce-q"><span class="js-q-3"></span><i class="caret"></i></span>
+              <span class="pounce-gear">⚙</span>
+            </div>
+            <ul class="pounce-results js-results-3"></ul>
+            <div class="pounce-foot"><span><kbd>↩</kbd>Run</span><span class="spacer"></span><span class="count js-count-3"></span><span class="pounce-mark">Pounce</span></div>
+          </div>
+        </div>
       </figure>
       <ul class="facts">
         <li>
@@ -202,20 +238,48 @@
         </div>
         <div class="gallery-grid">
           <figure class="gcard">
-            <img src="screenshots/pounce-convert.png" alt="Pounce converting 100 USD to 87.73 EUR at a live exchange rate" width="800" height="480" loading="lazy" decoding="async" />
-            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 1v22"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>Live currency &amp; unit conversion</figcaption>
+            <div class="pounce" aria-hidden="true">
+              <div class="pounce-bar">
+                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+                <span class="pounce-scope on">Convert</span>
+                <span class="pounce-q">100 usd to eur</span>
+              </div>
+              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">€</span><span class="pounce-text"><span class="pounce-title">87.73 EUR</span><span class="pounce-sub">Live rate, cached 4 minutes ago</span></span><span class="pounce-badge">Copy</span></li></ul>
+            </div>
+            <figcaption><span class="gal-mark">$</span>Live currency &amp; unit conversion</figcaption>
           </figure>
           <figure class="gcard">
-            <img src="screenshots/pounce-cmdk.png" alt="The ⌘K action palette on a result — Reveal in Finder, Copy Path, Quit" width="800" height="480" loading="lazy" decoding="async" />
-            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 9V6a3 3 0 1 0-3 3h12a3 3 0 1 0-3-3v3m0 6v3a3 3 0 1 0 3-3H6a3 3 0 1 0 3 3v-3"/></svg>⌘K quick-action palette</figcaption>
+            <div class="pounce" aria-hidden="true">
+              <div class="pounce-bar">
+                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+                <span class="pounce-scope on">Apps</span>
+                <span class="pounce-q">forge</span>
+              </div>
+              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Forge</span><span class="pounce-sub">Applications · Running</span></span><span class="pounce-badge">Launch</span></li><li class=""><span class="pounce-mark-box">↗</span><span class="pounce-text"><span class="pounce-title">Reveal in Finder</span><span class="pounce-sub">Quick action</span></span><span class="pounce-badge">Run</span></li><li class=""><span class="pounce-mark-box">⧉</span><span class="pounce-text"><span class="pounce-title">Copy Path</span><span class="pounce-sub">Quick action</span></span><span class="pounce-badge">Copy</span></li></ul>
+            </div>
+            <figcaption><span class="gal-mark">⌘</span>⌘K quick-action palette</figcaption>
           </figure>
           <figure class="gcard">
-            <img src="screenshots/pounce-actions.png" alt="Pounce running the Empty Trash system action" width="800" height="480" loading="lazy" decoding="async" />
-            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 6h18"/><path d="M8 6V4h8v2"/><path d="M6 6l1 14h10l1-14"/></svg>System actions &amp; power</figcaption>
+            <div class="pounce" aria-hidden="true">
+              <div class="pounce-bar">
+                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+                <span class="pounce-scope on">Actions</span>
+                <span class="pounce-q">empty trash</span>
+              </div>
+              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">⌫</span><span class="pounce-text"><span class="pounce-title">Empty Trash</span><span class="pounce-sub">Permanently remove items in Trash</span></span><span class="pounce-badge">Run</span></li><li class=""><span class="pounce-mark-box">▤</span><span class="pounce-text"><span class="pounce-title">empty trash.aif</span><span class="pounce-sub">~/Library/Sounds</span></span><span class="pounce-badge">Open</span></li></ul>
+            </div>
+            <figcaption><span class="gal-mark">⏻</span>System actions &amp; power</figcaption>
           </figure>
           <figure class="gcard">
-            <img src="screenshots/pounce-apps.png" alt="Pounce as an app launcher and switcher listing running apps" width="800" height="480" loading="lazy" decoding="async" />
-            <figcaption><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/></svg>Launch, switch &amp; quit apps</figcaption>
+            <div class="pounce" aria-hidden="true">
+              <div class="pounce-bar">
+                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+                <span class="pounce-scope on">Apps</span>
+                <span class="pounce-q">s</span>
+              </div>
+              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Slack</span><span class="pounce-sub">/Applications · Running</span></span><span class="pounce-badge">Switch</span></li><li class=""><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Safari</span><span class="pounce-sub">/Applications</span></span><span class="pounce-badge">Launch</span></li><li class=""><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Setapp</span><span class="pounce-sub">/Applications</span></span><span class="pounce-badge">Launch</span></li></ul>
+            </div>
+            <figcaption><span class="gal-mark">▣</span>Launch, switch &amp; quit apps</figcaption>
           </figure>
         </div>
       </div>
@@ -631,6 +695,9 @@
     // The Pounce showcase row runs the same component instead of a screenshot.
     runLauncher(document.querySelector(".js-pounce-2"),
                 { q: ".js-q-2", scope: ".js-scope-2", results: ".js-results-2", count: ".js-count-2" });
+    // ...and once more inside the hero composite.
+    runLauncher(document.querySelector(".js-pounce-3"),
+                { q: ".js-q-3", scope: ".js-scope-3", results: ".js-results-3", count: ".js-count-3" });
 
     /* ───────────────────────────────────────────────────────────────────
        Theme picker. Fifteen themes ship and the site showed one.
