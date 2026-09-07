@@ -2516,30 +2516,46 @@ html[data-style="glass"] .aw-label { font-family: var(--sans); font-weight: 700;
 }
 
 /* ─── theme change: a light passing over the page ───
-   The palette used to snap. This is a single wash in the *new* accent,
-   expanding from whichever control you pressed, so the change reads as coming
-   from your click rather than happening to the page.
+   A circle in the *new* accent expands from whichever control you pressed.
 
-   `pointer-events: none` is not decoration here: an invisible full-viewport
-   layer is exactly what made every control on this page unclickable for six
-   weeks, so this one can never take a pointer event under any state. */
+   Built on `transform: scale()` rather than an animated custom property inside
+   a gradient: the first version animated `--fx-r` via `@property`, which is
+   both narrower in support and composited on the main thread, and the result
+   was faint enough to miss entirely. A scaled circle is GPU-composited,
+   works everywhere, and is actually visible.
+
+   `pointer-events: none !important` is not decoration here: an invisible
+   full-viewport layer is exactly what made every control on this page
+   unclickable for six weeks, so this one can never take a pointer event. */
 .theme-fx {
   position: fixed;
   inset: 0;
   z-index: 60;
   pointer-events: none !important;
+  overflow: hidden;
   opacity: 0;
-  background: radial-gradient(circle at var(--fx-x, 50%) var(--fx-y, 50%),
-              color-mix(in srgb, var(--accent) 34%, transparent) 0,
-              transparent var(--fx-r, 40%));
 }
-.theme-fx.run { animation: theme-sweep 0.62s cubic-bezier(0.22, 0.7, 0.25, 1) forwards; }
-@keyframes theme-sweep {
-  0%   { opacity: 0.9; --fx-r: 0%; }
-  70%  { opacity: 0.45; }
-  100% { opacity: 0; --fx-r: 150%; }
+.theme-fx.run { opacity: 1; }
+.theme-fx i {
+  position: absolute;
+  left: var(--fx-x, 50%);
+  top: var(--fx-y, 50%);
+  width: 28px;
+  height: 28px;
+  margin: -14px 0 0 -14px;
+  border-radius: 50%;
+  transform: scale(0);
+  background: radial-gradient(circle,
+    color-mix(in srgb, var(--accent) 70%, transparent) 0%,
+    color-mix(in srgb, var(--accent) 26%, transparent) 48%,
+    transparent 70%);
 }
-@property --fx-r { syntax: "<percentage>"; inherits: false; initial-value: 0%; }
+.theme-fx.run i { animation: fx-ring 0.72s cubic-bezier(0.16, 0.75, 0.2, 1) forwards; }
+@keyframes fx-ring {
+  0%   { transform: scale(0);   opacity: 1; }
+  60%  { opacity: 0.55; }
+  100% { transform: scale(150); opacity: 0; }
+}
 
 /* The control you pressed acknowledges the press. */
 .theme-dot.pop, .style-btn.pop { animation: fx-pop 0.34s cubic-bezier(0.3, 1.4, 0.4, 1); }
@@ -2555,7 +2571,8 @@ html[data-style="glass"] .aw-label { font-family: var(--sans); font-weight: 700;
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .theme-fx, .theme-fx.run { animation: none; opacity: 0; }
+  .theme-fx, .theme-fx.run { opacity: 0; }
+  .theme-fx i, .theme-fx.run i { animation: none; transform: scale(0); }
   .theme-dot.pop, .style-btn.pop { animation: none; }
   .pounce, .pounce::before, .demo, .appwin, .btn.primary, .signup-field { transition: none; }
 }
