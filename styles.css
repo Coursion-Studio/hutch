@@ -2576,3 +2576,98 @@ html[data-style="glass"] .aw-label { font-family: var(--sans); font-weight: 700;
   .theme-dot.pop, .style-btn.pop { animation: none; }
   .pounce, .pounce::before, .demo, .appwin, .btn.primary, .signup-field { transition: none; }
 }
+
+/* ─── the demos follow the material too ───
+   Style previously stopped at the demo's outer edge: the container picked up
+   Glass's fill and everything inside it stayed on Ledger's hairlines, so the
+   two styles were near-identical wherever the actual product is shown. If the
+   material only applies to chrome the user isn't looking at, it isn't a style.
+
+   Glass fills and lights; Ledger rules. Same rule as the rest of the page,
+   applied to every surface inside a demo. */
+
+html[data-style="glass"] .wm-screen,
+html[data-style="glass"] .stash-shelf,
+html[data-style="glass"] .bp-url,
+html[data-style="glass"] .tg-row,
+html[data-style="glass"] .bp-b,
+html[data-style="glass"] .rp-acts span {
+  border-color: rgb(255 255 255 / 0.14);
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.02));
+  border-radius: 11px;
+}
+html[data-style="glass"] .wm-cell {
+  border-style: solid;
+  border-color: rgb(255 255 255 / 0.09);
+  border-radius: 7px;
+}
+html[data-style="glass"] .wm-win {
+  border-radius: 9px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--p-accent) 55%, transparent),
+    color-mix(in srgb, var(--p-accent) 26%, transparent));
+  box-shadow: 0 8px 20px color-mix(in srgb, var(--p-accent) 35%, transparent);
+}
+html[data-style="glass"] .wm-win i { background: #fff; opacity: 0.8; }
+
+/* Marks and wells are filled under Glass, outlined under Ledger — the same
+   split the app makes between its 3D glyphs and its symbol-in-a-well. */
+html[data-style="glass"] .tg-mark,
+html[data-style="glass"] .pounce-mark-box {
+  border-color: transparent;
+  border-radius: 8px;
+  background: linear-gradient(135deg, var(--p-accent),
+              color-mix(in srgb, var(--p-accent) 58%, transparent));
+  color: #fff;
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--p-accent) 32%, transparent);
+}
+html[data-style="glass"] .pounce-results li.sel .pounce-mark-box { color: #fff; }
+
+html[data-style="glass"] .stash-chip {
+  border-radius: 9px;
+  border-color: rgb(255 255 255 / 0.12);
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.09), rgb(255 255 255 / 0.03));
+}
+html[data-style="glass"] .stash-hint { border-top-style: solid; border-top-color: rgb(255 255 255 / 0.1); }
+html[data-style="glass"] .stash-dot { box-shadow: 0 0 10px var(--p-accent); }
+
+html[data-style="glass"] .rp-row.flagged {
+  border-radius: 10px;
+  background: linear-gradient(135deg,
+    color-mix(in srgb, var(--p-accent) 20%, transparent),
+    color-mix(in srgb, var(--p-accent) 8%, transparent));
+  border-color: color-mix(in srgb, var(--p-accent) 45%, transparent);
+}
+html[data-style="glass"] .rp-bar i {
+  background: linear-gradient(90deg,
+    color-mix(in srgb, var(--p-accent) 70%, transparent), var(--p-accent));
+  box-shadow: 0 0 8px color-mix(in srgb, var(--p-accent) 45%, transparent);
+}
+html[data-style="glass"] .rp-tag,
+html[data-style="glass"] .rp-acts .on,
+html[data-style="glass"] .aw-style.on {
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--p-accent),
+              color-mix(in srgb, var(--p-accent) 60%, transparent));
+  border-color: transparent;
+  color: #fff;
+}
+html[data-style="glass"] .bp-b { border-radius: 10px; }
+html[data-style="glass"] .demo-cap kbd,
+html[data-style="glass"] .aw-card { border-color: rgb(255 255 255 / 0.13); border-radius: 10px; }
+html[data-style="glass"] .aw-card {
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.07), rgb(255 255 255 / 0.02));
+}
+html[data-style="glass"] .aw-row.a1 { border-radius: 0 8px 8px 0; }
+
+/* The specimen numbering is Ledger's idiom; under Glass the chip is a pill. */
+html[data-style="glass"] .chip {
+  padding: 6px 13px 6px 11px;
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--p-accent) 32%, transparent);
+  background: color-mix(in srgb, var(--p-accent) 14%, transparent);
+  color: var(--p-accent);
+  text-transform: none;
+  letter-spacing: 0.2px;
+  font-size: 12px;
+}
