@@ -49,6 +49,18 @@ function fail(message) {
 
 function openCheckout() {
   const { prices, successUrl } = config();
+
+  // Paddle's default payment link points here. When Paddle builds a link for
+  // an existing transaction — an invoice, a shared payment link, a retried
+  // payment — it appends `_ptxn` and expects this page to open *that*
+  // transaction rather than starting a fresh one. Opening by price instead
+  // would bill a second time for something already invoiced.
+  const transactionId = new URLSearchParams(window.location.search).get('_ptxn');
+  if (transactionId) {
+    Paddle.Checkout.open({ transactionId, settings: { displayMode: 'overlay', theme: 'dark' } });
+    return;
+  }
+
   const { item, quantity } = requested();
   const priceId = prices[ITEMS[item].price];
 
