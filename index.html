@@ -7,7 +7,7 @@
   <meta name="description" content="A ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a smart browser picker, and a resource reaper — six native Mac tools in one menu bar app. On-device, free, BYO API keys for AI." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=ac55e6fcf3" />
+  <link rel="stylesheet" href="styles.css?v=fd8933fa3d" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
   <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon — and nothing leaves your machine." />
   <meta property="og:image" content="screenshots/hero-dashboard.png" />
@@ -25,6 +25,7 @@
     <g id="i-browser"><path d="M6 21V9a3 3 0 0 1 3-3h9"/><path d="m15 3 3 3-3 3"/><circle cx="6" cy="21" r="1.6"/></g>
     <g id="i-toggles"><path d="M4 8h10"/><path d="M10 16h10"/><circle cx="17" cy="8" r="2.6"/><circle cx="7" cy="16" r="2.6"/></g>
     <g id="i-reaper"><path d="M20 6a9 9 0 1 0 1.2 6"/><path d="M21.5 5v5h-5"/><path d="M12 16c0-4 2-6 6-6"/></g>
+    <g id="i-palette"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.7 1.6-1.5 0-.4-.2-.8-.5-1.1-.3-.3-.4-.6-.4-1 0-.8.7-1.4 1.5-1.4H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8"/><circle cx="7.5" cy="12" r="1.1"/><circle cx="9.5" cy="8" r="1.1"/><circle cx="14.5" cy="7.6" r="1.1"/></g>
     <g id="i-gear"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 12H2.1M21.9 12h-2.4M6.7 6.7 5 5M19 19l-1.7-1.7M6.7 17.3 5 19M19 5l-1.7 1.7"/></g>
     <g id="i-shield"><path d="M12 3 19.5 6v5.4c0 4.4-3.1 8.4-7.5 9.6-4.4-1.2-7.5-5.2-7.5-9.6V6z"/><path d="M12 11v3"/><circle cx="12" cy="9" r="0.6"/></g>
     <g id="i-power"><path d="M12 3v9"/><path d="M6.6 6.6a7.5 7.5 0 1 0 10.8 0"/></g>
@@ -144,11 +145,11 @@
               <div class="aw-row a6"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-reaper"/></svg><img class="aw-glyph" src="icons/reaper.png" alt="" /></span>Reaper</div>
               <div class="aw-sec">Settings</div>
               <div class="aw-row"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-gear"/></svg><img class="aw-glyph" src="icons/general.png" alt="" /></span>General</div>
+              <div class="aw-row on"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-palette"/></svg><img class="aw-glyph" src="icons/appearance.png" alt="" /></span>Appearance</div>
               <div class="aw-row"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg><img class="aw-glyph" src="icons/permissions.png" alt="" /></span>Permissions</div>
             </aside>
             <div class="appwin-main">
-              <div class="aw-head"><span class="aw-hero"><img class="aw-glyph" src="icons/general.png" alt="" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-gear"/></svg></span><div><b>General</b><span>Hutch preferences for everyday behavior.</span></div></div>
-              <div class="aw-label"><img class="aw-lglyph" src="icons/appearance.png" alt="" />Appearance</div>
+              <div class="aw-head"><span class="aw-hero"><img class="aw-glyph" src="icons/appearance.png" alt="" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-palette"/></svg></span><div><b>Appearance</b><span>Pick the material, then the colour.</span></div></div>
               <div class="aw-styles">
                 <button class="aw-style-card on" type="button">
                   <span class="aw-style-prev">
@@ -300,10 +301,8 @@
                   <span class="aw-sw-name">Graphite</span>
                 </button>
               </div>
-              <div class="aw-label"><img class="aw-lglyph" src="icons/startup.png" alt="" />Startup</div>
-              <div class="aw-card"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-power"/></svg><img class="aw-glyph" src="icons/launch-at-login.png" alt="" /></span>Launch at login<span class="aw-sw on"></span></div>
-              <div class="aw-card"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-update"/></svg><img class="aw-glyph" src="icons/updates.png" alt="" /></span>Check for updates<span class="aw-sw on"></span></div>
-            </div>
+              <div class="aw-note">Style changes how Hutch is drawn. Colour is the palette underneath it.</div>
+                        </div>
           </div>
         </div>
         <div class="appwin-float">

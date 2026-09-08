@@ -2433,18 +2433,16 @@ html[data-style="glass"] .aw-i {
   box-shadow: 0 3px 7px color-mix(in srgb, var(--p-accent) 30%, transparent);
 }
 /* The selected row walks the tool list, the way you'd click through it. */
+.aw-row.on {
+  background: color-mix(in srgb, var(--p-accent) 16%, transparent);
+  color: var(--p-accent);
+  box-shadow: inset 2px 0 0 var(--p-accent);
+}
+/* The sidebar used to walk the tool list on a loop. With the content pane
+   showing a specific page that made two rows look selected at once, which is
+   a state the app can't be in. The selected row is the page being shown. */
 .aw-row.a1, .aw-row.a2, .aw-row.a3,
-.aw-row.a4, .aw-row.a5, .aw-row.a6 { animation: aw-select 15s steps(1) infinite; }
-.aw-row.a2 { animation-delay: 2.5s; }
-.aw-row.a3 { animation-delay: 5s; }
-.aw-row.a4 { animation-delay: 7.5s; }
-.aw-row.a5 { animation-delay: 10s; }
-.aw-row.a6 { animation-delay: 12.5s; }
-@keyframes aw-select {
-  0%, 16%  { background: color-mix(in srgb, var(--p-accent) 16%, transparent);
-             color: var(--p-accent); box-shadow: inset 2px 0 0 var(--p-accent); }
-  17%, 100% { background: transparent;
-             color: color-mix(in srgb, var(--p-text) 72%, transparent); box-shadow: none; }
+.aw-row.a4, .aw-row.a5, .aw-row.a6 { animation: none; }
 }
 
 .appwin-main { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
@@ -2610,10 +2608,7 @@ html[data-style="glass"] .aw-lglyph { display: inline-block; }
 .gcard figcaption svg { display: none; }
 
 @media (prefers-reduced-motion: reduce) {
-  .aw-row.a1, .aw-row.a2, .aw-row.a3,
-  .aw-row.a4, .aw-row.a5, .aw-row.a6 { animation: none; }
-  .aw-row.a1 { background: color-mix(in srgb, var(--p-accent) 16%, transparent);
-               color: var(--p-accent); box-shadow: inset 2px 0 0 var(--p-accent); }
+
 }
 
 /* ─── theme change: a light passing over the page ───
@@ -2800,3 +2795,10 @@ html[data-style="glass"] .aw-hero { width: 42px; height: 42px; }
 
 .aw-logo { overflow: hidden; background: none; }
 .aw-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
+
+.aw-note {
+  font-size: 11px;
+  line-height: 1.45;
+  color: var(--p-text3);
+  padding-top: 4px;
+}
