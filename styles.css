@@ -2364,7 +2364,7 @@ html[data-style="glass"] .demo {
    "up close" cards. Same reason as the feature demos — a screenshot can't
    follow the theme, and this page changes theme on click. */
 
-.demo-app { margin: 0; position: relative; max-width: 940px; margin: 0 auto; }
+.demo-app { position: relative; max-width: 940px; margin: 0 auto 116px; }
 
 .appwin {
   border-radius: 14px;
@@ -2587,11 +2587,15 @@ html[data-style="glass"] .aw-lglyph { display: inline-block; }
 }
 
 /* The launcher floating over the window, as it does in use. */
+/* The launcher floats over the window, as it does in use — but it was
+   starting 74px above where the content ends, so it covered the last row of
+   colour swatches and cut the caption in half. It now hangs below the window
+   instead: overlapping the chrome, not the thing the chrome is showing. */
 .appwin-float {
   position: absolute;
-  right: -2%;
-  bottom: -8%;
-  width: 62%;
+  right: -3%;
+  bottom: -116px;
+  width: 54%;
   filter: drop-shadow(0 26px 50px rgb(0 0 0 / 0.55));
 }
 @media (max-width: 860px) { .appwin-float { position: static; width: 100%; margin-top: 14px; } }
@@ -2797,6 +2801,7 @@ html[data-style="glass"] .aw-hero { width: 42px; height: 42px; }
 .aw-logo img { width: 100%; height: 100%; object-fit: contain; display: block; }
 
 .aw-note {
+  max-width: 54%;
   font-size: 11px;
   line-height: 1.45;
   color: var(--p-text3);
