@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pricing — Hutch</title>
+  <meta name="description" content="Hutch is $29 once. Three tools are free forever." />
+  <!-- Staged, not launched: the site is still an early-access waitlist and
+       downloads are off. Unlinked from every nav and noindex until that
+       changes, so this can be reviewed without announcing a price. -->
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="stylesheet" href="styles.css?v=b778bba540" />
+  <meta name="theme-color" content="#0B0A0C" />
+  <style>
+    .price-hero { text-align: center; padding: 78px 0 8px; }
+    .price-hero h1 { margin: 0 0 16px; }
+    .price-hero .lede {
+      color: var(--text-secondary); font-size: 18px; line-height: 1.6;
+      max-width: 52ch; margin: 0 auto;
+    }
+
+    .price-card {
+      max-width: 460px;
+      margin: 46px auto 0;
+      padding: 34px 32px 30px;
+      border: 1px solid var(--rule-strong);
+      border-radius: var(--radius-card);
+      background: var(--card-fill-strong);
+      text-align: center;
+    }
+    .amount {
+      display: flex; align-items: baseline; justify-content: center; gap: 10px;
+      margin-bottom: 6px;
+    }
+    .amount .figure { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; }
+    .amount .once { color: var(--text-secondary); font-size: 15px; }
+    .price-card .sub { color: var(--text-secondary); font-size: 15px; margin: 0 0 22px; }
+    .price-card .btn { width: 100%; justify-content: center; }
+    .price-card .fineprint {
+      margin: 16px 0 0; font-size: 13px; line-height: 1.6; color: var(--text-tertiary);
+    }
+
+    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 26px; }
+    .split > div {
+      padding: 26px 28px 28px;
+      border: 1px solid var(--rule);
+    }
+    .split > div + div { border-left: 0; }
+    .split h3 { margin: 0 0 4px; font-size: 16px; }
+    .split .who { margin: 0 0 18px; font-size: 13px; color: var(--text-tertiary); }
+    .split ul { list-style: none; margin: 0; padding: 0; }
+    .split li {
+      display: flex; gap: 10px; align-items: baseline;
+      padding: 0 0 12px; line-height: 1.55;
+      font-size: 14px; color: var(--text-secondary);
+    }
+    .split li:last-child { padding-bottom: 0; }
+    .split li::before {
+      content: "";
+      flex: 0 0 5px; height: 5px; margin-top: 7px;
+      border-radius: 50%; background: var(--text-quaternary);
+    }
+    .split .paid li::before { background: var(--accent); }
+    .split strong { color: var(--text-primary); font-weight: 600; }
+
+    .why {
+      max-width: 620px; margin: 40px auto 0; padding-top: 28px;
+      border-top: 1px solid var(--rule);
+      color: var(--text-secondary); line-height: 1.75; font-size: 15px;
+    }
+    .why h2 { font-size: 17px; margin: 0 0 10px; }
+
+    .faq { max-width: 620px; margin: 8px auto 0; }
+    .faq h3 { font-size: 15px; margin: 26px 0 6px; }
+    .faq p { margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
+    .faq a, .why a { color: var(--accent); text-decoration: none; }
+    .faq a:hover, .why a:hover { text-decoration: underline; }
+
+    @media (max-width: 720px) {
+      .split { grid-template-columns: 1fr; }
+      .split > div + div { border-left: 1px solid var(--rule); border-top: 0; }
+    }
+  </style>
+  <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
+</head>
+<body
+  data-paddle-env="sandbox"
+  data-paddle-token="test_6eb8bd0fa1d1870de8f218a1f41"
+  data-price-licence="pri_01kz4dravtf0kp2pr5qxcqgjd3"
+  data-price-seat="pri_01m212h0x7vqh6r73pxsjk167x"
+>
+  <div class="bg"></div>
+
+  <div class="container">
+    <nav class="top">
+      <div class="brand">
+        <a href="index.html"><img src="icon.png" alt="Hutch" /></a>
+        <span>Hutch</span>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+      </div>
+    </nav>
+
+    <main>
+      <section class="price-hero">
+        <h1>One price. Yours for good.</h1>
+        <p class="lede">
+          Hutch is a one-time purchase, not a subscription. Three of its tools
+          are free forever, and always will be.
+        </p>
+
+        <div class="price-card">
+          <div class="amount">
+            <span class="figure" data-price-for="pri_01kz4dravtf0kp2pr5qxcqgjd3">$29</span>
+            <span class="once">once</span>
+          </div>
+          <p class="sub">Two Macs. Every 1.x release.</p>
+          <a class="btn primary" href="sandbox-buy.html?item=licence">Buy Hutch</a>
+          <p class="fineprint">
+            14-day trial of everything first — no card, no account.
+            Extra Macs are <span data-price-for="pri_01m212h0x7vqh6r73pxsjk167x">$9</span> each.
+          </p>
+          <p class="fineprint" id="tax-note" hidden>Shown in your currency, tax included.</p>
+        </div>
+      </section>
+
+      <section class="tight">
+        <div class="split">
+          <div>
+            <h3>Free forever</h3>
+            <p class="who">No trial, no nag, no licence.</p>
+            <ul>
+              <li><span><strong>Toggles</strong> — 25+ menu-bar switches, from Dark Mode to Keep Awake.</span></li>
+              <li><span><strong>Window Manager</strong> — snapping, per-app presets, per-Mac profiles.</span></li>
+              <li><span><strong>Browser Picker</strong> — route links by host and by the app that opened them.</span></li>
+              <li><span><strong>Pounce, the everyday half</strong> — apps, files, downloads, window switching, snaps, toggles, system actions, maths, web search, emoji.</span></li>
+            </ul>
+          </div>
+          <div class="paid">
+            <h3>What the licence adds</h3>
+            <p class="who">Everything above, plus:</p>
+            <ul>
+              <li><span><strong>Stash</strong> — the drag-and-drop shelf. Shake to summon it.</span></li>
+              <li><span><strong>Reaper</strong> — finds what's eating your CPU, memory, GPU and battery, then walks you through it one process at a time.</span></li>
+              <li><span><strong>Pounce, the power half</strong> — clipboard history, custom commands, Shortcuts, AppleScript, simulators, music, AI, unit conversions, markdown, process and port kill, network tools.</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="why">
+          <h2>Why isn't all of it paid?</h2>
+          <p>
+            Because the line is drawn on competition, not on effort. Window
+            tiling, menu-bar switches and link routing all have good free
+            rivals — charging for them would just mean you install something
+            else. And a launcher that won't launch anything is a locked app
+            nobody opens twice.
+          </p>
+        </div>
+
+        <div class="faq">
+          <h3>What happens after the trial?</h3>
+          <p>
+            The free tools keep working exactly as they did. Nothing is taken
+            away, nothing starts nagging — the paid features simply stop
+            appearing.
+          </p>
+
+          <h3>Does it need an account?</h3>
+          <p>
+            No. Your licence key is signed, and Hutch verifies it on your Mac
+            without asking anything. There's no login, and no server that can
+            lock you out of software you paid for.
+          </p>
+
+          <h3>How many Macs?</h3>
+          <p>
+            Two. If you run out, release a Mac you no longer use from
+            Settings → Licence and the seat comes straight back — or add more
+            for <span data-price-for="pri_01m212h0x7vqh6r73pxsjk167x">$9</span> each.
+          </p>
+
+          <h3>What about Hutch 2.0?</h3>
+          <p>
+            Your licence covers every 1.x release, however many there are.
+            2.0 will be a paid upgrade, discounted for anyone who already owns
+            a licence.
+          </p>
+
+          <h3>Can I get a refund?</h3>
+          <p>
+            Yes — see the <a href="refunds.html">refund policy</a>. If Hutch
+            isn't for you, say so and we'll refund it.
+          </p>
+
+          <h3>Do you take my data?</h3>
+          <p>
+            Hutch runs on your Mac. Anonymous crash reports and feature counts
+            are on by default and switch off together in Settings → General →
+            Privacy. The <a href="privacy.html">privacy policy</a> spells out
+            exactly what that includes.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="licence.html">Lost your key?</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refunds.html">Refunds</a>
+        <a href="mailto:kuraydev.io@gmail.com">Support</a>
+      </div>
+      <div>© 2026 Coursion · Made in SwiftUI</div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script src="pricing.js"></script>
+</body>
+</html>
