@@ -1876,6 +1876,18 @@ html[data-theme] {
   --p-page: color-mix(in srgb, #ffffff 2%, var(--p-base));
   --p-panel: color-mix(in srgb, #ffffff 7%, var(--p-base));
 }
+/* Ledger draws its base flat with no wash on top, so at the palettes' own
+   values — Candy is #1A0E1C — the page lands near black. Glass never needed
+   this because its gradient lifts the whole surface. Same 10% lift the app
+   applies in PounceStyle.base(_:), plus the page/panel step on top. */
+html[data-style="ledger"] {
+  --p-page: color-mix(in srgb, #ffffff 10%, var(--p-base));
+  --p-panel: color-mix(in srgb, #ffffff 16%, var(--p-base));
+}
+html[data-style="ledger"][data-theme="paper"] {
+  --p-page: color-mix(in srgb, #000000 5%, var(--p-base));
+  --p-panel: #ffffff;
+}
 /* Paper is the light one: lifting with white does nothing at #FAFAFA, so the
    panel goes pure white and the page steps down instead. */
 html[data-theme="paper"] {
