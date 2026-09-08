@@ -34,12 +34,27 @@ async function postJSON(path, body) {
 
 // ─── Success page ──────────────────────────────────────────────────────────
 
-async function claimLicence() {
-  const status = document.getElementById('claim-status');
-  const result = document.getElementById('claim-result');
-  const keyField = document.getElementById('claim-key');
-  if (!status) return;
+// The page shows one of four outcomes at a time. Driving them off a single
+// attribute is what stops it contradicting itself — it used to carry a static
+// "your licence key is below" above a paragraph explaining there was no key.
+function show(state) {
+  document.getElementById('claim')?.setAttribute('data-state', state);
+}
 
+function fail(title, note) {
+  const heading = document.getElementById('error-title');
+  const body = document.getElementById('error-note');
+  if (heading) heading.textContent = title;
+  if (body) body.textContent = note;
+  show('error');
+}
+
+async function claimLicence() {
+  const page = document.getElementById('claim');
+  if (!page) return;
+
+  const working = document.getElementById('working-note');
+  const keyField = document.getElementById('claim-key');
   const transactionId = new URLSearchParams(window.location.search).get('_ptxn');
 
   // The transaction id is a credential of sorts: it's what proves the purchase
@@ -50,8 +65,7 @@ async function claimLicence() {
   }
 
   if (!transactionId) {
-    status.textContent =
-      'This page needs the link Paddle sent you after payment. Check your email for the key, or request it again below.';
+    show('missing');
     return;
   }
 
@@ -59,30 +73,45 @@ async function claimLicence() {
     const { status: code, payload } = await postJSON('license/claim', { transactionId });
 
     if (code === 200 && payload.key) {
-      status.hidden = true;
-      result.hidden = false;
       keyField.value = payload.key;
+      show('ready');
+      // Grow to the key rather than clipping it. Keys are long enough to wrap
+      // to four lines on a narrow window and a scrollbar on the one string the
+      // page exists to hand over reads as broken.
+      keyField.style.height = 'auto';
+      keyField.style.height = `${keyField.scrollHeight}px`;
       return;
     }
 
     if (code === 403) {
-      status.textContent =
-        'This licence has been revoked. If that is a surprise, get in touch and we will sort it out.';
+      fail(
+        'This licence has been revoked',
+        'If that is a surprise, get in touch and we will sort it out.',
+      );
       return;
     }
 
     if (code !== 202) {
-      status.textContent =
-        'We could not fetch your key just now. It is also on its way by email — or request it again below.';
+      fail(
+        'We could not fetch your key',
+        'It is also on its way by email. You can request it again below.',
+      );
       return;
     }
 
-    status.textContent = 'Payment received. Preparing your licence key…';
+    // 202 is the normal case for the first second or two: Paddle's redirect
+    // regularly beats its own webhook. Say what is happening rather than
+    // leaving the buyer to guess whether their money went somewhere.
+    if (working && attempt === 1) {
+      working.textContent = 'Still preparing your key. This can take a few more seconds.';
+    }
     await new Promise((resolve) => setTimeout(resolve, CLAIM_INTERVAL_MS));
   }
 
-  status.textContent =
-    'Your key is taking longer than usual. It will arrive by email shortly — or request it again below.';
+  fail(
+    'Your key is taking longer than usual',
+    'It will arrive by email shortly. You can also request it again below.',
+  );
 }
 
 function wireCopyButton() {

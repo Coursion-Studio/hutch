@@ -11,19 +11,141 @@
   <link rel="stylesheet" href="styles.css?v=b778bba540" />
   <meta name="theme-color" content="#0B0A0C" />
   <style>
-    .licence-page { max-width: 640px; margin: 0 auto; padding: 64px 0 96px; text-align: center; }
-    .licence-page h1 { margin-bottom: 12px; }
-    .key-box {
-      display: flex; gap: 10px; margin: 28px 0 14px; align-items: stretch;
+    /* One page, four outcomes: waiting on the webhook, the key, arrived
+       without the link Paddle sends, and something went wrong. Only the block
+       matching [data-state] is in the document flow, so the page can never say
+       "your key is below" above a paragraph explaining there is no key —
+       which is exactly what it used to do. */
+    .claim [data-when] { display: none; }
+    .claim[data-state="working"] [data-when~="working"],
+    .claim[data-state="ready"]   [data-when~="ready"],
+    .claim[data-state="missing"] [data-when~="missing"],
+    .claim[data-state="error"]   [data-when~="error"] { display: block; }
+    /* …except the pill, which is a pill. */
+    .claim[data-state="working"] .eyebrow-mark,
+    .claim[data-state="ready"] .eyebrow-mark { display: inline-flex; }
+
+    .claim {
+      max-width: 620px;
+      margin: 0 auto;
+      padding: 88px 0 96px;
+      text-align: center;
     }
-    .key-box input {
-      flex: 1; font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-      font-size: 13px; padding: 14px 16px; border-radius: 12px;
-      border: 1px solid rgba(255,255,255,.14); background: rgba(255,255,255,.04);
-      color: inherit;
+    .claim h1 { margin: 0 0 14px; }
+    .claim .sub {
+      color: var(--text-secondary);
+      font-size: 17px;
+      line-height: 1.6;
+      margin: 0 auto;
+      max-width: 46ch;
     }
-    .steps { text-align: left; margin: 32px auto 0; max-width: 460px; line-height: 1.7; }
-    .muted { opacity: .7; font-size: 14px; }
+    /* Inline links inherited browser blue, which was the loudest thing on a
+       page whose whole job is to make one string easy to find. */
+    .claim a { color: var(--accent); text-decoration: none; }
+    .claim a:hover { text-decoration: underline; }
+
+    .eyebrow-mark {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 20px;
+      padding: 5px 12px 5px 10px;
+      border: 1px solid var(--rule);
+      border-radius: 999px;
+      font-size: 12px;
+      letter-spacing: 0.02em;
+      color: var(--text-secondary);
+    }
+    .eyebrow-mark .dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .claim[data-state="working"] .eyebrow-mark .dot { animation: pulse 1.4s ease-in-out infinite; }
+    @keyframes pulse { 0%, 100% { opacity: 1; } 50% { opacity: 0.25; } }
+
+    /* The key is the reason this page exists, so it gets the most contrast,
+       a box wide enough not to wrap mid-token, and selectable text. */
+    .key-card {
+      margin: 34px 0 16px;
+      padding: 22px 22px 18px;
+      border: 1px solid var(--rule-strong);
+      border-radius: var(--radius-card);
+      background: var(--card-fill-strong);
+      text-align: left;
+    }
+    .key-label {
+      font-size: 11px;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--text-tertiary);
+      margin: 0 0 12px;
+    }
+    .key-row { display: flex; gap: 10px; align-items: flex-start; }
+    .key-row textarea {
+      flex: 1;
+      min-width: 0;
+      font-family: var(--mono);
+      font-size: 13px;
+      line-height: 1.6;
+      padding: 12px 15px;
+      border-radius: var(--radius-btn);
+      border: 1px solid var(--rule);
+      background: rgba(0, 0, 0, 0.28);
+      color: var(--text-primary);
+      resize: none;
+      overflow: hidden;
+      word-break: break-all;
+    }
+    .key-row textarea:focus {
+      outline: none;
+      border-color: var(--accent-dim);
+    }
+    .key-row .btn { flex: 0 0 auto; min-width: 88px; justify-content: center; }
+
+    .steps {
+      counter-reset: step;
+      list-style: none;
+      text-align: left;
+      margin: 30px 0 0;
+      padding: 26px 0 0;
+      border-top: 1px solid var(--rule);
+    }
+    .steps li {
+      counter-increment: step;
+      display: flex;
+      gap: 14px;
+      align-items: baseline;
+      padding: 0 0 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+    .steps li:last-child { padding-bottom: 0; }
+    .steps li::before {
+      content: counter(step);
+      flex: 0 0 22px;
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .steps strong { color: var(--text-primary); font-weight: 600; }
+
+    .aside {
+      margin: 40px auto 0;
+      padding-top: 26px;
+      border-top: 1px solid var(--rule);
+      color: var(--text-tertiary);
+      font-size: 14px;
+      line-height: 1.7;
+    }
+
+    @media (max-width: 560px) {
+      .claim { padding-top: 56px; }
+      .key-row { flex-direction: column; }
+      .key-row .btn { justify-content: center; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .claim[data-state="working"] .eyebrow-mark .dot { animation: none; }
+    }
   </style>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
@@ -42,28 +164,69 @@
       </div>
     </nav>
 
-    <main class="licence-page">
-      <h1>Thanks for buying Hutch</h1>
-      <p class="sub">Your licence key is below, and a copy is on its way to your inbox.</p>
+    <main class="claim" id="claim" data-state="working">
+      <p class="eyebrow-mark" data-when="working ready">
+        <span class="dot" aria-hidden="true"></span>Payment received
+      </p>
 
-      <p id="claim-status" role="status" aria-live="polite">Preparing your licence key…</p>
-
-      <div id="claim-result" hidden>
-        <div class="key-box">
-          <input id="claim-key" type="text" readonly aria-label="Your Hutch licence key" />
-          <button class="btn primary" id="claim-copy" type="button">Copy</button>
-        </div>
-        <p class="muted">Keep this somewhere safe. You can always ask for it again.</p>
-
-        <div class="steps">
-          <p><strong>1.</strong> Download and open Hutch.</p>
-          <p><strong>2.</strong> Go to <strong>Settings → Licence</strong>.</p>
-          <p><strong>3.</strong> Paste the key and activate.</p>
-        </div>
+      <!-- Waiting on the webhook. Paddle's redirect regularly beats its own
+           event, so this is a normal few seconds, not a failure. -->
+      <div data-when="working">
+        <h1>Thanks for buying Hutch</h1>
+        <p class="sub" role="status" aria-live="polite" id="working-note">
+          Preparing your licence key. This takes a few seconds.
+        </p>
       </div>
 
-      <p class="muted" style="margin-top:36px">
-        Nothing arrived? <a href="licence.html">Request your key again</a>.
+      <!-- The key. -->
+      <div data-when="ready">
+        <h1>Thanks for buying Hutch</h1>
+        <p class="sub">Here is your licence key. A copy is on its way to your inbox.</p>
+
+        <div class="key-card">
+          <p class="key-label">Your licence key</p>
+          <div class="key-row">
+            <textarea id="claim-key" readonly rows="3" spellcheck="false" wrap="soft"
+                      aria-label="Your Hutch licence key"></textarea>
+            <button class="btn primary" id="claim-copy" type="button">Copy</button>
+          </div>
+        </div>
+
+        <ol class="steps">
+          <li><span>Open Hutch. If you have not installed it yet, the download link is in your email.</span></li>
+          <li><span>Go to <strong>Settings → Licence</strong>.</span></li>
+          <li><span>Paste the key and activate. Your licence covers more than one Mac.</span></li>
+        </ol>
+      </div>
+
+      <!-- Landed here without Paddle's link: a bookmark, a refresh after the
+           id was stripped from the URL, or someone poking at the address. -->
+      <div data-when="missing">
+        <h1>Your licence key</h1>
+        <p class="sub">
+          This page shows your key using the one-time link Paddle sends the
+          moment you pay. Open that link, or check your inbox — the key was
+          emailed to you too.
+        </p>
+        <p style="margin-top:28px">
+          <a class="btn outline" href="licence.html">Email me my key again</a>
+        </p>
+      </div>
+
+      <!-- Minted but unreachable, or revoked. The specific line is written in
+           by licence.js; only the framing lives here. -->
+      <div data-when="error">
+        <h1 id="error-title">We could not fetch your key</h1>
+        <p class="sub" id="error-note"></p>
+        <p style="margin-top:28px">
+          <a class="btn outline" href="licence.html">Email me my key again</a>
+        </p>
+      </div>
+
+      <p class="aside" data-when="ready working">
+        Keep the key somewhere safe — you can always ask for it again from the
+        <a href="licence.html">lost key page</a>. Something wrong?
+        <a href="mailto:kuraydev.io@gmail.com">Email us</a> and we will sort it out.
       </p>
     </main>
 
