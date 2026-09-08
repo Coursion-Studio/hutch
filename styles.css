@@ -85,7 +85,7 @@ html, body {
     /* A single warm light from top-left, as if the drawer is lit from one
        side. Three coloured radials read as decoration; one reads as light. */
     radial-gradient(120% 80% at 8% -10%, rgba(255, 122, 89, 0.10), transparent 60%),
-    var(--ink-900);
+    var(--p-page, var(--ink-900));
 }
 /* Film grain. Flat dark backgrounds look plastic without it; this is the
    cheapest way to make a screen feel like a material. */
@@ -380,7 +380,7 @@ nav.top a:hover { color: var(--text-primary); }
   padding: 18px 18px 16px;
   border: 1px solid var(--rule);
   border-radius: var(--radius-card);
-  background: rgb(255 255 255 / 0.018);
+  background: var(--p-panel);
   transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
 .facts li:hover {
@@ -1142,7 +1142,7 @@ kbd.key {
 .hero-demo { min-width: 0; perspective: 1400px; }
 
 .pounce {
-  background: var(--p-base);
+  background: var(--p-panel);
   border: 1px solid var(--p-rule);
   border-radius: 12px;
   overflow: hidden;
@@ -1867,6 +1867,22 @@ section[id], .hero-shot-wrap[id] { scroll-margin-top: 32px; }
   .index-table a { padding-left: 0; }
 }
 
+
+/* ─── page vs surface ───
+   Ledger has no gradient to lift a panel off its background, so the two inks
+   have to differ. The page is the floor; anything you can read content on
+   stands above it. Glass got away with this because its wash did the work. */
+html[data-theme] {
+  --p-page: color-mix(in srgb, #ffffff 2%, var(--p-base));
+  --p-panel: color-mix(in srgb, #ffffff 7%, var(--p-base));
+}
+/* Paper is the light one: lifting with white does nothing at #FAFAFA, so the
+   panel goes pure white and the page steps down instead. */
+html[data-theme="paper"] {
+  --p-page: color-mix(in srgb, #000000 5%, var(--p-base));
+  --p-panel: #ffffff;
+}
+
 /* ─── theme picker under the hero launcher ───
    Fifteen themes ship and the site showed exactly one. This is the cheapest
    honest demo of them: the same panel, re-skinned from the real values. */
@@ -1950,7 +1966,7 @@ html[data-theme] .bg {
   background:
     radial-gradient(120% 80% at 8% -10%,
       color-mix(in srgb, var(--p-accent) 10%, transparent), transparent 60%),
-    var(--p-base);
+    var(--p-page);
 }
 
 /* Paper is the one light theme, and a dark-theme page inverted by variables
@@ -2068,7 +2084,7 @@ html[data-style="glass"] .pounce-badge {
   width: 22px; height: 14px;
   border-radius: 3px;
   border: 1px solid var(--rule);
-  background: var(--p-base);
+  background: var(--p-panel);
   position: relative;
   overflow: hidden;
 }
@@ -2096,7 +2112,7 @@ html[data-style="glass"] .pounce-badge {
   margin: 0;
   padding: 22px;
   border-radius: 12px;
-  background: var(--p-base);
+  background: var(--p-panel);
   border: 1px solid var(--p-rule);
   min-height: 260px;
   display: flex;
@@ -2405,7 +2421,7 @@ html[data-style="glass"] .demo {
 .appwin {
   border-radius: 14px;
   overflow: hidden;
-  background: var(--p-base);
+  background: var(--p-panel);
   border: 1px solid var(--p-rule);
   box-shadow: 0 50px 110px rgb(0 0 0 / 0.55), 0 8px 24px rgb(0 0 0 / 0.4);
 }
