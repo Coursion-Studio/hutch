@@ -357,55 +357,89 @@ nav.top a:hover { color: var(--text-primary); }
 
 /* ─── hero facts strip ─── */
 
+/* Four claims, four cards.
+   They were welded into one bar with 2px seams, which made them read as a
+   single row of table cells — four facts about different things, presented as
+   though they were one thing. Separated, each gets its own weight, and the two
+   with a number lead with it. */
 .facts {
   display: grid;
   grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 2px;
-  margin: 10px auto 0;
+  gap: 12px;
+  margin: 22px auto 0;
   padding: 0;
   max-width: 940px;
   list-style: none;
-  margin-top: 18px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  border-radius: var(--radius-card);
-  overflow: hidden;
 }
 
 .facts li {
   display: flex;
-  align-items: center;
-  gap: 11px;
-  padding: 16px 18px;
-  background: var(--ink-850);
-  transition: background 0.18s ease;
-}
-
-.facts li:hover { background: var(--ink-800); }
-
-.facts svg {
-  width: 19px;
-  height: 19px;
-  flex-shrink: 0;
-  color: var(--accent);
-  opacity: 0.85;
-}
-
-.facts span {
-  display: flex;
   flex-direction: column;
-  gap: 1px;
-  min-width: 0;
-  font-size: 12px;
-  line-height: 1.35;
-  color: var(--text-tertiary);
+  align-items: flex-start;
+  gap: 3px;
+  padding: 18px 18px 16px;
+  border: 1px solid var(--rule);
+  border-radius: var(--radius-card);
+  background: rgb(255 255 255 / 0.018);
+  transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
 }
+.facts li:hover {
+  border-color: color-mix(in srgb, var(--accent) 34%, transparent);
+  background: rgb(255 255 255 / 0.035);
+}
+
+.fact-i {
+  width: 30px;
+  height: 30px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 9px;
+  border-radius: 8px;
+  border: 1px solid var(--rule);
+  color: var(--accent);
+}
+.fact-i svg { width: 15px; height: 15px; display: block; }
 
 .facts strong {
-  font-size: 14px;
-  font-weight: 650;
-  letter-spacing: -0.01em;
+  font-size: 15px;
+  font-weight: 600;
+  letter-spacing: -0.015em;
   color: var(--text-primary);
+}
+/* The number is the claim; the noun after it is just the unit. */
+.facts strong b {
+  font-family: var(--mono);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--accent);
+  margin-right: 2px;
+  letter-spacing: -0.02em;
+}
+.facts em {
+  font-style: normal;
+  font-size: 12.5px;
+  line-height: 1.4;
+  color: var(--text-secondary);
+}
+
+/* Glass fills and lifts them; Ledger rules them. */
+html[data-style="glass"] .facts li {
+  border-radius: 14px;
+  border-color: rgb(255 255 255 / 0.13);
+  background: linear-gradient(180deg, rgb(255 255 255 / 0.08), rgb(255 255 255 / 0.02));
+}
+html[data-style="glass"] .facts li:hover { transform: translateY(-2px); }
+html[data-style="glass"] .fact-i {
+  border-color: transparent;
+  color: #fff;
+  background: linear-gradient(135deg, var(--accent),
+              color-mix(in srgb, var(--accent) 58%, transparent));
+  box-shadow: 0 4px 10px color-mix(in srgb, var(--accent) 30%, transparent);
+}
+html[data-style="glass"] .facts strong b { font-family: var(--sans); }
+
+@media (prefers-reduced-motion: reduce) {
+  .facts li, html[data-style="glass"] .facts li:hover { transition: none; transform: none; }
 }
 
 @media (max-width: 900px) {
