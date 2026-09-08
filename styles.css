@@ -2366,7 +2366,7 @@ html[data-style="glass"] .demo {
 
 /* Bottom margin must exceed the launcher's overhang or it lands on the
    facts strip below — the overhang is 64px, so this is 64 plus a gap. */
-.demo-app { position: relative; max-width: 940px; margin: 0 auto 92px; }
+.demo-app { position: relative; max-width: 940px; margin: 0 auto 100px; }
 
 .appwin {
   border-radius: 14px;
@@ -2445,9 +2445,11 @@ html[data-style="glass"] .aw-i {
    a state the app can't be in. The selected row is the page being shown. */
 .aw-row.a1, .aw-row.a2, .aw-row.a3,
 .aw-row.a4, .aw-row.a5, .aw-row.a6 { animation: none; }
-}
 
-.appwin-main { padding: 18px 20px; display: flex; flex-direction: column; gap: 10px; }
+/* The content pane sat 20px off the sidebar divider, so the hero, the style
+   cards and the swatch grid all started almost against it. The real window
+   gives that edge room. */
+.appwin-main { padding: 20px 26px 22px 32px; display: flex; flex-direction: column; gap: 10px; }
 .aw-head { display: flex; align-items: center; gap: 12px; margin-bottom: 4px; }
 .aw-hero {
   width: 40px; height: 40px; flex: none;
@@ -2518,7 +2520,7 @@ html[data-style="glass"] .aw-label { font-family: var(--sans); font-weight: 700;
 .aw-swatches {
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 7px;
+  gap: 6px;
 }
 .aw-sw-card {
   padding: 0; font: inherit; cursor: default;
@@ -2526,7 +2528,7 @@ html[data-style="glass"] .aw-label { font-family: var(--sans); font-weight: 700;
   display: flex; flex-direction: column; gap: 4px; align-items: center;
 }
 .aw-sw-prev {
-  width: 100%; height: 44px;
+  width: 100%; height: 37px;
   border-radius: 7px;
   border: 0.5px solid rgb(255 255 255 / 0.18);
   padding: 6px 5px;
@@ -2601,7 +2603,7 @@ html[data-style="glass"] .aw-lglyph { display: inline-block; }
 .appwin-float {
   position: absolute;
   right: -9%;
-  bottom: -64px;
+  bottom: -72px;
   width: 46%;
   filter: drop-shadow(0 26px 50px rgb(0 0 0 / 0.55));
 }
