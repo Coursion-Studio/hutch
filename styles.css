@@ -2600,9 +2600,9 @@ html[data-style="glass"] .aw-lglyph { display: inline-block; }
    rather than over the app. */
 .appwin-float {
   position: absolute;
-  right: -2%;
+  right: -9%;
   bottom: -64px;
-  width: 50%;
+  width: 46%;
   filter: drop-shadow(0 26px 50px rgb(0 0 0 / 0.55));
 }
 @media (max-width: 860px) { .appwin-float { position: static; width: 100%; margin-top: 14px; } }
