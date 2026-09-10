@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="candy" data-style="ledger">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
@@ -138,8 +138,84 @@
       line-height: 1.7;
     }
 
+    .routes {
+      display: grid;
+      gap: 12px;
+      margin: 34px 0 0;
+      text-align: left;
+    }
+    .route {
+      display: flex;
+      gap: 14px;
+      padding: 20px;
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-card);
+      background: var(--p-panel, var(--card-fill));
+    }
+    .route-mark {
+      flex: 0 0 26px;
+      height: 26px;
+      display: grid;
+      place-items: center;
+      border-radius: 7px;
+      border: 1px solid var(--rule);
+      font-family: var(--mono);
+      font-size: 12px;
+      color: var(--accent);
+    }
+    .route h2 {
+      margin: 2px 0 6px;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: -0.01em;
+      color: var(--text-primary);
+    }
+    .route p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.6;
+      color: var(--text-secondary);
+    }
+    .route strong { color: var(--text-primary); font-weight: 600; }
+
+    .resend {
+      display: flex;
+      gap: 8px;
+      margin-top: 14px;
+      flex-wrap: wrap;
+    }
+    .resend input {
+      flex: 1 1 200px;
+      min-width: 0;
+      height: 40px;
+      padding: 0 13px;
+      font: inherit;
+      font-size: 14px;
+      color: var(--text-primary);
+      background: rgba(0, 0, 0, 0.24);
+      border: 1px solid var(--rule);
+      border-radius: var(--radius-btn);
+    }
+    .resend input:focus { outline: none; border-color: var(--accent-dim); }
+    .resend input::placeholder { color: var(--text-tertiary); }
+    .resend-status:empty { display: none; }
+    .resend-status {
+      margin: 10px 0 0;
+      font-size: 13px;
+      color: var(--text-secondary);
+    }
+
+    .cta-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
     @media (max-width: 560px) {
       .claim { padding-top: 56px; }
+      .route { flex-direction: column; gap: 10px; }
       .key-row { flex-direction: column; }
       .key-row .btn { justify-content: center; }
     }
@@ -204,12 +280,37 @@
       <div data-when="missing">
         <h1>Your licence key</h1>
         <p class="sub">
-          This page shows your key using the one-time link Paddle sends the
-          moment you pay. Open that link, or check your inbox — the key was
-          emailed to you too.
+          This page shows your key through the one-time link Paddle sends the
+          moment you pay. Without that link there is nothing to look up — but
+          the key was emailed to you as well.
         </p>
-        <p style="margin-top:28px">
-          <a class="btn outline" href="licence.html">Email me my key again</a>
+
+        <div class="routes">
+          <div class="route">
+            <span class="route-mark" aria-hidden="true">1</span>
+            <div>
+              <h2>Check your inbox</h2>
+              <p>Search for <strong>Hutch licence</strong>. It arrives within a minute of paying, from Coursion.</p>
+            </div>
+          </div>
+          <div class="route">
+            <span class="route-mark" aria-hidden="true">2</span>
+            <div>
+              <h2>Or have it sent again</h2>
+              <p>Enter the email you paid with and we will resend the key.</p>
+              <form class="resend" id="resend-form">
+                <input type="email" required autocomplete="email" spellcheck="false"
+                       placeholder="you@example.com" aria-label="The email you paid with" />
+                <button class="btn primary" type="submit">Send it</button>
+              </form>
+              <p class="resend-status" id="resend-status" role="status" aria-live="polite"></p>
+            </div>
+          </div>
+        </div>
+
+        <p class="aside">
+          Still nothing? <a href="mailto:kuraydev.io@gmail.com">Email us</a> with the
+          address you paid with and we will sort it out by hand.
         </p>
       </div>
 
@@ -218,8 +319,9 @@
       <div data-when="error">
         <h1 id="error-title">We could not fetch your key</h1>
         <p class="sub" id="error-note"></p>
-        <p style="margin-top:28px">
-          <a class="btn outline" href="licence.html">Email me my key again</a>
+        <p class="cta-row">
+          <a class="btn primary" href="licence.html">Email me my key again</a>
+          <a class="btn outline" href="mailto:kuraydev.io@gmail.com">Email support</a>
         </p>
       </div>
 
