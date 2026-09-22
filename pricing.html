@@ -53,19 +53,33 @@
     .price-card {
       position: sticky; top: 28px;
       padding: 30px 30px 26px;
-      border: 1px solid var(--rule-strong);
+      border: 1px solid color-mix(in srgb, var(--accent) 26%, var(--rule-strong));
       border-radius: var(--radius-card);
-      background: var(--card-fill-strong);
+      background:
+        radial-gradient(120% 90% at 0% 0%, var(--accent-wash), transparent 62%),
+        var(--card-fill-strong);
+      box-shadow: 0 20px 50px -28px color-mix(in srgb, var(--accent) 45%, transparent);
     }
     .price-card .tag {
       font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
       color: var(--accent); font-weight: 700;
     }
     .amount { display: flex; align-items: baseline; gap: 9px; margin: 12px 0 2px; }
-    .amount .figure { font-size: 60px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+    .amount .figure {
+      font-size: 60px; font-weight: 700; letter-spacing: -0.03em; line-height: 1;
+      background: linear-gradient(120deg, var(--text-primary) 30%,
+                  color-mix(in srgb, var(--accent) 85%, var(--text-primary)));
+      -webkit-background-clip: text; background-clip: text; color: transparent;
+    }
     .amount .once { color: var(--text-tertiary); font-size: 14px; }
     .price-card .sub { color: var(--text-secondary); font-size: 14px; margin: 10px 0 20px; }
-    .price-card .btn { width: 100%; justify-content: center; }
+    .price-card .btn {
+      width: 100%; justify-content: center;
+      transition: transform .18s cubic-bezier(.2,.9,.3,1.2), box-shadow .18s ease, filter .18s ease;
+    }
+    .price-card .btn:hover { transform: translateY(-1px); filter: brightness(1.04);
+      box-shadow: 0 10px 26px -10px color-mix(in srgb, var(--accent) 70%, transparent); }
+    .price-card .btn:active { transform: translateY(0); }
     .price-card .fineprint {
       margin: 14px 0 0; font-size: 12.5px; line-height: 1.65; color: var(--text-tertiary);
     }
@@ -86,12 +100,21 @@
     .tiers-head h2 { font-size: 17px; margin: 0; }
     .tiers-head span { font-size: 12.5px; color: var(--text-tertiary); }
     .tier-row {
-      display: grid; grid-template-columns: 30px 190px 1fr 86px; gap: 18px;
-      align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule);
+      display: grid; grid-template-columns: 30px 28px 176px 1fr 86px; gap: 16px;
+      align-items: center; padding: 14px 8px; margin: 0 -8px;
+      border-bottom: 1px solid var(--rule); border-radius: 10px;
+      transition: background .18s ease, transform .18s ease;
     }
+    .tier-row:hover { background: var(--card-fill); transform: translateX(3px); }
+    .tier-row:hover .n { color: var(--accent); }
+    .tier-row img {
+      width: 26px; height: 26px; object-fit: contain;
+      filter: saturate(.9); transition: transform .18s cubic-bezier(.2,.9,.3,1.2);
+    }
+    .tier-row:hover img { transform: scale(1.09) rotate(-3deg); }
     .tier-row .n {
       font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
-      font-size: 12px; color: var(--text-quaternary);
+      font-size: 12px; color: var(--text-quaternary); transition: color .18s ease;
     }
     .tier-row .name { font-weight: 600; font-size: 15px; }
     .tier-row .what { color: var(--text-secondary); font-size: 14px; line-height: 1.55; }
@@ -111,7 +134,7 @@
     .why h2 { font-size: 17px; margin: 0 0 10px; color: var(--text-primary); }
     .why p { margin: 0; }
 
-    .faq { margin: 60px 0 0; }
+    .faq { margin: 44px 0 0; }
     .faq > h2 { font-size: 17px; margin: 0 0 6px; }
     .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
     .faq-item { padding: 20px 0; border-top: 1px solid var(--rule); }
@@ -120,18 +143,32 @@
     .faq a, .why a, .price-card a.inline { color: var(--accent); text-decoration: none; }
     .faq a:hover, .why a:hover { text-decoration: underline; }
 
+    /* Entrance: one short rise per block, staggered down the page. Anything
+       that has not been reached yet still renders — .rise only animates once
+       the observer marks it, and is a no-op when motion is reduced. */
+    .rise { opacity: 0; transform: translateY(14px); }
+    .rise.in { opacity: 1; transform: none;
+      transition: opacity .5s ease, transform .5s cubic-bezier(.2,.8,.2,1); }
+
+    @media (prefers-reduced-motion: reduce) {
+      .rise, .rise.in { opacity: 1; transform: none; transition: none; }
+      .tier-row, .tier-row:hover, .tier-row img, .price-card .btn { transition: none; transform: none; }
+    }
+
     @media (max-width: 860px) {
       .price-top { grid-template-columns: 1fr; gap: 34px; padding-top: 44px; }
       .price-card { position: static; }
       .faq-grid { grid-template-columns: 1fr; }
-      .tier-row { grid-template-columns: 24px 1fr auto; row-gap: 5px; }
-      .tier-row .n { grid-column: 1; grid-row: 1; }
+      .tier-row { grid-template-columns: 26px 1fr auto; row-gap: 5px; align-items: baseline; }
+      .tier-row .n { display: none; }
+      .tier-row img { grid-column: 1; grid-row: 1; }
       .tier-row .name { grid-column: 2; grid-row: 1; }
       .tier-row .pill { grid-column: 3; grid-row: 1; }
       .tier-row .what { grid-column: 2 / 4; grid-row: 2; }
       .price-facts b { flex-basis: 84px; }
     }
   </style>
+  <noscript><style>.rise { opacity: 1; transform: none; }</style></noscript>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
 <body
@@ -172,7 +209,7 @@
           </ul>
         </div>
 
-        <div class="price-card">
+        <div class="price-card rise">
           <div class="tag">Hutch licence</div>
           <div class="amount">
             <span class="figure" data-price-for="pri_01m351zvjdyvypkabsfnrb9f5v">$29</span>
@@ -190,56 +227,63 @@
         </div>
       </section>
 
-      <section class="tiers">
+      <section class="tiers rise">
         <div class="tiers-head">
           <h2>What's free, what the licence adds</h2>
           <span>Six tools · one menu bar icon</span>
         </div>
 
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">01</span>
+          <img src="icons/toggles.png" alt="" aria-hidden="true" />
           <span class="name">Toggles</span>
           <span class="what">25+ menu-bar switches, from Dark Mode to Keep Awake.</span>
           <span class="pill free">Free</span>
         </div>
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">02</span>
+          <img src="icons/window-manager.png" alt="" aria-hidden="true" />
           <span class="name">Window Manager</span>
           <span class="what">Snapping, per-app presets, per-Mac profiles.</span>
           <span class="pill free">Free</span>
         </div>
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">03</span>
+          <img src="icons/browser-picker.png" alt="" aria-hidden="true" />
           <span class="name">Browser Picker</span>
           <span class="what">Route links by host and by the app that opened them.</span>
           <span class="pill free">Free</span>
         </div>
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">04</span>
+          <img src="icons/pounce.png" alt="" aria-hidden="true" />
           <span class="name">Pounce · everyday</span>
           <span class="what">Apps, files, downloads, window switching, snaps, toggles, system actions, maths, web search, emoji.</span>
           <span class="pill free">Free</span>
         </div>
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">05</span>
+          <img src="icons/stash.png" alt="" aria-hidden="true" />
           <span class="name">Stash</span>
           <span class="what">The drag-and-drop shelf. Shake to summon it.</span>
           <span class="pill paid">Licence</span>
         </div>
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">06</span>
+          <img src="icons/reaper.png" alt="" aria-hidden="true" />
           <span class="name">Reaper</span>
           <span class="what">Finds what's eating your CPU, memory, GPU and battery, then walks you through it one process at a time.</span>
           <span class="pill paid">Licence</span>
         </div>
-        <div class="tier-row">
+        <div class="tier-row rise">
           <span class="n">07</span>
+          <img src="icons/pounce.png" alt="" aria-hidden="true" />
           <span class="name">Pounce · power</span>
           <span class="what">Clipboard history, custom commands, Shortcuts, AppleScript, simulators, music, AI, unit conversions, markdown, process and port kill, network tools.</span>
           <span class="pill paid">Licence</span>
         </div>
 
-        <div class="why">
+        <div class="why rise">
           <h2>Why isn't all of it paid?</h2>
           <p>
             Because the line is drawn on competition, not on effort. Window
@@ -251,7 +295,7 @@
         </div>
       </section>
 
-      <section class="faq">
+      <section class="faq rise">
         <h2>Questions</h2>
         <div class="faq-grid">
           <div class="faq-item">
@@ -321,5 +365,27 @@
 
   <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
   <script src="pricing.js"></script>
+  <script>
+    // Reveal on first approach, then stop watching. Staggered by position so
+    // the tier table deals itself out rather than appearing as one slab.
+    (function () {
+      var items = document.querySelectorAll('.rise');
+      if (!window.IntersectionObserver ||
+          window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        items.forEach(function (el) { el.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry, i) {
+          if (!entry.isIntersecting) return;
+          var el = entry.target;
+          el.style.transitionDelay = Math.min(i * 45, 220) + 'ms';
+          el.classList.add('in');
+          io.unobserve(el);
+        });
+      }, { rootMargin: '0px 0px -8% 0px', threshold: 0.12 });
+      items.forEach(function (el) { io.observe(el); });
+    })();
+  </script>
 </body>
 </html>
