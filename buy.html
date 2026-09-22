@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Buy Hutch</title>
+  <meta name="description" content="Buy Hutch — a one-time licence for two Macs, covering every 1.x release." />
+  <meta name="robots" content="noindex" />
+  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="apple-touch-icon" href="icon.png" />
+  <link rel="stylesheet" href="styles.css?v=b778bba540" />
+  <meta name="theme-color" content="#0B0A0C" />
+  <style>
+    .buy-page { max-width: 560px; margin: 0 auto; padding: 64px 0 96px; text-align: center; }
+    .buy-page h1 { margin-bottom: 12px; }
+    .muted { opacity: .7; font-size: 14px; }
+    .cards { text-align: left; margin: 36px auto 0; line-height: 1.7; }
+    .cards h2 { font-size: 16px; margin: 24px 0 6px; }
+    .cards code { font-size: 13px; }
+  </style>
+</head>
+<body
+  data-paddle-env="production"
+  data-paddle-token="live_86a811ec99040b3ef5ae246415a"
+  data-success-url="https://hutch.coursion.studio/thanks.html"
+  data-price-licence="pri_01m351zvjdyvypkabsfnrb9f5v"
+  data-price-seat="pri_01m3525psphqhfkncdbbgvx2m4"
+>
+  <div class="bg"></div>
+
+  <div class="container">
+    <nav class="top">
+      <div class="brand">
+        <a href="index.html"><img src="icon.png" alt="Hutch" /></a>
+        <span>Hutch</span>
+      </div>
+      <div class="links">
+        <a href="index.html">Home</a>
+      </div>
+    </nav>
+
+    <main class="buy-page">
+      <h1>Buy Hutch</h1>
+      <p class="sub">The checkout should open on its own. If it doesn't, use the button.</p>
+
+      <button class="btn primary" id="buy-open" type="button">Open the checkout</button>
+      <p class="signup-status muted" id="buy-status" role="status" aria-live="polite" hidden></p>
+
+      <div class="cards">
+        <h2>What you get</h2>
+        <p class="muted">
+          A licence for two Macs, covering every 1.x release. Your key arrives
+          on the next page and by email. Need more Macs later? Extra seats are
+          added to the same key.
+        </p>
+      </div>
+    </main>
+
+    <footer>
+      <div class="links">
+        <a href="index.html">Home</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refunds.html">Refunds</a>
+        <a href="mailto:kuraydev.io@gmail.com">Support</a>
+      </div>
+      <div>© 2026 Coursion · Made in SwiftUI</div>
+    </footer>
+  </div>
+
+  <script src="https://cdn.paddle.com/paddle/v2/paddle.js"></script>
+  <script src="buy.js"></script>
+</body>
+</html>
