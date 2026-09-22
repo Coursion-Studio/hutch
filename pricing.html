@@ -126,13 +126,41 @@
     .pill.paid { color: var(--accent); background: var(--accent-wash);
                  border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent); }
 
-    .why {
-      margin: 56px 0 0; padding: 26px 0 0 26px;
-      border-left: 2px solid var(--accent);
-      max-width: 62ch; color: var(--text-secondary); line-height: 1.75; font-size: 15px;
+    /* The one argument the page has to win. It was a grey paragraph under a
+       table of grey paragraphs; now it gets the width of the page and three
+       plain rules you can read in any order. */
+    .why { margin: 56px 0 0; padding: 34px 0 0; border-top: 1px solid var(--rule-strong); }
+    .why h2 {
+      font-size: 26px; letter-spacing: -0.02em; margin: 0 0 10px; color: var(--text-primary);
     }
-    .why h2 { font-size: 17px; margin: 0 0 10px; color: var(--text-primary); }
-    .why p { margin: 0; }
+    .why .lede {
+      margin: 0 0 26px; max-width: 54ch;
+      color: var(--text-secondary); font-size: 16px; line-height: 1.6;
+    }
+    .why .lede b { color: var(--text-primary); font-weight: 600; }
+    .why-rules { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+    .why-rule {
+      padding: 20px 20px 22px;
+      border: 1px solid var(--rule); border-radius: var(--radius-card);
+      background: var(--card-fill);
+      transition: border-color .2s ease, background .2s ease, transform .2s cubic-bezier(.2,.8,.2,1);
+    }
+    .why-rule:hover {
+      transform: translateY(-3px);
+      border-color: color-mix(in srgb, var(--accent) 32%, var(--rule-strong));
+      background: var(--card-fill-strong);
+    }
+    .why-rule .n {
+      font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+      font-size: 11px; color: var(--accent); letter-spacing: .06em;
+    }
+    .why-rule h3 { margin: 10px 0 8px; font-size: 15px; letter-spacing: -0.01em; }
+    .why-rule p { margin: 0; color: var(--text-secondary); font-size: 13.5px; line-height: 1.65; }
+    .why-rule .verdict {
+      display: inline-block; margin-top: 12px; font-size: 11px; font-weight: 700;
+      letter-spacing: .07em; text-transform: uppercase; color: var(--text-tertiary);
+    }
+    .why-rule .verdict.paid { color: var(--accent); }
 
     .faq { margin: 44px 0 0; }
     .faq > h2 { font-size: 17px; margin: 0 0 6px; }
@@ -159,6 +187,8 @@
       .price-top { grid-template-columns: 1fr; gap: 34px; padding-top: 44px; }
       .price-card { position: static; }
       .faq-grid { grid-template-columns: 1fr; }
+      .why-rules { grid-template-columns: 1fr; }
+      .why h2 { font-size: 22px; }
       .tier-row { grid-template-columns: 26px 1fr auto; row-gap: 5px; align-items: baseline; }
       .tier-row .n { display: none; }
       .tier-row img { grid-column: 1; grid-row: 1; }
@@ -285,13 +315,45 @@
 
         <div class="why rise">
           <h2>Why isn't all of it paid?</h2>
-          <p>
-            Because the line is drawn on competition, not on effort. Window
-            tiling, menu-bar switches and link routing all have good free
-            rivals — charging for them would just mean you install something
-            else. And a launcher that won't launch anything is a locked app
-            nobody opens twice.
+          <p class="lede">
+            The line is drawn on <b>competition</b>, not on effort. Three rules
+            decided which side each tool landed on.
           </p>
+
+          <div class="why-rules">
+            <div class="why-rule rise">
+              <span class="n">Rule 01</span>
+              <h3>Someone already gives it away</h3>
+              <p>
+                Window tiling, menu-bar switches and link routing are solved
+                problems with good free answers. Putting a price on them
+                wouldn't win that argument — you'd just install something else.
+              </p>
+              <span class="verdict">Stays free</span>
+            </div>
+
+            <div class="why-rule rise">
+              <span class="n">Rule 02</span>
+              <h3>A locked door isn't a demo</h3>
+              <p>
+                A launcher that won't launch anything is an app you open once,
+                hit a wall, and never reopen. So the everyday half of Pounce —
+                apps, files, windows, maths — is free for good.
+              </p>
+              <span class="verdict">Stays free</span>
+            </div>
+
+            <div class="why-rule rise">
+              <span class="n">Rule 03</span>
+              <h3>You'd go hunting for it</h3>
+              <p>
+                A shelf that catches a drag mid-flight, a reaper that finds
+                what's draining the battery, a launcher that runs your scripts:
+                the parts with no obvious free answer are the paid ones.
+              </p>
+              <span class="verdict paid">$29, once</span>
+            </div>
+          </div>
         </div>
       </section>
 
