@@ -20,9 +20,19 @@
        centred SaaS card this used to be. */
     .price-top {
       display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px;
-      align-items: start; padding: 64px 0 8px;
+      align-items: start; padding: 58px 0 0;
     }
-    .price-top h1 { margin: 14px 0 16px; max-width: 14ch; }
+    /* The hero eyebrow is scoped to .hero on the home page; pricing wants the
+       same catalogue label, so it is repeated rather than widened there. */
+    .price-top .eyebrow {
+      font-family: var(--mono); font-size: 12px; font-weight: 500;
+      letter-spacing: 0; text-transform: none; color: var(--accent);
+      margin-bottom: 16px; display: inline-flex; align-items: center; gap: 9px;
+    }
+    .price-top h1 {
+      margin: 0 0 16px; max-width: 20ch;
+      line-height: 1.06; text-wrap: balance;
+    }
     .price-top .lede {
       color: var(--text-secondary); font-size: 17px; line-height: 1.65; max-width: 46ch; margin: 0;
     }
@@ -33,6 +43,8 @@
       font-size: 14px; color: var(--text-secondary);
     }
     .price-facts li:last-child { border-bottom: 1px solid var(--rule); }
+    .price-facts a { color: var(--accent); text-decoration: none; }
+    .price-facts a:hover { text-decoration: underline; }
     .price-facts b {
       flex: 0 0 116px; color: var(--text-primary); font-weight: 600;
       font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
@@ -66,7 +78,7 @@
 
     /* One table, not two boxes: the question is "which side is this tool on",
        and a shared column answers it at a glance. */
-    .tiers { margin: 64px 0 0; }
+    .tiers { margin: 40px 0 0; }
     .tiers-head {
       display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
       padding-bottom: 14px; border-bottom: 1px solid var(--rule-strong);
