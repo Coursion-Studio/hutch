@@ -7,16 +7,8 @@
   <meta name="description" content="Terms of service for Hutch, a macOS utility app by Coursion." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=b778bba540" />
+  <link rel="stylesheet" href="styles.css?v=fb4231c635" />
   <meta name="theme-color" content="#0B0A0C" />
-  <style>
-    .legal { max-width: 720px; margin: 0 auto; padding: 56px 0 96px; }
-    .legal h1 { margin-bottom: 6px; }
-    .legal h2 { font-size: 18px; margin: 34px 0 8px; }
-    .legal p, .legal li { line-height: 1.75; opacity: .85; }
-    .legal ul { padding-left: 20px; }
-    .legal .updated { opacity: .55; font-size: 14px; margin-bottom: 8px; }
-  </style>
 </head>
 <body>
   <div class="bg"></div>
@@ -35,16 +27,40 @@
     </nav>
 
     <main class="legal">
-      <h1>Terms of Service</h1>
-      <p class="updated">Last updated 6 August 2026</p>
-
-      <p>
-        Hutch is a macOS utility application published by Coursion ("we", "us").
+      <div class="legal-head">
+        <div class="eyebrow">Legal · Terms</div>
+        <h1>Terms of Service</h1>
+        <span class="updated">Last updated 6 August 2026</span>
+        <p class="lede">Hutch is a macOS utility application published by Coursion ("we", "us").
         These terms cover your use of the app and this website. By installing or
-        buying Hutch you agree to them.
-      </p>
+        buying Hutch you agree to them.</p>
+      </div>
 
-      <h2>1. What you are buying</h2>
+      <div class="legal-grid">
+        <nav class="legal-toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <ol class="plain">
+          <li><a href="#1-what-you-are-buying">1. What you are buying</a></li>
+          <li><a href="#2-trial-and-free-tier">2. Trial and free tier</a></li>
+          <li><a href="#3-your-licence-key">3. Your licence key</a></li>
+          <li><a href="#4-payments">4. Payments</a></li>
+          <li><a href="#5-acceptable-use">5. Acceptable use</a></li>
+          <li><a href="#6-updates">6. Updates</a></li>
+          <li><a href="#7-third-party-ai-providers">7. Third-party AI providers</a></li>
+          <li><a href="#8-no-warranty">8. No warranty</a></li>
+          <li><a href="#9-limitation-of-liability">9. Limitation of liability</a></li>
+          <li><a href="#10-ending-the-agreement">10. Ending the agreement</a></li>
+          <li><a href="#11-changes-to-these-terms">11. Changes to these terms</a></li>
+          <li><a href="#12-who-you-are-dealing-with">12. Who you are dealing with</a></li>
+          <li><a href="#13-governing-law">13. Governing law</a></li>
+          <li><a href="#14-contact">14. Contact</a></li>
+          </ol>
+        </nav>
+
+        <div class="legal-copy">
+        <section>
+          <h2 id="1-what-you-are-buying">1. What you are buying</h2>
+
       <p>
         A perpetual, non-exclusive licence to use Hutch on the number of Macs
         stated in your licence key — two unless you bought additional seats. The
@@ -55,15 +71,21 @@
         You are buying a licence, not the software itself. We keep ownership of
         the app and its source.
       </p>
+        </section>
+        <section>
+          <h2 id="2-trial-and-free-tier">2. Trial and free tier</h2>
 
-      <h2>2. Trial and free tier</h2>
       <p>
         Hutch runs a 14-day trial with everything unlocked, no payment details
-        required. After it ends, the Toggles and Window Manager tools keep
-        working indefinitely at no cost. The remaining tools need a licence.
+        required. After it ends, Toggles, Window Manager, Browser Picker and the
+        everyday half of Pounce — apps, files, windows, snaps, system actions,
+        maths, web search — keep working indefinitely at no cost. Stash, Reaper
+        and Pounce's power features need a licence.
       </p>
+        </section>
+        <section>
+          <h2 id="3-your-licence-key">3. Your licence key</h2>
 
-      <h2>3. Your licence key</h2>
       <p>
         Your key is personal to you. Don't publish it, resell it, or share it
         outside the seats it covers. We may revoke a key that is distributed
@@ -73,8 +95,10 @@
         Keys are verified on your Mac and do not require an account or an
         internet connection to keep working.
       </p>
+        </section>
+        <section>
+          <h2 id="4-payments">4. Payments</h2>
 
-      <h2>4. Payments</h2>
       <p>
         Our order process is conducted by our online reseller Paddle.com. Paddle
         is the Merchant of Record for all our orders and handles all
@@ -85,15 +109,19 @@
         Prices are shown at checkout and may include tax depending on where you
         are. See our <a href="refunds.html">refund policy</a>.
       </p>
+        </section>
+        <section>
+          <h2 id="5-acceptable-use">5. Acceptable use</h2>
 
-      <h2>5. Acceptable use</h2>
       <ul>
         <li>Don't reverse engineer, decompile, or attempt to defeat licensing.</li>
         <li>Don't redistribute the app, modified or otherwise.</li>
         <li>Don't use Hutch to break the law or someone else's rights.</li>
       </ul>
+        </section>
+        <section>
+          <h2 id="6-updates">6. Updates</h2>
 
-      <h2>6. Updates</h2>
       <p>
         Hutch checks for updates and can install them with your confirmation.
         Updates are not installed silently. We may change, add, or remove
@@ -101,24 +129,30 @@
         will exist forever, though we won't remove one you paid for without a
         good reason and a clear notice.
       </p>
+        </section>
+        <section>
+          <h2 id="7-third-party-ai-providers">7. Third-party AI providers</h2>
 
-      <h2>7. Third-party AI providers</h2>
       <p>
         Hutch can talk to AI services using an API key that you supply. Those
         requests go directly from your Mac to that provider under their terms
         and pricing, and we neither see nor route them. Any cost is between you
         and that provider.
       </p>
+        </section>
+        <section>
+          <h2 id="8-no-warranty">8. No warranty</h2>
 
-      <h2>8. No warranty</h2>
       <p>
         Hutch is provided "as is". We do our best, but we can't promise it will
         be uninterrupted or error-free, or that it will suit a particular
         purpose. Some jurisdictions don't allow disclaiming certain warranties,
         in which case that disclaimer doesn't apply to you.
       </p>
+        </section>
+        <section>
+          <h2 id="9-limitation-of-liability">9. Limitation of liability</h2>
 
-      <h2>9. Limitation of liability</h2>
       <p>
         To the extent the law allows, our total liability for any claim relating
         to Hutch is limited to what you paid for your licence in the twelve
@@ -126,43 +160,56 @@
         loss, including lost data or lost profits. Nothing here limits liability
         that cannot legally be limited.
       </p>
+        </section>
+        <section>
+          <h2 id="10-ending-the-agreement">10. Ending the agreement</h2>
 
-      <h2>10. Ending the agreement</h2>
       <p>
         You may stop using Hutch at any time. We may end your licence if you
         materially breach these terms — most obviously by distributing your key
         publicly. If we do, and you haven't breached them, we'll refund the
         unused portion.
       </p>
+        </section>
+        <section>
+          <h2 id="11-changes-to-these-terms">11. Changes to these terms</h2>
 
-      <h2>11. Changes to these terms</h2>
       <p>
         We may update these terms. Material changes will be noted by the date at
         the top of this page. Changes don't apply retroactively to a purchase
         you already made.
       </p>
+        </section>
+        <section>
+          <h2 id="12-who-you-are-dealing-with">12. Who you are dealing with</h2>
 
-      <h2>12. Who you are dealing with</h2>
       <p>
         Hutch is sold by <strong>Kuray OGUN</strong>, trading as Coursion, of
         <strong>Ankara, Türkiye</strong>.
       </p>
+        </section>
+        <section>
+          <h2 id="13-governing-law">13. Governing law</h2>
 
-      <h2>13. Governing law</h2>
       <p>
         These terms are governed by the laws of Türkiye, and the courts of
         Türkiye have jurisdiction. If you bought as a consumer in the EU or UK,
         this does not remove the protection of the mandatory consumer law of
         the country you live in.
       </p>
+        </section>
+        <section>
+          <h2 id="14-contact">14. Contact</h2>
 
-      <h2>14. Contact</h2>
       <p>
         Questions about these terms:
         <a href="mailto:kuraydev.io@gmail.com">kuraydev.io@gmail.com</a>.
         Questions about a payment, invoice or refund can also go to Paddle,
         who are the Merchant of Record for every order.
       </p>
+        </section>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -176,5 +223,23 @@
       <div>© 2026 Coursion · Made in SwiftUI</div>
     </footer>
   </div>
+  <script>
+    // Mark the section you're in. Cheap, and the only script these pages get.
+    (function () {
+      var links = [].slice.call(document.querySelectorAll('.legal-toc a'));
+      if (!links.length || !window.IntersectionObserver) return;
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (a) { a.classList.remove('here'); });
+          var a = byId[e.target.id];
+          if (a) a.classList.add('here');
+        });
+      }, { rootMargin: '-10% 0px -70% 0px' });
+      document.querySelectorAll('.legal-copy h2').forEach(function (h) { io.observe(h); });
+    })();
+  </script>
 </body>
 </html>

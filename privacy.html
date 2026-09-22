@@ -7,17 +7,8 @@
   <meta name="description" content="What Hutch collects, which is almost nothing, and why." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=b778bba540" />
+  <link rel="stylesheet" href="styles.css?v=fb4231c635" />
   <meta name="theme-color" content="#0B0A0C" />
-  <style>
-    .legal { max-width: 720px; margin: 0 auto; padding: 56px 0 96px; }
-    .legal h1 { margin-bottom: 6px; }
-    .legal h2 { font-size: 18px; margin: 34px 0 8px; }
-    .legal p, .legal li { line-height: 1.75; opacity: .85; }
-    .legal ul { padding-left: 20px; }
-    .legal .updated { opacity: .55; font-size: 14px; margin-bottom: 8px; }
-    .legal .lede { opacity: 1; font-size: 17px; }
-  </style>
 </head>
 <body>
   <div class="bg"></div>
@@ -36,27 +27,50 @@
     </nav>
 
     <main class="legal">
-      <h1>Privacy Policy</h1>
-      <p class="updated">Last updated 6 August 2026</p>
-
-      <p class="lede">
-        Hutch has no accounts and never builds a profile of you. Everything it
+      <div class="legal-head">
+        <div class="eyebrow">Legal · Privacy</div>
+        <h1>Privacy Policy</h1>
+        <span class="updated">Last updated 6 August 2026</span>
+        <p class="lede">Hutch has no accounts and never builds a profile of you. Everything it
         indexes — your apps, files, clipboard, windows and running processes —
         stays on your Mac. It does send two kinds of anonymous telemetry, crash
         reports and feature-usage counts, and one switch in Settings turns both
         off. What follows is the full list, and the rest are things you either
-        start yourself or that happen when you buy.
-      </p>
+        start yourself or that happen when you buy.</p>
+      </div>
 
-      <h2>What the app does on your Mac</h2>
+      <div class="legal-grid">
+        <nav class="legal-toc" aria-label="On this page">
+          <h2>On this page</h2>
+          <ol>
+          <li><a href="#what-the-app-does-on-your-mac">What the app does on your Mac</a></li>
+          <li><a href="#when-the-app-does-talk-to-a-server">When the app does talk to a server</a></li>
+          <li><a href="#what-we-store-when-you-buy">What we store when you buy</a></li>
+          <li><a href="#this-website">This website</a></li>
+          <li><a href="#crash-reports-anonymous-usage-data-the-a">Crash reports &amp; anonymous usage data (the app)</a></li>
+          <li><a href="#who-else-touches-your-data">Who else touches your data</a></li>
+          <li><a href="#how-long-we-keep-it">How long we keep it</a></li>
+          <li><a href="#your-rights">Your rights</a></li>
+          <li><a href="#children">Children</a></li>
+          <li><a href="#changes">Changes</a></li>
+          <li><a href="#who-controls-your-data-and-how-to-reach-">Who controls your data, and how to reach us</a></li>
+          </ol>
+        </nav>
+
+        <div class="legal-copy">
+        <section>
+          <h2 id="what-the-app-does-on-your-mac">What the app does on your Mac</h2>
+
       <p>
         Everything Hutch indexes — your apps, files, clipboard history, windows,
         running processes — stays on your Mac. None of it is transmitted
         anywhere. Your clipboard history is stored locally and never leaves the
         machine.
       </p>
+        </section>
+        <section>
+          <h2 id="when-the-app-does-talk-to-a-server">When the app does talk to a server</h2>
 
-      <h2>When the app does talk to a server</h2>
       <ul>
         <li>
           <strong>Updates.</strong> Hutch checks for a new version. That request
@@ -80,8 +94,10 @@
           text visible first. You can turn capture off in Settings → Feedback.
         </li>
       </ul>
+        </section>
+        <section>
+          <h2 id="what-we-store-when-you-buy">What we store when you buy</h2>
 
-      <h2>What we store when you buy</h2>
       <p>
         A purchase creates one record: your email address, the order id, how many
         seats you bought, when it was issued, which Macs have activated, and
@@ -95,8 +111,10 @@
         Merchant of Record. Paddle has its own privacy policy covering the
         payment.
       </p>
+        </section>
+        <section>
+          <h2 id="this-website">This website</h2>
 
-      <h2>This website</h2>
       <p>
         We count pageviews so we know whether anyone is reading. There are no
         cookies and no local storage, and nothing follows you to other sites.
@@ -109,8 +127,10 @@
         never written down</strong> — only that hash, which is discarded after a
         short retention period.
       </p>
+        </section>
+        <section>
+          <h2 id="crash-reports-anonymous-usage-data-the-a">Crash reports &amp; anonymous usage data (the app)</h2>
 
-      <h2>Crash reports &amp; anonymous usage data (the app)</h2>
       <p>
         The Hutch app sends two kinds of anonymous telemetry, both of which you
         can turn off in Settings → General → Privacy (&ldquo;Share anonymous
@@ -121,8 +141,10 @@
         events like &ldquo;a tool was used&rdquo;, never what it was used on.
         No user profile is created and nothing is linked to your identity.
       </p>
+        </section>
+        <section>
+          <h2 id="who-else-touches-your-data">Who else touches your data</h2>
 
-      <h2>Who else touches your data</h2>
       <ul>
         <li><strong>Paddle</strong> — payment, invoicing, tax, and refunds.</li>
         <li><strong>Google Cloud</strong> — hosts the licence records, in the EU.</li>
@@ -132,16 +154,20 @@
         <li><strong>PostHog</strong> (EU) — receives anonymous feature-usage counts from the app, if you leave telemetry on.</li>
       </ul>
       <p>We don't sell anything to anyone, and there are no advertising or tracking networks involved.</p>
+        </section>
+        <section>
+          <h2 id="how-long-we-keep-it">How long we keep it</h2>
 
-      <h2>How long we keep it</h2>
       <p>
         Licence records are kept for as long as the licence is valid, since a
         perpetual licence needs a record to stay perpetual. Website visit hashes
         expire automatically. Tax records are kept by Paddle for whatever period
         the law requires.
       </p>
+        </section>
+        <section>
+          <h2 id="your-rights">Your rights</h2>
 
-      <h2>Your rights</h2>
       <p>
         You can ask what we hold about you, ask us to correct it, or ask us to
         delete it — write to
@@ -150,18 +176,24 @@
         licence can no longer be verified or recovered, so we'll confirm before
         doing it.
       </p>
+        </section>
+        <section>
+          <h2 id="children">Children</h2>
 
-      <h2>Children</h2>
       <p>Hutch isn't directed at children under 13, and we don't knowingly collect anything from them.</p>
+        </section>
+        <section>
+          <h2 id="changes">Changes</h2>
 
-      <h2>Changes</h2>
       <p>
         If this policy changes we'll update the date at the top. If a change
         materially affects what we collect, we'll say so in the app's release
         notes rather than quietly editing this page.
       </p>
+        </section>
+        <section>
+          <h2 id="who-controls-your-data-and-how-to-reach-">Who controls your data, and how to reach us</h2>
 
-      <h2>Who controls your data, and how to reach us</h2>
       <!--
         FILL IN BEFORE PADDLE VERIFICATION — the same legal name and address as
         terms.html. GDPR requires an identifiable data controller with a real
@@ -181,6 +213,9 @@
         payment itself; their privacy policy covers the card details we never
         see.
       </p>
+        </section>
+        </div>
+      </div>
     </main>
 
     <footer>
@@ -194,5 +229,23 @@
       <div>© 2026 Coursion · Made in SwiftUI</div>
     </footer>
   </div>
+  <script>
+    // Mark the section you're in. Cheap, and the only script these pages get.
+    (function () {
+      var links = [].slice.call(document.querySelectorAll('.legal-toc a'));
+      if (!links.length || !window.IntersectionObserver) return;
+      var byId = {};
+      links.forEach(function (a) { byId[a.getAttribute('href').slice(1)] = a; });
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (e) {
+          if (!e.isIntersecting) return;
+          links.forEach(function (a) { a.classList.remove('here'); });
+          var a = byId[e.target.id];
+          if (a) a.classList.add('here');
+        });
+      }, { rootMargin: '-10% 0px -70% 0px' });
+      document.querySelectorAll('.legal-copy h2').forEach(function (h) { io.observe(h); });
+    })();
+  </script>
 </body>
 </html>

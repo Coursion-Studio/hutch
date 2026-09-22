@@ -2881,3 +2881,86 @@ html[data-style="glass"] .aw-hero { width: 42px; height: 42px; }
 
 .appwin-float .pounce-results { min-height: 0; height: 106px; overflow: hidden; }
 .appwin-float .pounce-foot { height: 30px; }
+
+/* ── Legal pages (privacy, terms, refunds) ─────────────────────────────
+   Three pages nobody reads for pleasure, so the job is navigation: a
+   header that says what and when, a contents list that sticks while you
+   scroll, and sections separated by rules rather than by guesswork. */
+.legal { padding: 52px 0 96px; }
+.legal-head { padding-bottom: 26px; border-bottom: 1px solid var(--rule-strong); }
+.legal-head .eyebrow {
+  font-family: var(--mono); font-size: 12px; font-weight: 500; letter-spacing: 0;
+  text-transform: none; color: var(--accent); margin-bottom: 14px;
+  display: inline-flex; align-items: center; gap: 9px;
+}
+.legal-head h1 { margin: 0 0 12px; font-size: 34px; letter-spacing: -0.02em; }
+.legal-head .updated {
+  display: inline-flex; align-items: center; gap: 7px;
+  font-size: 12px; color: var(--text-tertiary);
+  padding: 4px 10px; border: 1px solid var(--rule); border-radius: 999px;
+}
+.legal-head .updated::before {
+  content: ""; width: 5px; height: 5px; border-radius: 50%;
+  background: var(--accent); opacity: .8;
+}
+.legal .lede {
+  margin: 22px 0 0; padding: 18px 20px;
+  border: 1px solid var(--rule); border-left: 2px solid var(--accent);
+  border-radius: var(--radius-card);
+  background: var(--card-fill);
+  font-size: 15.5px; line-height: 1.7; color: var(--text-secondary);
+}
+
+.legal-grid {
+  display: grid; grid-template-columns: 210px minmax(0, 1fr); gap: 52px;
+  margin-top: 38px; align-items: start;
+}
+.legal-toc { position: sticky; top: 28px; }
+.legal-toc h2 {
+  font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+  color: var(--text-tertiary); margin: 0 0 12px; font-weight: 700;
+}
+.legal-toc ol { list-style: none; margin: 0; padding: 0; counter-reset: toc; }
+.legal-toc li { counter-increment: toc; }
+.legal-toc a {
+  display: flex; gap: 10px; padding: 6px 0;
+  font-size: 13px; line-height: 1.45; color: var(--text-tertiary);
+  text-decoration: none; transition: color .15s ease;
+}
+.legal-toc a::before {
+  content: counter(toc, decimal-leading-zero);
+  font-family: var(--mono); font-size: 10.5px; opacity: .6; padding-top: 2px;
+}
+.legal-toc ol.plain a::before { content: none; }
+.legal-toc a:hover, .legal-toc a.here { color: var(--text-primary); }
+.legal-toc a.here::before { color: var(--accent); opacity: 1; }
+
+.legal-copy { max-width: 68ch; }
+.legal-copy section { padding: 26px 0; border-top: 1px solid var(--rule); }
+.legal-copy section:first-child { border-top: 0; padding-top: 4px; }
+.legal-copy h2 { font-size: 19px; letter-spacing: -0.01em; margin: 0 0 10px; scroll-margin-top: 24px; }
+.legal-copy p, .legal-copy li { line-height: 1.75; font-size: 15px; color: var(--text-secondary); }
+.legal-copy p { margin: 0 0 12px; }
+.legal-copy p:last-child { margin-bottom: 0; }
+.legal-copy ul, .legal-copy ol { margin: 0 0 12px; padding-left: 0; list-style: none; }
+.legal-copy li { position: relative; padding-left: 20px; margin-bottom: 8px; }
+.legal-copy ul li::before {
+  content: ""; position: absolute; left: 2px; top: 11px;
+  width: 6px; height: 1px; background: var(--accent); opacity: .85;
+}
+.legal-copy ol { counter-reset: step; }
+.legal-copy ol li { counter-increment: step; }
+.legal-copy ol li::before {
+  content: counter(step) "."; position: absolute; left: 0; top: 0;
+  font-family: var(--mono); font-size: 12px; color: var(--accent); opacity: .85;
+}
+.legal-copy strong { color: var(--text-primary); font-weight: 600; }
+.legal-copy a { color: var(--accent); text-decoration: none; }
+.legal-copy a:hover { text-decoration: underline; }
+
+@media (max-width: 900px) {
+  .legal-grid { grid-template-columns: 1fr; gap: 28px; }
+  .legal-toc { position: static; }
+  .legal-toc ol { display: flex; flex-wrap: wrap; gap: 4px 14px; }
+  .legal-head h1 { font-size: 27px; }
+}
