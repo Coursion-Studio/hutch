@@ -14,73 +14,110 @@
   <link rel="stylesheet" href="styles.css?v=b778bba540" />
   <meta name="theme-color" content="#0B0A0C" />
   <style>
-    .price-hero { text-align: center; padding: 78px 0 8px; }
-    .price-hero h1 { margin: 0 0 16px; }
-    .price-hero .lede {
-      color: var(--text-secondary); font-size: 18px; line-height: 1.6;
-      max-width: 52ch; margin: 0 auto;
+    /* Pricing is a page people scan for one number and one answer: what do I
+       get, what stays free. Same editorial furniture as the home page —
+       eyebrow, left-aligned headline, hairline rows — rather than the
+       centred SaaS card this used to be. */
+    .price-top {
+      display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px;
+      align-items: start; padding: 64px 0 8px;
+    }
+    .price-top h1 { margin: 14px 0 16px; max-width: 14ch; }
+    .price-top .lede {
+      color: var(--text-secondary); font-size: 17px; line-height: 1.65; max-width: 46ch; margin: 0;
+    }
+    .price-facts { list-style: none; margin: 26px 0 0; padding: 0; }
+    .price-facts li {
+      display: flex; gap: 12px; align-items: baseline;
+      padding: 11px 0; border-top: 1px solid var(--rule);
+      font-size: 14px; color: var(--text-secondary);
+    }
+    .price-facts li:last-child { border-bottom: 1px solid var(--rule); }
+    .price-facts b {
+      flex: 0 0 116px; color: var(--text-primary); font-weight: 600;
+      font-size: 11px; letter-spacing: .08em; text-transform: uppercase;
     }
 
     .price-card {
-      max-width: 460px;
-      margin: 46px auto 0;
-      padding: 34px 32px 30px;
+      position: sticky; top: 28px;
+      padding: 30px 30px 26px;
       border: 1px solid var(--rule-strong);
       border-radius: var(--radius-card);
       background: var(--card-fill-strong);
-      text-align: center;
     }
-    .amount {
-      display: flex; align-items: baseline; justify-content: center; gap: 10px;
-      margin-bottom: 6px;
+    .price-card .tag {
+      font-size: 11px; letter-spacing: .09em; text-transform: uppercase;
+      color: var(--accent); font-weight: 700;
     }
-    .amount .figure { font-size: 52px; font-weight: 700; letter-spacing: -0.02em; }
-    .amount .once { color: var(--text-secondary); font-size: 15px; }
-    .price-card .sub { color: var(--text-secondary); font-size: 15px; margin: 0 0 22px; }
+    .amount { display: flex; align-items: baseline; gap: 9px; margin: 12px 0 2px; }
+    .amount .figure { font-size: 60px; font-weight: 700; letter-spacing: -0.03em; line-height: 1; }
+    .amount .once { color: var(--text-tertiary); font-size: 14px; }
+    .price-card .sub { color: var(--text-secondary); font-size: 14px; margin: 10px 0 20px; }
     .price-card .btn { width: 100%; justify-content: center; }
     .price-card .fineprint {
-      margin: 16px 0 0; font-size: 13px; line-height: 1.6; color: var(--text-tertiary);
+      margin: 14px 0 0; font-size: 12.5px; line-height: 1.65; color: var(--text-tertiary);
     }
+    .price-card .rule { height: 1px; background: var(--rule); margin: 20px 0 14px; }
+    .price-card .seat {
+      display: flex; justify-content: space-between; gap: 12px; align-items: baseline;
+      font-size: 13px; color: var(--text-secondary);
+    }
+    .price-card .seat span:last-child { color: var(--text-primary); font-weight: 600; }
 
-    .split { display: grid; grid-template-columns: 1fr 1fr; gap: 0; margin-top: 26px; }
-    .split > div {
-      padding: 26px 28px 28px;
-      border: 1px solid var(--rule);
+    /* One table, not two boxes: the question is "which side is this tool on",
+       and a shared column answers it at a glance. */
+    .tiers { margin: 64px 0 0; }
+    .tiers-head {
+      display: flex; align-items: baseline; justify-content: space-between; gap: 16px;
+      padding-bottom: 14px; border-bottom: 1px solid var(--rule-strong);
     }
-    .split > div + div { border-left: 0; }
-    .split h3 { margin: 0 0 4px; font-size: 16px; }
-    .split .who { margin: 0 0 18px; font-size: 13px; color: var(--text-tertiary); }
-    .split ul { list-style: none; margin: 0; padding: 0; }
-    .split li {
-      display: flex; gap: 10px; align-items: baseline;
-      padding: 0 0 12px; line-height: 1.55;
-      font-size: 14px; color: var(--text-secondary);
+    .tiers-head h2 { font-size: 17px; margin: 0; }
+    .tiers-head span { font-size: 12.5px; color: var(--text-tertiary); }
+    .tier-row {
+      display: grid; grid-template-columns: 30px 190px 1fr 86px; gap: 18px;
+      align-items: baseline; padding: 16px 0; border-bottom: 1px solid var(--rule);
     }
-    .split li:last-child { padding-bottom: 0; }
-    .split li::before {
-      content: "";
-      flex: 0 0 5px; height: 5px; margin-top: 7px;
-      border-radius: 50%; background: var(--text-quaternary);
+    .tier-row .n {
+      font-family: var(--mono, ui-monospace, SFMono-Regular, Menlo, monospace);
+      font-size: 12px; color: var(--text-quaternary);
     }
-    .split .paid li::before { background: var(--accent); }
-    .split strong { color: var(--text-primary); font-weight: 600; }
+    .tier-row .name { font-weight: 600; font-size: 15px; }
+    .tier-row .what { color: var(--text-secondary); font-size: 14px; line-height: 1.55; }
+    .pill {
+      justify-self: end; font-size: 10.5px; letter-spacing: .07em; text-transform: uppercase;
+      font-weight: 700; padding: 4px 9px; border-radius: 999px; white-space: nowrap;
+    }
+    .pill.free { color: var(--text-tertiary); border: 1px solid var(--rule-strong); }
+    .pill.paid { color: var(--accent); background: var(--accent-wash);
+                 border: 1px solid color-mix(in srgb, var(--accent) 34%, transparent); }
 
     .why {
-      max-width: 620px; margin: 40px auto 0; padding-top: 28px;
-      border-top: 1px solid var(--rule);
-      color: var(--text-secondary); line-height: 1.75; font-size: 15px;
+      margin: 56px 0 0; padding: 26px 0 0 26px;
+      border-left: 2px solid var(--accent);
+      max-width: 62ch; color: var(--text-secondary); line-height: 1.75; font-size: 15px;
     }
-    .why h2 { font-size: 17px; margin: 0 0 10px; }
+    .why h2 { font-size: 17px; margin: 0 0 10px; color: var(--text-primary); }
+    .why p { margin: 0; }
 
-    .faq { max-width: 620px; margin: 8px auto 0; }
-    .faq h3 { font-size: 15px; margin: 26px 0 6px; }
-    .faq p { margin: 0; color: var(--text-secondary); font-size: 14px; line-height: 1.7; }
-    .faq a, .why a { color: var(--accent); text-decoration: none; }
+    .faq { margin: 60px 0 0; }
+    .faq > h2 { font-size: 17px; margin: 0 0 6px; }
+    .faq-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0 48px; }
+    .faq-item { padding: 20px 0; border-top: 1px solid var(--rule); }
+    .faq-item h3 { font-size: 14.5px; margin: 0 0 7px; }
+    .faq-item p { margin: 0; color: var(--text-secondary); font-size: 13.5px; line-height: 1.7; }
+    .faq a, .why a, .price-card a.inline { color: var(--accent); text-decoration: none; }
     .faq a:hover, .why a:hover { text-decoration: underline; }
 
-    @media (max-width: 720px) {
-      .split { grid-template-columns: 1fr; }
-      .split > div + div { border-left: 1px solid var(--rule); border-top: 0; }
+    @media (max-width: 860px) {
+      .price-top { grid-template-columns: 1fr; gap: 34px; padding-top: 44px; }
+      .price-card { position: static; }
+      .faq-grid { grid-template-columns: 1fr; }
+      .tier-row { grid-template-columns: 24px 1fr auto; row-gap: 5px; }
+      .tier-row .n { grid-column: 1; grid-row: 1; }
+      .tier-row .name { grid-column: 2; grid-row: 1; }
+      .tier-row .pill { grid-column: 3; grid-row: 1; }
+      .tier-row .what { grid-column: 2 / 4; grid-row: 2; }
+      .price-facts b { flex-basis: 84px; }
     }
   </style>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
@@ -105,49 +142,89 @@
     </nav>
 
     <main>
-      <section class="price-hero">
-        <h1>One price. Yours for good.</h1>
-        <p class="lede">
-          Hutch is a one-time purchase, not a subscription. Three of its tools
-          are free forever, and always will be.
-        </p>
+      <section class="price-top">
+        <div>
+          <div class="eyebrow">Pricing · one-time</div>
+          <h1>One price. Yours for good.</h1>
+          <p class="lede">
+            Hutch is a one-time purchase, not a subscription. Three of its
+            tools are free forever, and always will be.
+          </p>
+
+          <ul class="price-facts">
+            <li><b>Macs</b><span>Two, on one key. Release one from Settings → Licence any time.</span></li>
+            <li><b>Updates</b><span>Every 1.x release, however many there are.</span></li>
+            <li><b>Trial</b><span>14 days of everything. No card, no account.</span></li>
+            <li><b>Offline</b><span>Your key is checked on your Mac. No login, no server to lock you out.</span></li>
+            <li><b>Refunds</b><span>Ask and you get one — see the <a href="refunds.html">refund policy</a>.</span></li>
+          </ul>
+        </div>
 
         <div class="price-card">
+          <div class="tag">Hutch licence</div>
           <div class="amount">
             <span class="figure" data-price-for="pri_01m351zvjdyvypkabsfnrb9f5v">$29</span>
             <span class="once">once</span>
           </div>
           <p class="sub">Two Macs. Every 1.x release.</p>
           <a class="btn primary" href="buy.html?item=licence">Buy Hutch</a>
-          <p class="fineprint">
-            14-day trial of everything first — no card, no account.
-            Extra Macs are <span data-price-for="pri_01m3525psphqhfkncdbbgvx2m4">$4.99</span> each.
-          </p>
+          <p class="fineprint">14-day trial of everything first — no card, no account.</p>
+          <div class="rule"></div>
+          <div class="seat">
+            <span>Extra Mac</span>
+            <span data-price-for="pri_01m3525psphqhfkncdbbgvx2m4">$4.99</span>
+          </div>
           <p class="fineprint" id="tax-note" hidden>Shown in your currency, tax included.</p>
         </div>
       </section>
 
-      <section class="tight">
-        <div class="split">
-          <div>
-            <h3>Free forever</h3>
-            <p class="who">No trial, no nag, no licence.</p>
-            <ul>
-              <li><span><strong>Toggles</strong> — 25+ menu-bar switches, from Dark Mode to Keep Awake.</span></li>
-              <li><span><strong>Window Manager</strong> — snapping, per-app presets, per-Mac profiles.</span></li>
-              <li><span><strong>Browser Picker</strong> — route links by host and by the app that opened them.</span></li>
-              <li><span><strong>Pounce, the everyday half</strong> — apps, files, downloads, window switching, snaps, toggles, system actions, maths, web search, emoji.</span></li>
-            </ul>
-          </div>
-          <div class="paid">
-            <h3>What the licence adds</h3>
-            <p class="who">Everything above, plus:</p>
-            <ul>
-              <li><span><strong>Stash</strong> — the drag-and-drop shelf. Shake to summon it.</span></li>
-              <li><span><strong>Reaper</strong> — finds what's eating your CPU, memory, GPU and battery, then walks you through it one process at a time.</span></li>
-              <li><span><strong>Pounce, the power half</strong> — clipboard history, custom commands, Shortcuts, AppleScript, simulators, music, AI, unit conversions, markdown, process and port kill, network tools.</span></li>
-            </ul>
-          </div>
+      <section class="tiers">
+        <div class="tiers-head">
+          <h2>What's free, what the licence adds</h2>
+          <span>Six tools · one menu bar icon</span>
+        </div>
+
+        <div class="tier-row">
+          <span class="n">01</span>
+          <span class="name">Toggles</span>
+          <span class="what">25+ menu-bar switches, from Dark Mode to Keep Awake.</span>
+          <span class="pill free">Free</span>
+        </div>
+        <div class="tier-row">
+          <span class="n">02</span>
+          <span class="name">Window Manager</span>
+          <span class="what">Snapping, per-app presets, per-Mac profiles.</span>
+          <span class="pill free">Free</span>
+        </div>
+        <div class="tier-row">
+          <span class="n">03</span>
+          <span class="name">Browser Picker</span>
+          <span class="what">Route links by host and by the app that opened them.</span>
+          <span class="pill free">Free</span>
+        </div>
+        <div class="tier-row">
+          <span class="n">04</span>
+          <span class="name">Pounce · everyday</span>
+          <span class="what">Apps, files, downloads, window switching, snaps, toggles, system actions, maths, web search, emoji.</span>
+          <span class="pill free">Free</span>
+        </div>
+        <div class="tier-row">
+          <span class="n">05</span>
+          <span class="name">Stash</span>
+          <span class="what">The drag-and-drop shelf. Shake to summon it.</span>
+          <span class="pill paid">Licence</span>
+        </div>
+        <div class="tier-row">
+          <span class="n">06</span>
+          <span class="name">Reaper</span>
+          <span class="what">Finds what's eating your CPU, memory, GPU and battery, then walks you through it one process at a time.</span>
+          <span class="pill paid">Licence</span>
+        </div>
+        <div class="tier-row">
+          <span class="n">07</span>
+          <span class="name">Pounce · power</span>
+          <span class="what">Clipboard history, custom commands, Shortcuts, AppleScript, simulators, music, AI, unit conversions, markdown, process and port kill, network tools.</span>
+          <span class="pill paid">Licence</span>
         </div>
 
         <div class="why">
@@ -160,49 +237,59 @@
             nobody opens twice.
           </p>
         </div>
+      </section>
 
-        <div class="faq">
-          <h3>What happens after the trial?</h3>
-          <p>
-            The free tools keep working exactly as they did. Nothing is taken
-            away, nothing starts nagging — the paid features simply stop
-            appearing.
-          </p>
-
-          <h3>Does it need an account?</h3>
-          <p>
-            No. Your licence key is signed, and Hutch verifies it on your Mac
-            without asking anything. There's no login, and no server that can
-            lock you out of software you paid for.
-          </p>
-
-          <h3>How many Macs?</h3>
-          <p>
-            Two. If you run out, release a Mac you no longer use from
-            Settings → Licence and the seat comes straight back — or add more
-            for <span data-price-for="pri_01m3525psphqhfkncdbbgvx2m4">$4.99</span> each.
-          </p>
-
-          <h3>What about Hutch 2.0?</h3>
-          <p>
-            Your licence covers every 1.x release, however many there are.
-            2.0 will be a paid upgrade, discounted for anyone who already owns
-            a licence.
-          </p>
-
-          <h3>Can I get a refund?</h3>
-          <p>
-            Yes — see the <a href="refunds.html">refund policy</a>. If Hutch
-            isn't for you, say so and we'll refund it.
-          </p>
-
-          <h3>Do you take my data?</h3>
-          <p>
-            Hutch runs on your Mac. Anonymous crash reports and feature counts
-            are on by default and switch off together in Settings → General →
-            Privacy. The <a href="privacy.html">privacy policy</a> spells out
-            exactly what that includes.
-          </p>
+      <section class="faq">
+        <h2>Questions</h2>
+        <div class="faq-grid">
+          <div class="faq-item">
+            <h3>What happens after the trial?</h3>
+            <p>
+              The free tools keep working exactly as they did. Nothing is taken
+              away, nothing starts nagging — the paid features simply stop
+              appearing.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Does it need an account?</h3>
+            <p>
+              No. Your licence key is signed, and Hutch verifies it on your Mac
+              without asking anything. There's no login, and no server that can
+              lock you out of software you paid for.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>How many Macs?</h3>
+            <p>
+              Two. If you run out, release a Mac you no longer use from
+              Settings → Licence and the seat comes straight back — or add more
+              for <span data-price-for="pri_01m3525psphqhfkncdbbgvx2m4">$4.99</span> each.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>What about Hutch 2.0?</h3>
+            <p>
+              Your licence covers every 1.x release, however many there are.
+              2.0 will be a paid upgrade, discounted for anyone who already owns
+              a licence.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Can I get a refund?</h3>
+            <p>
+              Yes — see the <a href="refunds.html">refund policy</a>. If Hutch
+              isn't for you, say so and we'll refund it.
+            </p>
+          </div>
+          <div class="faq-item">
+            <h3>Do you take my data?</h3>
+            <p>
+              Hutch runs on your Mac. Anonymous crash reports and feature counts
+              are on by default and switch off together in Settings → General →
+              Privacy. The <a href="privacy.html">privacy policy</a> spells out
+              exactly what that includes.
+            </p>
+          </div>
         </div>
       </section>
     </main>
