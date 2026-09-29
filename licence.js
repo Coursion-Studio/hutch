@@ -3,13 +3,13 @@
 // Both talk to the Hutch licensing API on polaris-backend. There is no build
 // step for this site, so the base URL lives here as one constant.
 
-// Dev while nothing is for sale. Switch to the production service the same
-// day the checkout goes live — a real buyer landing here against dev would be
-// told their purchase is "still processing" forever, because the purchase
-// happened in a database this URL never reads.
+// Production. The live checkout (buy.html) sells into the production
+// database, so this has to read the same one — against dev, a real buyer
+// would be told their purchase is "still processing" forever. Sandbox test
+// purchases (sandbox-buy.html) land in dev and won't show a key here.
 //
-//   prod: https://polaris-backend-gnavb7tkza-ew.a.run.app/api/v1/hutch
-const API_BASE = 'https://polaris-backend-dev-gnavb7tkza-ew.a.run.app/api/v1/hutch';
+//   dev: https://polaris-backend-dev-gnavb7tkza-ew.a.run.app/api/v1/hutch
+const API_BASE = 'https://polaris-backend-gnavb7tkza-ew.a.run.app/api/v1/hutch';
 
 // Paddle's redirect can beat its own webhook, so the first claim often comes
 // back "not ready". Poll for about half a minute before giving up — long
