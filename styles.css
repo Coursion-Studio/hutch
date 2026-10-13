@@ -307,7 +307,7 @@ nav.top a:hover { color: var(--text-primary); }
   }
 }
 
-/* ─── early access signup ─── */
+/* ─── email forms ─── */
 
 .signup {
   display: flex;
@@ -1103,6 +1103,18 @@ kbd.key {
 .cta-band h2,
 .cta-band p.lede { margin-left: 0; margin-right: 0; }
 .cta-band .cta-grid { margin-top: 22px; }
+
+.cta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0;
+}
+.cta-row .btn {
+  height: 48px;
+  padding: 0 22px;
+}
+.cta-band .cta-row { margin-top: 22px; }
 
 @media (prefers-reduced-motion: reduce) {
   .shot-hero, .shot-hero:hover { transform: none; transition: none; }

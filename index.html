@@ -7,7 +7,7 @@
   <meta name="description" content="A ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a smart browser picker, and a resource reaper — six native Mac tools in one menu bar app. On-device, free, BYO API keys for AI." />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=fb4231c635" />
+  <link rel="stylesheet" href="styles.css?v=d23c048adf" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
   <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon — and nothing leaves your machine." />
   <meta property="og:image" content="screenshots/hero-dashboard.png" />
@@ -59,7 +59,8 @@
         <a href="#tour">Tour</a>
         <a href="#tools">Tools</a>
         <a href="#why">Why Hutch</a>
-        <a href="#early-access">Early access</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="#download">Download</a>
         <button class="nav-k js-palette-open" type="button" aria-label="Search this site">
           <span>Search</span><kbd>⌘K</kbd>
         </button>
@@ -76,15 +77,11 @@
         buries three menus deep. Six native Mac tools, one icon — and nothing
         leaves your machine.
       </p>
-      <form class="signup js-signup" action="https://formspree.io/f/xpqvevra" method="POST">
-        <input class="signup-field" type="email" name="email" placeholder="you@example.com"
-               required autocomplete="email" aria-label="Email address" />
-        <input type="hidden" name="_subject" value="Hutch — early access request" />
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" />
-        <button class="btn primary" type="submit">Get early access</button>
-      </form>
-      <p class="signup-status" role="status" aria-live="polite" hidden></p>
-      <p class="req-note">macOS 15 (Sequoia) or later · Downloads are paused while we prepare the next release · <a href="#tour">Take the tour</a></p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Download free trial</a>
+        <a class="btn outline" href="pricing.html">Buy — $29</a>
+      </div>
+      <p class="req-note">macOS 15 (Sequoia) or later · 14-day trial, then $29 once · <a href="#tour">Take the tour</a></p>
      </div>
 
      <!-- Live replica of the launcher, drawn in HTML rather than screenshotted:
@@ -611,23 +608,19 @@
       </div>
     </section>
 
-    <section id="early-access" class="cta-band tight">
+    <section id="download" class="cta-band tight">
       <h2>Open the drawer.</h2>
-      <p class="lede">Hutch is getting ready for its next release. Leave your email and you'll be first to know.</p>
-      <form class="signup js-signup" action="https://formspree.io/f/xpqvevra" method="POST">
-        <input class="signup-field" type="email" name="email" placeholder="you@example.com"
-               required autocomplete="email" aria-label="Email address" />
-        <input type="hidden" name="_subject" value="Hutch — early access request" />
-        <input type="text" name="_gotcha" style="display:none" tabindex="-1" aria-hidden="true" />
-        <button class="btn primary" type="submit">Request early access</button>
-      </form>
-      <p class="signup-status" role="status" aria-live="polite" hidden></p>
+      <p class="lede">Try every tool free for 14 days. After that it's $29 once for three Macs and every 1.x release — and Toggles, Window Manager and Browser Picker stay free forever.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Download free trial</a>
+        <a class="btn outline" href="pricing.html">Buy — $29</a>
+      </div>
       <p class="req-note">macOS 15 (Sequoia) or later · Developer ID signed &amp; notarized</p>
     </section>
 
     <footer>
       <div class="links">
-        <a href="#early-access">Early access</a>
+        <a href="#download">Download</a>
         <a href="pricing.html">Pricing</a>
         <a href="licence.html">Lost your key?</a>
         <a href="terms.html">Terms</a>
@@ -641,91 +634,9 @@
   </div>
 
 
-  <div class="modal-backdrop" id="signup-modal" hidden>
-    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="signup-modal-title">
-      <div class="modal-badge" aria-hidden="true">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"
-             stroke-linecap="round" stroke-linejoin="round">
-          <path d="M20 6 9 17l-5-5" />
-        </svg>
-      </div>
-      <h3 id="signup-modal-title">You're on the list</h3>
-      <p>We'll email you the moment Hutch is ready to download. No newsletter, no noise — just the one message.</p>
-      <button class="btn primary modal-close" type="button">Nice</button>
-    </div>
-  </div>
-
   <script>
-    // Early access: post to Formspree in the background so the page never
-    // navigates away to a plain confirmation screen. Runs for every signup
-    // form on the page — hero and closing band — reporting into the status
-    // line that follows each one.
-    // Success modal — shared by every signup form.
-    var modal = document.getElementById("signup-modal");
-    function openModal() {
-      if (!modal) return;
-      modal.hidden = false;
-      requestAnimationFrame(function () { modal.classList.add("is-open"); });
-      var close = modal.querySelector(".modal-close");
-      if (close) close.focus();
-    }
-    function closeModal() {
-      if (!modal) return;
-      modal.classList.remove("is-open");
-      setTimeout(function () { modal.hidden = true; }, 180);
-    }
-    if (modal) {
-      modal.addEventListener("click", function (event) {
-        // Backdrop click only — clicks inside the card shouldn't dismiss it.
-        if (event.target === modal || event.target.closest(".modal-close")) closeModal();
-      });
-      document.addEventListener("keydown", function (event) {
-        if (event.key === "Escape" && !modal.hidden) closeModal();
-      });
-    }
-
-    (function () {
-      document.querySelectorAll(".js-signup").forEach(function (form) {
-        var status = form.nextElementSibling;
-        var button = form.querySelector("button");
-        var label = button ? button.textContent : "Send";
-
-        function show(message, ok) {
-          if (!status) return;
-          status.textContent = message;
-          status.className = "signup-status" + (ok ? " ok" : " error");
-          status.hidden = false;
-        }
-
-        form.addEventListener("submit", function (event) {
-          event.preventDefault();
-          button.disabled = true;
-          button.textContent = "Sending…";
-
-          fetch(form.action, {
-            method: "POST",
-            body: new FormData(form),
-            headers: { Accept: "application/json" }
-          }).then(function (response) {
-            if (response.ok) {
-              form.reset();
-              if (status) status.hidden = true;
-              openModal();
-            } else {
-              return response.json().then(function (data) {
-                show((data && data.errors && data.errors[0] && data.errors[0].message)
-                  || "Something went wrong. Try again, or email support@coursion.studio.", false);
-              });
-            }
-          }).catch(function () {
-            show("Couldn't reach the server. Email support@coursion.studio instead.", false);
-          }).finally(function () {
-            button.disabled = false;
-            button.textContent = label;
-          });
-        });
-      });
-    })();
+    var DMG_URL = "https://github.com/Coursion-Studio/hutch/releases/latest/download/Hutch.dmg";
+    document.querySelectorAll("[data-download]").forEach(function (a) { a.href = DMG_URL; });
 
     // Copy-to-clipboard for the brew install code blocks.
     (function () {
@@ -979,7 +890,8 @@
         { g: "Tools", mk: "◆", t: "Reaper — resource review", h: "Tour", go: "#tools" },
         { g: "Go", mk: "→", t: "Take the tour", h: "Section", go: "#tour" },
         { g: "Go", mk: "→", t: "Why Hutch", h: "Section", go: "#why" },
-        { g: "Go", mk: "✉", t: "Request early access", h: "Focus the field", act: "signup" },
+        { g: "Go", mk: "↓", t: "Download free trial", h: "Download", act: "download" },
+        { g: "Pages", mk: "$", t: "Pricing — $29 once", h: "Page", go: "pricing.html" },
         { g: "Pages", mk: "§", t: "Privacy Policy", h: "Page", go: "privacy.html" },
         { g: "Pages", mk: "§", t: "Terms of Service", h: "Page", go: "terms.html" },
         { g: "Pages", mk: "§", t: "Refunds", h: "Page", go: "refunds.html" },
@@ -1051,12 +963,7 @@
         var it = shown[sel];
         if (!it) return;
         close();
-        if (it.act === "signup") {
-          var f = document.querySelector("#early-access input[type=email]")
-               || document.querySelector(".signup-field");
-          if (f) { f.scrollIntoView({ behavior: "smooth", block: "center" }); setTimeout(function () { f.focus(); }, 420); }
-          return;
-        }
+        if (it.act === "download") { window.location.href = DMG_URL; return; }
         if (/^https?:/.test(it.go)) { window.open(it.go, "_blank", "noopener"); return; }
         if (it.go.charAt(0) === "#") {
           var target = document.querySelector(it.go);
