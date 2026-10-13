@@ -55,7 +55,10 @@ async function claimLicence() {
 
   const working = document.getElementById('working-note');
   const keyField = document.getElementById('claim-key');
-  const transactionId = new URLSearchParams(window.location.search).get('_ptxn');
+  // Paddle redirects with `_ptxn`, Creem with `order_id`. Either is the id the
+  // backend minted the key against.
+  const params = new URLSearchParams(window.location.search);
+  const transactionId = params.get('_ptxn') || params.get('order_id');
 
   // The transaction id is a credential of sorts: it's what proves the purchase
   // to the claim endpoint. Take it out of the URL so it doesn't sit in the

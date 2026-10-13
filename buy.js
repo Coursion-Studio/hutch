@@ -1,4 +1,8 @@
-// Opens the Paddle checkout for a buy page.
+// Opens the checkout for a buy page — Paddle's overlay or Creem's hosted page.
+//
+// Two merchants of record, one buy page. `data-provider` on <body> picks
+// which one sells; everything the app links to (buy.html?item=…) stays the
+// same either way, so switching provider never needs an app release.
 //
 // Paddle Billing has no hosted checkout page of its own — the checkout is an
 // overlay drawn by Paddle.js on a domain Paddle has approved. So "the checkout
@@ -21,6 +25,8 @@ const MAX_SEATS = 8;
 function config() {
   const data = document.body.dataset;
   return {
+    provider: data.provider === 'creem' ? 'creem' : 'paddle',
+    creemLinks: { licence: data.creemLicence, seat: data.creemSeat },
     environment: data.paddleEnv,
     token: data.paddleToken,
     successUrl: data.successUrl,
@@ -81,8 +87,31 @@ function openCheckout() {
   });
 }
 
+// Creem hosts its own checkout, so there is nothing to draw here: send the
+// buyer to the product's payment link. A payment link has no quantity, so a
+// seat is one seat per checkout — more Macs means coming back, which the
+// backend handles by widening the same key each time.
+function openCreemCheckout() {
+  const { creemLinks } = config();
+  const { item } = requested();
+  const link = creemLinks[item];
+  if (!link) {
+    fail('This page is missing its checkout link. Email us and we will take the payment by hand.');
+    return;
+  }
+  const url = new URL(link);
+  url.searchParams.set('theme', 'dark');
+  window.location.assign(url.toString());
+}
+
 function start() {
-  const { environment, token } = config();
+  const { provider, environment, token } = config();
+
+  if (provider === 'creem') {
+    document.getElementById('buy-open')?.addEventListener('click', openCreemCheckout);
+    openCreemCheckout();
+    return;
+  }
 
   if (typeof Paddle === 'undefined' || !token) {
     fail('The checkout could not load. Try again, or email us and we will send a payment link.');

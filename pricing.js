@@ -14,6 +14,9 @@
 // is worse than one showing the wrong currency.
 async function localizePrices() {
   const data = document.body.dataset;
+  // Price previews are a Paddle feature. Selling through Creem, the markup's
+  // USD figures are the price; Creem's checkout localises at payment.
+  if (data.provider === 'creem') return;
   if (typeof Paddle === 'undefined' || !data.paddleToken) return;
 
   if (data.paddleEnv === 'sandbox') Paddle.Environment.set('sandbox');
