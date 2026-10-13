@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Sandbox checkout — Hutch</title>
-  <meta name="description" content="Paddle sandbox checkout for Hutch. Test cards only." />
+  <meta name="description" content="Creem test-mode checkout for Hutch. Test cards only." />
   <meta name="robots" content="noindex" />
   <link rel="icon" type="image/png" href="icon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
@@ -26,6 +26,9 @@
   </style>
 </head>
 <body
+  data-provider="creem"
+  data-creem-licence="https://www.creem.io/test/payment/prod_2LYUvITH03hl9XzUOyIrFu"
+  data-creem-seat="https://www.creem.io/test/payment/prod_3612xRLm5Qokzww441GB6u"
   data-paddle-env="sandbox"
   data-paddle-token="test_6eb8bd0fa1d1870de8f218a1f41"
   data-success-url="https://hutch.coursion.studio/thanks.html"
@@ -47,7 +50,7 @@
 
     <main class="buy-page">
       <p class="sandbox-note">
-        <strong>Paddle sandbox — test cards only.</strong>
+        <strong>Creem test mode — test cards only.</strong>
         No money moves and no real licence is sold here. If you arrived from a
         published copy of Hutch, that build is misconfigured; please
         <a href="mailto:kuraydev.io@gmail.com">tell us</a>.
@@ -62,15 +65,13 @@
       <div class="cards">
         <h2>Test cards</h2>
         <p class="muted">
-          Any future expiry and any CVC. Success: <code>4242 4242 4242 4242</code>.
-          Declined: <code>4000 0000 0000 0002</code>.
-          3-D Secure: <code>4000 0038 0000 0446</code>.
+          Any future expiry and any CVC: <code>4242 4242 4242 4242</code>.
         </p>
 
         <h2>What should happen</h2>
         <p class="muted">
-          Paying redirects to the thanks page with a transaction id, which it
-          trades for a licence key minted by the sandbox webhook. The key is
+          Paying redirects to the sandbox thanks page with an order id, which it
+          trades for a licence key minted by the test-mode webhook. The key is
           signed by the dev licensing service, so it will not unlock a build
           checked against the production key.
         </p>

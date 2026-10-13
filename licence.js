@@ -6,10 +6,9 @@
 // Production. The live checkout (buy.html) sells into the production
 // database, so this has to read the same one — against dev, a real buyer
 // would be told their purchase is "still processing" forever. Sandbox test
-// purchases (sandbox-buy.html) land in dev and won't show a key here.
-//
-//   dev: https://polaris-backend-dev-gnavb7tkza-ew.a.run.app/api/v1/hutch
-const API_BASE = 'https://polaris-backend-gnavb7tkza-ew.a.run.app/api/v1/hutch';
+// purchases (sandbox-buy.html) land in dev, so sandbox-thanks.html reads dev
+// instead, through a data-api attribute on <body>.
+const API_BASE = document.body?.dataset.api || 'https://polaris-backend-gnavb7tkza-ew.a.run.app/api/v1/hutch';
 
 // Paddle's redirect can beat its own webhook, so the first claim often comes
 // back "not ready". Poll for about half a minute before giving up — long
