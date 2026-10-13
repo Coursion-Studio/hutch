@@ -633,7 +633,7 @@
         <a href="terms.html">Terms</a>
         <a href="privacy.html">Privacy</a>
         <a href="refunds.html">Refunds</a>
-        <a href="mailto:kuraydev.io@gmail.com">Support</a>
+        <a href="mailto:support@coursion.studio">Support</a>
         <a href="https://x.com/kuraydev" target="_blank" rel="noopener">@kuraydev</a>
       </div>
       <div>© 2026 Coursion Studio · Made in SwiftUI</div>
@@ -714,11 +714,11 @@
             } else {
               return response.json().then(function (data) {
                 show((data && data.errors && data.errors[0] && data.errors[0].message)
-                  || "Something went wrong. Try again, or email kuraydev.io@gmail.com.", false);
+                  || "Something went wrong. Try again, or email support@coursion.studio.", false);
               });
             }
           }).catch(function () {
-            show("Couldn't reach the server. Email kuraydev.io@gmail.com instead.", false);
+            show("Couldn't reach the server. Email support@coursion.studio instead.", false);
           }).finally(function () {
             button.disabled = false;
             button.textContent = label;
