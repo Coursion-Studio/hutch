@@ -5,5 +5,15 @@
     <link>https://hutch.coursion.studio/appcast.xml</link>
     <description>Updates for Hutch — multi-tool macOS utility from Coursion. Public downloads are paused.</description>
     <language>en</language>
-  </channel>
+  
+    <item>
+      <title>Version 1.4.0</title>
+      <pubDate>Tue, 13 Oct 2026 21:58:39 +0300</pubDate>
+      <sparkle:version>63</sparkle:version>
+      <sparkle:shortVersionString>1.4.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>&lt;release notes I&#x27;ll write&gt;</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.4.0/Hutch-1.4.0.dmg" type="application/octet-stream" sparkle:edSignature="xApRmBI3IwL/xyaD64DdEOdKvQAljAgW6ZMj6dcRzfjDyzUO0ZHEqlDlgRKazCWABzfwjMIx622dgfHSwxvOAA==" length="19684753" />
+    </item>
+</channel>
 </rss>
