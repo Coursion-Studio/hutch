@@ -1,46 +1,49 @@
 <!doctype html>
-<html lang="en" data-theme="candy" data-style="ledger">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hutch — A drawer of Mac utilities</title>
-  <meta name="description" content="A ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a smart browser picker, and a resource reaper — six native Mac tools in one menu bar app. On-device, free, BYO API keys for AI." />
-  <link rel="icon" type="image/png" href="icon.png" />
+  <meta name="description" content="Six native Mac tools in one menu bar app: a ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a browser picker and a resource reaper. Try every tool free for 14 days, then $29 once." />
+  <link rel="canonical" href="https://hutch.coursion.studio/" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css?v=d23c048adf" />
+  <link rel="stylesheet" href="home.css?v=0b6f1a9229" />
+  <link rel="preload" as="image" href="img/hutch-icon.webp" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://hutch.coursion.studio/" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
-  <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon — and nothing leaves your machine." />
-  <meta property="og:image" content="screenshots/hero-dashboard.png" />
-  <meta name="theme-color" content="#0B0A0C" />
+  <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon. 14-day free trial, then $29 once." />
+  <meta property="og:image" content="https://hutch.coursion.studio/screenshots/hero-dashboard.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="theme-color" content="#0E0C14" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Hutch",
+    "url": "https://hutch.coursion.studio/",
+    "image": "https://hutch.coursion.studio/icon.png",
+    "applicationCategory": "UtilitiesApplication",
+    "operatingSystem": "macOS 15 or later",
+    "description": "Six native Mac tools in one menu bar app: a launcher, window snapping, a file shelf, system toggles, a browser picker and a resource reaper.",
+    "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "USD" },
+    "publisher": { "@type": "Organization", "name": "Coursion Studio" }
+  }
+  </script>
+  <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
+  <script defer src="home.js?v=f694a11a15"></script>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
-<body>
+<body class="home">
   <a class="skip" href="#tools">Skip to the tools</a>
   <div class="bg"></div>
-  <div class="theme-fx" aria-hidden="true"><i></i></div>
-  <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
-    <g id="i-pounce"><circle cx="11" cy="11" r="6.5"/><path d="M15.8 15.8 21 21"/></g>
-    <g id="i-window"><rect x="3" y="5" width="18" height="14" rx="2.5"/><path d="M12 5v14"/></g>
-    <g id="i-stash"><path d="M4 14v4.5a1.5 1.5 0 0 0 1.5 1.5h13a1.5 1.5 0 0 0 1.5-1.5V14"/><path d="M12 4v9"/><path d="m8.5 9.5 3.5 3.5 3.5-3.5"/></g>
-    <g id="i-browser"><path d="M6 21V9a3 3 0 0 1 3-3h9"/><path d="m15 3 3 3-3 3"/><circle cx="6" cy="21" r="1.6"/></g>
-    <g id="i-toggles"><path d="M4 8h10"/><path d="M10 16h10"/><circle cx="17" cy="8" r="2.6"/><circle cx="7" cy="16" r="2.6"/></g>
-    <g id="i-reaper"><path d="M20 6a9 9 0 1 0 1.2 6"/><path d="M21.5 5v5h-5"/><path d="M12 16c0-4 2-6 6-6"/></g>
-    <g id="i-palette"><path d="M12 3a9 9 0 1 0 0 18c1 0 1.6-.7 1.6-1.5 0-.4-.2-.8-.5-1.1-.3-.3-.4-.6-.4-1 0-.8.7-1.4 1.5-1.4H16a5 5 0 0 0 5-5c0-4.4-4-8-9-8"/><circle cx="7.5" cy="12" r="1.1"/><circle cx="9.5" cy="8" r="1.1"/><circle cx="14.5" cy="7.6" r="1.1"/></g>
-    <g id="i-gear"><circle cx="12" cy="12" r="3.2"/><path d="M12 2.8v2.4M12 18.8v2.4M4.5 12H2.1M21.9 12h-2.4M6.7 6.7 5 5M19 19l-1.7-1.7M6.7 17.3 5 19M19 5l-1.7 1.7"/></g>
-    <g id="i-shield"><path d="M12 3 19.5 6v5.4c0 4.4-3.1 8.4-7.5 9.6-4.4-1.2-7.5-5.2-7.5-9.6V6z"/><path d="M12 11v3"/><circle cx="12" cy="9" r="0.6"/></g>
-    <g id="i-power"><path d="M12 3v9"/><path d="M6.6 6.6a7.5 7.5 0 1 0 10.8 0"/></g>
-    <g id="i-moon"><path d="M20 14.5A8.5 8.5 0 0 1 9.5 4a8.5 8.5 0 1 0 10.5 10.5"/></g>
-    <g id="i-cup"><path d="M4 8h12v6a5 5 0 0 1-5 5H9a5 5 0 0 1-5-5z"/><path d="M16 10h2.5a2.5 2.5 0 0 1 0 5H16"/><path d="M8 3v2M12 3v2"/></g>
-    <g id="i-eyeoff"><path d="M3 3l18 18"/><path d="M10.6 5.4A9 9 0 0 1 12 5c5 0 9 5 9 7a11 11 0 0 1-2.4 3.4"/><path d="M6.3 7.7A11.6 11.6 0 0 0 3 12c0 2 4 7 9 7a9 9 0 0 0 3.4-.7"/></g>
-    <g id="i-timer"><circle cx="12" cy="13.5" r="7"/><path d="M12 10v3.5l2.2 1.6"/><path d="M9.5 2.5h5"/></g>
-    <g id="i-update"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 3.5V9h-5.5"/></g>
-  </defs></svg>
-
 
   <div class="palette-backdrop js-palette" hidden>
     <div class="palette" role="dialog" aria-modal="true" aria-label="Search this site">
       <div class="palette-bar">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
         <input class="js-palette-input" type="text" placeholder="Jump to anything…" aria-label="Search this site" autocomplete="off" spellcheck="false" />
         <kbd>esc</kbd>
       </div>
@@ -49,575 +52,310 @@
     </div>
   </div>
 
-  <div class="container">
-    <nav class="top">
-      <div class="brand">
-        <img src="icon.png" alt="Hutch" />
-        <span>Hutch</span>
-      </div>
-      <div class="links">
-        <a href="#tour">Tour</a>
-        <a href="#tools">Tools</a>
-        <a href="#why">Why Hutch</a>
-        <a href="pricing.html">Pricing</a>
-        <a href="#download">Download</a>
-        <button class="nav-k js-palette-open" type="button" aria-label="Search this site">
-          <span>Search</span><kbd>⌘K</kbd>
-        </button>
-      </div>
-    </nav>
-
-    <header class="hero">
-     <div class="hero-copy">
-      <div class="eyebrow">Six tools · one menu bar icon</div>
-      <h1>Everything you keep reaching for, <span class="grad">in one drawer.</span></h1>
-      <p class="sub">
-        Press <kbd class="key">⌘</kbd><kbd class="key">Space</kbd> and search your apps, files
-        and clipboard. Snap a window. Park a file mid-drag. Flip the switches macOS
-        buries three menus deep. Six native Mac tools, one icon — and nothing
-        leaves your machine.
-      </p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Download free trial</a>
-        <a class="btn outline" href="pricing.html">Buy — $29</a>
-      </div>
-      <p class="req-note">macOS 15 (Sequoia) or later · 14-day trial, then $29 once · <a href="#tour">Take the tour</a></p>
-     </div>
-
-     <!-- Live replica of the launcher, drawn in HTML rather than screenshotted:
-          the hero should demonstrate the product, not describe it. Decorative —
-          everything it says is already in the copy — so it is hidden from AT. -->
-     <div class="hero-demo">
-       <div class="pounce js-pounce" aria-hidden="true">
-         <div class="pounce-bar">
-           <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-           <span class="pounce-scope js-scope"></span>
-           <span class="pounce-q"><span class="js-q"></span><i class="caret"></i></span>
-           <span class="pounce-gear">⚙</span>
-         </div>
-         <ul class="pounce-results js-results"></ul>
-         <div class="pounce-foot">
-           <span><kbd>↩</kbd>Run</span>
-           <span><kbd>⌘K</kbd>Actions</span>
-           <span><kbd>esc</kbd>Dismiss</span>
-           <span class="spacer"></span>
-           <span class="count js-count"></span>
-           <span class="help">?</span>
-           <span class="pounce-mark">Pounce</span>
-         </div>
-       </div>
-       <div class="theme-strip">
-         <div class="style-row">
-           <span class="lbl">Style</span>
-           <button class="style-btn" type="button" data-style-id="ledger" aria-pressed="true">
-             <span class="sw" aria-hidden="true"></span>Ledger
-           </button>
-           <button class="style-btn" type="button" data-style-id="glass" aria-pressed="false">
-             <span class="sw" aria-hidden="true"></span>Glass
-           </button>
-         </div>
-         <span class="lbl">Colour</span>
-         <div class="theme-dots js-theme-dots" role="group" aria-label="Preview a colour"></div>
-         <span class="theme-name js-theme-name" aria-live="polite"></span>
-       </div>
-     </div>
-    </header>
-  </div>
-
-  <!-- ─── hero: the settings window and launcher, drawn rather than captured ─── -->
-  <section id="tour" class="hero-shot-wrap">
+  <header class="stage-hero reveal">
+    <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
     <div class="container">
-      <figure class="demo-app hero-composite" aria-hidden="true">
-        <div class="appwin">
-          <div class="appwin-bar"><i class="r"></i><i class="y"></i><i class="g"></i></div>
-          <div class="appwin-body">
-            <aside class="appwin-side">
-              <div class="aw-brand"><span class="aw-logo"><img src="icon.png" alt="" /></span>Hutch</div>
-              <div class="aw-sec">Tools</div>
-              <div class="aw-row a1"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-pounce"/></svg><img class="aw-glyph" src="icons/pounce.png" alt="" /></span>Pounce</div>
-              <div class="aw-row a2"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-window"/></svg><img class="aw-glyph" src="icons/window-manager.png" alt="" /></span>Window Manager</div>
-              <div class="aw-row a3"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-stash"/></svg><img class="aw-glyph" src="icons/stash.png" alt="" /></span>Stash</div>
-              <div class="aw-row a4"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-browser"/></svg><img class="aw-glyph" src="icons/browser-picker.png" alt="" /></span>Browser Picker</div>
-              <div class="aw-row a5"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-toggles"/></svg><img class="aw-glyph" src="icons/toggles.png" alt="" /></span>Toggles</div>
-              <div class="aw-row a6"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-reaper"/></svg><img class="aw-glyph" src="icons/reaper.png" alt="" /></span>Reaper</div>
-              <div class="aw-sec">Settings</div>
-              <div class="aw-row"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-gear"/></svg><img class="aw-glyph" src="icons/general.png" alt="" /></span>General</div>
-              <div class="aw-row on"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-palette"/></svg><img class="aw-glyph" src="icons/appearance.png" alt="" /></span>Appearance</div>
-              <div class="aw-row"><span class="aw-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-shield"/></svg><img class="aw-glyph" src="icons/permissions.png" alt="" /></span>Permissions</div>
-            </aside>
-            <div class="appwin-main">
-              <div class="aw-head"><span class="aw-hero"><img class="aw-glyph" src="icons/appearance.png" alt="" /><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><use href="#i-palette"/></svg></span><div><b>Appearance</b><span>Pick the material, then the colour.</span></div></div>
-              <div class="aw-styles">
-                <button class="aw-style-card on" type="button">
-                  <span class="aw-style-prev">
-                    <i class="a"></i><i class="b"></i><i class="c"></i>
-                  </span>
-                  <span class="aw-style-txt"><b>Glass</b><span>Frosted and lit, with the colour flowing through.</span></span>
-                </button>
-                <button class="aw-style-card" type="button">
-                  <span class="aw-style-prev flat">
-                    <i class="a"></i><i class="b"></i><i class="c"></i>
-                  </span>
-                  <span class="aw-style-txt"><b>Ledger</b><span>Flat ink, hairline rules, monospace labels.</span></span>
-                </button>
-              </div>
-              <div class="aw-swatches">
-                <button class="aw-sw-card on" type="button" style="--sb:#08070D;--sa:#FF3D88">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Aurora<b>NEW</b></span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#130408;--sa:#FF2D55">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Hibiscus<b>NEW</b></span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#07050F;--sa:#9D4EDD">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Eclipse<b>NEW</b></span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#030D0A;--sa:#00F0B5">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Neon<b>NEW</b></span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#120500;--sa:#FF4D00">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Wildfire<b>NEW</b></span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#0B0A0C;--sa:#FF7A59">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Ember<b>NEW</b></span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#100B1C;--sa:#FF7A59">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Hutch</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#150E22;--sa:#FF7A59">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Coral</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#0B1325;--sa:#5AAEFF">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Midnight</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#0D1A14;--sa:#3FD485">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Forest</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#1F0F14;--sa:#FFB347">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Sunset</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#141416;--sa:#E0E0E0">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Mono</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#1A0E1C;--sa:#FF6BB5">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Candy</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#FAFAFA;--sa:#4287F5">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Paper</span>
-                </button>
-                <button class="aw-sw-card" type="button" style="--sb:#1C1C1E;--sa:#4287F5">
-                  <span class="aw-sw-prev">
-                    <span class="aw-sw-top"><i class="d"></i><i class="b"></i></span>
-                    <span class="aw-sw-row on"><i class="t"></i><i class="l"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l s"></i></span>
-                    <span class="aw-sw-row"><i class="t"></i><i class="l m"></i></span>
-                  </span>
-                  <span class="aw-sw-name">Graphite</span>
-                </button>
-              </div>
-              <div class="aw-note">Style changes how Hutch is drawn. Colour is the palette underneath it.</div>
-                        </div>
-          </div>
+      <nav class="top">
+        <div class="brand">
+          <img src="img/hutch-icon.webp" alt="" width="26" height="26" />
+          <span>Hutch</span>
         </div>
-        <div class="appwin-float">
-          <div class="pounce js-pounce-3">
-            <div class="pounce-bar">
-              <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-              <span class="pounce-scope js-scope-3"></span>
-              <span class="pounce-q"><span class="js-q-3"></span><i class="caret"></i></span>
-              <span class="pounce-gear">⚙</span>
-            </div>
-            <ul class="pounce-results js-results-3"></ul>
-            <div class="pounce-foot"><span><kbd>↩</kbd>Run</span><span class="spacer"></span><span class="count js-count-3"></span><span class="pounce-mark">Pounce</span></div>
-          </div>
+        <div class="links">
+          <a href="#try">Tour</a>
+          <a href="#tools">Tools</a>
+          <a href="#why">Why Hutch</a>
+          <a href="pricing.html">Pricing</a>
+          <a href="#download">Download</a>
+          <button class="nav-k js-palette-open" type="button" aria-label="Search this site">
+            <span>Search</span><kbd>⌘K</kbd>
+          </button>
         </div>
-      </figure>
-      <ul class="facts">
-        <li>
-          <span class="fact-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1.6"/><rect x="14" y="3" width="7" height="7" rx="1.6"/><rect x="3" y="14" width="7" height="7" rx="1.6"/><rect x="14" y="14" width="7" height="7" rx="1.6"/></svg></span>
-          <strong><b>6</b> tools</strong>
-          <em>one menu bar icon</em>
-        </li>
-        <li>
-          <span class="fact-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg></span>
-          <strong><b>26</b> sources</strong>
-          <em>in one search bar</em>
-        </li>
-        <li>
-          <span class="fact-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg></span>
-          <strong>No accounts</strong>
-          <em>nothing to sign up for</em>
-        </li>
-        <li>
-          <span class="fact-i"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l7.5 3v5.2c0 4.5-3.1 8.6-7.5 9.8-4.4-1.2-7.5-5.3-7.5-9.8V6z"/><path d="M9.2 12.2l2 2 3.6-3.9"/></svg></span>
-          <strong>Signed &amp; notarized</strong>
-          <em>by Apple, every build</em>
-        </li>
-      </ul>
+      </nav>
+
+      <div class="hero-fan" role="img" aria-label="The Hutch app icon with its six tools fanned out beneath it: Pounce, Stash, Toggles, Window Manager, Browser Picker and Reaper.">
+        <img class="hero-icon" src="img/hutch-icon.webp" alt="" width="160" height="160" fetchpriority="high" />
+        <span class="fan-tool" style="--i:0;--x:-249;--y:52.6;--r:5deg"><span class="tile"><img src="img/pounce.webp" alt="" width="56" height="56" /></span><b>Pounce</b></span>
+        <span class="fan-tool" style="--i:1;--x:-179;--y:99.6;--r:3deg"><span class="tile"><img src="img/stash.webp" alt="" width="56" height="56" /></span><b>Stash</b></span>
+        <span class="fan-tool" style="--i:2;--x:-65;--y:126.5;--r:1deg"><span class="tile"><img src="img/toggles.webp" alt="" width="56" height="56" /></span><b>Toggles</b></span>
+        <span class="fan-tool" style="--i:3;--x:65;--y:126.5;--r:-1deg"><span class="tile"><img src="img/window-manager.webp" alt="" width="56" height="56" /></span><b>Window Manager</b></span>
+        <span class="fan-tool" style="--i:4;--x:179;--y:99.6;--r:-3deg"><span class="tile"><img src="img/browser-picker.webp" alt="" width="56" height="56" /></span><b>Browser Picker</b></span>
+        <span class="fan-tool" style="--i:5;--x:249;--y:52.6;--r:-5deg"><span class="tile"><img src="img/reaper.webp" alt="" width="56" height="56" /></span><b>Reaper</b></span>
+      </div>
+
+      <div class="hero-copy">
+        <h1 class="rise" style="--d:.08s">Everything you keep reaching for,<br /> in one drawer.</h1>
+        <p class="sub rise" style="--d:.14s">Six small Mac tools that live in your menu bar: a launcher, window snapping, a file shelf, the switches macOS hides, link routing and a resource reaper. Keep the ones you want.</p>
+        <div class="cta-row rise" style="--d:.2s">
+          <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Download free trial</a>
+          <a class="btn outline" href="pricing.html">Buy — $29</a>
+        </div>
+        <p class="req-note rise" style="--d:.24s">macOS 15 (Sequoia) or later · 14-day trial, then $29 once</p>
+      </div>
     </div>
-  </section>
+  </header>
+
+  <main>
+    <section id="tools" class="sec sec-tools reveal">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="rise">Six tools, one menu bar icon</h2>
+          <p class="rise" style="--d:.06s">Every tool has its own switch. Turn off anything you won't use, and Settings brings it back any time.</p>
+        </div>
+        <ul class="tool-grid">
+          <li class="tool-card rise" style="--d:.08s"><span class="tile"><img src="img/pounce.webp" alt="" width="56" height="56" loading="lazy" /></span><div><h3>Pounce <span class="tier tier-mixed">Partly free</span></h3><p>Universal launcher. Apps, files, clipboard, windows, maths, AI and system actions from <span class="combo"><kbd>⌘</kbd><kbd>Space</kbd></span>.</p></div></li>
+          <li class="tool-card rise" style="--d:.12s"><span class="tile"><img src="img/stash.webp" alt="" width="56" height="56" loading="lazy" /></span><div><h3>Stash <span class="tier tier-paid">Licence</span></h3><p>A floating shelf to park files mid-drag. Drag in, switch apps, drag out where they belong.</p></div></li>
+          <li class="tool-card rise" style="--d:.16s"><span class="tile"><img src="img/toggles.webp" alt="" width="56" height="56" loading="lazy" /></span><div><h3>Toggles <span class="tier tier-free">Free forever</span></h3><p>One panel for the macOS switches buried three menus deep: Dark Mode, Keep Awake, Hide Desktop and more.</p></div></li>
+          <li class="tool-card rise" style="--d:.2s"><span class="tile"><img src="img/window-manager.webp" alt="" width="56" height="56" loading="lazy" /></span><div><h3>Window Manager <span class="tier tier-free">Free forever</span></h3><p>Snap windows to halves, quarters and thirds by hotkey or click, in any app.</p></div></li>
+          <li class="tool-card rise" style="--d:.24s"><span class="tile"><img src="img/browser-picker.webp" alt="" width="56" height="56" loading="lazy" /></span><div><h3>Browser Picker <span class="tier tier-free">Free forever</span></h3><p>Route every link to the right browser, by site, by the app it came from, or by a quick picker.</p></div></li>
+          <li class="tool-card rise" style="--d:.28s"><span class="tile"><img src="img/reaper.webp" alt="" width="56" height="56" loading="lazy" /></span><div><h3>Reaper <span class="tier tier-paid">Licence</span></h3><p>Find what's eating CPU, memory and GPU, then quit it one app at a time. Nothing closes without your say-so.</p></div></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="hotkey" class="sec sec-hotkey reveal" aria-labelledby="hotkey-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="kb-stage rise">
+          <div class="kb js-kb" aria-hidden="true"></div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="hotkey-title" class="rise" style="--d:.08s">Your launcher is one hotkey away</h2>
+          <p class="rise" style="--d:.14s">Press <span class="combo"><kbd>⌘</kbd><kbd>Space</kbd></span> anywhere to open Pounce. Rebind it to any combo you like.</p>
+          <p class="kb-pill rise js-kb-pill" style="--d:.2s" aria-live="polite">
+            <span class="dot" aria-hidden="true"></span>
+            <span class="kb-pill-text js-kb-text">Type on your keyboard. The keys light up with yours.</span>
+            <span class="kb-pill-keys js-kb-keys"><kbd>⌘</kbd><kbd>Space</kbd></span>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="try" class="sec sec-try reveal" aria-labelledby="try-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="pp pp-try rise js-try">
+          <div class="pp-field">
+            <svg class="pp-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+            <input class="js-try-input" type="text" role="combobox" aria-expanded="true" aria-controls="try-results" aria-autocomplete="list" aria-label="Try Pounce: type an app name or a sum" placeholder="Search apps, maths, the web…" autocomplete="off" autocapitalize="off" spellcheck="false" />
+            <span class="pp-chip" aria-hidden="true">⌘K</span>
+          </div>
+          <div class="pp-results">
+            <span class="pp-sel" aria-hidden="true"></span>
+            <ul id="try-results" class="js-try-results" role="listbox" aria-label="Results"></ul>
+            <p class="pp-empty">Start typing. Apps, maths and the web answer at once.</p>
+          </div>
+          <div class="pp-foot">
+            <span class="pp-label js-try-status">Pounce</span>
+            <span class="pp-hint"><span class="js-try-verb">Open</span><b>↩</b></span>
+            <span class="pp-hint">Actions<b>⌘K</b></span>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="try-title" class="rise" style="--d:.08s">Try it</h2>
+          <p class="rise" style="--d:.14s">Type anything. Apps, maths and the web answer as you go, and the arrow keys pick.</p>
+          <div class="chips rise" style="--d:.2s">
+            <button type="button" class="chip-q" data-q="saf">saf</button>
+            <button type="button" class="chip-q" data-q="1280*0.15">1280*0.15</button>
+            <button type="button" class="chip-q" data-q="5 * 120">5 * 120</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="windows" class="sec sec-split sec-windows reveal" aria-labelledby="win-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container split">
+        <div class="split-copy">
+          <h2 id="win-title" class="rise">Snap windows with a keystroke</h2>
+          <p class="rise" style="--d:.06s">Halves, quarters, thirds and full screen from <span class="combo"><kbd>⌃</kbd><kbd>⌥</kbd></span> shortcuts, in any app, on any display. Drag a window to a screen edge and it snaps there too.</p>
+          <p class="aside rise" style="--d:.1s">Click a shortcut to try it, or press it on your keyboard.</p>
+        </div>
+        <div class="split-stage">
+          <div class="desk-wrap rise" style="--d:.08s">
+            <div class="desk js-desk" aria-hidden="true">
+              <div class="desk-menubar">
+                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>
+                <i style="width:26px"></i><i style="width:19px"></i><i style="width:24px"></i><i style="width:17px"></i>
+                <span class="sp"></span>
+                <svg class="tray" viewBox="0 0 24 24" fill="currentColor"><path d="M3 13.5 5.4 5.6A2 2 0 0 1 7.3 4.2h9.4a2 2 0 0 1 1.9 1.4L21 13.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm2.3-.5H9a3 3 0 0 0 6 0h3.7L16.6 6.2H7.4z"/></svg>
+                <i style="width:31px"></i>
+              </div>
+              <div class="win win-browser" data-win="browser">
+                <div class="win-skin"></div>
+                <div class="win-content">
+                  <div class="win-bar"><i></i><i></i><i></i><span class="url"></span></div>
+                  <div class="win-body"><span class="banner"></span><span class="ln l1"></span><span class="ln"></span><span class="ln"></span><span class="ln short"></span></div>
+                </div>
+              </div>
+              <div class="win win-notes" data-win="notes">
+                <div class="win-skin"></div>
+                <div class="win-content">
+                  <div class="win-bar"><i></i><i></i><i></i></div>
+                  <div class="win-body"><span class="ttl"></span><span class="ln"></span><span class="ln" style="width:44%"></span><span class="ln"></span><span class="ln" style="width:34%"></span><span class="ln" style="width:20%"></span></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="snaps rise" style="--d:.14s" role="group" aria-label="Snap shortcuts">
+            <button type="button" class="snap" data-move="0" aria-label="Left half, Control Option Left Arrow"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>←</kbd></button>
+            <button type="button" class="snap" data-move="1" aria-label="Right half, Control Option Right Arrow"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>→</kbd></button>
+            <button type="button" class="snap" data-move="2" aria-label="Top left quarter, Control Option U"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>U</kbd></button>
+            <button type="button" class="snap" data-move="3" aria-label="Top right quarter, Control Option I"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>I</kbd></button>
+            <button type="button" class="snap" data-move="4" aria-label="Full screen, Control Option F"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>F</kbd></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="stash" class="sec sec-split sec-stash reveal" aria-labelledby="stash-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container split reverse">
+        <div class="split-copy">
+          <h2 id="stash-title" class="rise">Park files mid-drag</h2>
+          <p class="rise" style="--d:.06s">Start dragging and a shelf springs up. Drop files on it, switch apps, then drag them out where they belong. Works with anything you can drag.</p>
+          <p class="aside rise" style="--d:.1s">Shake the cursor, long-press the menu bar icon, or press <span class="combo"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>V</kbd></span>. Here, just drag the moodboard.</p>
+        </div>
+        <div class="split-stage">
+          <div class="stash-fit rise" style="--d:.08s">
+            <div class="stash-stage js-stash">
+              <div class="finder" aria-hidden="true">
+                <div class="finder-bar"><i></i><i></i><i></i><b>Downloads</b></div>
+                <span class="finder-slot"></span>
+                <span class="finder-doc"><span class="doc"><i></i><i></i><i></i><i></i><i></i><i></i></span><b>Notes.pdf</b></span>
+              </div>
+              <div class="shelf" aria-hidden="true">
+                <div class="shelf-head"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 13.5 5.4 5.6A2 2 0 0 1 7.3 4.2h9.4a2 2 0 0 1 1.9 1.4L21 13.5V18a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2zm2.3-.5H9a3 3 0 0 0 6 0h3.7L16.6 6.2H7.4z"/></svg>Stash<span class="n js-shelf-n">0</span></div>
+                <div class="shelf-slots"><i></i><i></i><i></i></div>
+              </div>
+              <button type="button" class="file js-file" aria-label="Moodboard.jpg. Drag it onto the shelf, or press to park it there.">
+                <span class="thumb"><span class="pic"></span><i></i><i></i><span class="fold"></span></span>
+                <span class="name">Moodboard.jpg</span>
+              </button>
+              <svg class="cursor js-cursor" viewBox="0 0 15 22" aria-hidden="true"><path d="M0 0v17.2l4.5-4 3 8.8 2.7-1-3-8.4h7.8z" fill="#000" stroke="#fff" stroke-width="1.4" stroke-linejoin="round"/></svg>
+            </div>
+          </div>
+          <p class="stash-status rise js-stash-status" style="--d:.14s" aria-live="polite">Drag the moodboard onto the shelf.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="themes" class="sec sec-themes reveal" aria-labelledby="themes-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="theme-stage rise">
+          <div class="pp pp-theme js-theme-panel" aria-hidden="true">
+            <div class="pp-field">
+              <svg class="pp-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+              <span class="pp-q">saf<i class="caret"></i></span>
+              <span class="pp-chip">⌘K</span>
+            </div>
+            <div class="pp-results static">
+              <ul class="js-theme-rows"></ul>
+            </div>
+            <div class="pp-foot">
+              <span class="pp-label">Pounce</span>
+              <span class="pp-hint">Open<b>↩</b></span>
+              <span class="pp-hint">Actions<b>⌘K</b></span>
+            </div>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="themes-title" class="rise" style="--d:.08s">Make it yours</h2>
+          <p class="rise" style="--d:.14s">Pick a material and a colour. Every Hutch panel follows along, and so does this page.</p>
+          <div class="materials rise" style="--d:.2s" role="radiogroup" aria-label="Material">
+            <button type="button" class="mat" role="radio" aria-checked="true" data-style="glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>Glass</button>
+            <button type="button" class="mat" role="radio" aria-checked="false" data-style="ledger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M7.5 9h9M7.5 12.5h9M7.5 16h5"/></svg>Ledger</button>
+            <button type="button" class="mat" role="radio" aria-checked="false" data-style="compact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2.5"/><circle cx="10" cy="11" r="3"/><path d="m12.2 13.2 2.3 2.3"/></svg>Compact</button>
+          </div>
+          <div class="swatches rise js-swatches" style="--d:.24s" role="radiogroup" aria-label="Colour"></div>
+          <p class="swatch-name js-swatch-name" aria-live="polite"></p>
+        </div>
+      </div>
+    </section>
+
+    <section id="why" class="sec sec-split sec-why reveal" aria-labelledby="why-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container split">
+        <div class="split-copy">
+          <h2 id="why-title" class="rise js-perm-title">One permission</h2>
+          <p class="rise" style="--d:.06s">Accessibility lets Hutch move your windows and notice a shake. Nothing else. No Screen Recording, no Input Monitoring, no account.</p>
+          <p class="perm-status rise js-perm-status" style="--d:.1s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="8.5" stroke-dasharray="3 3.4"/></svg><span>Not granted yet</span></p>
+        </div>
+        <div class="split-stage">
+          <div class="ax rise" style="--d:.08s">
+            <div class="ax-bar"><i></i><i></i><i></i><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="m14.5 6-6 6 6 6"/></svg><b>Accessibility</b></div>
+            <p class="ax-lede">Allow the apps below to control your computer.</p>
+            <div class="ax-list">
+              <div class="ax-row ghost" aria-hidden="true"><span class="ax-app"></span><span class="ax-name"></span><span class="sw on"><i></i></span></div>
+              <div class="ax-row hutch">
+                <img class="ax-icon" src="img/hutch-icon.webp" alt="" width="40" height="40" loading="lazy" />
+                <span class="ax-title">Hutch<svg class="ax-ok" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#0b1a10" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                <button type="button" class="sw js-perm" role="switch" aria-checked="false" aria-label="Allow Hutch to control your computer"><i></i></button>
+                <span class="burst js-burst" aria-hidden="true"></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <ul class="trust">
+          <li class="rise" style="--d:.06s"><b>Native SwiftUI</b><span>No Electron, no web views. Cold-starts in milliseconds and feels like macOS, because it is.</span></li>
+          <li class="rise" style="--d:.1s"><b>Runs on your Mac</b><span>Everything Hutch indexes stays on your Mac. Anonymous crash reports and feature-usage counts are the only things it sends, and one switch turns them off.</span></li>
+          <li class="rise" style="--d:.14s"><b>Signed end to end</b><span>Developer ID signed and Apple-notarized, with EdDSA-verified updates through Sparkle.</span></li>
+        </ul>
+      </div>
+    </section>
+
+    <section id="pricing" class="sec sec-price reveal" aria-labelledby="price-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="price-stage rise">
+          <div class="price-card">
+            <div class="price-main">
+              <span class="price-lbl">Full licence</span>
+              <span class="price-num">$29</span>
+              <span class="price-once">once, not a subscription</span>
+            </div>
+            <span class="price-rule" aria-hidden="true"></span>
+            <ul class="price-list">
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Stash, Reaper and every Pounce power feature</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Three Macs on one licence</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Every 1.x update included</li>
+            </ul>
+            <span class="shimmer" aria-hidden="true"></span>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="price-title" class="rise" style="--d:.08s">14 days of everything</h2>
+          <p class="rise" style="--d:.14s">Every tool is unlocked while you try Hutch. After that it's $29 once, and these stay free forever:</p>
+          <ul class="free-chips rise" style="--d:.2s">
+            <li><img src="img/toggles.webp" alt="" width="18" height="18" loading="lazy" />Toggles</li>
+            <li><img src="img/window-manager.webp" alt="" width="18" height="18" loading="lazy" />Window Manager</li>
+            <li><img src="img/browser-picker.webp" alt="" width="18" height="18" loading="lazy" />Browser Picker</li>
+            <li><img src="img/pounce.webp" alt="" width="18" height="18" loading="lazy" />Pounce launcher</li>
+          </ul>
+          <div class="cta-row center rise" style="--d:.24s">
+            <a class="btn primary" href="pricing.html">Buy — $29</a>
+            <a class="btn outline" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Start the free trial</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="container">
+      <section id="download" class="cta-band tight">
+        <h2>Open the drawer.</h2>
+        <p class="lede">Try every tool free for 14 days. After that it's $29 once for three Macs and every 1.x release — and Toggles, Window Manager and Browser Picker stay free forever.</p>
+        <div class="cta-row">
+          <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Download free trial</a>
+          <a class="btn outline" href="pricing.html">Buy — $29</a>
+        </div>
+        <p class="req-note">macOS 15 (Sequoia) or later · Developer ID signed &amp; notarized</p>
+      </section>
+    </div>
+  </main>
 
   <div class="container">
-    <section id="tools" class="showcase-intro">
-      <div class="section-label">See it in action</div>
-      <h2>Every pixel, native to macOS.</h2>
-      <p class="lede">No Electron. No web views. Every panel below is the real interface, drawn live in your browser — so it wears whichever theme you picked.</p>
-    </section>
-
-    <!-- Contents page. Six full-bleed showcase rows tell you what each tool
-         does but never what the set *is* — you had to scroll the whole page to
-         find that out. -->
-    <ol class="index-table">
-      <li><a href="#t-pounce"><span class="ix-n">01</span><span class="ix-name">Pounce</span><span class="ix-what">Apps, files, clipboard, windows, maths, AI — one bar</span><span class="ix-key">⌘Space</span></a></li>
-      <li><a href="#t-window"><span class="ix-n">02</span><span class="ix-name">Window Manager</span><span class="ix-what">Halves, quarters, thirds and custom splits</span><span class="ix-key">⌃⌥ ←→</span></a></li>
-      <li><a href="#t-stash"><span class="ix-n">03</span><span class="ix-name">Stash</span><span class="ix-what">A shelf that appears where you're already dragging</span><span class="ix-key">⌃⌥⌘V</span></a></li>
-      <li><a href="#t-toggles"><span class="ix-n">04</span><span class="ix-name">Toggles</span><span class="ix-what">29 switches macOS buries three menus deep</span><span class="ix-key">⌃⌥⌘1</span></a></li>
-      <li><a href="#t-browser"><span class="ix-n">05</span><span class="ix-name">Browser Picker</span><span class="ix-what">Route every link by rule, or pick one per link</span><span class="ix-key">on click</span></a></li>
-      <li><a href="#t-reaper"><span class="ix-n">06</span><span class="ix-name">Reaper</span><span class="ix-what">Find what's draining the battery, review it one at a time</span><span class="ix-key">reap</span></a></li>
-    </ol>
-
-    <section class="showcase">
-
-      <!-- 1 · Pounce -->
-      <div id="t-pounce" class="showcase-row">
-        <div class="showcase-copy">
-          <div class="chip chip-pink">
-            <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><circle cx="11" cy="11" r="7" fill="none" stroke="currentColor" stroke-width="2"/><path d="M16 16l5 5" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
-            Pounce — the command bar
-          </div>
-          <h3>One keystroke.<br />Everything.</h3>
-          <p>Hit ⌘Space, then search apps, files, clipboard and open windows — do inline math, run system actions, or ask your own AI. Type <code>:</code> to browse every scope, ⌘K on any result for quick actions.</p>
-          <ul class="pills">
-            <li>Apps &amp; files</li><li>Inline math</li><li>Live currency &amp; units</li><li>Ask AI · BYO key</li><li>⌘K quick actions</li><li>System actions</li><li>Clipboard history</li><li>Window switcher</li><li>Web search &amp; bangs</li><li>iOS simulators</li><li>Emoji &amp; snippets</li><li>Scope prefixes</li>
-          </ul>
-        </div>
-        <figure class="demo demo-pounce" aria-hidden="true">
-          <div class="pounce js-pounce-2">
-            <div class="pounce-bar">
-              <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-              <span class="pounce-scope js-scope-2"></span>
-              <span class="pounce-q"><span class="js-q-2"></span><i class="caret"></i></span>
-              <span class="pounce-gear">⚙</span>
-            </div>
-            <ul class="pounce-results js-results-2"></ul>
-            <div class="pounce-foot">
-              <span><kbd>↩</kbd>Run</span><span><kbd>⌘K</kbd>Actions</span>
-              <span class="spacer"></span><span class="count js-count-2"></span>
-              <span class="help">?</span><span class="pounce-mark">Pounce</span>
-            </div>
-          </div>
-        </figure>
-      </div>
-
-      <!-- Pounce feature gallery -->
-      <div class="pounce-gallery">
-        <div class="gallery-head">
-          <div class="section-label">Pounce, up close</div>
-          <h3>One bar, a dozen tricks.</h3>
-          <p>Type a few characters and Pounce works out what you mean — a sum, a currency, an action, an app.</p>
-        </div>
-        <div class="gallery-grid">
-          <figure class="gcard">
-            <div class="pounce" aria-hidden="true">
-              <div class="pounce-bar">
-                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-                <span class="pounce-scope on">Convert</span>
-                <span class="pounce-q">100 usd to eur</span>
-              </div>
-              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">€</span><span class="pounce-text"><span class="pounce-title">87.73 EUR</span><span class="pounce-sub">Live rate, cached 4 minutes ago</span></span><span class="pounce-badge">Copy</span></li></ul>
-            </div>
-            <figcaption><span class="gal-mark">$</span>Live currency &amp; unit conversion</figcaption>
-          </figure>
-          <figure class="gcard">
-            <div class="pounce" aria-hidden="true">
-              <div class="pounce-bar">
-                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-                <span class="pounce-scope on">Apps</span>
-                <span class="pounce-q">forge</span>
-              </div>
-              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Forge</span><span class="pounce-sub">Applications · Running</span></span><span class="pounce-badge">Launch</span></li><li class=""><span class="pounce-mark-box">↗</span><span class="pounce-text"><span class="pounce-title">Reveal in Finder</span><span class="pounce-sub">Quick action</span></span><span class="pounce-badge">Run</span></li><li class=""><span class="pounce-mark-box">⧉</span><span class="pounce-text"><span class="pounce-title">Copy Path</span><span class="pounce-sub">Quick action</span></span><span class="pounce-badge">Copy</span></li></ul>
-            </div>
-            <figcaption><span class="gal-mark">⌘</span>⌘K quick-action palette</figcaption>
-          </figure>
-          <figure class="gcard">
-            <div class="pounce" aria-hidden="true">
-              <div class="pounce-bar">
-                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-                <span class="pounce-scope on">Actions</span>
-                <span class="pounce-q">empty trash</span>
-              </div>
-              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">⌫</span><span class="pounce-text"><span class="pounce-title">Empty Trash</span><span class="pounce-sub">Permanently remove items in Trash</span></span><span class="pounce-badge">Run</span></li><li class=""><span class="pounce-mark-box">▤</span><span class="pounce-text"><span class="pounce-title">empty trash.aif</span><span class="pounce-sub">~/Library/Sounds</span></span><span class="pounce-badge">Open</span></li></ul>
-            </div>
-            <figcaption><span class="gal-mark">⏻</span>System actions &amp; power</figcaption>
-          </figure>
-          <figure class="gcard">
-            <div class="pounce" aria-hidden="true">
-              <div class="pounce-bar">
-                <svg class="pounce-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-                <span class="pounce-scope on">Apps</span>
-                <span class="pounce-q">s</span>
-              </div>
-              <ul class="pounce-results gal"><li class="sel"><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Slack</span><span class="pounce-sub">/Applications · Running</span></span><span class="pounce-badge">Switch</span></li><li class=""><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Safari</span><span class="pounce-sub">/Applications</span></span><span class="pounce-badge">Launch</span></li><li class=""><span class="pounce-mark-box">▣</span><span class="pounce-text"><span class="pounce-title">Setapp</span><span class="pounce-sub">/Applications</span></span><span class="pounce-badge">Launch</span></li></ul>
-            </div>
-            <figcaption><span class="gal-mark">▣</span>Launch, switch &amp; quit apps</figcaption>
-          </figure>
-        </div>
-      </div>
-
-      <!-- 2 · Window Manager -->
-      <div id="t-window" class="showcase-row reverse">
-        <div class="showcase-copy">
-          <div class="chip chip-violet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" aria-hidden="true"><rect x="3" y="4.5" width="18" height="7" rx="2"/><rect x="3" y="12.5" width="18" height="7" rx="2"/></svg>
-            Window Manager
-          </div>
-          <h3>Snap any window<br />into place.</h3>
-          <p>Halves, quarters, thirds, or a custom split. Click a region on the grid or fire a ⌃⌥ hotkey — it works in any app, drag-to-snap at the screen edge, and remembers a preset per app.</p>
-          <ul class="pills">
-            <li>Halves &amp; quarters</li><li>Thirds &amp; ⅔</li><li>⌃⌥ global hotkeys</li><li>Drag-to-snap</li><li>Per-app presets</li>
-          </ul>
-        </div>
-        <figure class="demo demo-wm" aria-hidden="true">
-          <div class="wm-screen">
-            <span class="wm-cell"></span><span class="wm-cell"></span>
-            <span class="wm-cell"></span><span class="wm-cell"></span>
-            <span class="wm-win"><i></i><i></i><i></i></span>
-          </div>
-          <figcaption class="demo-cap"><kbd>⌃⌥</kbd><kbd>←</kbd> halves, quarters, thirds</figcaption>
-        </figure>
-      </div>
-
-      <!-- 3 · Stash -->
-      <div id="t-stash" class="showcase-row">
-        <div class="showcase-copy">
-          <div class="chip chip-coral">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="3" width="16" height="6" rx="1.6" fill="currentColor"/><rect x="4" y="15" width="16" height="6" rx="1.6" fill="currentColor"/><path d="M12 9.5V13.5"/><path d="M8.6 11.6 12 14.8l3.4-3.2"/></svg>
-            Stash
-          </div>
-          <h3>Catch it. Carry it.<br />Drop it.</h3>
-          <p>A floating shelf that appears right where you're dragging. Pile up files and images from any app — even straight from the browser — then drop them where they belong. Shake or hotkey to summon.</p>
-          <ul class="pills">
-            <li>Drag from any app</li><li>Move · Copy · Reference</li><li>Shake to summon</li><li>Live thumbnails</li><li>Stack multiple shelves</li>
-          </ul>
-        </div>
-        <figure class="demo demo-stash" aria-hidden="true">
-          <div class="stash-shelf">
-            <div class="stash-head"><span class="stash-dot"></span>Drop<span class="stash-n">3 items</span></div>
-            <div class="stash-items">
-              <span class="stash-chip s1">brief.pdf</span>
-              <span class="stash-chip s2">shot-02.png</span>
-              <span class="stash-chip s3">notes.md</span>
-            </div>
-            <div class="stash-hint">Drag out anywhere</div>
-          </div>
-        </figure>
-      </div>
-
-      <!-- 4 · Toggles -->
-      <div id="t-toggles" class="showcase-row reverse">
-        <div class="showcase-copy">
-          <div class="chip chip-amber">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5.5" width="19" height="5" rx="2.5"/><circle cx="7.5" cy="8" r="1.6" fill="currentColor" stroke="none"/><rect x="2.5" y="13.5" width="19" height="5" rx="2.5"/><circle cx="16.5" cy="16" r="1.6" fill="currentColor" stroke="none"/></svg>
-            Toggles
-          </div>
-          <h3>System switches,<br />one tap away.</h3>
-          <p>A menu-bar popover for the switches buried three menus deep — Dark Mode, Caffeinate, Focus, sleep and shutdown timers, mic mute — plus live camera and mic in-use indicators. Whatever's on stays lit; long-press to drag your favourites into order, and search to jump straight to one.</p>
-          <ul class="pills">
-            <li>29 switches</li><li>Dark Mode</li><li>Caffeinate — timed keep-awake</li><li>Sleep timer</li><li>Drag to reorder</li><li>Live mic &amp; cam</li>
-          </ul>
-        </div>
-        <figure class="demo demo-toggles" aria-hidden="true">
-          <div class="tg-panel">
-            <div class="tg-row"><span class="tg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-moon"/></svg></span>Dark Mode<span class="tg-sw t1"></span></div>
-            <div class="tg-row"><span class="tg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-cup"/></svg></span>Caffeinate<span class="tg-sw t2"></span></div>
-            <div class="tg-row"><span class="tg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-eyeoff"/></svg></span>Hide Desktop<span class="tg-sw t3"></span></div>
-            <div class="tg-row"><span class="tg-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"><use href="#i-timer"/></svg></span>Sleep Timer<span class="tg-sw t4"></span></div>
-          </div>
-        </figure>
-      </div>
-
-      <!-- 5 · Browser Picker -->
-      <div id="t-browser" class="showcase-row">
-        <div class="showcase-copy">
-          <div class="chip chip-blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18"/></svg>
-            Browser Picker
-          </div>
-          <h3>Every link,<br />the right browser.</h3>
-          <p>Make Hutch your default browser and route every link by rule — work URLs to Chrome, personal to Safari — or pop a keyboard-driven picker and press 1–9 to launch. Rules by site or by the app the link came from.</p>
-          <ul class="pills">
-            <li>Per-site rules</li><li>Per-app rules</li><li>1–9 to launch</li><li>Remember a choice</li><li>Most-used first</li>
-          </ul>
-        </div>
-        <figure class="demo demo-browser" aria-hidden="true">
-          <div class="bp-url"><span class="bp-lock">⌁</span>figma.com/file/…</div>
-          <div class="bp-list">
-            <span class="bp-b b1">1 <b>Chrome</b></span>
-            <span class="bp-b b2">2 <b>Safari</b></span>
-            <span class="bp-b b3">3 <b>Arc</b></span>
-            <span class="bp-b b4">4 <b>Firefox</b></span>
-          </div>
-          <div class="demo-cap">Press 1–9, or let a rule decide</div>
-        </figure>
-      </div>
-
-      <!-- 6 · Reaper -->
-      <div id="t-reaper" class="showcase-row">
-        <div class="showcase-copy">
-          <div class="chip chip-green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20.5 12a8.5 8.5 0 1 0-2.6 6.1"/><path d="M20.7 7.4V12h-4.5"/><path d="M12 12 9 9.4"/></svg>
-            Reaper
-          </div>
-          <h3>Loud fans.<br />Now you know why.</h3>
-          <p>Reaper samples every process for CPU, memory, real power draw and GPU use, spots the hogs and the apps you left running last Tuesday, then walks you through them one at a time. Quit, force, keep, or never ask again — nothing closes without your say-so, and a polite quit still lets an app ask you to save.</p>
-          <ul class="pills">
-            <li>CPU · memory · GPU</li><li>Real power draw</li><li>Idle app detection</li><li>One-by-one review</li><li>Hourly to weekly scans</li><li>Never-ask list</li><li>No root, no new permissions</li>
-          </ul>
-        </div>
-        <figure class="demo demo-reaper" aria-hidden="true">
-          <div class="rp-head">Reviewing <b>1 of 4</b><span class="rp-tag">6.32 GB reclaimable</span></div>
-          <div class="rp-row flagged"><span class="rp-name">WhatsApp</span><span class="rp-bar"><i style="--w:82%"></i></span><span class="rp-v">222 MB</span></div>
-          <div class="rp-row"><span class="rp-name">Slack</span><span class="rp-bar"><i style="--w:54%"></i></span><span class="rp-v">148 MB</span></div>
-          <div class="rp-row"><span class="rp-name">Docker</span><span class="rp-bar"><i style="--w:38%"></i></span><span class="rp-v">96 MB</span></div>
-          <div class="rp-row"><span class="rp-name">Xcode</span><span class="rp-bar"><i style="--w:21%"></i></span><span class="rp-v">61 MB</span></div>
-          <div class="rp-acts"><span>Keep</span><span class="on">Quit</span><span>Force</span></div>
-        </figure>
-      </div>
-
-    </section>
-
-    <hr class="sep" />
-
-    <section id="why" class="tight">
-      <div class="section-label">Why Hutch</div>
-      <h2>Native. Private. Out of the way.</h2>
-      <p class="lede">A paid utility's worth of tools, built native and kept on your Mac.</p>
-
-      <div class="grid why-grid">
-        <div class="card">
-          <div class="tile c-coral">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M13 2L4 14h7l-1 8 9-12h-7z"/></svg>
-          </div>
-          <h3>100% native SwiftUI</h3>
-          <p>No Electron, no web views. Cold-starts in milliseconds and feels like macOS — because it is macOS.</p>
-        </div>
-        <div class="card">
-          <div class="tile c-green">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/><circle cx="12" cy="16" r="1.4" fill="currentColor"/></svg>
-          </div>
-          <h3>Runs on your Mac</h3>
-          <p>No accounts, and nothing that identifies you. Everything Hutch indexes stays on your Mac. Anonymous crash reports and feature-usage counts are the only things it sends, and one switch turns them off.</p>
-        </div>
-        <div class="card">
-          <div class="tile c-violet">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="3" width="20" height="4" rx="1"/><path d="M7 7v4M12 7v4M17 7v4"/><rect x="6" y="13" width="12" height="8" rx="2"/></svg>
-          </div>
-          <h3>Lives in the menu bar</h3>
-          <p>One tray icon, every tool. Hutch only joins the Dock and ⌘-Tab while its dashboard is open.</p>
-        </div>
-        <div class="card">
-          <div class="tile c-blue">
-            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12a9 9 0 1 1-3-6.7"/><path d="M21 4v5h-5"/></svg>
-          </div>
-          <h3>Signed end to end</h3>
-          <p>Developer ID signed and Apple-notarized, with EdDSA-verified updates through Sparkle. No App Store middleman.</p>
-        </div>
-      </div>
-    </section>
-
-    <section id="download" class="cta-band tight">
-      <h2>Open the drawer.</h2>
-      <p class="lede">Try every tool free for 14 days. After that it's $29 once for three Macs and every 1.x release — and Toggles, Window Manager and Browser Picker stay free forever.</p>
-      <div class="cta-row">
-        <a class="btn primary" href="https://github.com/Coursion-Studio/hutch/releases/latest" data-download>Download free trial</a>
-        <a class="btn outline" href="pricing.html">Buy — $29</a>
-      </div>
-      <p class="req-note">macOS 15 (Sequoia) or later · Developer ID signed &amp; notarized</p>
-    </section>
-
     <footer>
       <div class="links">
         <a href="#download">Download</a>
@@ -632,384 +370,5 @@
       <div>© 2026 Coursion Studio · Made in SwiftUI</div>
     </footer>
   </div>
-
-
-  <script>
-    var DMG_URL = "https://github.com/Coursion-Studio/hutch/releases/latest/download/Hutch.dmg";
-    document.querySelectorAll("[data-download]").forEach(function (a) { a.href = DMG_URL; });
-
-    // Copy-to-clipboard for the brew install code blocks.
-    (function () {
-      document.querySelectorAll(".copy-btn").forEach(function (btn) {
-        btn.addEventListener("click", function () {
-          var box = btn.closest("[data-copy]");
-          if (!box || !navigator.clipboard) return;
-          navigator.clipboard.writeText(box.getAttribute("data-copy")).then(function () {
-            btn.classList.add("copied");
-            var original = btn.textContent;
-            btn.textContent = "Copied";
-            setTimeout(function () {
-              btn.classList.remove("copied");
-              btn.textContent = original;
-            }, 1400);
-          }).catch(function () { /* clipboard blocked — no-op */ });
-        });
-      });
-    })();
-
-    /* ───────────────────────────────────────────────────────────────────
-       The live launcher in the hero.
-       ─────────────────────────────────────────────────────────────────── */
-    function runLauncher(root, sel) {
-      if (!root) return;
-      var qEl = root.querySelector(sel.q),
-          scopeEl = root.querySelector(sel.scope),
-          listEl = root.querySelector(sel.results),
-          countEl = root.querySelector(sel.count);
-
-      var SCENES = [
-        { q: "1280 * 0.15", scope: "Calculator", rows: [
-          { mk: "=", t: "192", s: "1280 × 0.15  ·  ↩ copies the result", b: "Result" } ] },
-        { q: "figma", scope: "Apps", rows: [
-          { mk: "▣", t: "Figma", s: "Applications", b: "Launch" },
-          { mk: "▤", t: "Figma — hutch.coursion.studio", s: "Window · Desktop 2", b: "Switch" } ] },
-        { q: "100 usd to eur", scope: "Convert", rows: [
-          { mk: "€", t: "87.73 EUR", s: "Live rate, cached 4 minutes ago", b: "Copy" } ] },
-        { q: "dark", scope: "Toggles", rows: [
-          { mk: "◐", t: "Dark Mode", s: "Switch system appearance", b: "On" },
-          { mk: "◎", t: "Caffeinate", s: "Keep this Mac awake · 2h left", b: "Off" } ] },
-        { q: "left half", scope: "Windows", rows: [
-          { mk: "▥", t: "Left Half", s: "⌃⌥←  ·  snaps the focused window", b: "Snap" } ] },
-        { q: "clip:", scope: "Clipboard", rows: [
-          { mk: "⧉", t: "#FF7A59", s: "Copied 3 minutes ago from Figma", b: "Paste" },
-          { mk: "⧉", t: "hutch.coursion.studio", s: "Copied 21 minutes ago from Safari", b: "Paste" } ] }
-      ];
-
-      function render(rows) {
-        listEl.innerHTML = "";
-        rows.forEach(function (r, i) {
-          var li = document.createElement("li");
-          if (i === 0) li.className = "sel";
-          li.style.animationDelay = (i * 70) + "ms";
-          li.innerHTML =
-            '<span class="pounce-mark-box"></span>' +
-            '<span class="pounce-text"><span class="pounce-title"></span><span class="pounce-sub"></span></span>' +
-            '<span class="pounce-badge"></span>' +
-            '<span class="pounce-actions"><b>\u2318K</b>Actions</span>';
-          // textContent, not innerHTML — these strings are ours today, but a
-          // demo script is exactly the sort of thing someone later feeds a
-          // value from elsewhere.
-          li.querySelector(".pounce-mark-box").textContent = r.mk;
-          li.querySelector(".pounce-title").textContent = r.t;
-          li.querySelector(".pounce-sub").textContent = r.s;
-          li.querySelector(".pounce-badge").textContent = r.b;
-          listEl.appendChild(li);
-        });
-        countEl.textContent = rows.length + (rows.length === 1 ? " result" : " results");
-      }
-
-      var still = window.matchMedia("(prefers-reduced-motion: reduce)");
-      if (still.matches) {
-        var one = SCENES[0];
-        qEl.textContent = one.q;
-        scopeEl.textContent = one.scope;
-        scopeEl.classList.add("on");
-        render(one.rows);
-        return;
-      }
-
-      var i = 0, timer = null, running = false;
-      function at(fn, ms) { timer = setTimeout(fn, ms); }
-
-      function type(text, done) {
-        var n = 0;
-        (function step() {
-          qEl.textContent = text.slice(0, ++n);
-          if (n < text.length) at(step, 34 + Math.round(38 * (n % 3 === 0 ? 1 : 0.4)));
-          else at(done, 190);
-        })();
-      }
-
-      function erase(done) {
-        var t = qEl.textContent;
-        (function step() {
-          t = t.slice(0, -1);
-          qEl.textContent = t;
-          if (t) at(step, 16); else at(done, 260);
-        })();
-      }
-
-      function scene() {
-        if (!running) return;
-        var sc = SCENES[i % SCENES.length];
-        scopeEl.classList.remove("on");
-        listEl.innerHTML = "";
-        countEl.textContent = "";
-        type(sc.q, function () {
-          scopeEl.textContent = sc.scope;
-          scopeEl.classList.add("on");
-          render(sc.rows);
-          at(function () { erase(function () { i++; scene(); }); }, 2600);
-        });
-      }
-
-      function stop() { running = false; clearTimeout(timer); }
-      function start() { if (running) return; running = true; scene(); }
-
-      // Off-screen or in a background tab it is a loop burning battery for an
-      // audience of nobody.
-      if ("IntersectionObserver" in window) {
-        new IntersectionObserver(function (es) {
-          es[0].isIntersecting ? start() : stop();
-        }, { threshold: 0.25 }).observe(root);
-      } else { start(); }
-      document.addEventListener("visibilitychange", function () {
-        document.hidden ? stop() : start();
-      });
-    }
-
-    runLauncher(document.querySelector(".js-pounce"),
-                { q: ".js-q", scope: ".js-scope", results: ".js-results", count: ".js-count" });
-    // The Pounce showcase row runs the same component instead of a screenshot.
-    runLauncher(document.querySelector(".js-pounce-2"),
-                { q: ".js-q-2", scope: ".js-scope-2", results: ".js-results-2", count: ".js-count-2" });
-    // ...and once more inside the hero composite.
-    runLauncher(document.querySelector(".js-pounce-3"),
-                { q: ".js-q-3", scope: ".js-scope-3", results: ".js-results-3", count: ".js-count-3" });
-
-    /* ───────────────────────────────────────────────────────────────────
-       Theme picker. Fifteen themes ship and the site showed one.
-       ─────────────────────────────────────────────────────────────────── */
-    (function () {
-      var panel = document.documentElement,
-          dots = document.querySelector(".js-theme-dots"),
-          nameEl = document.querySelector(".js-theme-name");
-      if (!panel || !dots) return;
-
-      // Read the themes out of the stylesheet rather than repeating the list
-      // here — the CSS block is generated from PounceTheme.swift, so this stays
-      // correct when a theme is added and nobody remembers to update the site.
-      //
-      // Note: cssRules throws on a cross-origin sheet, and a browser counts a
-      // file:// stylesheet as cross-origin — so this comes up empty when the
-      // page is opened straight off disk, and the strip hides itself rather
-      // than rendering an empty row. Over http(s) it is same-origin and fine.
-      // One place that changes the theme, so the effect can't be attached to
-      // one picker and forgotten on the other.
-      var fx = document.querySelector(".theme-fx");
-      var still = window.matchMedia("(prefers-reduced-motion: reduce)");
-      function applyWith(origin, mutate) {
-        if (still.matches || !fx) { mutate(); return; }
-        var r = origin.getBoundingClientRect();
-        fx.style.setProperty("--fx-x", (r.left + r.width / 2) + "px");
-        fx.style.setProperty("--fx-y", (r.top + r.height / 2) + "px");
-        var ring = fx.firstElementChild;
-        origin.classList.remove("pop");
-        fx.classList.remove("run");
-        void (ring || fx).offsetWidth;       // restart the animation
-        // The wash is painted in the *new* accent, so mutate first.
-        mutate();
-        fx.classList.add("run");
-        origin.classList.add("pop");
-      }
-
-      var themes = [];
-      try {
-        Array.prototype.forEach.call(document.styleSheets, function (sheet) {
-          var rules;
-          try { rules = sheet.cssRules; } catch (e) { return; }   // cross-origin
-          Array.prototype.forEach.call(rules || [], function (r) {
-            var m = r.selectorText && r.selectorText.match(/^\[data-theme="(\w+)"\]$/);
-            if (!m) return;
-            var label = (r.style.getPropertyValue("--p-label") || "").trim().replace(/^"|"$/g, "");
-            themes.push({
-              id: m[1],
-              label: label || m[1],
-              base: (r.style.getPropertyValue("--p-base") || "#111").trim(),
-              accent: (r.style.getPropertyValue("--p-accent") || "#fff").trim()
-            });
-          });
-        });
-      } catch (e) { /* leave the picker empty rather than throwing */ }
-      if (!themes.length) { dots.closest(".theme-strip").hidden = true; return; }
-
-      function pick(t, node) {
-        document.documentElement.setAttribute("data-theme", t.id);
-        nameEl.innerHTML = "";
-        var b = document.createElement("b");
-        b.textContent = t.label;
-        nameEl.appendChild(b);
-        dots.querySelectorAll("button").forEach(function (n) {
-          n.setAttribute("aria-pressed", n === node ? "true" : "false");
-        });
-      }
-
-      document.querySelectorAll(".style-btn").forEach(function (b) {
-        b.addEventListener("click", function () {
-          applyWith(b, function () {
-            document.documentElement.setAttribute("data-style", b.dataset.styleId);
-            document.querySelectorAll(".style-btn").forEach(function (o) {
-              o.setAttribute("aria-pressed", String(o === b));
-            });
-          });
-        });
-      });
-
-      themes.forEach(function (t) {
-        var b = document.createElement("button");
-        b.type = "button";
-        b.className = "theme-dot";
-        b.style.setProperty("--d-base", t.base);
-        b.style.setProperty("--d-accent", t.accent);
-        b.title = t.label;
-        b.setAttribute("aria-label", t.label);
-        b.setAttribute("aria-pressed", "false");
-        b.addEventListener("click", function () { applyWith(b, function () { pick(t, b); }); });
-        dots.appendChild(b);
-        if (t.id === "candy") pick(t, b);
-      });
-    })();
-
-    /* ───────────────────────────────────────────────────────────────────
-       ⌘K on the site. Hutch's whole argument is that a keyboard beats a
-       menu; a website you can only click undercuts it.
-       ─────────────────────────────────────────────────────────────────── */
-    (function () {
-      var back = document.querySelector(".js-palette");
-      if (!back) return;
-      var input = back.querySelector(".js-palette-input"),
-          list = back.querySelector(".js-palette-results"),
-          openers = document.querySelectorAll(".js-palette-open");
-
-      var ITEMS = [
-        { g: "Tools", mk: "○", t: "Pounce — the command bar", h: "Tour", go: "#tools" },
-        { g: "Tools", mk: "▥", t: "Window Manager", h: "Tour", go: "#tools" },
-        { g: "Tools", mk: "▧", t: "Stash — the file shelf", h: "Tour", go: "#tools" },
-        { g: "Tools", mk: "◑", t: "Toggles", h: "Tour", go: "#tools" },
-        { g: "Tools", mk: "↗", t: "Browser Picker", h: "Tour", go: "#tools" },
-        { g: "Tools", mk: "◆", t: "Reaper — resource review", h: "Tour", go: "#tools" },
-        { g: "Go", mk: "→", t: "Take the tour", h: "Section", go: "#tour" },
-        { g: "Go", mk: "→", t: "Why Hutch", h: "Section", go: "#why" },
-        { g: "Go", mk: "↓", t: "Download free trial", h: "Download", act: "download" },
-        { g: "Pages", mk: "$", t: "Pricing — $29 once", h: "Page", go: "pricing.html" },
-        { g: "Pages", mk: "§", t: "Privacy Policy", h: "Page", go: "privacy.html" },
-        { g: "Pages", mk: "§", t: "Terms of Service", h: "Page", go: "terms.html" },
-        { g: "Pages", mk: "§", t: "Refunds", h: "Page", go: "refunds.html" },
-        { g: "Pages", mk: "⚿", t: "Lost your licence key?", h: "Page", go: "licence.html" },
-        { g: "Pages", mk: "@", t: "@kuraydev on X", h: "External", go: "https://x.com/kuraydev" }
-      ];
-
-      var shown = [], sel = 0;
-
-      // Subsequence match, the same rule the launcher itself uses: "wm" finds
-      // "Window Manager", "rfnd" finds "Refunds".
-      function hit(q, text) {
-        if (!q) return true;
-        var t = text.toLowerCase(), n = 0;
-        for (var c = 0; c < q.length; c++) {
-          n = t.indexOf(q[c], n);
-          if (n === -1) return false;
-          n++;
-        }
-        return true;
-      }
-
-      function draw() {
-        var q = input.value.trim().toLowerCase();
-        shown = ITEMS.filter(function (it) { return hit(q, it.t + " " + it.g); });
-        sel = 0;
-        list.innerHTML = "";
-        if (!shown.length) {
-          var e = document.createElement("li");
-          e.className = "palette-empty";
-          e.textContent = "Nothing here. Hutch itself would have searched your Mac.";
-          list.appendChild(e);
-          return;
-        }
-        var group = null;
-        shown.forEach(function (it, n) {
-          if (it.g !== group) {
-            group = it.g;
-            var h = document.createElement("li");
-            h.className = "group";
-            h.textContent = group;
-            list.appendChild(h);
-          }
-          var li = document.createElement("li");
-          li.className = "item";
-          li.setAttribute("role", "option");
-          li.dataset.n = n;
-          li.innerHTML = '<span class="mk"></span><span class="lb"></span><span class="hint"></span>';
-          li.querySelector(".mk").textContent = it.mk;
-          li.querySelector(".lb").textContent = it.t;
-          li.querySelector(".hint").textContent = it.h;
-          li.addEventListener("mousemove", function () { sel = n; mark(); });
-          li.addEventListener("click", function () { sel = n; run(); });
-          list.appendChild(li);
-        });
-        mark();
-      }
-
-      function mark() {
-        var nodes = list.querySelectorAll(".item");
-        nodes.forEach(function (n) {
-          var on = +n.dataset.n === sel;
-          n.setAttribute("aria-selected", on ? "true" : "false");
-          if (on) n.scrollIntoView({ block: "nearest" });
-        });
-      }
-
-      function run() {
-        var it = shown[sel];
-        if (!it) return;
-        close();
-        if (it.act === "download") { window.location.href = DMG_URL; return; }
-        if (/^https?:/.test(it.go)) { window.open(it.go, "_blank", "noopener"); return; }
-        if (it.go.charAt(0) === "#") {
-          var target = document.querySelector(it.go);
-          if (target) target.scrollIntoView({ behavior: "smooth", block: "start" });
-          return;
-        }
-        window.location.href = it.go;
-      }
-
-      var lastFocus = null;
-      function open() {
-        lastFocus = document.activeElement;
-        back.hidden = false;
-        requestAnimationFrame(function () { back.classList.add("on"); });
-        input.value = "";
-        draw();
-        input.focus();
-      }
-      function close() {
-        back.classList.remove("on");
-        setTimeout(function () { back.hidden = true; }, 170);
-        if (lastFocus && lastFocus.focus) lastFocus.focus();
-      }
-
-      openers.forEach(function (b) { b.addEventListener("click", open); });
-      input.addEventListener("input", draw);
-      back.addEventListener("mousedown", function (e) { if (e.target === back) close(); });
-
-      document.addEventListener("keydown", function (e) {
-        var openNow = !back.hidden;
-        if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === "k") {
-          e.preventDefault();
-          openNow ? close() : open();
-          return;
-        }
-        // "/" is the other muscle memory, but not while someone is typing.
-        if (!openNow && e.key === "/" && !/^(INPUT|TEXTAREA)$/.test(document.activeElement.tagName)) {
-          e.preventDefault(); open(); return;
-        }
-        if (!openNow) return;
-        if (e.key === "Escape") { e.preventDefault(); close(); }
-        else if (e.key === "ArrowDown") { e.preventDefault(); sel = Math.min(sel + 1, shown.length - 1); mark(); }
-        else if (e.key === "ArrowUp") { e.preventDefault(); sel = Math.max(sel - 1, 0); mark(); }
-        else if (e.key === "Enter") { e.preventDefault(); run(); }
-      });
-    })();
-  </script>
 </body>
 </html>
