@@ -155,12 +155,11 @@ body.home { background: var(--page); }
   position: absolute;
   left: 50%;
   top: var(--cy);
-  width: 210px;
-  height: 210px;
-  margin: -105px 0 0 -105px;
+  width: 420px;
+  height: 420px;
+  margin: -210px 0 0 -210px;
   border-radius: 50%;
-  background: color-mix(in srgb, var(--pal-accent) 60%, transparent);
-  filter: blur(64px);
+  background: radial-gradient(closest-side, color-mix(in srgb, var(--pal-accent) 52%, transparent), color-mix(in srgb, var(--pal-accent) 22%, transparent) 45%, transparent);
   z-index: 1;
 }
 .fan-tool {
