@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stamp styles.css, home.css and home.js with a content hash in every page that links them.
+"""Stamp styles.css, site.css, home.css, site.js and home.js with a content hash in every page that links them.
 
 Static host, no build step, so the stylesheet URL never changed and browsers
 kept serving whatever they had. The failure mode is nasty because it is
@@ -18,7 +18,7 @@ import re
 import sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
-assets = ["styles.css", "home.css", "home.js"]
+assets = ["styles.css", "site.css", "home.css", "site.js", "home.js"]
 digests = {a: hashlib.sha256((root / a).read_bytes()).hexdigest()[:10] for a in assets}
 
 changed = []
