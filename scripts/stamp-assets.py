@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Stamp styles.css with a content hash in every page that links it.
+"""Stamp styles.css, home.css and home.js with a content hash in every page that links them.
 
 Static host, no build step, so the stylesheet URL never changed and browsers
 kept serving whatever they had. The failure mode is nasty because it is
@@ -18,18 +18,21 @@ import re
 import sys
 
 root = pathlib.Path(__file__).resolve().parent.parent
-css = root / "styles.css"
-digest = hashlib.sha256(css.read_bytes()).hexdigest()[:10]
+assets = ["styles.css", "home.css", "home.js"]
+digests = {a: hashlib.sha256((root / a).read_bytes()).hexdigest()[:10] for a in assets}
 
 changed = []
 for page in sorted(root.glob("*.html")):
     text = page.read_text()
-    stamped = re.sub(r'href="styles\.css(?:\?v=[0-9a-f]+)?"',
-                     f'href="styles.css?v={digest}"', text)
+    stamped = text
+    for asset, digest in digests.items():
+        stamped = re.sub(r'(href|src)="' + re.escape(asset) + r'(?:\?v=[0-9a-f]+)?"',
+                         lambda m: f'{m.group(1)}="{asset}?v={digest}"', stamped)
     if stamped != text:
         page.write_text(stamped)
         changed.append(page.name)
 
-print(f"styles.css -> v={digest}")
+for asset, digest in digests.items():
+    print(f"{asset} -> v={digest}")
 print("stamped:", ", ".join(changed) if changed else "nothing (already current)")
 sys.exit(0)
