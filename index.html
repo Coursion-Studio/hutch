@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css?v=d23c048adf" />
   <link rel="stylesheet" href="site.css?v=b13b33ab4f" />
-  <link rel="stylesheet" href="home.css?v=879ef05538" />
+  <link rel="stylesheet" href="home.css?v=c76dd5853f" />
   <link rel="preload" as="image" href="img/hutch-icon.webp" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hutch.coursion.studio/" />
@@ -35,7 +35,7 @@
   </script>
   <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
   <script defer src="site.js?v=015cbb382d"></script>
-  <script defer src="home.js?v=3f66a49532"></script>
+  <script defer src="home.js?v=7c7947a8dd"></script>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
 <body class="home site">
@@ -102,7 +102,6 @@
         <div class="sec-head">
           <h2 class="rise">Six tools, one menu bar icon</h2>
           <p class="rise" style="--d:.06s">Every tool has its own switch. Turn off anything you won't use, and Settings brings it back any time.</p>
-          <p class="tool-legend rise" style="--d:.1s"><span class="lg"><span class="tier tier-free">Free forever</span> Toggles, Window Manager, Browser Picker</span><span class="lg"><span class="tier tier-paid">$29 licence</span> Stash, Reaper and Pounce's power features</span></p>
         </div>
         <ul class="tool-grid">
           <li class="tool-card rise" style="--d:.08s;--tc:#38C6E8">
@@ -142,6 +141,7 @@
             <div class="tc-foot"><span>Type</span><span class="combo"><kbd>reap</kbd></span><span>in Pounce</span></div>
           </li>
         </ul>
+        <p class="tool-legend rise" style="--d:.32s"><span class="lg"><span class="tier tier-free">Free forever</span> Toggles, Window Manager, Browser Picker</span><span class="lg"><span class="tier tier-paid">$29 licence</span> Stash, Reaper and Pounce's power features</span></p>
       </div>
     </section>
 
@@ -169,28 +169,39 @@
         <div class="pp pp-try rise js-try">
           <div class="pp-field">
             <svg class="pp-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-            <input class="js-try-input" type="text" role="combobox" aria-expanded="true" aria-controls="try-results" aria-autocomplete="list" aria-label="Try Pounce: type an app name or a sum" placeholder="Search apps, maths, the web…" autocomplete="off" autocapitalize="off" spellcheck="false" />
+            <input class="js-try-input" type="text" role="combobox" aria-expanded="true" aria-controls="try-results" aria-autocomplete="list" aria-label="Try Pounce: type an app, a sum, a conversion, or : for scopes" placeholder="Search apps, files, maths, the web…" autocomplete="off" autocapitalize="off" spellcheck="false" />
             <span class="pp-chip" aria-hidden="true">⌘K</span>
           </div>
           <div class="pp-results">
             <span class="pp-sel" aria-hidden="true"></span>
             <ul id="try-results" class="js-try-results" role="listbox" aria-label="Results"></ul>
-            <p class="pp-empty">Start typing. Apps, maths and the web answer at once.</p>
+            <p class="pp-empty">Start typing, or type <b>:</b> to see every scope.</p>
           </div>
           <div class="pp-foot">
             <span class="pp-label js-try-status">Pounce</span>
+            <span class="pp-tag js-try-lic" hidden>Licence</span>
             <span class="pp-hint"><span class="js-try-verb">Open</span><b>↩</b></span>
             <span class="pp-hint">Actions<b>⌘K</b></span>
           </div>
         </div>
         <div class="sec-head center">
           <h2 id="try-title" class="rise" style="--d:.08s">Try it</h2>
-          <p class="rise" style="--d:.14s">Type anything. Apps, maths and the web answer as you go, and the arrow keys pick.</p>
-          <div class="chips rise" style="--d:.2s">
-            <button type="button" class="chip-q" data-q="saf">saf</button>
-            <button type="button" class="chip-q" data-q="1280*0.15">1280*0.15</button>
-            <button type="button" class="chip-q" data-q="5 * 120">5 * 120</button>
+          <p class="rise" style="--d:.14s">Apps, files, sums, conversions, your clipboard, toggles and window snaps, all from one box. Pick an example or type your own.</p>
+          <div class="chips rise" style="--d:.2s" role="group" aria-label="Examples">
+            <button type="button" class="chip-q" data-q="saf" aria-label="Apps: saf">Apps</button>
+            <button type="button" class="chip-q" data-q="1280*0.15" aria-label="Maths: 1280*0.15">Maths</button>
+            <button type="button" class="chip-q" data-q="10 km to mi" aria-label="Convert: 10 km to mi">Convert</button>
+            <button type="button" class="chip-q" data-q="clip:" aria-label="Clipboard: clip:">Clipboard</button>
+            <button type="button" class="chip-q" data-q="file: invoice" aria-label="Files: file: invoice">Files</button>
+            <button type="button" class="chip-q" data-q="dark" aria-label="Toggles: dark">Toggles</button>
+            <button type="button" class="chip-q" data-q="left half" aria-label="Windows: left half">Windows</button>
+            <button type="button" class="chip-q" data-q="lock" aria-label="System: lock">System</button>
+            <button type="button" class="chip-q" data-q=":fire" aria-label="Emoji: :fire">Emoji</button>
+            <button type="button" class="chip-q" data-q="ai how do I undo a git commit" aria-label="AI: ai how do I undo a git commit">AI</button>
+            <button type="button" class="chip-q" data-q="kill chrome" aria-label="Processes: kill chrome">Processes</button>
+            <button type="button" class="chip-q" data-q=":" aria-label="Scopes: :">Scopes</button>
           </div>
+          <p class="sr-only js-try-count" aria-live="polite"></p>
         </div>
       </div>
     </section>
