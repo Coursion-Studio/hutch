@@ -6,7 +6,17 @@
     <description>Updates for Hutch — multi-tool macOS utility from Coursion. Public downloads are paused.</description>
     <language>en</language>
   
+    
     <item>
+      <title>Version 1.5.0</title>
+      <pubDate>Fri, 16 Oct 2026 17:43:46 +0300</pubDate>
+      <sparkle:version>73</sparkle:version>
+      <sparkle:shortVersionString>1.5.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li>Hutch is now a paid app: <strong>$29 once, for three Macs</strong>, covering every 1.x release. Every tool works in full for 14 days, then Toggles, Window Manager and Browser Picker stay free forever.</li><li>Buy Hutch from the site. Your key appears on the thanks page and arrives by email.</li><li><strong>Activate in Hutch:</strong> the button in your licence email opens Settings → Licence with the key filled in.</li><li>One licence covers three Macs. Release one from Settings → Licence any time, or add more for $4.99 each.</li><li>Keys are checked on your Mac. No account, no login, no server that can lock you out.</li><li><strong>Presets:</strong> pick Everything, Launcher &amp; windows or Minimal. Tools you switch off don&#x27;t load at all: no hotkeys, no background work.</li><li><strong>Permissions on demand:</strong> Hutch asks only for what your enabled tools need, and tells you when a permission is no longer used.</li><li><strong>Help improve Hutch:</strong> anonymous crash reports and usage counts, asked openly during setup, each one click off.</li><li><strong>What&#x27;s New for your tools:</strong> changes to the tools you use come first.</li><li><strong>Clean uninstall:</strong> Settings → General → Uninstall Hutch removes the app, its settings and its permissions.</li><li><strong>Every language, fully translated:</strong> all 28 languages now cover the whole app.</li><li><strong>Compact:</strong> a third, launcher-style look next to Glass and Ledger.</li><li><strong>Window Manager profiles:</strong> named layouts per Mac. Your MacBook and your desk Mac each keep their own.</li><li><strong>Switch any tool off:</strong> its hotkeys are released and it leaves Pounce.</li><li><strong>Appearance</strong> has its own settings page, and every panel follows the style you pick.</li><li>Pounce&#x27;s right-hand badge says what ⏎ will do.</li><li>Hutch notices if it loses its own shortcuts and offers to restore them.</li><li>macOS 27: Focus and Night Shift toggles, and simulators open in Device Hub.</li><li>Turning on iCloud sync on a new Mac now adopts your profile without asking which side to keep.</li><li>The camera and microphone indicators could take the whole app down.</li><li>A hung helper process no longer freezes Hutch.</li><li>Faster typing in Pounce, and the Keychain is off the main thread.</li><li>Bug reports go to feedback@coursion.studio.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.5.0/Hutch-1.5.0.dmg" type="application/octet-stream" sparkle:edSignature="awJC4yihG0iGiySwfmiNL9byVrfvxy2Txp2wrzVJHP8epsbInF2dUoY9Qs9XE7tT1y12//Mpbg0DcQmHPx8wCA==" length="21884460" />
+    </item>
+<item>
       <title>Version 1.4.0</title>
       <pubDate>Tue, 13 Oct 2026 21:58:39 +0300</pubDate>
       <sparkle:version>63</sparkle:version>
