@@ -39,16 +39,16 @@
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
 <body class="home site">
-  <a class="skip" href="#tools">Skip to the tools</a>
+  <a class="skip" href="#hotkey">Skip to the tour</a>
   <div class="bar js-bar">
     <div class="bar-in">
       <a class="bar-brand" href="#top"><img src="img/hutch-icon.webp" alt="" width="26" height="26" /><span>Hutch</span></a>
       <a class="bar-ver" href="https://github.com/Coursion-Studio/hutch/releases/latest" aria-label="What's new in Hutch 1.5">1.5</a>
       <nav class="bar-nav js-bar-nav" aria-label="Main">
-        <a href="#tools" data-spy="tools">Tools</a>
         <a href="#try" data-spy="try">Try it</a>
         <a href="#windows" data-spy="windows">Windows</a>
         <a href="#stash" data-spy="stash">Stash</a>
+        <a href="#tools" data-spy="tools">Tools</a>
         <a href="pricing.html" data-spy="pricing">Pricing</a>
         <span class="bar-ink" aria-hidden="true"></span>
       </nav>
@@ -61,10 +61,10 @@
     </div>
     <div class="bar-sheet js-bar-sheet" id="bar-sheet" role="dialog" aria-modal="true" aria-label="Menu" hidden>
       <nav class="bar-sheet-nav" aria-label="Site">
-        <a href="#tools" data-spy="tools">Tools</a>
         <a href="#try" data-spy="try">Try it</a>
         <a href="#windows" data-spy="windows">Windows</a>
         <a href="#stash" data-spy="stash">Stash</a>
+        <a href="#tools" data-spy="tools">Tools</a>
         <a href="pricing.html" data-spy="pricing">Pricing</a>
       </nav>
       <div class="bar-sheet-act">
@@ -115,53 +115,6 @@
   </header>
 
   <main>
-    <section id="tools" class="sec sec-tools reveal">
-      <div class="container">
-        <div class="sec-head">
-          <h2 class="rise">Six tools, one menu bar icon</h2>
-          <p class="rise" style="--d:.06s">Every tool has its own switch. Turn off anything you won't use, and Settings brings it back any time.</p>
-        </div>
-        <ul class="tool-grid">
-          <li class="tool-card rise" style="--d:.08s;--tc:#38C6E8">
-            <div class="tc-head"><span class="tile"><img src="img/pounce.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-mixed">Partly free</span></div>
-            <h3>Pounce</h3>
-            <p>Launch apps, find files, paste from your clipboard history, do maths and ask AI.</p>
-            <div class="tc-foot"><span class="combo"><kbd>⌘</kbd><kbd>Space</kbd></span><span>to open</span></div>
-          </li>
-          <li class="tool-card rise" style="--d:.12s;--tc:#F5A623">
-            <div class="tc-head"><span class="tile"><img src="img/stash.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-paid">Licence</span></div>
-            <h3>Stash</h3>
-            <p>Park files on a floating shelf mid-drag, switch apps, then drop them where they belong.</p>
-            <div class="tc-foot"><span class="combo"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>V</kbd></span><span>or shake while dragging</span></div>
-          </li>
-          <li class="tool-card rise" style="--d:.16s;--tc:#34C759">
-            <div class="tc-head"><span class="tile"><img src="img/toggles.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-free">Free forever</span></div>
-            <h3>Toggles</h3>
-            <p>Dark Mode, Keep Awake, Hide Desktop and 25 more switches, one click away.</p>
-            <div class="tc-foot"><span>Click the menu-bar icon</span></div>
-          </li>
-          <li class="tool-card rise" style="--d:.20s;--tc:#3B82F6">
-            <div class="tc-head"><span class="tile"><img src="img/window-manager.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-free">Free forever</span></div>
-            <h3>Window Manager</h3>
-            <p>Snap windows to halves, quarters and thirds by hotkey or drag, in any app.</p>
-            <div class="tc-foot"><span class="combo"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>←</kbd><kbd>→</kbd></span><span>to snap</span></div>
-          </li>
-          <li class="tool-card rise" style="--d:.24s;--tc:#8B7CFF">
-            <div class="tc-head"><span class="tile"><img src="img/browser-picker.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-free">Free forever</span></div>
-            <h3>Browser Picker</h3>
-            <p>Send every link to the right browser, by site or by the app it came from.</p>
-            <div class="tc-foot"><span>Works on every link you click</span></div>
-          </li>
-          <li class="tool-card rise" style="--d:.28s;--tc:#22C55E">
-            <div class="tc-head"><span class="tile"><img src="img/reaper.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-paid">Licence</span></div>
-            <h3>Reaper</h3>
-            <p>See what's eating CPU, memory and GPU, then quit it one app at a time.</p>
-            <div class="tc-foot"><span>Type</span><span class="combo"><kbd>reap</kbd></span><span>in Pounce</span></div>
-          </li>
-        </ul>
-        <p class="tool-legend rise" style="--d:.32s"><span class="lg"><span class="tier tier-free">Free forever</span> Toggles, Window Manager, Browser Picker</span><span class="lg"><span class="tier tier-paid">$29 licence</span> Stash, Reaper and Pounce's power features</span></p>
-      </div>
-    </section>
 
     <section id="hotkey" class="sec sec-hotkey reveal" aria-labelledby="hotkey-title">
       <div class="glow" aria-hidden="true"></div>
@@ -365,6 +318,54 @@
           <li class="rise" style="--d:.1s"><b>Runs on your Mac</b><span>Everything Hutch indexes stays on your Mac. Anonymous crash reports and usage counts each have their own switch, and <a href="privacy.html#when-the-app-does-talk-to-a-server">the privacy page</a> lists every request it makes.</span></li>
           <li class="rise" style="--d:.14s"><b>Signed end to end</b><span>Developer ID signed and Apple-notarized, with EdDSA-verified updates through Sparkle.</span></li>
         </ul>
+      </div>
+    </section>
+
+    <section id="tools" class="sec sec-tools reveal">
+      <div class="container">
+        <div class="sec-head">
+          <h2 class="rise">Six tools, one menu bar icon</h2>
+          <p class="rise" style="--d:.06s">Every tool has its own switch. Turn off anything you won't use, and Settings brings it back any time.</p>
+        </div>
+        <ul class="tool-grid">
+          <li class="tool-card rise" style="--d:.08s;--tc:#38C6E8">
+            <div class="tc-head"><span class="tile"><img src="img/pounce.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-mixed">Partly free</span></div>
+            <h3>Pounce</h3>
+            <p>Launch apps, find files, paste from your clipboard history, do maths and ask AI.</p>
+            <div class="tc-foot"><span class="combo"><kbd>⌘</kbd><kbd>Space</kbd></span><span>to open</span></div>
+          </li>
+          <li class="tool-card rise" style="--d:.12s;--tc:#F5A623">
+            <div class="tc-head"><span class="tile"><img src="img/stash.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-paid">Licence</span></div>
+            <h3>Stash</h3>
+            <p>Park files on a floating shelf mid-drag, switch apps, then drop them where they belong.</p>
+            <div class="tc-foot"><span class="combo"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>⌘</kbd><kbd>V</kbd></span><span>or shake while dragging</span></div>
+          </li>
+          <li class="tool-card rise" style="--d:.16s;--tc:#34C759">
+            <div class="tc-head"><span class="tile"><img src="img/toggles.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-free">Free forever</span></div>
+            <h3>Toggles</h3>
+            <p>Dark Mode, Keep Awake, Hide Desktop and 25 more switches, one click away.</p>
+            <div class="tc-foot"><span>Click the menu-bar icon</span></div>
+          </li>
+          <li class="tool-card rise" style="--d:.20s;--tc:#3B82F6">
+            <div class="tc-head"><span class="tile"><img src="img/window-manager.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-free">Free forever</span></div>
+            <h3>Window Manager</h3>
+            <p>Snap windows to halves, quarters and thirds by hotkey or drag, in any app.</p>
+            <div class="tc-foot"><span class="combo"><kbd>⌃</kbd><kbd>⌥</kbd><kbd>←</kbd><kbd>→</kbd></span><span>to snap</span></div>
+          </li>
+          <li class="tool-card rise" style="--d:.24s;--tc:#8B7CFF">
+            <div class="tc-head"><span class="tile"><img src="img/browser-picker.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-free">Free forever</span></div>
+            <h3>Browser Picker</h3>
+            <p>Send every link to the right browser, by site or by the app it came from.</p>
+            <div class="tc-foot"><span>Works on every link you click</span></div>
+          </li>
+          <li class="tool-card rise" style="--d:.28s;--tc:#22C55E">
+            <div class="tc-head"><span class="tile"><img src="img/reaper.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-paid">Licence</span></div>
+            <h3>Reaper</h3>
+            <p>See what's eating CPU, memory and GPU, then quit it one app at a time.</p>
+            <div class="tc-foot"><span>Type</span><span class="combo"><kbd>reap</kbd></span><span>in Pounce</span></div>
+          </li>
+        </ul>
+        <p class="tool-legend rise" style="--d:.32s"><span class="lg"><span class="tier tier-free">Free forever</span> Toggles, Window Manager, Browser Picker</span><span class="lg"><span class="tier tier-paid">$29 licence</span> Stash, Reaper and Pounce's power features</span></p>
       </div>
     </section>
 
