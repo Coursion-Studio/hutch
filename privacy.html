@@ -1,50 +1,58 @@
 <!doctype html>
-<html lang="en" data-theme="candy" data-style="ledger">
+<html lang="en">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Privacy Policy — Hutch</title>
   <meta name="description" content="What Hutch collects, which is almost nothing, and why." />
-  <link rel="icon" type="image/png" href="icon.png" />
+  <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
-  <link rel="stylesheet" href="styles.css?v=fb4231c635" />
-  <meta name="theme-color" content="#0B0A0C" />
+  <link rel="stylesheet" href="styles.css?v=d23c048adf" />
+  <link rel="stylesheet" href="site.css?v=47cf1b9cbe" />
+  <meta name="theme-color" content="#0E0C14" />
+  <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
+  <script defer src="site.js?v=015cbb382d"></script>
 </head>
-<body>
+<body class="site page page-legal">
+  <a class="skip" href="#main">Skip to content</a>
   <div class="bg"></div>
+  <div class="page-stage reveal" aria-hidden="true"><div class="mesh"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div></div>
 
   <div class="container">
-    <nav class="top">
-      <div class="brand">
-        <a href="index.html"><img src="icon.png" alt="Hutch" /></a>
-        <span>Hutch</span>
-      </div>
+    <nav class="top" aria-label="Main">
+      <a class="brand" href="index.html"><img src="img/hutch-icon.webp" alt="" width="26" height="26" /><span>Hutch</span></a>
       <div class="links">
-        <a href="index.html">Home</a>
-        <a href="terms.html">Terms</a>
-        <a href="refunds.html">Refunds</a>
+        <a href="index.html#try">Tour</a>
+        <a href="index.html#tools">Tools</a>
+        <a href="index.html#why">Why Hutch</a>
+        <a href="pricing.html">Pricing</a>
+        <a href="index.html#download">Download</a>
+        <button class="nav-k js-palette-open" type="button" aria-label="Search this site">
+          <span>Search</span><kbd>⌘K</kbd>
+        </button>
       </div>
     </nav>
 
-    <main class="legal">
-      <div class="legal-head">
-        <div class="eyebrow">Legal · Privacy</div>
-        <h1>Privacy Policy</h1>
-        <span class="updated">Last updated 13 October 2026</span>
-        <p class="lede">Hutch has no accounts and never builds a profile of you. Everything it
+    <main id="main" class="legal">
+      <div class="legal-head reveal">
+        <p class="page-pill rise"><span class="dot" aria-hidden="true"></span>Legal · Privacy</p>
+        <h1 class="rise" style="--d:.05s">Privacy Policy</h1>
+        <span class="updated rise" style="--d:.08s">Last updated 16 October 2026</span>
+        <p class="lede rise" style="--d:.11s">Hutch has no accounts and never builds a profile of you. Everything it
         indexes — your apps, files, clipboard, windows and running processes —
         stays on your Mac. It does send two kinds of anonymous telemetry, crash
-        reports and feature-usage counts, and one switch in Settings turns both
-        off. What follows is the full list, and the rest are things you either
-        start yourself or that happen when you buy.</p>
+        reports and usage counts. Both are on by default, the welcome tour asks
+        about them openly, and each has its own switch. What follows is every
+        time the app goes online, and the rest are things you either start
+        yourself or that happen when you buy.</p>
       </div>
 
       <div class="legal-grid">
-        <nav class="legal-toc" aria-label="On this page">
+        <nav class="legal-toc glass" aria-label="On this page">
           <h2>On this page</h2>
           <ol>
           <li><a href="#what-the-app-does-on-your-mac">What the app does on your Mac</a></li>
-          <li><a href="#when-the-app-does-talk-to-a-server">When the app does talk to a server</a></li>
+          <li><a href="#when-the-app-does-talk-to-a-server">Every time the app talks to a server</a></li>
           <li><a href="#what-we-store-when-you-buy">What we store when you buy</a></li>
           <li><a href="#this-website">This website</a></li>
           <li><a href="#crash-reports-anonymous-usage-data-the-a">Crash reports &amp; anonymous usage data (the app)</a></li>
@@ -69,19 +77,46 @@
       </p>
         </section>
         <section>
-          <h2 id="when-the-app-does-talk-to-a-server">When the app does talk to a server</h2>
+          <h2 id="when-the-app-does-talk-to-a-server">Every time the app talks to a server</h2>
 
+      <p>
+        This is the complete list. Anything not on it happens on your Mac.
+      </p>
       <ul>
         <li>
-          <strong>Updates.</strong> Hutch checks for a new version. That request
-          reveals only what any download does: your IP address and app version.
-          We keep no record tying it to you.
+          <strong>Update checks.</strong> Once an hour, unless you switch
+          automatic checks off, Hutch fetches a small feed from
+          hutch.coursion.studio. Installing an update downloads it from GitHub.
+          These requests reveal only what any download does: your IP address
+          and app version. No system profile is sent.
+        </li>
+        <li>
+          <strong>Crash reports and usage counts.</strong> Sent to Sentry and
+          PostHog, both in the EU, while their switches are on. Exactly what
+          they contain is in <a href="#crash-reports-anonymous-usage-data-the-a">the section below</a>.
         </li>
         <li>
           <strong>Licence activation.</strong> If you buy Hutch, activating a Mac
-          sends us your licence key and a device identifier, name and model, so
-          we can count how many Macs a key is on. The identifier is derived from
-          your hardware and isn't reversible into anything about you.
+          sends us your licence key, a device ID, and the Mac's name and model,
+          so the licence page can show which Macs a key is on. The device ID is
+          a random number Hutch makes up on first use, not a hardware serial.
+          Removing a licence or freeing a seat sends the key and that ID again.
+        </li>
+        <li>
+          <strong>Licence check.</strong> While a Mac is licensed, Hutch asks at
+          most once a day whether the key is still valid, sending the key and
+          the device ID. If the server can't be reached, nothing changes.
+        </li>
+        <li>
+          <strong>Currency rates.</strong> Only when you convert a currency in
+          Pounce, at most every 12 hours: a plain download of public exchange
+          rates from jsDelivr (fallback: Cloudflare Pages). Nothing about you is
+          sent.
+        </li>
+        <li>
+          <strong>Your public IP.</strong> Only when you press Return on
+          &ldquo;Public IP&rdquo; in Pounce's network info, Hutch asks
+          api.ipify.org.
         </li>
         <li>
           <strong>AI features.</strong> Only if you enter your own API key. Those
@@ -89,11 +124,18 @@
           and never proxy them. Your key is stored in your Mac's Keychain.
         </li>
         <li>
-          <strong>Crash reports and feedback.</strong> Captured locally, and only
-          sent if you press send — which opens your own mail client with the full
-          text visible first. You can turn capture off in Settings → Feedback.
+          <strong>Images dropped on Stash.</strong> Dragging an image from a web
+          page onto a shelf downloads that image from its own site, as a browser
+          would.
         </li>
       </ul>
+      <p>
+        Web searches, links, checkout and the App Store pages open in your
+        browser; Hutch hands them over and makes no request of its own. Bug
+        reports open in your own mail client with the full text visible, and
+        nothing is sent until you press Send there. iCloud sync writes a file to
+        your iCloud Drive, which Apple syncs; we run no server for it.
+      </p>
         </section>
         <section>
           <h2 id="what-we-store-when-you-buy">What we store when you buy</h2>
@@ -132,15 +174,46 @@
           <h2 id="crash-reports-anonymous-usage-data-the-a">Crash reports &amp; anonymous usage data (the app)</h2>
 
       <p>
-        The Hutch app sends two kinds of anonymous telemetry, both of which you
-        can turn off in Settings → General → Privacy (&ldquo;Share anonymous
-        usage &amp; crash data&rdquo;): <strong>crash reports</strong> via
-        Sentry (EU-hosted) — the app version and a technical stack trace when
-        Hutch crashes, never your window contents, file names, or licence key —
-        and <strong>usage counts</strong> via PostHog (EU-hosted) — anonymous
-        events like &ldquo;a tool was used&rdquo;, never what it was used on.
-        No user profile is created and nothing is linked to your identity.
+        The Hutch app sends two kinds of anonymous telemetry. Both are
+        <strong>on by default</strong>, the welcome tour asks about them in its
+        &ldquo;Help improve Hutch&rdquo; step, and each has its own switch,
+        there and in Settings → General → Privacy. Switching one off takes
+        effect immediately.
       </p>
+      <ul>
+        <li>
+          <strong>Anonymous crash reports</strong>, via Sentry (EU-hosted). When
+          Hutch crashes or freezes for several seconds: a technical stack
+          trace, the app and macOS versions, the Mac model, and a short trail of
+          what Hutch was doing, like &ldquo;Pounce opened&rdquo; or
+          &ldquo;Settings: General&rdquo;.
+        </li>
+        <li>
+          <strong>Anonymous usage counts</strong>, via PostHog (EU-hosted).
+          Which tools are switched on, how often each is used and for what kind
+          of action (a calculation, a left-half snap, a toggle), how far people
+          get through the welcome tour, trial days left, when the licence
+          screen appears, whether activation worked, and which version you
+          updated from. Counts are added up on your Mac and sent in batches.
+        </li>
+      </ul>
+      <p>
+        Both carry a random install ID that Hutch makes up on first launch, so
+        a crash and a count from the same copy can be told apart. It isn't
+        derived from your hardware, your account or your licence, and no
+        profile of you is built from it. IP-based location lookup is switched
+        off.
+      </p>
+      <p><strong>Never in a crash report or usage count:</strong></p>
+      <ul>
+        <li>File names, folders or paths</li>
+        <li>Links and web addresses you open or search</li>
+        <li>Clipboard contents</li>
+        <li>What you type in Pounce or anywhere else</li>
+        <li>Window titles or screen contents</li>
+        <li>Your licence key, email address or AI provider keys</li>
+        <li>Your name, your Mac's name or any hardware serial</li>
+      </ul>
         </section>
         <section>
           <h2 id="who-else-touches-your-data">Who else touches your data</h2>
@@ -150,8 +223,10 @@
         <li><strong>Google Cloud</strong> — hosts the licence records, in the EU.</li>
         <li><strong>Our email provider</strong> — delivers your licence key. It sees your email address and the message.</li>
         <li><strong>GitHub</strong> — serves this website and app downloads.</li>
-        <li><strong>Sentry</strong> (EU) — receives anonymous crash reports from the app, if you leave telemetry on.</li>
-        <li><strong>PostHog</strong> (EU) — receives anonymous feature-usage counts from the app, if you leave telemetry on.</li>
+        <li><strong>Sentry</strong> (EU) — receives anonymous crash reports from the app, while that switch is on.</li>
+        <li><strong>PostHog</strong> (EU) — receives anonymous usage counts from the app, while that switch is on.</li>
+        <li><strong>jsDelivr</strong> and <strong>Cloudflare</strong> — serve public currency rates when you convert a currency. They see an ordinary download.</li>
+        <li><strong>ipify</strong> — answers when you ask Pounce for your public IP.</li>
       </ul>
       <p>We don't sell anything to anyone, and there are no advertising or tracking networks involved.</p>
         </section>
@@ -215,11 +290,14 @@
 
     <footer>
       <div class="links">
-        <a href="index.html">Home</a>
-        <a href="terms.html">Terms</a>
-        <a href="refunds.html">Refunds</a>
+        <a href="index.html#download">Download</a>
+        <a href="pricing.html">Pricing</a>
         <a href="licence.html">Lost your key?</a>
+        <a href="terms.html">Terms</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="refunds.html">Refunds</a>
         <a href="mailto:support@coursion.studio">Support</a>
+        <a href="https://x.com/kuraydev" target="_blank" rel="noopener">@kuraydev</a>
       </div>
       <div>© 2026 Coursion Studio · Made in SwiftUI</div>
     </footer>
