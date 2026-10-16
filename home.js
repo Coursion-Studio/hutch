@@ -96,7 +96,7 @@
   };
   const onAccent = (hex) => (1.05 / (lum(hex) + 0.05) >= (lum(hex) + 0.05) / 0.0533 ? "#FFFFFF" : "#0B0A0C");
 
-  const look = { theme: THEMES[2], mat: "glass" };
+  const look = { theme: THEMES[2], mat: "ledger" };
   const PAL_VARS = ["--pal-base", "--pal-accent", "--pal-second", "--pal-s1", "--pal-s2", "--pal-s3", "--pal-text", "--pal-text2", "--pal-text3", "--pal-chip", "--pal-rule", "--pal-border", "--on-accent"];
 
   function applyLook() {
@@ -116,6 +116,7 @@
       p.dataset.mat = look.mat;
       p.toggleAttribute("data-light", t.id === "paper");
     });
+    document.dispatchEvent(new Event("pp:look"));
   }
   applyLook();
 
@@ -144,29 +145,37 @@
     calc: '<rect x="5" y="3.5" width="14" height="17" rx="2.5"/><path d="M8.5 7.5h7M8.5 12h.01M12 12h.01M15.5 12h.01M8.5 16h.01M12 16h.01M15.5 16h.01"/>',
     search: '<circle cx="11" cy="11" r="6.5"/><path d="m16 16 4 4"/>'
   };
-  const A = (name, glyph, a, b, fg = "#fff") => ({ name, glyph, bg: `linear-gradient(${a}, ${b})`, fg });
+  const SYS = "/System/Applications", APPDIR = "/Applications";
+  const A = (name, glyph, a, b, fg = "#fff", dir = SYS, running = false) => ({ name, glyph, bg: `linear-gradient(${a}, ${b})`, fg, dir, running });
   const APPS = [
-    A("Safari", "compass", "#46B2FF", "#1A6FE0"),
-    A("Safari Technology Preview", "compass", "#9B6BFF", "#5B2BD1"),
-    A("Mail", "mail", "#55C6FF", "#1677F2"),
+    A("Safari", "compass", "#46B2FF", "#1A6FE0", "#fff", APPDIR, true),
+    A("Safari Technology Preview", "compass", "#9B6BFF", "#5B2BD1", "#fff", APPDIR),
+    A("Mail", "mail", "#55C6FF", "#1677F2", "#fff", SYS, true),
     A("Messages", "bubble", "#64F383", "#1DBE3D"),
     A("Maps", "pin", "#72E38A", "#2D9CDB"),
     A("Music", "music", "#FF6A85", "#F5264D"),
-    A("Notes", "notes", "#FFE66B", "#F6C21B", "#5C4600"),
+    A("Notes", "notes", "#FFE66B", "#F6C21B", "#5C4600", SYS, true),
     A("Calendar", "calendar", "#FFFFFF", "#E7E7EC", "#E8453C"),
     A("Reminders", "list", "#FFFFFF", "#E7E7EC", "#2F7CF6"),
     A("Photos", "photos", "#FFFFFF", "#E7E7EC", "#F28C28"),
     A("FaceTime", "camera", "#64F383", "#1DBE3D"),
-    A("Finder", "finder", "#6BC4FF", "#2B7DE9"),
+    A("Finder", "finder", "#6BC4FF", "#2B7DE9", "#fff", "/System/Library/CoreServices", true),
     A("Preview", "preview", "#70CDFF", "#2D86E6"),
     A("Podcasts", "podcast", "#D884FF", "#8D3BEB"),
     A("App Store", "store", "#45B8FF", "#1471F0"),
     A("System Settings", "gear", "#A8A8B0", "#6B6B74"),
-    A("Terminal", "terminal", "#4D4D52", "#1E1E21"),
-    A("Xcode", "hammer", "#55C6FF", "#1A6EE8"),
-    A("Figma", "figma", "#2E2E31", "#19191B"),
-    A("Slack", "hash", "#8A4597", "#4A154B")
+    A("Terminal", "terminal", "#4D4D52", "#1E1E21", "#fff", "/System/Applications/Utilities", true),
+    A("Xcode", "hammer", "#55C6FF", "#1A6EE8", "#fff", APPDIR, true),
+    A("Figma", "figma", "#2E2E31", "#19191B", "#fff", APPDIR),
+    A("Slack", "hash", "#8A4597", "#4A154B", "#fff", APPDIR, true)
   ];
+  const OTHER = {
+    "Google Chrome": A("Google Chrome", "globe", "#FDFDFE", "#DCDCE2", "#3B7BEF", APPDIR, true),
+    Spotify: A("Spotify", "music", "#3A3A3F", "#151517", "#4ADE80", APPDIR, true),
+    "Docker Desktop": A("Docker Desktop", "box", "#5BB4FF", "#1D63ED", "#fff", APPDIR, true),
+    Keynote: A("Keynote", "podium", "#5AB0FF", "#1C6CF0", "#fff", APPDIR, true)
+  };
+  const appNamed = (name) => APPS.find((a) => a.name === name) || OTHER[name];
   const svg = (name) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${G[name]}</svg>`;
   Object.assign(G, {
     ruler: '<path d="M4 15.5 15.5 4l4.5 4.5L8.5 20z"/><path d="m8 12 2 2M10.5 9.5l1.5 1.5M13 7l2 2"/>',
@@ -198,32 +207,86 @@
     phone: '<rect x="7" y="3" width="10" height="18" rx="2.5"/><path d="M11 6h2"/>'
   });
 
+  Object.assign(G, {
+    globe: '<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.4 3.5 5.2 3.5 8.5s-1.1 6.1-3.5 8.5c-2.4-2.4-3.5-5.2-3.5-8.5s1.1-6.1 3.5-8.5z"/>',
+    box: '<path d="m12 3.5 8 4.2v8.6l-8 4.2-8-4.2V7.7z"/><path d="m4 7.7 8 4.3 8-4.3M12 12v8.5"/>',
+    podium: '<path d="M5 7.5h14l-2 6H7z"/><path d="M12 13.5v6M8.5 19.5h7M12 4v3.5"/>',
+    smile: '<circle cx="12" cy="12" r="8.5"/><path d="M8.5 14c1.8 2 5.2 2 7 0M9.3 9.6h.01M14.7 9.6h.01"/>',
+    fx: '<path d="M13.5 4.5c-2 0-2.8 1-3.2 3L8.5 19.5c-.3 1.5-1 2-2 2"/><path d="M7.5 9.5h6M13.5 12.5l5 6M18.5 12.5l-5 6"/>',
+    scroll: '<path d="M8 4.5h10a2 2 0 0 1 0 4h-2v9a2.5 2.5 0 0 1-2.5 2.5H6.5A2.5 2.5 0 0 1 4 17.5V17h9.5"/><path d="M8 4.5A2 2 0 0 0 6 6.5V17M10 9.5h3M10 13h3"/>',
+    stack: '<path d="m12 4 8 4-8 4-8-4z"/><path d="m4 12 8 4 8-4M4 16l8 4 8-4"/>'
+  });
+
+  const DOCS = { pdf: "#EF4B3F", numbers: "#2FB55A", key: "#2E86F5", png: "#8E6CF0", txt: "#8A8A94" };
+  const docArt = (title) => {
+    const ext = (/\.([a-z0-9]+)$/i.exec(title) || [0, "txt"])[1].toLowerCase();
+    const c = DOCS[ext] || DOCS.txt;
+    return `<svg viewBox="0 0 22 22" aria-hidden="true"><path d="M5.2 1.5h8.3l4.3 4.3v13.4a1.3 1.3 0 0 1-1.3 1.3H5.2a1.3 1.3 0 0 1-1.3-1.3V2.8a1.3 1.3 0 0 1 1.3-1.3z" fill="#FBFBFD" stroke="rgb(0 0 0 / 0.18)" stroke-width="0.5"/><path d="M13.5 1.5v3a1.3 1.3 0 0 0 1.3 1.3h3" fill="#E1E1E7" stroke="rgb(0 0 0 / 0.14)" stroke-width="0.5"/><rect x="3.9" y="12" width="13.9" height="4.6" fill="${c}"/><path d="M6.5 8.3h6M6.5 10h8" stroke="#C9C9D1" stroke-width="0.9" stroke-linecap="round"/></svg>`;
+  };
+  function artHTML(r) {
+    if (r.app) return `<span class="pp-art app" style="background:${r.app.bg};color:${r.app.fg}">${svg(r.app.glyph)}</span>`;
+    if (r.doc) return `<span class="pp-art pp-file">${docArt(r.title)}</span>`;
+    return `<span class="pp-art sym" style="--tint:${r.tint || "var(--pal-accent)"}">${svg(r.glyph)}</span>`;
+  }
+
+  const KIND = {
+    app: ["Application", "Launch"], toggle: ["Toggle", "Toggle"], action: ["Command", "Run"],
+    file: ["File", "Open"], web: ["Web Search", "Search"], calculator: ["Calculator", "Copy"]
+  };
+  const primaryHint = (r) => (!r ? "Open" : r.pk === "app" && r.app.running ? "Switch" : KIND[r.pk][1]);
+
   function rowEl(r) {
     const li = document.createElement("li");
     li.className = "pp-row";
     li.setAttribute("role", "option");
-    li.innerHTML = '<span class="pp-ico"></span><span class="pp-tx"><span class="pp-t"></span><span class="pp-s"></span></span><span class="pp-tag">Licence</span><span class="pp-sw" aria-hidden="true"></span><span class="pp-tr"></span>';
+    li.innerHTML = '<span class="pp-ico"></span><span class="pp-tx"><span class="pp-t"></span><span class="pp-s"></span></span><span class="pp-tag">Licence</span><span class="pp-run" title="Running"></span><span class="pp-kind"></span><span class="pp-ret"></span><span class="pp-act"><b>⌘K</b>Actions</span>';
     fill(li, r);
     return li;
   }
   function fill(li, r) {
     const ico = $(".pp-ico", li);
-    const face = r.emoji || r.swatch || r.glyph;
+    const face = r.app ? "app:" + r.app.name : r.doc ? "doc:" + r.title : r.glyph + (r.tint || "");
     if (ico.dataset.face !== face) {
       ico.dataset.face = face;
-      ico.className = "pp-ico " + (r.app ? "app" : r.emoji ? "emo" : r.swatch ? "hex" : "sym");
-      ico.style.background = r.app ? r.app.bg : r.swatch || "";
-      ico.style.color = r.app ? r.app.fg : "";
-      ico.style.setProperty("--tint", r.tint || "");
-      ico.classList.toggle("tint", !!r.tint);
-      ico.innerHTML = r.emoji || r.swatch ? (r.emoji || "") : svg(r.glyph);
+      ico.innerHTML = artHTML(r);
     }
     $(".pp-t", li).textContent = r.title;
-    $(".pp-s", li).textContent = r.sub;
-    $(".pp-tr", li).textContent = r.trailing || "";
+    $(".pp-s", li).textContent = r.sub || "";
+    $(".pp-kind", li).textContent = KIND[r.pk][0];
+    $(".pp-ret", li).textContent = r.ret;
     li.classList.toggle("lic", !!r.paid);
-    li.classList.toggle("has-sw", r.on !== undefined);
-    li.classList.toggle("on", !!r.on);
+    li.classList.toggle("running", !!(r.app && r.app.running && r.pk === "app"));
+    li.classList.toggle("acts", !!r.actions);
+  }
+
+  const plural = (n, one) => `${n} ${n === 1 ? one : one + "s"}`;
+  const BADGE = [["app", "app"], ["toggle", "toggle"], ["action", "action"], ["file", "file"], ["calculator", "calculation"], ["web", "web result"]];
+  const badge = (rows) => BADGE.map(([k, one]) => [rows.filter((r) => r.pk === k).length, one]).filter(([n]) => n).map(([n, one]) => plural(n, one)).join(" · ");
+
+  function hintsFor(r) {
+    const h = [["↩", primaryHint(r)]];
+    if (r && r.cmd) h.push(["⌘↩", r.cmd]);
+    if (r && r.opt) h.push(["⌥↩", r.opt]);
+    h.push(["↑↓", "Navigate"], ["Esc", "Dismiss"]);
+    if (r && r.actions) h.push(["⌘K", "Actions"]);
+    return h;
+  }
+  function paintFoot(panel, rows, r) {
+    const hints = $(".pp-hints", panel);
+    hints.textContent = "";
+    hintsFor(r).forEach(([k, t]) => {
+      const s = document.createElement("span");
+      s.className = "pp-hint";
+      const b = document.createElement("b");
+      b.textContent = k;
+      s.append(b, document.createTextNode(t));
+      hints.appendChild(s);
+    });
+    $(".pp-badge", panel).textContent = badge(rows);
+    const cp = $(".pp-cbtn.primary", panel), ca = $(".pp-cbtn.act", panel);
+    $("span", cp).textContent = r && r.pk === "app" ? (r.app.running ? "Switch to Application" : "Open Application") : primaryHint(r);
+    cp.hidden = !rows.length;
+    ca.hidden = !(r && r.actions);
   }
 
   // ─── a small arithmetic parser; no eval ───
@@ -308,28 +371,28 @@
     return top;
   };
 
-  const TINT = { teal: "#2DD4BF", green: "#34C759", pink: "#FF5FA2", purple: "#A78BFA", blue: "#5AAEFF", amber: "#FFB020", red: "#FF5A4E", indigo: "#818CF8", cyan: "#38D5F0", mint: "#4ADE9B", orange: "#FF9F2E" };
+  const TINT = { teal: "#2ECC71", green: "#30D158", pink: "#FF5188", purple: "#9B59B6", blue: "#3A9EFF", amber: "#F39C12", red: "#E74C3C", indigo: "#5E5CE6", cyan: "#32ADE6", mint: "#00C7BE", orange: "#FF9F0A", sys: "#FF453A" };
 
   const SCOPES = [
-    ["app:", "Apps", "grid", TINT.purple, "Search apps"],
-    ["file:", "Files", "folder", TINT.blue, "Search files, recents and downloads"],
-    ["clip:", "Clipboard", "clip", TINT.pink, "Search your clipboard history", true],
-    ["win:", "Windows", "windows", TINT.teal, "Switch to any open window"],
-    ["toggle:", "Toggles", "toggle", TINT.amber, "Flip a system switch"],
-    [">", "Actions", "bolt", null, "Run an action, snap or command"],
-    ["sc:", "Shortcuts", "command", TINT.cyan, "Run a shortcut", true],
-    ["script:", "Scripts", "terminal", TINT.mint, "Run an AppleScript", true],
-    ["sim:", "Simulators", "phone", TINT.indigo, "Boot an iOS simulator", true]
-  ].map(([prefix, name, glyph, tint, sub, paid]) => ({ prefix, name, glyph, tint, sub, paid }));
+    ["app:", "apps:", "Apps", "grid", TINT.purple, "Search apps…"],
+    ["file:", "files:", "Files", "folder", TINT.blue, "Search files…"],
+    ["clip:", "clipboard:", "Clipboard", "clip", TINT.pink, "Search clipboard…", true],
+    ["win:", "windows:", "Windows", "windows", TINT.teal, "Switch to window…"],
+    ["toggle:", "toggles:", "Toggles", "toggle", TINT.amber, "Search toggles…"],
+    [">", ">", "Actions", "bolt", null, "Run an action…"],
+    ["sc:", "shortcuts:", "Shortcuts", "command", TINT.cyan, "Run a shortcut…", true],
+    ["script:", "scripts:", "Scripts", "terminal", TINT.mint, "Run a script…", true],
+    ["sim:", "simulators:", "Simulators", "phone", TINT.indigo, "Boot a simulator…", true]
+  ].map(([prefix, canon, name, glyph, tint, placeholder, paid]) => ({ prefix, canon, name, glyph, tint, placeholder, paid }));
   const ALIASES = { "apps:": "app:", "a:": "app:", "files:": "file:", "f:": "file:", "clipboard:": "clip:", "clips:": "clip:", "c:": "clip:", "windows:": "win:", "toggles:": "toggle:", "t:": "toggle:", "actions:": ">", "action:": ">", "do:": ">", "shortcuts:": "sc:", "shortcut:": "sc:", "scripts:": "script:", "simulators:": "sim:" };
 
   const SYSTEM = [
-    ["Lock Screen", "Lock and require password", "lock", ["lock"]],
-    ["Sleep", "Put the Mac to sleep", "moon", []],
-    ["Display Sleep", "Put the display to sleep", "desktop", []],
-    ["Restart…", "Confirm before restarting", "restart", ["reboot"]],
-    ["Shut Down…", "Confirm before powering off", "power", ["shutdown", "power off"]],
-    ["Empty Trash", "Permanently remove items in Trash", "trash", ["trash"]]
+    ["Lock Screen", "Lock and require password", "lock", ["lock"], TINT.sys],
+    ["Sleep", "Put the Mac to sleep", "moon", [], TINT.indigo],
+    ["Display Sleep", "Put the display to sleep", "desktop", [], TINT.indigo],
+    ["Restart…", "Confirm before restarting", "restart", ["reboot"], TINT.orange],
+    ["Shut Down…", "Confirm before powering off", "power", ["shutdown", "power off"], TINT.sys],
+    ["Empty Trash", "Permanently remove items in Trash", "trash", ["trash"], TINT.sys]
   ];
   const TOGGLES = [
     { name: "Dark Mode", sub: "Switch system appearance", glyph: "halfmoon", tint: TINT.indigo, on: false, keys: ["dark", "appearance"] },
@@ -340,10 +403,10 @@
   ];
   const SNAPS = [["Left Half", "half"], ["Right Half", "half"], ["Top Half", "half"], ["Fullscreen", "full"], ["Center", "full"], ["Left Third", "half"], ["Next Screen", "windows"]];
   const CLIPS = [
-    { title: "https://hutch.coursion.studio/pricing", sub: "2 min ago", glyph: "link" },
-    { title: "#FF7A59", sub: "14 min ago", swatch: "#FF7A59" },
-    { title: "Moved to Thursday 3pm, same room. I'll bring the deck.", sub: "1 hr ago", glyph: "text" },
-    { title: "git commit -m \"Ship the pricing page\"", sub: "Yesterday", glyph: "terminal" }
+    { title: "https://hutch.coursion.studio/pricing", sub: "2 min. ago" },
+    { title: "#FF7A59", sub: "14 min. ago" },
+    { title: "Moved to Thursday 3pm, same room. I'll bring the deck.", sub: "1 hr. ago" },
+    { title: "git commit -m \"Ship the pricing page\"", sub: "yesterday" }
   ];
   const FILES = [
     ["Invoice-2026-10.pdf", "~/Documents"],
@@ -379,7 +442,7 @@
     const cf = FX[t[1]] ? t[1] : FX_ALIAS[t[1]], ct = FX[t[3]] ? t[3] : FX_ALIAS[t[3]];
     if (cf && ct) {
       const out = num((v / FX[cf]) * FX[ct], 2) + " " + ct.toUpperCase();
-      return { id: "fx", title: out, raw: out, sub: `${num(v, 4)} ${cf.toUpperCase()} → ${ct.toUpperCase()} · example rate, live in the app`, glyph: "coin", tint: TINT.green, trailing: "Copy", kind: "copy", paid: true };
+      return { id: "fx", title: out, raw: out, sub: `${q.trim()} · example rate, live in the app`, glyph: "coin", tint: TINT.green, ret: "Copy", pk: "calculator", kind: "copy", paid: true };
     }
     const a = UNITS[t[1]], b = UNITS[t[3]];
     if (!a || !b || a[0] !== b[0]) return null;
@@ -389,22 +452,22 @@
       out = b[1] === 1 ? c : b[1] === 2 ? c * 9 / 5 + 32 : c + 273.15;
     } else out = (v * a[1]) / b[1];
     const text = `${num(out, 4)} ${t[3]}`;
-    return { id: "convert", title: text, raw: text, sub: `${num(v, 4)} ${t[1]} → ${t[3]}`, glyph: "ruler", tint: TINT.teal, trailing: "Copy", kind: "copy", paid: true };
+    return { id: "convert", title: text, raw: text, sub: q.trim(), glyph: "ruler", tint: TINT.mint, ret: "Copy", pk: "calculator", kind: "copy", paid: true };
   }
 
   const R = {
-    app: (app) => ({ id: "app:" + app.name, title: app.name, sub: "Application", glyph: app.glyph, app, trailing: "Open", kind: "app" }),
-    system: ([title, sub, glyph]) => ({ id: "sys:" + title, title, sub, glyph, trailing: "Run", kind: "system" }),
-    toggle: (t) => ({ id: "tg:" + t.name, title: t.name, sub: t.on && t.onSub ? t.onSub : t.sub, glyph: t.glyph, tint: t.tint, trailing: t.on ? "Off" : "On", kind: "toggle", on: t.on, ref: t }),
-    snap: ([label, glyph]) => ({ id: "snap:" + label, title: "Snap to " + label, sub: "Window Manager", glyph, tint: TINT.purple, trailing: "Snap", kind: "snap" }),
-    clip: (c, n) => ({ id: "clip:" + n, title: c.title, sub: c.sub, glyph: c.glyph, swatch: c.swatch, tint: c.swatch ? null : TINT.pink, trailing: "Paste", kind: "clip", paid: true }),
-    file: ([title, sub]) => ({ id: "file:" + title, title, sub, glyph: "doc", tint: TINT.blue, trailing: "Open", kind: "file" }),
-    win: ([title, app]) => ({ id: "win:" + title, title, sub: app, glyph: "windows", tint: TINT.teal, trailing: "Switch", kind: "win" }),
-    emoji: ([char, name, keys]) => ({ id: "emo:" + name, title: name, raw: char, sub: keys.split(" ").slice(0, 4).join(" · "), emoji: char, trailing: "Copy", kind: "copy" }),
-    proc: ([name, pid, bundle]) => ({ id: "kill:" + pid, title: name, sub: `PID ${pid} · ${bundle}`, glyph: "octagon", tint: TINT.red, trailing: "Quit", kind: "kill", paid: true }),
-    port: ([port, cmd, pid]) => ({ id: "port:" + port, title: `Kill port ${port} — ${cmd}`, sub: `PID ${pid} · listening on 127.0.0.1:${port}`, glyph: "port", tint: TINT.red, trailing: "Kill", kind: "port", paid: true }),
-    scope: (s) => ({ id: "scope:" + s.name, title: s.name, sub: `${s.prefix}  ·  ${s.sub}`, glyph: s.glyph, tint: s.tint, trailing: "Use", kind: "scope", prefix: s.prefix, paid: s.paid }),
-    plain: (kind, glyph, tint, paid, trailing) => ([title, sub]) => ({ id: kind + ":" + title, title, sub, glyph, tint, trailing, kind, paid })
+    app: (app) => ({ id: "app:" + app.name, title: app.name, sub: app.running ? `${app.dir} · Running` : app.dir, app, ret: "Launch", pk: "app", kind: "app", actions: true, cmd: app.running ? "Quit" : null, opt: "Reveal in Finder" }),
+    system: ([title, sub, glyph, , tint]) => ({ id: "sys:" + title, title, sub, glyph, tint, ret: "Run", pk: "action", kind: "system" }),
+    toggle: (t) => ({ id: "tg:" + t.name, title: t.name, sub: t.on && t.onSub ? t.onSub : t.sub, glyph: t.glyph, tint: t.tint, ret: t.on ? "Off" : "On", pk: "toggle", kind: "toggle", ref: t }),
+    snap: ([label, glyph]) => ({ id: "snap:" + label, title: "Snap to " + label, sub: "Window Manager", glyph, tint: TINT.purple, ret: "Snap", pk: "action", kind: "snap" }),
+    clip: (c, n) => ({ id: "clip:" + n, title: c.title, sub: c.sub, glyph: "clip", tint: TINT.purple, ret: "Paste", pk: "action", kind: "clip", paid: true }),
+    file: ([title, sub]) => ({ id: "file:" + title, title, sub, doc: true, ret: "Open", pk: "file", kind: "file" }),
+    win: ([title, app]) => ({ id: "win:" + title, title, sub: app, app: appNamed(app), ret: "Switch", pk: "action", kind: "win" }),
+    emoji: ([char, name, keys]) => ({ id: "emo:" + name, title: `${char}  ${name}`, raw: char, sub: keys.split(" ").slice(0, 4).join(" · "), glyph: "smile", tint: "#FFB347", ret: "Copy", pk: "action", kind: "copy", cmd: "Paste into focused app", opt: "Copy character only" }),
+    proc: ([name, pid, bundle]) => ({ id: "kill:" + pid, title: name, sub: `PID ${pid} · ${bundle}`, app: appNamed(name), ret: "Run", pk: "action", kind: "kill", paid: true, actions: true, cmd: "Force Quit" }),
+    port: ([port, cmd, pid]) => ({ id: "port:" + port, title: `Kill port ${port} — ${cmd}`, sub: `PID ${pid} · listening on 127.0.0.1:${port}`, glyph: "port", tint: TINT.red, ret: "Run", pk: "action", kind: "port", paid: true, actions: true }),
+    scope: (s) => ({ id: "scope:" + s.name, title: s.name, sub: `Type "${s.canon}" · press ↩ to activate`, glyph: s.glyph, tint: s.tint, ret: "Run", pk: "action", kind: "scope", scope: s, paid: s.paid }),
+    plain: (kind, glyph, tint, paid, actions) => ([title, sub]) => ({ id: kind + ":" + title, title, sub, glyph, tint, ret: "Run", pk: "action", kind, paid, actions })
   };
 
   function rank(q, items, names, make, limit, fuzzy) {
@@ -426,9 +489,9 @@
       case "win:": return rank(q, WINDOWS, (w) => [w[0].toLowerCase(), w[1].toLowerCase()], R.win, limit, true);
       case "toggle:": return rank(q, TOGGLES, (t) => [t.name.toLowerCase(), ...t.keys], R.toggle, limit, true);
       case ">": return [...rank(q, SYSTEM, (s) => [s[0].toLowerCase(), ...s[3]], R.system, limit, false), ...rank(q, SNAPS, (s) => ["snap to " + s[0].toLowerCase()], R.snap, limit, false)].slice(0, limit);
-      case "sc:": return rank(q, SHORTCUTS, (s) => one(s[0]), R.plain("shortcut", "command", TINT.cyan, true, "Run"), limit, true);
-      case "script:": return rank(q, SCRIPTS, (s) => one(s[0]), R.plain("script", "terminal", TINT.mint, true, "Run"), limit, true);
-      case "sim:": return rank(q, SIMS, (s) => one(s[0]), R.plain("sim", "phone", TINT.indigo, true, "Boot"), limit, true);
+      case "sc:": return rank(q, SHORTCUTS, (s) => one(s[0]), R.plain("shortcut", "stack", TINT.purple, true, true), limit, true);
+      case "script:": return rank(q, SCRIPTS, (s) => one(s[0]), R.plain("script", "scroll", TINT.amber, true, true), limit, true);
+      case "sim:": return rank(q, SIMS, (s) => one(s[0]), R.plain("sim", "phone", TINT.blue, true, true), limit, true);
     }
     return [];
   }
@@ -441,6 +504,9 @@
     const prefix = ALIASES[hit] || hit;
     return { scope: SCOPES.find((s) => s.prefix === prefix), rest: query.slice(hit.length) };
   }
+
+  const webRow = (q) => ({ id: "web", title: `Search the web for "${q}"`, sub: "Routed through Browser Picker", glyph: "search", tint: TINT.teal, ret: "Search", pk: "web", kind: "web" });
+  const RECENT = ["Safari", "Mail", "Notes", "Terminal", "Xcode", "Calendar", "Music"].map((n) => R.app(appNamed(n)));
 
   function results(query, limit = 3) {
     const q = query.trim();
@@ -459,8 +525,8 @@
     if (ai) {
       const p = ai[1].length > 54 ? ai[1].slice(0, 54) + "…" : ai[1];
       return [
-        { id: "ai", title: `Ask AI: ${p}`, sub: "Uses your own API key · Anthropic or OpenAI-compatible", glyph: "sparkles", trailing: "Ask", kind: "ai", paid: true },
-        { id: "web", title: `Search the web for "${q}"`, sub: "Routed through Browser Picker", glyph: "search", trailing: "Search", kind: "web" }
+        { id: "ai", title: `Ask AI: ${p}`, sub: "Uses your own API key · Anthropic or OpenAI-compatible", glyph: "sparkles", ret: "Run", pk: "action", kind: "ai", paid: true },
+        webRow(q)
       ];
     }
     const kill = /^(?:kill|quit)(?:\s+(.*))?$/.exec(lq);
@@ -472,7 +538,7 @@
     const conv = convert(q);
     if (conv) rows.push(conv);
     const v = conv ? null : evaluate(q);
-    if (v !== null) rows.push({ id: "calc", title: fmt(v), raw: String(parseFloat(v.toPrecision(12))), sub: `Maths · ${q}`, glyph: "calc", trailing: "Copy", kind: "copy" });
+    if (v !== null) rows.push({ id: "calc", title: fmt(v), raw: String(parseFloat(v.toPrecision(12))), sub: q, glyph: "fx", tint: TINT.pink, ret: "Copy", pk: "calculator", kind: "copy" });
     const pool = [];
     const add = (s, w, row) => { if (s !== null) pool.push({ s: s + w, row }); };
     APPS.forEach((a) => add(score(lq, a.name), 40, R.app(a)));
@@ -483,8 +549,7 @@
       FILES.forEach((f) => add(best(lq, [f[0].toLowerCase()], false), 8, R.file(f)));
     }
     pool.sort((a, b) => b.s - a.s).forEach((p) => rows.push(p.row));
-    const web = { id: "web", title: `Search the web for "${q}"`, sub: "Routed through Browser Picker", glyph: "search", trailing: "Search", kind: "web" };
-    rows.push(web);
+    rows.push(webRow(q));
     return rows.slice(0, limit);
   }
 
@@ -496,21 +561,64 @@
     const input = $(".js-try-input", panel);
     const list = $(".js-try-results", panel);
     const box = $(".pp-results", panel);
-    const status = $(".js-try-status", panel);
-    const verb = $(".js-try-verb", panel);
+    const chip = $(".js-try-scope", panel);
+    const clear = $(".js-try-clear", panel);
+    const emptyTitle = $(".js-try-empty", panel);
+    const emptyTip = $(".js-try-tip", panel);
+    const statuses = $$(".js-try-status", panel);
     const count = $(".js-try-count");
     const lic = $(".js-try-lic", panel);
     const chips = $$(".chip-q");
-    const LIMIT = 5;
+    const LIMIT = 8, VISIBLE = 8;
+    const PLACEHOLDER = input.placeholder;
+    const TIPS = [
+      "Type a maths expression like 5 * 120. ↩ copies the result.",
+      "Type “left half” or “fullscreen” to snap the focused window.",
+      "Try “dark mode” to flip Dark Mode without leaving the keyboard.",
+      "⌘↩ on a running app quits it. ⌥↩ reveals it in Finder."
+    ];
     const TOUR = ["10 km to mi", "clip:", "dark", ":fire", "kill chrome", "100 usd to eur"];
-    let rows = [], sel = 0, els = new Map(), statusTimer = 0, countTimer = 0, auto = 0, touched = false, visible = false, tourAt = 0;
+    let rows = [], sel = 0, els = new Map(), scope = null, statusTimer = 0, countTimer = 0, auto = 0, touched = false, visible = false, tourAt = 0, tipAt = 0;
 
-    function label() {
-      const sc = scopeOf(input.value.trim());
-      return sc ? sc.scope.name : "Pounce";
+    const metric = (name) => parseFloat(getComputedStyle(panel).getPropertyValue(name)) || 0;
+    const height = new Spring(0, 0.34, 0.86);
+    const sizer = { springs: [height], render() { box.style.height = height.x.toFixed(2) + "px"; } };
+    function fit(animate) {
+      const row = metric("--row"), gap = metric("--gap"), pad = metric("--pad-t") + metric("--pad-b");
+      const n = Math.min(rows.length, VISIBLE);
+      const target = n ? pad + n * row + (n - 1) * gap : metric("--empty-h");
+      box.classList.toggle("scroll", rows.length > VISIBLE);
+      if (!animate || still.matches || !box.style.height) { height.jump(target); sizer.render(); return; }
+      height.to(target);
+      run(sizer);
     }
-    function render() {
-      rows = results(input.value, LIMIT);
+
+    const full = () => (scope ? scope.prefix : "") + input.value;
+    const norm = (text) => { const sc = scopeOf(text); return sc ? sc.scope.prefix + sc.rest.replace(/^\s+/, "") : text; };
+    function showScope() {
+      chip.hidden = !scope;
+      if (scope) {
+        $(".pp-scope-ico", chip).innerHTML = svg(scope.glyph);
+        $("b", chip).textContent = scope.name;
+        chip.setAttribute("aria-label", `Remove the ${scope.name} scope`);
+      }
+      input.placeholder = scope ? scope.placeholder : PLACEHOLDER;
+      clear.hidden = !scope && !input.value;
+    }
+    function setQuery(text) {
+      const sc = scopeOf(text);
+      scope = sc ? sc.scope : null;
+      input.value = sc ? sc.rest.replace(/^\s+/, "") : text;
+      showScope();
+    }
+    function absorb() {
+      if (scope) { showScope(); return; }
+      setQuery(input.value);
+    }
+
+    function render(animate = true) {
+      const q = full();
+      rows = q.trim() || scope ? results(q, LIMIT) : RECENT.slice(0, 5);
       sel = Math.min(sel, Math.max(0, rows.length - 1));
       const next = new Map();
       rows.forEach((r) => {
@@ -530,13 +638,17 @@
       els.forEach((li, id) => { if (!next.has(id)) li.remove(); });
       els = next;
       requestAnimationFrame(() => requestAnimationFrame(() => $$(".enter", list).forEach((li) => li.classList.remove("enter"))));
-      box.classList.toggle("empty", !rows.length);
-      if (!statusTimer) status.textContent = label();
-      const sc = scopeOf(input.value.trim());
-      if (lic) lic.hidden = !(sc && sc.scope.paid);
-      chips.forEach((c) => c.classList.toggle("on", c.dataset.q === input.value));
+      const empty = !rows.length;
+      if (empty && !box.classList.contains("empty")) {
+        emptyTitle.textContent = scope ? `No ${scope.name.toLowerCase()}` : "No matches";
+        emptyTip.textContent = TIPS[tipAt++ % TIPS.length];
+      }
+      box.classList.toggle("empty", empty);
+      if (lic) lic.hidden = !(scope && scope.paid);
+      chips.forEach((c) => c.classList.toggle("on", norm(c.dataset.q) === q));
       clearTimeout(countTimer);
-      countTimer = setTimeout(() => { if (count) count.textContent = input.value.trim() ? `${rows.length} result${rows.length === 1 ? "" : "s"}` : ""; }, 400);
+      countTimer = setTimeout(() => { if (count) count.textContent = q.trim() ? `${rows.length} result${rows.length === 1 ? "" : "s"}` : ""; }, 400);
+      fit(animate);
       mark();
     }
     function mark() {
@@ -547,23 +659,23 @@
         li.setAttribute("aria-selected", n === sel ? "true" : "false");
       });
       const r = rows[sel];
-      verb.textContent = r ? r.trailing : "Open";
+      paintFoot(panel, rows, r);
       if (r) {
         input.setAttribute("aria-activedescendant", els.get(r.id).id);
-        const row = box.clientHeight && els.get(r.id).offsetHeight;
-        if (row) {
-          const top = sel * row, pad = 7;
-          if (top < box.scrollTop) box.scrollTop = top;
-          else if (top + row + pad * 2 > box.scrollTop + box.clientHeight) box.scrollTop = top + row + pad * 2 - box.clientHeight;
-        }
+        const step = metric("--row") + metric("--gap"), padT = metric("--pad-t"), padB = metric("--pad-b");
+        const top = padT + sel * step, bottom = top + metric("--row");
+        const view = height.target || box.clientHeight;
+        if (top - padT < box.scrollTop) box.scrollTop = top - padT;
+        else if (bottom + padB > box.scrollTop + view) box.scrollTop = bottom + padB - view;
       } else input.removeAttribute("aria-activedescendant");
       if (!rows.length) box.scrollTop = 0;
     }
+    function status(text) { statuses.forEach((s) => { s.textContent = text; }); }
     function say(text) {
       clearTimeout(statusTimer);
-      status.textContent = text;
-      status.classList.add("flash");
-      statusTimer = setTimeout(() => { statusTimer = 0; status.textContent = label(); status.classList.remove("flash"); }, 2000);
+      status(text);
+      panel.classList.add("flash");
+      statusTimer = setTimeout(() => { statusTimer = 0; status("Pounce"); panel.classList.remove("flash"); }, 2000);
     }
     function copy(text) {
       if (navigator.clipboard) navigator.clipboard.writeText(text).catch(() => {});
@@ -579,12 +691,14 @@
           say(`${r.title} ${r.ref.on ? "on" : "off"}`);
           break;
         case "scope":
-          input.value = r.prefix;
+          scope = r.scope;
+          input.value = "";
           sel = 0;
+          showScope();
           render();
           input.focus({ preventScroll: true });
           break;
-        case "app": say(`On your Mac, ${r.title} opens`); break;
+        case "app": say(r.app.running ? `On your Mac, ${r.title} comes forward` : `On your Mac, ${r.title} opens`); break;
         case "system": say(/…$/.test(r.title) ? "On your Mac, this asks first" : `On your Mac: ${r.title}`); break;
         case "snap": say("Your last window snaps"); break;
         case "clip": say("Pastes into your last app"); break;
@@ -597,18 +711,24 @@
         default: say("Runs on your Mac");
       }
     }
+    function dropScope() {
+      scope = null;
+      input.value = "";
+      sel = 0;
+      showScope();
+      render();
+    }
 
     function stopAuto() { clearTimeout(auto); auto = 0; }
     function interact() { touched = true; stopAuto(); }
     function typeIn(text, done) {
       stopAuto();
-      if (still.matches) { input.value = text; sel = 0; render(); if (done) done(); return; }
-      input.value = "";
+      if (still.matches) { setQuery(text); sel = 0; render(); if (done) done(); return; }
+      setQuery("");
       sel = 0;
-      render();
       let n = 0;
       const step = () => {
-        input.value = text.slice(0, ++n);
+        setQuery(text.slice(0, ++n));
         render();
         if (n < text.length) auto = setTimeout(step, 55 + Math.random() * 55);
         else { auto = 0; if (done) done(); }
@@ -622,9 +742,11 @@
       });
     }
 
-    input.addEventListener("input", () => { interact(); sel = 0; render(); });
+    input.addEventListener("input", () => { interact(); sel = 0; absorb(); render(); });
     input.addEventListener("focus", interact);
     panel.addEventListener("pointerdown", interact);
+    chip.addEventListener("click", () => { interact(); dropScope(); input.focus({ preventScroll: true }); });
+    clear.addEventListener("click", () => { interact(); dropScope(); input.focus({ preventScroll: true }); });
     input.addEventListener("keydown", (e) => {
       if (e.key === "ArrowDown" || e.key === "ArrowUp") {
         e.preventDefault();
@@ -634,24 +756,23 @@
       } else if (e.key === "Enter") { e.preventDefault(); activate(); }
       else if (e.key === "Escape") {
         e.preventDefault();
-        const sc = scopeOf(input.value.trim());
-        input.value = sc && sc.rest.trim() ? sc.scope.prefix : "";
-        sel = 0;
-        render();
-      }
+        if (scope && input.value) { input.value = ""; sel = 0; showScope(); render(); }
+        else dropScope();
+      } else if (e.key === "Backspace" && !input.value && scope) { e.preventDefault(); dropScope(); }
     });
     chips.forEach((b) => b.addEventListener("click", () => {
       interact();
       typeIn(b.dataset.q, () => input.focus({ preventScroll: true }));
     }));
+    document.addEventListener("pp:look", () => fit(false));
 
     const preset = new URLSearchParams(location.search).get("q");
-    if (preset !== null) { touched = true; input.value = preset; }
-    render();
+    if (preset !== null) { touched = true; setQuery(preset); }
+    render(false);
     watch(panel, () => {
       visible = true;
       if (touched) return;
-      if (still.matches) { if (!input.value) { input.value = "saf"; render(); } return; }
+      if (still.matches) { if (!full()) { setQuery("saf"); render(); } return; }
       if (!auto) auto = setTimeout(tour, 450);
     }, () => {
       visible = false;
@@ -667,12 +788,14 @@
     const name = $(".js-swatch-name");
     if (!panel || !swatches) return;
     const ul = $(".js-theme-rows", panel);
-    results("saf", 2).forEach((r, n) => {
+    const sample = results("saf", 2);
+    sample.forEach((r, n) => {
       const li = rowEl(r);
       li.classList.add("stat");
       if (n === 0) li.classList.add("sel");
       ul.appendChild(li);
     });
+    paintFoot(panel, sample, sample[0]);
 
     function crossfade(change) {
       if (still.matches) {
@@ -700,7 +823,7 @@
       name.innerHTML = "";
       const b = document.createElement("b");
       b.textContent = look.theme.label;
-      name.append(b, document.createTextNode(` · ${look.mat[0].toUpperCase() + look.mat.slice(1)}${look.theme.id === "eclipse" ? " — the default" : ""}`));
+      name.append(b, document.createTextNode(` · ${look.mat[0].toUpperCase() + look.mat.slice(1)}${look.theme.id === "eclipse" && look.mat === "ledger" ? " — the default" : ""}`));
     }
 
     function radioGroup(group, items, pick) {
@@ -738,7 +861,7 @@
     });
     const mats = $$(".mat");
     check(sw, sw[2]);
-    check(mats, mats[0]);
+    check(mats, mats.find((m) => m.dataset.style === look.mat));
     describe();
 
     radioGroup(swatches, sw, (b) => {

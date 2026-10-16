@@ -10,7 +10,7 @@
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css?v=d23c048adf" />
   <link rel="stylesheet" href="site.css?v=f003a9fdb0" />
-  <link rel="stylesheet" href="home.css?v=c76dd5853f" />
+  <link rel="stylesheet" href="home.css?v=caaf6a049c" />
   <link rel="preload" as="image" href="img/hutch-icon.webp" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hutch.coursion.studio/" />
@@ -35,7 +35,7 @@
   </script>
   <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
   <script defer src="site.js?v=b4745ad0cb"></script>
-  <script defer src="home.js?v=7c7947a8dd"></script>
+  <script defer src="home.js?v=9a472fdcab"></script>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
 <body class="home site">
@@ -137,22 +137,30 @@
     <section id="try" class="sec sec-try reveal" aria-labelledby="try-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
-        <div class="pp pp-try rise js-try">
+        <div class="pp pp-try rise js-try" data-mat="ledger">
           <div class="pp-field">
-            <svg class="pp-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
-            <input class="js-try-input" type="text" role="combobox" aria-expanded="true" aria-controls="try-results" aria-autocomplete="list" aria-label="Try Pounce: type an app, a sum, a conversion, or : for scopes" placeholder="Search apps, files, maths, the web…" autocomplete="off" autocapitalize="off" spellcheck="false" />
-            <span class="pp-chip" aria-hidden="true">⌘K</span>
+            <svg class="pp-lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
+            <button type="button" class="pp-scope js-try-scope" hidden><span class="pp-scope-ico" aria-hidden="true"></span><b></b><svg class="pp-scope-x" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3.4" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6 6 18"/></svg></button>
+            <input class="js-try-input" type="text" role="combobox" aria-expanded="true" aria-controls="try-results" aria-autocomplete="list" aria-label="Try Pounce: type an app, a sum, a conversion, or : for scopes" placeholder="Search apps, toggles, files…" autocomplete="off" autocapitalize="off" spellcheck="false" />
+            <button type="button" class="pp-clear js-try-clear" aria-label="Clear the search" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m8.5 8.5 7 7M15.5 8.5l-7 7" stroke="var(--pal-base)" stroke-width="2.2" stroke-linecap="round"/></svg></button>
+            <span class="pp-gear" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.3 2.5h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.7c.1.6.1 1.3 0 1.9l2 1.7-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.7a6 6 0 0 1 0-1.9l-2-1.7 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill-rule="evenodd"/></svg></span>
           </div>
           <div class="pp-results">
             <span class="pp-sel" aria-hidden="true"></span>
             <ul id="try-results" class="js-try-results" role="listbox" aria-label="Results"></ul>
-            <p class="pp-empty">Start typing, or type <b>:</b> to see every scope.</p>
+            <div class="pp-empty"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M10 3.5 11.7 8.3 16.5 10 11.7 11.7 10 16.5 8.3 11.7 3.5 10 8.3 8.3z"/><path d="M17.5 13.5l.8 2.2 2.2.8-2.2.8-.8 2.2-.8-2.2-2.2-.8 2.2-.8zM17 3l.6 1.4L19 5l-1.4.6L17 7l-.6-1.4L15 5l1.4-.6z"/></svg><b class="js-try-empty">No matches</b><span class="js-try-tip"></span></div>
           </div>
           <div class="pp-foot">
-            <span class="pp-label js-try-status">Pounce</span>
+            <span class="pp-hints"></span>
             <span class="pp-tag js-try-lic" hidden>Licence</span>
-            <span class="pp-hint"><span class="js-try-verb">Open</span><b>↩</b></span>
-            <span class="pp-hint">Actions<b>⌘K</b></span>
+            <span class="pp-badge"></span>
+            <span class="pp-help" aria-hidden="true">?</span>
+            <span class="pp-label js-try-status">Pounce</span>
+          </div>
+          <div class="pp-cfoot">
+            <span class="pp-menu" aria-hidden="true"><i></i><i></i></span>
+            <span class="pp-cstatus js-try-status"></span>
+            <span class="pp-cbar"><span class="pp-cbtn primary"><span>Open Application</span><kbd>↩</kbd></span><span class="pp-cbtn act">Actions<kbd>⌘</kbd><kbd>K</kbd></span></span>
           </div>
         </div>
         <div class="sec-head center">
@@ -258,19 +266,25 @@
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
         <div class="theme-stage rise">
-          <div class="pp pp-theme js-theme-panel" aria-hidden="true">
+          <div class="pp pp-theme js-theme-panel" data-mat="ledger" aria-hidden="true">
             <div class="pp-field">
-              <svg class="pp-glass" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="M16 16l5 5"/></svg>
+              <svg class="pp-lead" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="m15.5 15.5 5 5"/></svg>
               <span class="pp-q">saf<i class="caret"></i></span>
-              <span class="pp-chip">⌘K</span>
+              <span class="pp-gear" aria-hidden="true"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.3 2.5h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.7c.1.6.1 1.3 0 1.9l2 1.7-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.7a6 6 0 0 1 0-1.9l-2-1.7 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill-rule="evenodd"/></svg></span>
             </div>
             <div class="pp-results static">
               <ul class="js-theme-rows"></ul>
             </div>
             <div class="pp-foot">
+              <span class="pp-hints"></span>
+              <span class="pp-badge"></span>
+              <span class="pp-help" aria-hidden="true">?</span>
               <span class="pp-label">Pounce</span>
-              <span class="pp-hint">Open<b>↩</b></span>
-              <span class="pp-hint">Actions<b>⌘K</b></span>
+            </div>
+            <div class="pp-cfoot">
+              <span class="pp-menu" aria-hidden="true"><i></i><i></i></span>
+              <span class="pp-cstatus"></span>
+              <span class="pp-cbar"><span class="pp-cbtn primary"><span>Open Application</span><kbd>↩</kbd></span><span class="pp-cbtn act">Actions<kbd>⌘</kbd><kbd>K</kbd></span></span>
             </div>
           </div>
         </div>
@@ -278,8 +292,8 @@
           <h2 id="themes-title" class="rise" style="--d:.08s">Make it yours</h2>
           <p class="rise" style="--d:.14s">Pick a material and a colour. Every Hutch panel follows along, and so does this page.</p>
           <div class="materials rise" style="--d:.2s" role="radiogroup" aria-label="Material">
-            <button type="button" class="mat" role="radio" aria-checked="true" data-style="glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>Glass</button>
-            <button type="button" class="mat" role="radio" aria-checked="false" data-style="ledger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M7.5 9h9M7.5 12.5h9M7.5 16h5"/></svg>Ledger</button>
+            <button type="button" class="mat" role="radio" aria-checked="false" data-style="glass"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="8"/><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor"/></svg>Glass</button>
+            <button type="button" class="mat" role="radio" aria-checked="true" data-style="ledger"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3.5" y="4.5" width="17" height="15" rx="2.5"/><path d="M7.5 9h9M7.5 12.5h9M7.5 16h5"/></svg>Ledger</button>
             <button type="button" class="mat" role="radio" aria-checked="false" data-style="compact"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><rect x="3" y="5" width="18" height="13" rx="2.5"/><circle cx="10" cy="11" r="3"/><path d="m12.2 13.2 2.3 2.3"/></svg>Compact</button>
           </div>
           <div class="swatches rise js-swatches" style="--d:.24s" role="radiogroup" aria-label="Colour"></div>
