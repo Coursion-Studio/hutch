@@ -45,7 +45,7 @@ body.site { background: var(--page); }
 .site .palette-bar input:focus-visible { outline: none; }
 .site .palette-results .item[aria-selected="true"] .mk { border-color: color-mix(in srgb, var(--pal-accent) 40%, transparent); }
 .combo { white-space: nowrap; }
-.site :is(p, h3) kbd:not([class]) {
+.site :is(p, h3, .tc-foot) kbd:not([class]) {
   display: inline-block;
   min-width: 1.6em;
   padding: 0 0.42em;
