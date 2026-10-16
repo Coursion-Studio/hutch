@@ -1046,3 +1046,5 @@ button.sw { cursor: pointer; }
   .cap, .tile, .swatch, .sw i, .ax-ok, .pp-row, .pp-sel, .shelf { transition-property: opacity, color, background, box-shadow; }
   .pp-sel { transition: opacity 0.12s ease-out; }
 }
+.sec-try .container { display: grid; grid-template-rows: 492px auto; justify-items: center; }
+.sec-try .container > .pp-try { align-self: start; }
