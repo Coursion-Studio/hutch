@@ -1305,4 +1305,636 @@
       }
     }
   })();
+
+  // ─── showcase helpers ───
+
+  const glyph = (paths, solid) => solid
+    ? `<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">${paths}</svg>`
+    : `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${paths}</svg>`;
+  const ARROW = glyph('<path d="M5 12h12M13 7l5 5-5 5"/>');
+  function timeline() {
+    const ids = [];
+    return {
+      at(ms, fn) { ids.push(setTimeout(fn, ms)); },
+      stop() { ids.forEach(clearTimeout); ids.length = 0; }
+    };
+  }
+  function centerIn(el, box) {
+    const r = el.getBoundingClientRect(), b = box.getBoundingClientRect();
+    return { x: r.left - b.left + r.width / 2, y: r.top - b.top + r.height / 2 };
+  }
+  function pop(el) {
+    if (still.matches || !el.animate) return;
+    el.animate([{ transform: "scale(1)" }, { transform: "scale(1.08)" }, { transform: "scale(1)" }], { duration: 420, easing: "cubic-bezier(0.23, 1, 0.32, 1)" });
+  }
+
+  // ─── Toggles ───
+
+  (() => {
+    const stage = $(".js-tgl");
+    if (!stage) return;
+    const item = $(".js-tgl-item", stage);
+    const pop = $(".tgl-pop", stage);
+    const list = $(".js-tgl-list", stage);
+    const query = $(".js-tgl-q", stage);
+    const none = $(".js-tgl-none", stage);
+    const status = $(".js-tgl-status");
+    const ICONS = {
+      leaf: glyph('<path d="M6 16c0-6 4-10 12-11-.5 8-4.5 12-10.5 12"/><path d="M6 20c1.5-4 4-7 8-9"/>'),
+      dashed: glyph('<rect x="3.5" y="5.5" width="17" height="13" rx="2.5" stroke-dasharray="3.2 2.6"/>'),
+      dark: glyph('<path d="M18.5 15.2A7.5 7.5 0 0 1 8.8 5.5a7.5 7.5 0 1 0 9.7 9.7z"/><path d="M17 3.5l.6 1.4 1.4.6-1.4.6L17 7.5l-.6-1.4L15 5.5l1.4-.6zM20.5 9l.4.9.9.4-.9.4-.4.9-.4-.9-.9-.4.9-.4z" stroke="none"/>', true),
+      cup: glyph(G.cup),
+      pods: glyph('<path d="M8 4.5a3 3 0 0 0-3 3c0 1.7 1.3 3 3 3V19a1.5 1.5 0 0 0 3 0V7.5a3 3 0 0 0-3-3zM16 4.5a3 3 0 0 1 3 3c0 1.7-1.3 3-3 3V19a1.5 1.5 0 0 1-3 0V7.5a3 3 0 0 1 3-3z"/>', true),
+      moon: glyph('<path d="M19.5 14.5A7.5 7.5 0 0 1 9.5 4.5a7.5 7.5 0 1 0 10 10z"/>', true),
+      trash: glyph(G.trash),
+      chev: glyph('<path d="m9 6 6 6-6 6"/>')
+    };
+    const ROWS = [
+      { id: "reap", t: "Reap Resources", s: "Check CPU, memory and GPU", i: "leaf", c: "#2ECC71", href: "#reaper" },
+      { id: "desk", t: "Hide Desktop Icons", s: "Clean look while presenting or recording", i: "dashed", c: "#30D158", say: ["Desktop icons hidden", "Desktop icons are back"] },
+      { id: "dark", t: "Dark Mode", s: "Switch system appearance", i: "dark", c: "#5E5CE6", say: ["Dark Mode on", "Back to Light"] },
+      { id: "cafe", t: "Caffeinate", s: "", on: "Active indefinitely", i: "cup", c: "#FF9F0A", live: true, say: ["Your Mac stays awake until you flip it back", "Sleep settings restored"] },
+      { id: "pods", t: "AirPods", s: "Tap to connect", on: "Connected", i: "pods", c: "#0A84FF", say: ["AirPods connected", "AirPods disconnected"] },
+      { id: "night", t: "Night Shift", s: "Warmer display tones", i: "moon", c: "#FF9F0A", say: ["Night Shift on", "Night Shift off"] },
+      { id: "focus", t: "Focus", s: "Toggle Do Not Disturb", i: "moon", c: "#BF5AF2", say: ["Do Not Disturb on", "Do Not Disturb off"] },
+      { id: "trash", t: "Empty Trash", s: "Permanently remove items in Trash", i: "trash", c: "#FF453A", once: true }
+    ];
+    const on = {}, rows = new Map();
+    const demo = timeline();
+    let touched = false, played = false, podsTimer = 0;
+
+    ROWS.forEach((r) => {
+      const li = document.createElement("li");
+      const el = document.createElement(r.href ? "a" : "button");
+      el.className = "tgl-row";
+      el.style.setProperty("--t", r.c);
+      if (r.href) el.href = r.href;
+      else { el.type = "button"; el.setAttribute("role", "switch"); }
+      el.innerHTML = `<span class="tgl-ico">${ICONS[r.i]}</span><span class="tgl-tx"><b></b><small></small></span>` +
+        (r.href ? `<span class="tgl-chev">${ICONS.chev}</span>` : '<span class="tgl-sw" aria-hidden="true"><i></i></span>');
+      $("b", el).textContent = r.t;
+      el.addEventListener("click", () => { touch(); if (!r.href) flip(r.id); });
+      li.appendChild(el);
+      list.appendChild(li);
+      rows.set(r.id, { r, li, el });
+      paint(r.id);
+    });
+
+    function paint(id) {
+      const { r, el } = rows.get(id);
+      const state = on[id];
+      if (!r.href) el.setAttribute("aria-checked", String(!!state));
+      el.classList.toggle("on", !!state);
+      el.classList.toggle("live", !!state && !!r.live);
+      const sub = state === "wait" ? "Connecting…" : state && r.on ? r.on : id === "trash" && stage.classList.contains("is-emptied") ? "Trash is empty" : r.s;
+      const small = $("small", el);
+      small.textContent = sub;
+      small.hidden = !sub;
+    }
+    function say(text) { status.textContent = text; }
+    function set(id, value) {
+      on[id] = value;
+      stage.classList.toggle("is-" + id, !!value);
+      paint(id);
+    }
+    function flip(id) {
+      const { r } = rows.get(id);
+      if (r.once) {
+        set(id, true);
+        setTimeout(() => {
+          set(id, false);
+          stage.classList.add("is-emptied");
+          paint(id);
+          say("Trash emptied");
+        }, still.matches ? 0 : 280);
+        return;
+      }
+      const next = !on[id];
+      clearTimeout(podsTimer);
+      if (id === "pods" && next && !still.matches) {
+        set(id, "wait");
+        podsTimer = setTimeout(() => { set(id, true); say(r.say[0]); }, 700);
+        return;
+      }
+      set(id, next);
+      say(r.say[next ? 0 : 1]);
+    }
+    function placeNub() {
+      const bar = item.parentNode;
+      pop.style.setProperty("--nub", (bar.offsetLeft + item.offsetLeft + item.offsetWidth / 2 - pop.offsetLeft).toFixed(1) + "px");
+    }
+    function open(value, focus) {
+      stage.classList.toggle("open", value);
+      item.setAttribute("aria-expanded", String(value));
+      pop.inert = !value;
+      if (value) placeNub();
+      if (value && focus) query.focus({ preventScroll: true });
+    }
+    function touch() { touched = true; demo.stop(); }
+
+    item.addEventListener("click", () => {
+      touch();
+      const value = !stage.classList.contains("open");
+      open(value, false);
+      say(value ? "Flip anything. The desktop follows." : "Click the menu bar icon to open Toggles.");
+    });
+    stage.addEventListener("click", (e) => {
+      touch();
+      if (stage.classList.contains("open") && !pop.contains(e.target) && !item.contains(e.target)) open(false);
+    });
+    pop.addEventListener("keydown", (e) => {
+      if (e.key !== "Escape") return;
+      e.preventDefault();
+      open(false);
+      item.focus();
+    });
+    query.addEventListener("input", () => {
+      touch();
+      const q = query.value.trim().toLowerCase();
+      let shown = 0;
+      rows.forEach(({ r, li }) => {
+        const hit = !q || (r.t + " " + r.s + " " + (r.on || "")).toLowerCase().includes(q);
+        li.hidden = !hit;
+        if (hit) shown++;
+      });
+      none.hidden = shown > 0;
+      none.textContent = `No toggles match “${query.value.trim()}”`;
+      list.hidden = !shown;
+    });
+    addEventListener("resize", () => { if (stage.classList.contains("open")) placeNub(); });
+
+    open(false);
+    if (still.matches) { open(true); set("dark", true); set("cafe", true); say("Dark Mode and Caffeinate are on. Flip anything."); }
+
+    function tap(id, fn) {
+      const { el } = rows.get(id);
+      el.classList.add("tap");
+      setTimeout(() => el.classList.remove("tap"), 160);
+      fn();
+    }
+    watch(stage, () => {
+      if (played || touched || still.matches) return;
+      played = true;
+      demo.at(500, () => { open(true); say("Toggles opens from the menu bar."); });
+      demo.at(1400, () => tap("dark", () => flip("dark")));
+      demo.at(2400, () => tap("desk", () => flip("desk")));
+      demo.at(3400, () => tap("cafe", () => flip("cafe")));
+      demo.at(4600, () => say("Your turn. Flip anything; the desktop follows."));
+    }, () => { if (!touched) demo.stop(); }, 0.5);
+  })();
+
+  // ─── Browser Picker ───
+
+  (() => {
+    const bpk = $(".js-bpk");
+    if (!bpk) return;
+    const rulesEl = $(".js-bpk-rules", bpk);
+    const browsersEl = $(".js-bpk-browsers", bpk);
+    const picker = $(".js-bpk-picker", bpk);
+    const tilesEl = $(".js-bpk-tiles", bpk);
+    const fly = $(".js-bpk-fly", bpk);
+    const status = $(".js-bpk-status");
+    const reset = $(".js-bpk-reset", bpk);
+    const rememberHost = $(".js-bpk-rh", bpk), rememberApp = $(".js-bpk-rs", bpk);
+    const BROWSERS = [
+      { n: "Safari", a: "#5AC8FA", b: "#0A6CFF", g: G.compass },
+      { n: "Chrome", a: "#FFD15C", b: "#E8890C", g: G.globe },
+      { n: "Firefox", a: "#FF9A4D", b: "#E0245E", g: '<circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="8.5" ry="3.5" transform="rotate(-30 12 12)"/>' },
+      { n: "Arc", a: "#FF7AC6", b: "#7B61FF", g: '<path d="M5.5 18.5C7 10 9.5 5.5 12 5.5s5 4.5 6.5 13M8.5 13.5h7"/>' }
+    ];
+    const bico = (b) => `<span class="bpk-bico" style="--a:${b.a};--b:${b.b}">${glyph(b.g)}</span>`;
+    const byName = (n) => BROWSERS.find((b) => b.n === n);
+    const demo = timeline();
+    let pending = null, touched = false, played = false, inView = false;
+
+    const browserEls = new Map();
+    BROWSERS.forEach((b) => {
+      const li = document.createElement("li");
+      li.className = "bpk-b";
+      li.innerHTML = `${bico(b)}<b>${b.n}</b><small></small>`;
+      browsersEl.appendChild(li);
+      browserEls.set(b.n, li);
+    });
+    const tiles = BROWSERS.map((b, n) => {
+      const t = document.createElement("button");
+      t.type = "button";
+      t.className = "bpk-tile";
+      t.setAttribute("aria-label", `Open in ${b.n}, key ${n + 1}`);
+      t.innerHTML = bico(b) + `<span>${b.n}</span>`;
+      $(".bpk-bico", t).insertAdjacentHTML("beforeend", `<span class="bpk-num">${n + 1}</span>`);
+      t.addEventListener("click", () => { touch(); choose(n); });
+      tilesEl.appendChild(t);
+      return t;
+    });
+    function dress(rule) {
+      const b = byName(rule.dataset.to);
+      let to = $(".bpk-to", rule);
+      if (!to) { to = document.createElement("span"); to.className = "bpk-to"; rule.appendChild(to); }
+      to.innerHTML = ARROW + bico(b) + b.n;
+    }
+    $$(".bpk-rule[data-to]", rulesEl).forEach(dress);
+
+    const wins = $$(".bpk-win", bpk);
+    function front(app) {
+      wins.forEach((w) => {
+        const f = w.dataset.app === app;
+        w.classList.toggle("front", f);
+        w.classList.toggle("back", !f);
+        $(".bpk-body", w).inert = !f;
+      });
+    }
+    front("Slack");
+    wins.forEach((w) => $(".bpk-tab", w).addEventListener("click", () => { touch(); front(w.dataset.app); $(".bpk-link", w).focus({ preventScroll: true }); }));
+
+    function say(text) { status.textContent = text; }
+    function touch() { touched = true; demo.stop(); }
+
+    const fx = new Spring(0, 0.42, 0.86), fy = new Spring(0, 0.42, 0.86);
+    const flight = { springs: [fx, fy], render() { fly.style.transform = `translate(${fx.x.toFixed(1)}px, ${fy.x.toFixed(1)}px) translate(-50%, -50%)`; } };
+    function send(from, via, browser, label, done) {
+      const to = browserEls.get(browser);
+      const land = () => {
+        fly.classList.remove("on");
+        if (via) setTimeout(() => via.classList.remove("hit"), 700);
+        $$(".bpk-b", browsersEl).forEach((li) => li.classList.toggle("got", li === to));
+        $("small", to).textContent = label;
+        pop(to);
+        if (done) done();
+      };
+      if (still.matches) { if (via) via.classList.add("hit"); land(); return; }
+      $("b", fly).textContent = label.split("/")[0];
+      const a = centerIn(from, bpk);
+      fx.jump(a.x); fy.jump(a.y);
+      flight.render();
+      fly.classList.add("on");
+      const hop = (el, wait, next) => {
+        const p = centerIn(el, bpk);
+        fx.to(p.x); fy.to(p.y);
+        run(flight);
+        setTimeout(next, wait);
+      };
+      if (via) hop(via, 430, () => { via.classList.add("hit"); hop(to, 520, land); });
+      else hop(to, 560, land);
+    }
+
+    function route(link, auto) {
+      const url = new URL(link.dataset.url);
+      const host = url.hostname, app = link.closest(".bpk-win").dataset.app;
+      const label = host + url.pathname;
+      link.classList.add("press");
+      setTimeout(() => link.classList.remove("press"), 220);
+      const rules = $$(".bpk-rule[data-to]", rulesEl);
+      const rule = rules.find((r) => r.dataset.host === host) || rules.find((r) => r.dataset.src === app);
+      if (rule) {
+        const why = rule.dataset.host ? `${host} has a site rule` : `It came from ${app}, which has an app rule`;
+        send(link, rule, rule.dataset.to, label, () => say(`${why}, so it opened in ${rule.dataset.to}.`));
+        return;
+      }
+      ask(link, host, app, url.href, label, auto);
+    }
+
+    function ask(link, host, app, href, label, auto) {
+      pending = { link, host, app, label, auto };
+      $(".js-bpk-src", bpk).innerHTML = `<i aria-hidden="true"></i>from ${app}`;
+      $(".js-bpk-url", bpk).textContent = href;
+      $("b", rememberHost).textContent = host;
+      $("b", rememberApp).textContent = app;
+      [rememberHost, rememberApp].forEach((c) => c.setAttribute("aria-checked", "false"));
+      tiles.forEach((t) => t.classList.remove("hover", "press"));
+      picker.hidden = false;
+      bpk.classList.add("picking");
+      requestAnimationFrame(() => requestAnimationFrame(() => picker.classList.add("open")));
+      if (!auto) tiles[0].focus({ preventScroll: true });
+      say("No rule matches this link, so Hutch asks where it should go.");
+    }
+    function dismiss() {
+      picker.classList.remove("open");
+      bpk.classList.remove("picking");
+      setTimeout(() => { if (!picker.classList.contains("open")) picker.hidden = true; }, 200);
+    }
+    function addRule(kind, value, browser) {
+      const attr = kind === "host" ? "data-host" : "data-src";
+      let rule = $(`.bpk-rule[${attr}="${value}"]`, rulesEl);
+      if (!rule) {
+        rule = document.createElement("li");
+        rule.className = "bpk-rule";
+        rule.setAttribute(attr, value);
+        rule.dataset.added = "";
+        rule.innerHTML = `<span class="bpk-kind">${kind === "host" ? "Site" : "App"}</span><span class="bpk-match"></span>`;
+        $(".bpk-match", rule).textContent = kind === "host" ? value : "from " + value;
+        rulesEl.insertBefore(rule, $(".ask", rulesEl));
+        if (!still.matches) {
+          rule.classList.add("enter");
+          requestAnimationFrame(() => requestAnimationFrame(() => rule.classList.remove("enter")));
+        }
+      }
+      rule.dataset.to = browser;
+      dress(rule);
+      reset.hidden = false;
+    }
+    function choose(n) {
+      if (!pending) return;
+      const p = pending, b = BROWSERS[n];
+      pending = null;
+      const keepHost = rememberHost.getAttribute("aria-checked") === "true";
+      const keepApp = rememberApp.getAttribute("aria-checked") === "true";
+      tiles[n].classList.add("press");
+      dismiss();
+      send(tiles[n], null, b.n, p.label, () => {
+        if (keepHost) addRule("host", p.host, b.n);
+        if (keepApp) addRule("app", p.app, b.n);
+        say(keepHost || keepApp ? `Opened in ${b.n}. Next time it goes there without asking.` : `Opened in ${b.n}. Tick Remember and it won't ask again.`);
+      });
+      if (!p.auto) p.link.focus({ preventScroll: true });
+    }
+
+    $$(".bpk-link", bpk).forEach((link) => link.addEventListener("click", () => { touch(); route(link, false); }));
+    [rememberHost, rememberApp].forEach((c) => c.addEventListener("click", () => {
+      touch();
+      c.setAttribute("aria-checked", String(c.getAttribute("aria-checked") !== "true"));
+    }));
+    $(".js-bpk-x", bpk).addEventListener("click", () => {
+      touch();
+      const p = pending;
+      pending = null;
+      dismiss();
+      say("Cancelled. The link didn't open anywhere.");
+      if (p && !p.auto) p.link.focus({ preventScroll: true });
+    });
+    bpk.addEventListener("click", touch);
+    addEventListener("keydown", (e) => {
+      if (!inView || picker.hidden || !pending || typing(e.target) || e.metaKey || e.ctrlKey || e.altKey) return;
+      const n = parseInt(e.key, 10);
+      if (n >= 1 && n <= BROWSERS.length) { e.preventDefault(); touch(); choose(n - 1); }
+      else if (e.key === "Escape") { e.preventDefault(); $(".js-bpk-x", bpk).click(); }
+    });
+    reset.addEventListener("click", () => {
+      $$(".bpk-rule[data-added]", rulesEl).forEach((r) => r.remove());
+      reset.hidden = true;
+      say("Back to the two starting rules. The Mail link will ask again.");
+    });
+
+    const links = $$(".bpk-link", bpk);
+    watch(bpk, () => {
+      inView = true;
+      if (played || touched) return;
+      played = true;
+      if (still.matches) { route(links[1], true); return; }
+      demo.at(600, () => route(links[1], true));
+      demo.at(2700, () => route(links[2], true));
+      demo.at(4700, () => front("Mail"));
+      demo.at(5500, () => route(links[0], true));
+      demo.at(8000, () => tiles[2].classList.add("hover"));
+      demo.at(8800, () => choose(2));
+      demo.at(10400, () => say("Your turn. Click a link, or tick Remember in the picker to make a rule."));
+    }, () => { inView = false; if (!touched) demo.stop(); }, 0.45);
+  })();
+
+  // ─── Reaper ───
+
+  (() => {
+    const rpr = $(".js-rpr");
+    if (!rpr) return;
+    const listEl = $(".js-rpr-list", rpr);
+    const deck = $(".js-rpr-deck", rpr);
+    const next = $(".js-rpr-next", rpr);
+    const sub = $(".js-rpr-sub", rpr);
+    const pill = $(".js-rpr-pill", rpr);
+    const prog = $(".js-rpr-prog", rpr);
+    const sampled = $(".js-rpr-sampled", rpr);
+    const status = $(".js-rpr-status");
+    const cursor = $(".js-rpr-cursor", rpr);
+    const done = $(".js-rpr-done", rpr);
+    const buttons = Object.fromEntries($$(".rpr-btn[data-act]", rpr).map((b) => [b.dataset.act, b]));
+    const FLAG = {
+      cpu: ["CPU hog", "#FF6B5E"], idle: ["Idle", "#2ECC71"], stale: ["Deleted app", "#FF5C9A"], zombie: ["Zombie", "#FF6B5E"]
+    };
+    const P = [
+      { n: "Docker Desktop", id: "com.docker.docker", g: "box", a: "#5BB4FF", b: "#1D63ED", cpu: 31, peak: 142, mem: 2.4, pid: 4122, used: "2 min ago", flag: "cpu", why: "Using 142% CPU right now.", act: "Quit" },
+      { n: "Xcode", g: "hammer", a: "#55C6FF", b: "#1A6EE8", cpu: 9, mem: 3.1 },
+      { n: "WindowServer", g: "desktop", a: "#8A8A94", b: "#4A4A52", cpu: 11, mem: 0.9 },
+      { n: "Safari", g: "compass", a: "#46B2FF", b: "#1A6FE0", cpu: 6, mem: 1.6 },
+      { n: "Preview", id: "com.apple.Preview", g: "preview", a: "#70CDFF", b: "#2D86E6", cpu: 0.1, mem: 1.2, pid: 731, used: "3 days ago", flag: "idle", why: "Untouched for 3 days, still holding 1.2 GB.", act: "Quit" },
+      { n: "Figma Agent", id: "~/Library/Application Support/Figma/figma_agent", g: "figma", a: "#2E2E31", b: "#19191B", cpu: 1.4, mem: 0.38, pid: 2290, used: "Unknown", flag: "stale", why: "Still running, but its app is gone from disk.", act: "Stop" },
+      { n: "python3", id: "/usr/bin/python3", g: "terminal", a: "#4D4D52", b: "#1E1E21", cpu: 0, mem: 0, pid: 5530, used: "Exited", flag: "zombie", why: "Already exited. Only Terminal can clear it, and quitting Terminal will.", act: "Quit Terminal", frees: 0.31 }
+    ];
+    const CORES = 10, BASE_MEM = 5.4, TOTAL_MEM = 16;
+    const icon = (p) => `<span class="rpr-ico" style="background:linear-gradient(${p.a},${p.b})">${svg(p.g)}</span>`;
+    const gb = (v) => (v >= 1 ? v.toFixed(1) + " GB" : Math.round(v * 1024) + " MB");
+    const demo = timeline();
+    let phase = "idle", queue = [], at = 0, freed = 0, quit = 0, kept = 0, ticker = 0, inView = false, touched = false, played = false, busy = false;
+
+    P.forEach((p) => {
+      const li = document.createElement("li");
+      li.className = "rpr-row";
+      if (p.flag) li.style.setProperty("--t", FLAG[p.flag][1]);
+      li.innerHTML = `<span class="rpr-n">${icon(p)}<b></b>${p.flag ? `<span class="rpr-flag">${FLAG[p.flag][0]}</span>` : ""}</span><span class="rpr-cpu"><i><s></s></i><em></em></span><span class="rpr-mem"></span>`;
+      $("b", li).textContent = p.n;
+      listEl.appendChild(li);
+      p.el = li;
+    });
+
+    function paintRows() {
+      P.forEach((p) => {
+        const c = p.gone ? 0 : p.now;
+        p.el.querySelector("s").style.setProperty("--v", Math.min(1, c / 150).toFixed(3));
+        p.el.querySelector("em").textContent = p.gone ? "Quit" : c.toFixed(c < 10 ? 1 : 0) + "%";
+        p.el.querySelector(".rpr-mem").textContent = p.gone ? "—" : gb(p.mem);
+        p.el.classList.toggle("hot", !p.gone && c > 80);
+      });
+      const cpu = P.reduce((s, p) => s + (p.gone ? 0 : p.now), 0) / CORES + 4;
+      const mem = BASE_MEM + P.reduce((s, p) => s + (p.gone ? 0 : p.mem), 0);
+      gauge("cpu", cpu / 100, Math.round(cpu) + "%", cpu > 18);
+      gauge("mem", mem / TOTAL_MEM, mem.toFixed(1) + " GB");
+      gauge("gpu", P[0].gone ? 0.09 : 0.18, P[0].gone ? "9%" : "18%");
+    }
+    function gauge(key, v, text, hot) {
+      const g = $(`.rpr-g[data-g="${key}"]`, rpr);
+      $("s", g).style.setProperty("--v", Math.min(1, v).toFixed(3));
+      $("b", g).textContent = text;
+      g.classList.toggle("hot", !!hot);
+    }
+    function tick() {
+      clearTimeout(ticker);
+      if (!inView || still.matches) return;
+      P.forEach((p) => {
+        if (phase === "scan" && p.peak) p.now += (p.peak - p.now) * 0.45;
+        else if (p.peak) p.now = p.peak * (0.94 + Math.random() * 0.1);
+        else p.now = Math.max(0, p.cpu * (0.7 + Math.random() * 0.6));
+      });
+      paintRows();
+      ticker = setTimeout(tick, 900);
+    }
+
+    function card(p, cls) {
+      const el = document.createElement("div");
+      el.className = "rpr-card " + cls;
+      el.style.setProperty("--t", FLAG[p.flag][1]);
+      el.innerHTML = `<div class="rpr-id">${icon(p)}<b></b><code></code><span class="rpr-flag">${FLAG[p.flag][0]}</span><p></p></div><dl class="rpr-m"></dl>`;
+      $("b", el).textContent = p.n;
+      $("code", el).textContent = p.id;
+      $("p", el).textContent = p.why;
+      const m = [["CPU", p.flag === "zombie" ? "0%" : Math.round(p.peak || p.cpu) + "%"], ["Memory", p.mem ? gb(p.mem) : "None"], ["Last used", p.used], ["PID", String(p.pid)]];
+      $("dl", el).innerHTML = m.map(([k]) => `<div><dt>${k}</dt><dd></dd></div>`).join("");
+      $$("dd", el).forEach((dd, n) => { dd.textContent = m[n][1]; });
+      return el;
+    }
+    function present() {
+      const p = queue[at];
+      if (!p) { finish(); return; }
+      deck.textContent = "";
+      if (queue[at + 1]) deck.appendChild(card(queue[at + 1], "next"));
+      deck.appendChild(card(p, "cur"));
+      ready();
+    }
+    function advance(kind) {
+      const cur = $(".rpr-card.cur", deck), behind = $(".rpr-card.next", deck);
+      at++;
+      if (still.matches || !cur) { present(); return; }
+      cur.classList.remove("cur");
+      cur.classList.add(kind === "keep" ? "out-keep" : "out-quit");
+      if (behind) { behind.classList.remove("next"); behind.classList.add("cur"); }
+      setTimeout(() => {
+        cur.remove();
+        if (!queue[at]) { finish(); return; }
+        const after = queue[at + 1];
+        if (after) {
+          const el = card(after, "next enter");
+          deck.insertBefore(el, deck.firstChild);
+          requestAnimationFrame(() => requestAnimationFrame(() => el.classList.remove("enter")));
+        }
+        ready();
+      }, 380);
+    }
+    function ready() {
+      const p = queue[at];
+      sub.textContent = `${at + 1} of ${queue.length}`;
+      prog.style.setProperty("--v", ((at + 1) / queue.length).toFixed(3));
+      $("span", buttons.quit).textContent = p.act;
+      buttons.force.classList.remove("armed");
+      $("span", buttons.force).textContent = "Force";
+      next.innerHTML = queue.length - at > 1 ? "Up next" + queue.slice(at + 1).map(icon).join("") : "";
+      const left = queue.slice(at).reduce((s, q) => s + (q.frees || q.mem), 0);
+      pill.innerHTML = `<b>${queue.length - at}</b> flagged · <em>${gb(left)}</em>`;
+      busy = false;
+      Object.values(buttons).forEach((b) => { b.disabled = false; });
+    }
+    function act(kind) {
+      const p = queue[at];
+      if (!p || busy || phase !== "review") return;
+      if (kind === "force" && !buttons.force.classList.contains("armed")) {
+        buttons.force.classList.add("armed");
+        $("span", buttons.force).textContent = "Sure?";
+        status.textContent = "Force skips the app's save prompts. Click again to confirm.";
+        return;
+      }
+      busy = true;
+      Object.values(buttons).forEach((b) => { b.disabled = true; });
+      if (kind === "keep") {
+        kept++;
+        status.textContent = `Kept ${p.n}. Nothing was quit.`;
+        advance("keep");
+        return;
+      }
+      const graceful = kind === "quit";
+      if (graceful) $("span", buttons.quit).textContent = "Quitting…";
+      setTimeout(() => {
+        p.gone = true;
+        p.el.classList.add("gone");
+        p.el.classList.remove("flag");
+        paintRows();
+        quit++;
+        freed += p.frees || p.mem;
+        const who = p.flag === "zombie" ? "Terminal" : p.n;
+        status.textContent = graceful ? `${who} was asked to quit, saved its work and closed. Freed ${gb(p.frees || p.mem)}.` : `${who} was force quit. Freed ${gb(p.frees || p.mem)}.`;
+        advance("quit");
+      }, graceful && !still.matches ? 650 : 0);
+    }
+    function finish() {
+      phase = "done";
+      busy = false;
+      rpr.classList.add("finished");
+      done.hidden = false;
+      deck.textContent = "";
+      sub.textContent = "Done";
+      pill.hidden = true;
+      $(".js-rpr-freed", rpr).textContent = freed > 0 ? `Freed ${gb(freed)}` : "Nothing quit";
+      $(".js-rpr-tally", rpr).textContent = `Quit ${quit} · Kept ${kept}`;
+    }
+    function review() {
+      phase = "review";
+      queue = P.filter((p) => p.flag);
+      at = 0;
+      P.forEach((p) => p.flag && p.el.classList.add("flag"));
+      sampled.textContent = "Sampled just now · 412 processes";
+      pill.hidden = false;
+      present();
+      status.textContent = `${queue.length} flagged. One at a time: Keep it, or Quit it.`;
+    }
+    function scan(instant) {
+      phase = "scan";
+      freed = quit = kept = 0;
+      busy = false;
+      rpr.classList.remove("finished");
+      done.hidden = true;
+      pill.hidden = true;
+      deck.innerHTML = '<p class="rpr-wait">Sampling CPU, memory and GPU usage…</p>';
+      next.textContent = "";
+      prog.style.setProperty("--v", 0);
+      sub.textContent = "Scanning…";
+      sampled.textContent = "Sampling…";
+      Object.values(buttons).forEach((b) => { b.disabled = true; });
+      P.forEach((p) => { p.gone = false; p.now = instant && p.peak ? p.peak : p.cpu; p.el.classList.remove("gone", "flag"); });
+      paintRows();
+      if (instant) review();
+      else status.textContent = "Two passes a moment apart, so the CPU figures are live.";
+    }
+    function rescan() {
+      scan(still.matches);
+      if (still.matches) return;
+      tick();
+      demo.at(2600, review);
+    }
+
+    Object.entries(buttons).forEach(([kind, b]) => b.addEventListener("click", () => { touch(); act(kind); }));
+    $(".js-rpr-again", rpr).addEventListener("click", () => { touch(); rescan(); });
+    rpr.addEventListener("click", touch);
+    function touch() {
+      if (touched) return;
+      touched = true;
+      demo.stop();
+      cursor.classList.remove("on");
+      if (phase === "scan") review();
+    }
+
+    const cx = new Spring(0, 0.6, 0.9), cy = new Spring(0, 0.6, 0.9);
+    const pointer = { springs: [cx, cy], render() { cursor.style.transform = `translate(${cx.x.toFixed(1)}px, ${cy.x.toFixed(1)}px)`; } };
+    function demoQuit() {
+      const box = rpr.getBoundingClientRect(), b = buttons.quit.getBoundingClientRect();
+      cx.jump(box.width - 40); cy.jump(box.height - 20);
+      pointer.render();
+      cursor.classList.add("on");
+      cx.to(b.left - box.left + b.width * 0.55); cy.to(b.top - box.top + b.height * 0.55);
+      run(pointer);
+      demo.at(950, () => { buttons.quit.classList.add("press"); act("quit"); });
+      demo.at(1150, () => buttons.quit.classList.remove("press"));
+      demo.at(1500, () => cursor.classList.remove("on"));
+      demo.at(2600, () => { status.textContent = "Your turn. Keep it or quit it; nothing goes without a click."; });
+    }
+
+    scan(still.matches);
+    watch(rpr, () => {
+      inView = true;
+      if (still.matches) return;
+      if (!played && !touched) {
+        played = true;
+        rescan();
+        demo.at(4200, demoQuit);
+      } else tick();
+    }, () => {
+      inView = false;
+      clearTimeout(ticker);
+      if (!touched) { demo.stop(); cursor.classList.remove("on"); if (phase === "scan") review(); }
+    }, 0.4);
+  })();
 })();
