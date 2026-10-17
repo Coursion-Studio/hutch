@@ -1497,12 +1497,12 @@
     const reset = $(".js-bpk-reset", bpk);
     const rememberHost = $(".js-bpk-rh", bpk), rememberApp = $(".js-bpk-rs", bpk);
     const BROWSERS = [
-      { n: "Safari", a: "#5AC8FA", b: "#0A6CFF", g: G.compass },
-      { n: "Chrome", a: "#FFD15C", b: "#E8890C", g: G.globe },
-      { n: "Firefox", a: "#FF9A4D", b: "#E0245E", g: '<circle cx="12" cy="12" r="8"/><ellipse cx="12" cy="12" rx="8.5" ry="3.5" transform="rotate(-30 12 12)"/>' },
-      { n: "Arc", a: "#FF7AC6", b: "#7B61FF", g: '<path d="M5.5 18.5C7 10 9.5 5.5 12 5.5s5 4.5 6.5 13M8.5 13.5h7"/>' }
+      { n: "Safari", i: "safari" },
+      { n: "Chrome", i: "chrome" },
+      { n: "Arc", i: "arc" },
+      { n: "Dia", i: "dia" }
     ];
-    const bico = (b) => `<span class="bpk-bico" style="--a:${b.a};--b:${b.b}">${glyph(b.g)}</span>`;
+    const bico = (b) => `<span class="bpk-bico bpk-real"><img src="img/browsers/${b.i}.webp" alt="" width="64" height="64" decoding="async" /></span>`;
     const byName = (n) => BROWSERS.find((b) => b.n === n);
     const demo = timeline();
     let pending = null, touched = false, played = false, inView = false;
