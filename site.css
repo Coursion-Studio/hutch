@@ -162,9 +162,9 @@ body.site { background: var(--page); }
   position: absolute;
   left: 50%;
   top: 6%;
-  width: min(900px, 120vw);
+  width: min(900px, 100vw);
   height: 420px;
-  margin-left: max(-450px, -60vw);
+  margin-left: max(-450px, -50vw);
   z-index: -1;
   border-radius: 50%;
   background: radial-gradient(closest-side, color-mix(in srgb, var(--pal-accent) 22%, transparent), transparent);

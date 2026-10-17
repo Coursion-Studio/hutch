@@ -569,7 +569,9 @@
     const count = $(".js-try-count");
     const lic = $(".js-try-lic", panel);
     const chips = $$(".chip-q");
-    const LIMIT = 8, VISIBLE = 8;
+    const LIMIT = 8;
+    const narrow = matchMedia("(max-width: 560px)");
+    const visibleRows = () => (narrow.matches ? 4 : 8);
     const PLACEHOLDER = input.placeholder;
     const TIPS = [
       "Type a maths expression like 5 * 120. ↩ copies the result.",
@@ -585,9 +587,9 @@
     const sizer = { springs: [height], render() { box.style.height = height.x.toFixed(2) + "px"; } };
     function fit(animate) {
       const row = metric("--row"), gap = metric("--gap"), pad = metric("--pad-t") + metric("--pad-b");
-      const n = Math.min(rows.length, VISIBLE);
+      const n = Math.min(rows.length, visibleRows());
       const target = n ? pad + n * row + (n - 1) * gap : metric("--empty-h");
-      box.classList.toggle("scroll", rows.length > VISIBLE);
+      box.classList.toggle("scroll", rows.length > visibleRows());
       if (!animate || still.matches || !box.style.height) { height.jump(target); sizer.render(); return; }
       height.to(target);
       run(sizer);
@@ -765,6 +767,7 @@
       typeIn(b.dataset.q, () => input.focus({ preventScroll: true }));
     }));
     document.addEventListener("pp:look", () => fit(false));
+    narrow.addEventListener("change", () => { fit(false); mark(); });
 
     const preset = new URLSearchParams(location.search).get("q");
     if (preset !== null) { touched = true; setQuery(preset); }
