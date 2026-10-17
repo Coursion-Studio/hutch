@@ -1929,7 +1929,6 @@
       if (!played && !touched) {
         played = true;
         rescan();
-        demo.at(4200, demoQuit);
       } else tick();
     }, () => {
       inView = false;
