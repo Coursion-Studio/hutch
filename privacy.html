@@ -179,7 +179,7 @@
           <h2 id="this-website">This website</h2>
 
       <p>
-        We count page views on the home, pricing, lost-key and thanks pages so
+        We count page views on the home, pricing and lost-key pages so
         we know whether anyone is reading. The counting is done by our own
         server, Polaris, which runs on Google Cloud Run in Belgium. No
         analytics company is involved. There are no cookies, nothing is saved
@@ -188,8 +188,8 @@
       <p>
         For each view the counter records the page path, never anything after
         a <code>?</code> in the address, and, if there is one, the domain you
-        arrived from. It reads nothing else on the page, so a licence key shown
-        on the thanks page never reaches it. To count a visitor once per day
+        arrived from. It reads nothing else on the page, and the thanks page,
+        which shows your licence key, is not counted at all. To count a visitor once per day
         rather than once per click, it computes a one-way hash of the date, the
         site, your IP address and your browser's user-agent string.
         <strong>Your IP address itself is never written down</strong> — only
