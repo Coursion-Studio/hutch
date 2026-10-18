@@ -58,7 +58,7 @@
       <div class="legal-head reveal">
         <p class="page-pill rise"><span class="dot" aria-hidden="true"></span>Legal · Privacy</p>
         <h1 class="rise" style="--d:.05s">Privacy Policy</h1>
-        <span class="updated rise" style="--d:.08s">Last updated 16 October 2026</span>
+        <span class="updated rise" style="--d:.08s">Last updated 18 October 2026</span>
         <p class="lede rise" style="--d:.11s">Hutch has no accounts and never builds a profile of you. Everything it
         indexes — your apps, files, clipboard, windows and running processes —
         stays on your Mac. It does send two kinds of anonymous telemetry, crash
@@ -179,16 +179,27 @@
           <h2 id="this-website">This website</h2>
 
       <p>
-        We count pageviews so we know whether anyone is reading. There are no
-        cookies and no local storage, and nothing follows you to other sites.
+        We count page views on the home, pricing, lost-key and thanks pages so
+        we know whether anyone is reading. The counting is done by our own
+        server, Polaris, which runs on Google Cloud Run in Belgium. No
+        analytics company is involved. There are no cookies, nothing is saved
+        in your browser, and nothing follows you to other sites.
       </p>
       <p>
-        For each visit we record the page path and, if there is one, the domain
-        you arrived from. To count a visitor once per day rather than once per
-        click, we compute a one-way hash of the date, the site, your IP address
-        and your browser's user-agent string. <strong>Your IP address itself is
-        never written down</strong> — only that hash, which is discarded after a
-        short retention period.
+        For each view the counter records the page path, never anything after
+        a <code>?</code> in the address, and, if there is one, the domain you
+        arrived from. It reads nothing else on the page, so a licence key shown
+        on the thanks page never reaches it. To count a visitor once per day
+        rather than once per click, it computes a one-way hash of the date, the
+        site, your IP address and your browser's user-agent string.
+        <strong>Your IP address itself is never written down</strong> — only
+        that hash, which is deleted after two days. What remains is a daily
+        count of views and visitors per page.
+      </p>
+      <p>
+        The website itself is served by GitHub Pages, which may log requests
+        (such as your IP address) as part of running that service, under
+        GitHub's own privacy statement.
       </p>
         </section>
         <section>
@@ -242,7 +253,7 @@
 
       <ul>
         <li><strong>Paddle</strong> or <strong>Creem</strong> — payment, invoicing, tax, and refunds, for orders each of them processes.</li>
-        <li><strong>Google Cloud</strong> — hosts the licence records, in the EU.</li>
+        <li><strong>Google Cloud</strong> — hosts the licence records and the page-view counter, in the EU.</li>
         <li><strong>Our email provider</strong> — delivers your licence key. It sees your email address and the message.</li>
         <li><strong>GitHub</strong> — serves this website and app downloads.</li>
         <li><strong>Sentry</strong> (EU) — receives anonymous crash reports from the app, while that switch is on.</li>
@@ -258,7 +269,7 @@
       <p>
         Licence records are kept for as long as the licence is valid, since a
         perpetual licence needs a record to stay perpetual. Website visit hashes
-        expire automatically. Tax records are kept by the reseller that processed
+        are deleted after two days. Tax records are kept by the reseller that processed
         your order, for whatever period the law requires.
       </p>
         </section>
