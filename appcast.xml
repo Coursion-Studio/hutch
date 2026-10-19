@@ -7,7 +7,17 @@
     <language>en</language>
   
     
+    
     <item>
+      <title>Version 1.5.1</title>
+      <pubDate>Mon, 19 Oct 2026 13:48:06 +0300</pubDate>
+      <sparkle:version>74</sparkle:version>
+      <sparkle:shortVersionString>1.5.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Licence keys paste cleanly:</strong> stray spaces and line breaks in a pasted key no longer stop it activating.</li><li><strong>Your licence page, clearer:</strong> each Mac shows the day it was activated, a full licence offers &quot;Add a seat&quot; right where it says so, and a licensed Mac can switch to a different key.</li><li><strong>No surprise lockouts:</strong> paid tools wait until Hutch knows your licence at launch, removing a licence never restarts the trial, and Hutch tells you if a key is turned off or a Mac couldn&#x27;t get a seat.</li><li><strong>Trial reminders</strong> open Settings → Licence, and the last day says &quot;within a day&quot; instead of &quot;tomorrow&quot;.</li><li><strong>Locked features say so:</strong> the upgrade window names what you tried to use, and a paid scope in Pounce says it needs a licence instead of looking empty. The launcher itself stays free.</li><li><strong>Pounce:</strong> a very long timer can&#x27;t crash Hutch, huge clipboard entries are capped and saved in the background, and &quot;center&quot; still finds the Centre snap.</li><li><strong>Stash:</strong> only a real file drag can shake up a shelf, dropped files copy without freezing Hutch, and shake and long-press stay quiet without a licence.</li><li><strong>Window Manager:</strong> a frozen app can no longer freeze Hutch, Hutch doesn&#x27;t crash when no display is attached, and one shortcut can&#x27;t go on two snap targets.</li><li><strong>Toggles:</strong> switches that run system commands no longer stall the panel, and every row works with VoiceOver.</li><li><strong>Browser Picker:</strong> number keys open the browser they label.</li><li><strong>Reaper:</strong> scheduled scans pause without a licence and pick up again once you have one.</li><li><strong>Shortcuts:</strong> only one recorder listens at a time, and a clash says which tool keeps the shortcut.</li><li><strong>Paper theme:</strong> the welcome tour and drop-down cards are easy to read again.</li><li><strong>More of Hutch in your language:</strong> the welcome tour, snap targets, system actions and error messages are now translated.</li><li><strong>Steadier:</strong> iCloud sync and permission clean-up no longer hold up the interface, and crash reports catch more kinds of crash.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.5.1/Hutch-1.5.1.dmg" type="application/octet-stream" sparkle:edSignature="QYCqcZDOQ5rJY9gR5HRBuZoqmp+xWERUW/rnK27PwmOBCBqJ0HkM5C/Y4nm9bh8CzQ2GzGzbXBzs8FofotXuAA==" length="22707589" />
+    </item>
+<item>
       <title>Version 1.5.0</title>
       <pubDate>Fri, 16 Oct 2026 17:43:46 +0300</pubDate>
       <sparkle:version>73</sparkle:version>
