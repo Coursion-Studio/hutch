@@ -1,0 +1,18 @@
+{
+  "name": "hutch-release",
+  "path": "MacApps/hutch-release",
+  "kind": "web-static",
+  "setup": [],
+  "test": "test -s index.html && test -s privacy.html && python3 -c \"import xml.dom.minidom as m; m.parse('appcast.xml'); print('appcast ok')\"",
+  "build": null,
+  "artifacts": [],
+  "exclude": [".git", ".vm-results", ".claude/worktrees", ".forge", ".DS_Store"],
+  "simulator": null,
+  "timeout": 300,
+  "env": {},
+  "hostOnly": [
+    "appcast.xml and DMG publishing are driven by Hutch release.sh with the Sparkle EdDSA key and GitHub auth",
+    "Live site (hutch.coursion.studio) checks need the production domain"
+  ],
+  "notes": "Static marketing site (GitHub Pages, CNAME, .nojekyll). No test suite exists, so test is a sanity check that key pages exist and appcast.xml is well-formed. For a visual check serve it with python3 -m http.server on a high port and use the preinstalled Playwright chromium."
+}
