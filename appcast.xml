@@ -8,7 +8,17 @@
   
     
     
+    
     <item>
+      <title>Version 1.5.2</title>
+      <pubDate>Tue, 10 Nov 2026 19:25:43 +0300</pubDate>
+      <sparkle:version>75</sparkle:version>
+      <sparkle:shortVersionString>1.5.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>A fraction of the memory:</strong> Hutch now rests around 20 MB instead of climbing past 100 MB, and no longer spikes to hundreds of megabytes after a busy day.</li><li><strong>Recent files stay light:</strong> Pounce looks up your recent files when you open it, takes the newest 40, and lets go of the rest.</li><li><strong>Tools you switch off cost nothing:</strong> a tool that&#x27;s off releases its panels, caches and timers, and comes back as it was when you switch it on.</li><li><strong>Pounce opens instantly:</strong> the panel appears within a frame of the hotkey, typing and arrow keys are smoother, and results are exactly the same.</li><li><strong>Quieter in the background:</strong> Pounce no longer refreshes Downloads, Shortcuts, scripts and simulators while it&#x27;s closed, and Hutch wakes your Mac far less often when idle.</li><li><strong>Faster launch:</strong> the menu bar icon and your tools come first; updates, licence and sync start right after.</li><li><strong>Toggles and Reaper panels</strong> free their memory when you haven&#x27;t used them for a minute.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.5.2/Hutch-1.5.2.dmg" type="application/octet-stream" sparkle:edSignature="ArrKtA5/6hCVRoyM6Nl4SC2N+LmkbH49RlONu5UaCzOvTnwry9coDCtSIV6k/Sz7zduMnbGcOc+tBoZvhzqCAA==" length="22730173" />
+    </item>
+<item>
       <title>Version 1.5.1</title>
       <pubDate>Mon, 19 Oct 2026 13:48:06 +0300</pubDate>
       <sparkle:version>74</sparkle:version>
