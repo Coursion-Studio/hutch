@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const DMG_URL = "https://github.com/Coursion-Studio/hutch/releases/latest/download/Hutch.dmg";
+  const DMG_URL = "https://polaris-backend-489776622782.europe-west1.run.app/dl/hutch";
   const still = matchMedia("(prefers-reduced-motion: reduce)");
   const $ = (s, el = document) => el.querySelector(s);
   const $$ = (s, el = document) => Array.from(el.querySelectorAll(s));
