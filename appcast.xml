@@ -10,7 +10,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.6.1</title>
+      <pubDate>Thu, 12 Nov 2026 21:25:55 +0300</pubDate>
+      <sparkle:version>77</sparkle:version>
+      <sparkle:shortVersionString>1.6.1</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Stats switch in place:</strong> Picking another stat in the Pulse panel cross-fades the card, and the panel eases to its new size.</li><li><strong>Closing a stat is smooth too:</strong> The panel shrinks with the card instead of snapping back when you close a stat.</li><li><strong>A colour for every page:</strong> Each page of this tour has its own colour and artwork, so it&#x27;s easy to tell where you are.</li><li><strong>Edge to edge:</strong> The tour fills its window, with no dark strip along the top.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.6.1/Hutch-1.6.1.dmg" type="application/octet-stream" sparkle:edSignature="tfjYzOcDzONBcZGcsk6McPGto7qCpHeaOBFFpAJAfV72xVdw0nw6Wc2OCXmzLtcIhaYmigmew+ygRt0lhu3EDQ==" length="26843460" />
+    </item>
+<item>
       <title>Version 1.6.0</title>
       <pubDate>Thu, 12 Nov 2026 17:42:59 +0300</pubDate>
       <sparkle:version>76</sparkle:version>
