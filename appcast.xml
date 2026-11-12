@@ -9,7 +9,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.6.0</title>
+      <pubDate>Thu, 12 Nov 2026 17:42:59 +0300</pubDate>
+      <sparkle:version>76</sparkle:version>
+      <sparkle:shortVersionString>1.6.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Live stats in the menu bar:</strong> CPU, GPU, memory, network, disk, battery or chip heat, as a number, bar or sparkline. It only turns yellow or red when something&#x27;s wrong.</li><li><strong>The apps behind every number:</strong> Click the menu bar item for the last hour, day or week and the apps behind each graph, with a jump to Reaper. Switch Pulse on in Settings → Pulse.</li><li><strong>Ask Pounce how your Mac is doing:</strong> Type `cpu`, `memory`, `temp`, `fans` or `battery` for a live card, and Return opens Pulse there. &quot;why is my mac slow&quot; finds it too.</li><li><strong>Stats on your desktop:</strong> One stat in a small widget, four in a medium one, graphs in a large one, each showing when it last updated.</li><li><strong>Told when something&#x27;s wrong:</strong> A runaway app, a hot chip, red memory pressure or a nearly full disk. Alerts start off and stay quiet during Focus.</li><li><strong>Light on your Mac:</strong> Pulse samples every couple of seconds, slower on battery and not at all while the display sleeps. It needs no new permissions.</li><li><strong>Most of Pulse is free:</strong> The live view, menu bar, Pounce cards, small widget and last hour are free. A licence adds sensors, fans, per-app use, a week of history and alerts.</li><li><strong>Numbers the way you write them:</strong> Decimal separators and units follow your region everywhere Pulse shows a figure.</li><li><strong>Each update comes with a tour:</strong> It opens once after an update, a page per change. Open it again any time from Settings.</li><li><strong>Shortcuts you can read at a glance:</strong> Keys show as keycaps, and the tools you use come first.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.6.0/Hutch-1.6.0.dmg" type="application/octet-stream" sparkle:edSignature="f3TWUnt63tMJ+pcQMvwP5m7asdJjM/QxKUqQS+NyZAIRopeP6k7cYhOephk3Ehk1UB70e70vCck/TIMQGYXRBg==" length="26424266" />
+    </item>
+<item>
       <title>Version 1.5.2</title>
       <pubDate>Tue, 10 Nov 2026 19:25:43 +0300</pubDate>
       <sparkle:version>75</sparkle:version>
