@@ -16,6 +16,9 @@ Requires **macOS 15 (Sequoia)** or later.
 
 | Tool             | What it does                                                                                  |
 | ---------------- | --------------------------------------------------------------------------------------------- |
+| Pounce           | ⌘Space launcher: apps, files, maths, web, clipboard history, Shortcuts and more.              |
+| Reaper           | Finds what's eating CPU, memory and GPU, then quits it one app at a time, with your say-so.   |
+| Pulse            | Live CPU, memory, network and heat in the menu bar, with history and the apps behind each.    |
 | Window Manager   | Snap windows to halves, quarters, thirds — by click or global hotkey. Multi-display aware.    |
 | Stash            | Floating shelf for files mid-drag. Cursor-shake to summon, hotkey to summon, drag through.    |
 | Browser Picker   | Set Hutch as the default browser; route links by domain rule, app source, or a quick picker.  |

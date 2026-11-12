@@ -1618,3 +1618,19 @@ button.sw { cursor: pointer; }
 
 .bpk-bico.bpk-real { background: none; box-shadow: none; border: 0; overflow: visible; }
 .bpk-bico.bpk-real img { display: block; width: 118%; height: 118%; margin: -9%; object-fit: contain; filter: drop-shadow(0 2px 4px rgb(0 0 0 / 0.35)); }
+
+.pls { padding: 28px 22px; }
+.pls-stage { position: relative; z-index: 1; max-width: 460px; margin: 0 auto; display: grid; gap: 14px; }
+.pls-bar { display: flex; justify-content: center; gap: 14px; padding: 6px 14px; border-radius: 10px; background: rgb(12 11 16 / 0.72); box-shadow: 0 0 0 1px rgb(255 255 255 / 0.08); font-size: 12px; font-weight: 600; font-variant-numeric: tabular-nums; color: var(--text-secondary); white-space: nowrap; overflow: hidden; }
+.pls-bar span:last-child { color: #FFB020; }
+.pls-panel { padding: 16px; background: rgb(12 11 16 / 0.72); }
+.pls-gauges { margin-bottom: 10px; }
+.pls-spark { display: block; width: 100%; height: 64px; color: var(--pal-accent); }
+.pls-apps { margin: 10px 0 0; padding: 0; list-style: none; }
+.pls-apps li { display: flex; justify-content: space-between; height: 32px; align-items: center; padding: 0 6px; border-top: 1px solid rgb(255 255 255 / 0.05); font-size: 13px; }
+.pls-apps b { font-variant-numeric: tabular-nums; }
+@media (max-width: 640px) {
+  .pls { padding: 14px 12px; }
+  .pls-bar { gap: 8px; font-size: 11px; }
+  .pls-bar span:nth-child(3) { display: none; }
+}

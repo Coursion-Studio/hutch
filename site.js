@@ -59,6 +59,7 @@
       { g: "Tools", mk: "◑", t: "Toggles", h: "Try it", go: "#toggles" },
       { g: "Tools", mk: "↗", t: "Browser Picker", h: "Try it", go: "#browsers" },
       { g: "Tools", mk: "◆", t: "Reaper — resource review", h: "Try it", go: "#reaper" },
+      { g: "Tools", mk: "◆", t: "Pulse — live Mac stats", h: "See it", go: "#pulse" },
       { g: "Go", mk: "◐", t: "Themes and materials", h: "Section", go: "#themes" },
       { g: "Go", mk: "→", t: "Why Hutch — one permission", h: "Section", go: "#why" },
       { g: "Go", mk: "$", t: "Free to start, $29 for everything", h: "Section", go: "#pricing" },

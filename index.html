@@ -4,18 +4,18 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Hutch — A drawer of Mac utilities</title>
-  <meta name="description" content="Six native Mac tools in one menu bar app: a ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a browser picker and a resource reaper. Free to download; $29 once unlocks every tool." />
+  <meta name="description" content="Seven native Mac tools in one menu bar app: a ⌘Space launcher, window snapping, a drag-and-drop file shelf, system toggles, a browser picker, a resource reaper and a live system monitor. Free to download; $29 once unlocks every tool." />
   <link rel="canonical" href="https://hutch.coursion.studio/" />
   <link rel="icon" type="image/png" href="img/favicon.png" />
   <link rel="apple-touch-icon" href="icon.png" />
   <link rel="stylesheet" href="styles.css?v=d23c048adf" />
   <link rel="stylesheet" href="site.css?v=8bc684e233" />
-  <link rel="stylesheet" href="home.css?v=991b9aa1b9" />
+  <link rel="stylesheet" href="home.css?v=840af1b375" />
   <link rel="preload" as="image" href="img/hutch-icon.webp" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://hutch.coursion.studio/" />
   <meta property="og:title" content="Hutch — A drawer of Mac utilities" />
-  <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing and a resource reaper. Six native Mac tools, one menu bar icon. Free to download, $29 once for everything." />
+  <meta property="og:description" content="A ⌘Space launcher, window snapping, a drag-and-drop shelf, system toggles, link routing, a resource reaper and live Mac stats. Seven native Mac tools, one menu bar icon. Free to download, $29 once for everything." />
   <meta property="og:image" content="https://hutch.coursion.studio/screenshots/hero-dashboard.png?v=5b3410dd2d" />
   <meta name="twitter:card" content="summary_large_image" />
   <meta name="theme-color" content="#0E0C14" />
@@ -28,13 +28,13 @@
     "image": "https://hutch.coursion.studio/icon.png",
     "applicationCategory": "UtilitiesApplication",
     "operatingSystem": "macOS 15 or later",
-    "description": "Six native Mac tools in one menu bar app: a launcher, window snapping, a file shelf, system toggles, a browser picker and a resource reaper.",
+    "description": "Seven native Mac tools in one menu bar app: a launcher, window snapping, a file shelf, system toggles, a browser picker, a resource reaper and a system monitor.",
     "offers": { "@type": "Offer", "price": "29.00", "priceCurrency": "USD" },
     "publisher": { "@type": "Organization", "name": "Coursion Studio" }
   }
   </script>
   <script>document.documentElement.classList.add("js");window.__rv=setTimeout(function(){document.documentElement.classList.add("reveal-all")},4000);</script>
-  <script defer src="site.js?v=863a9dd505"></script>
+  <script defer src="site.js?v=d35542de1b"></script>
   <script defer src="home.js?v=c83968eb74"></script>
   <script defer src="https://polaris-backend-489776622782.europe-west1.run.app/api/v1/analytics/t.js" data-site="hutch.coursion.studio"></script>
 </head>
@@ -92,19 +92,20 @@
     <div class="container">
       <div class="bar-space" aria-hidden="true"></div>
 
-      <div class="hero-fan" role="img" aria-label="The Hutch app icon with its six tools fanned out beneath it: Pounce, Stash, Toggles, Window Manager, Browser Picker and Reaper.">
+      <div class="hero-fan" role="img" aria-label="The Hutch app icon with its seven tools fanned out beneath it: Pounce, Stash, Toggles, Window Manager, Browser Picker, Reaper and Pulse.">
         <img class="hero-icon" src="img/hutch-icon.webp" alt="" width="160" height="160" fetchpriority="high" />
-        <span class="fan-tool" style="--i:0;--x:-249;--y:52.6;--r:5deg"><span class="tile"><img src="img/pounce.webp" alt="" width="56" height="56" /></span><b>Pounce</b></span>
-        <span class="fan-tool" style="--i:1;--x:-179;--y:99.6;--r:3deg"><span class="tile"><img src="img/stash.webp" alt="" width="56" height="56" /></span><b>Stash</b></span>
-        <span class="fan-tool" style="--i:2;--x:-65;--y:126.5;--r:1deg"><span class="tile"><img src="img/toggles.webp" alt="" width="56" height="56" /></span><b>Toggles</b></span>
-        <span class="fan-tool" style="--i:3;--x:65;--y:126.5;--r:-1deg"><span class="tile"><img src="img/window-manager.webp" alt="" width="56" height="56" /></span><b>Window Manager</b></span>
-        <span class="fan-tool" style="--i:4;--x:179;--y:99.6;--r:-3deg"><span class="tile"><img src="img/browser-picker.webp" alt="" width="56" height="56" /></span><b>Browser Picker</b></span>
-        <span class="fan-tool" style="--i:5;--x:249;--y:52.6;--r:-5deg"><span class="tile"><img src="img/reaper.webp" alt="" width="56" height="56" /></span><b>Reaper</b></span>
+        <span class="fan-tool" style="--i:0;--x:-248;--y:52.8;--r:5deg"><span class="tile"><img src="img/pounce.webp" alt="" width="56" height="56" /></span><b>Pounce</b></span>
+        <span class="fan-tool" style="--i:1;--x:-176;--y:93.6;--r:4deg"><span class="tile"><img src="img/stash.webp" alt="" width="56" height="56" /></span><b>Stash</b></span>
+        <span class="fan-tool" style="--i:2;--x:-90;--y:121.5;--r:2deg"><span class="tile"><img src="img/toggles.webp" alt="" width="56" height="56" /></span><b>Toggles</b></span>
+        <span class="fan-tool" style="--i:3;--x:0;--y:132.6;--r:0deg"><span class="tile"><img src="img/window-manager.webp" alt="" width="56" height="56" /></span><b>Window Manager</b></span>
+        <span class="fan-tool" style="--i:4;--x:90;--y:121.5;--r:-2deg"><span class="tile"><img src="img/browser-picker.webp" alt="" width="56" height="56" /></span><b>Browser Picker</b></span>
+        <span class="fan-tool" style="--i:5;--x:176;--y:93.6;--r:-4deg"><span class="tile"><img src="img/reaper.webp" alt="" width="56" height="56" /></span><b>Reaper</b></span>
+        <span class="fan-tool" style="--i:6;--x:248;--y:52.8;--r:-5deg"><span class="tile"><img src="img/pulse.webp" alt="" width="56" height="56" /></span><b>Pulse</b></span>
       </div>
 
       <div class="hero-copy">
         <h1 class="rise" style="--d:.08s">Everything you keep reaching for,<br /> in one drawer.</h1>
-        <p class="sub rise" style="--d:.14s">Six small Mac tools that live in your menu bar: a launcher, window snapping, a file shelf, the switches macOS hides, link routing and a resource reaper. Keep the ones you want.</p>
+        <p class="sub rise" style="--d:.14s">Seven small Mac tools that live in your menu bar: a launcher, window snapping, a file shelf, the switches macOS hides, link routing, a resource reaper and live Mac stats. Keep the ones you want.</p>
         <div class="cta-row rise" style="--d:.2s">
           <a class="btn primary" href="https://polaris-backend-489776622782.europe-west1.run.app/dl/hutch" data-download>Download for free</a>
           <a class="btn outline" href="pricing.html">Buy — $29</a>
@@ -422,6 +423,41 @@
       </div>
     </section>
 
+    <section id="pulse" class="sec sec-pulse reveal" aria-labelledby="pls-title">
+      <div class="glow" aria-hidden="true"></div>
+      <div class="container">
+        <div class="show pls rise">
+          <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
+          <div class="pls-stage" aria-hidden="true">
+            <div class="pls-bar"><span>CPU 23%</span><span>RAM 61%</span><span>↓ 4.2 MB/s</span><span>58°</span></div>
+            <div class="rpr-panel pls-panel">
+              <div class="rpr-head">
+                <span class="rpr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg></span>
+                <span class="rpr-title"><b>Pulse</b><small>Last hour</small></span>
+              </div>
+              <div class="rpr-gauges pls-gauges">
+                <div class="rpr-g"><span>CPU</span><b>23%</b><i><s style="--v:.23"></s></i></div>
+                <div class="rpr-g"><span>Memory</span><b>9.8 GB</b><i><s style="--v:.61"></s></i></div>
+                <div class="rpr-g"><span>Disk</span><b>212 GB free</b><i><s style="--v:.42"></s></i></div>
+              </div>
+              <svg class="pls-spark" viewBox="0 0 300 64" preserveAspectRatio="none"><path d="M0 48 L20 44 L40 50 L60 38 L80 42 L100 30 L120 34 L140 20 L160 26 L180 40 L200 36 L220 24 L240 30 L260 18 L280 28 L300 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+              <ul class="pls-apps">
+                <li><span>Xcode</span><b>41%</b></li>
+                <li><span>Safari</span><b>12%</b></li>
+                <li><span>Slack</span><b>6%</b></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="sec-head center">
+          <h2 id="pls-title" class="rise" style="--d:.08s">See what your Mac is doing, and which app is behind it.</h2>
+          <p class="rise" style="--d:.14s">Pulse puts CPU, GPU, memory, network, disk, battery and chip heat in your menu bar as a number, a bar or a sparkline. Colour shows up only when something is wrong. Click it for the last hour, day or week and the apps behind each graph. Alerts for a runaway app, heat, memory pressure or a full disk are off until you turn them on.</p>
+          <p class="rise" style="--d:.2s">It samples every couple of seconds, slower on battery and not at all while the display sleeps. It needs no new permissions and nothing leaves your Mac.</p>
+          <p class="aside rise" style="--d:.26s"><span class="tier tier-mixed">Partly free</span> The live view, menu bar item, Pounce cards, small widget and last hour are free. A licence adds every temperature sensor, fans and power draw, per-app usage, seven days of history, alerts, and medium and large widgets. Type <span class="combo"><kbd>pulse</kbd></span> in Pounce.</p>
+        </div>
+      </div>
+    </section>
+
     <section id="themes" class="sec sec-themes reveal" aria-labelledby="themes-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
@@ -498,7 +534,7 @@
     <section id="tools" class="sec sec-tools reveal">
       <div class="container">
         <div class="sec-head">
-          <h2 class="rise">Six tools, one menu bar icon</h2>
+          <h2 class="rise">Seven tools, one menu bar icon</h2>
           <p class="rise" style="--d:.06s">Every tool has its own switch. Turn off anything you won't use, and Settings brings it back any time.</p>
         </div>
         <ul class="tool-grid">
@@ -538,8 +574,14 @@
             <p>See what's eating CPU, memory and GPU, then quit it one app at a time.</p>
             <div class="tc-foot"><span>Type</span><span class="combo"><kbd>reap</kbd></span><span>in Pounce</span><a class="tc-see" href="#reaper" aria-label="See Reaper in action">See it<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6.5 13.5 12 19l5.5-5.5"/></svg></a></div>
           </li>
+          <li class="tool-card rise" style="--d:.32s;--tc:#FF5188">
+            <div class="tc-head"><span class="tile"><img src="img/pulse.webp" alt="" width="56" height="56" loading="lazy" /></span><span class="tier tier-mixed">Partly free</span></div>
+            <h3>Pulse</h3>
+            <p>Live CPU, memory, network and heat in the menu bar, and the apps behind each number.</p>
+            <div class="tc-foot"><span>Type</span><span class="combo"><kbd>pulse</kbd></span><span>in Pounce</span><a class="tc-see" href="#pulse" aria-label="See Pulse in action">See it<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5v14M6.5 13.5 12 19l5.5-5.5"/></svg></a></div>
+          </li>
         </ul>
-        <p class="tool-legend rise" style="--d:.32s"><span class="lg"><span class="tier tier-free">Free forever</span> Toggles, Window Manager, Browser Picker</span><span class="lg"><span class="tier tier-paid">$29 licence</span> Stash, Reaper and Pounce's power features</span></p>
+        <p class="tool-legend rise" style="--d:.32s"><span class="lg"><span class="tier tier-free">Free forever</span> Toggles, Window Manager, Browser Picker</span><span class="lg"><span class="tier tier-mixed">Partly free</span> Pounce and Pulse</span><span class="lg"><span class="tier tier-paid">$29 licence</span> Stash, Reaper and the power features of Pounce and Pulse</span></p>
       </div>
     </section>
 
@@ -555,7 +597,7 @@
             </div>
             <span class="price-rule" aria-hidden="true"></span>
             <ul class="price-list">
-              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Stash, Reaper and every Pounce power feature</li>
+              <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Stash, Reaper and the power features of Pounce and Pulse</li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Three Macs on one licence</li>
               <li><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="currentColor"/><path d="m7.5 12.3 3 3 6-6.3" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>Every 1.x update included</li>
             </ul>
@@ -564,7 +606,7 @@
         </div>
         <div class="sec-head center">
           <h2 id="price-title" class="rise" style="--d:.08s">Free to start, $29 for everything</h2>
-          <p class="rise" style="--d:.14s">Download Hutch for free. $29 once unlocks Stash, Reaper and Pounce's power features, and these stay free forever:</p>
+          <p class="rise" style="--d:.14s">Download Hutch for free. $29 once unlocks Stash, Reaper and the power features of Pounce and Pulse, and these stay free forever:</p>
           <ul class="free-chips rise" style="--d:.2s">
             <li><img src="img/toggles.webp" alt="" width="18" height="18" loading="lazy" />Toggles</li>
             <li><img src="img/window-manager.webp" alt="" width="18" height="18" loading="lazy" />Window Manager</li>
