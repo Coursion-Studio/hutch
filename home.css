@@ -1046,11 +1046,12 @@ button.sw { cursor: pointer; }
   .cap, .tile, .swatch, .sw i, .ax-ok, .pp-row, .pp-sel, .shelf { transition-property: opacity, color, background, box-shadow; }
   .pp-sel { transition: opacity 0.12s ease-out; }
 }
-.sec-try .container { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: 492px auto; justify-items: center; }
-.sec-try .container > .pp-try { align-self: start; }
-.sec-try .container > .sec-head { width: 100%; min-width: 0; }
+.sec-try .container { display: grid; grid-template-columns: minmax(0, 1fr); grid-template-rows: auto 492px; justify-items: center; }
+.sec-try .container > .pp-try { align-self: start; order: 1; }
+.sec-try .container > .sec-head { width: 100%; min-width: 0; order: 0; margin-bottom: 36px; }
 @media (max-width: 560px) {
-  .sec-try .container { grid-template-rows: 292px auto; }
+  .sec-try .container { grid-template-rows: auto 292px; }
+  .sec-try .container > .sec-head { margin-bottom: 24px; }
   .pp-try .pp-row.sel.acts .pp-act { font-size: 0; gap: 0; padding: 4px 7px; }
   .pp-try .pp-hint:nth-child(n+2), .pp-try .pp-badge { display: none; }
   .pp-try .pp-field { gap: 10px; padding: 13px 14px; }
