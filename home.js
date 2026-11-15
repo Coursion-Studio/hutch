@@ -1936,4 +1936,389 @@
       if (!touched) { demo.stop(); cursor.classList.remove("on"); if (phase === "scan") review(); }
     }, 0.4);
   })();
+
+  // ─── Pulse ───
+
+  (() => {
+    const pls = $(".js-pls");
+    if (!pls) return;
+    const tilesEl = $(".js-pls-tiles", pls), detail = $(".js-pls-detail", pls), panel = $(".js-pls-panel", pls);
+    const body = $(".js-pls-body", pls), pop = $(".js-pls-pop", pls), item = $(".js-pls-item", pls);
+    const win = $(".js-pls-win", pls), buildLabel = $(".js-pls-build", pls), stage = $(".pls-stage", pls);
+    const LIVE = 60, HOUR = 60, TICK = 1500, CYCLE = 6000, IDLE = 9000, MEM = 32, DISK = 494.38;
+    const LOAD = [["Idle", "#4DD98C"], ["Warm", "#FAD14D"], ["Heavy", "#FF943D"], ["Maxed", "#FF5C5C"]];
+    const C = { user: "#6BB8FF", system: "#FF8C6B", perf: "#FF8C8C", eff: "#66D98C", in: "#4FD1D9", out: "#FF9F4A", wired: "#B48CFF", comp: "#FFB347", swap: "#FF7A59" };
+    const ico = (d) => `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${d}</svg>`;
+    const M = {
+      cpu: { t: "CPU", a: "#6BB8FF", i: ico('<rect x="6" y="6" width="12" height="12" rx="2"/><path d="M9.5 9.5h5v5h-5zM9 2.5V6M15 2.5V6M9 18v3.5M15 18v3.5M2.5 9H6M2.5 15H6M18 9h3.5M18 15h3.5"/>') },
+      gpu: { t: "GPU", a: "#B48CFF", i: ico('<rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/>') },
+      memory: { t: "Memory", a: "#4FD1D9", i: ico('<rect x="3" y="7" width="18" height="10" rx="1.5"/><path d="M7 10.5h10v3H7zM7 17v2.5M12 17v2.5M17 17v2.5"/>') },
+      network: { t: "Network", a: "#FF7AB6", i: ico('<circle cx="12" cy="12" r="8.5"/><path d="M3.5 12h17M12 3.5c2.4 2.6 3.4 5.4 3.4 8.5s-1 5.9-3.4 8.5c-2.4-2.6-3.4-5.4-3.4-8.5s1-5.9 3.4-8.5z"/>') },
+      disk: { t: "Disk", a: "#F5B547", i: ico('<rect x="3" y="7" width="18" height="10" rx="3"/><path d="M3.5 12.5h17M16.5 14.8h.01"/>') },
+      temperature: { t: "Temperature", a: "#FF7A59", i: ico('<path d="M10 14.5V5a2 2 0 0 1 4 0v9.5a4 4 0 1 1-4 0z"/><path d="M12 11v6"/>') }
+    };
+    const TILES = ["cpu", "gpu", "memory", "network", "disk", "temperature"];
+    const TOUR = ["cpu", "network", "memory", "disk"];
+    const A = { xcode: ["Xcode", "hammer", "#55C6FF", "#1A6EE8"], safari: ["Safari", "compass", "#46B2FF", "#1A6FE0"], ws: ["WindowServer", "desktop", "#8A8A94", "#4A4A52"], mail: ["Mail", "mail", "#5BB4FF", "#1D63ED"], music: ["Music", "music", "#FF6680", "#E0284A"], finder: ["Finder", "finder", "#6FC3FF", "#1E7BE6"], photos: ["Photos", "photos", "#FFD36B", "#FF8A3D"] };
+    const PROCS = {
+      cpu: { title: "Top apps by CPU", apps: ["xcode", "safari", "ws", "mail"], base: [21.7, 13.8, 9.2, 3.1] },
+      memory: { title: "Top apps by memory", apps: ["xcode", "safari", "ws", "mail"], base: [4.6, 2.9, 1.2, 0.6] },
+      network: { title: "Top apps by network", apps: ["safari", "music", "mail", "finder"], base: [1.1e6, 3.2e5, 8e4, 2e4] },
+      disk: { title: "Top apps by disk", apps: ["xcode", "photos", "safari", "finder"], base: [4.8e6, 1.2e6, 3.1e5, 6e4] }
+    };
+    const PEAK = [0, 83, 92, 71];
+
+    const clamp = (v, lo, hi) => Math.min(hi, Math.max(lo, v));
+    const rnd = (lo, hi) => lo + Math.random() * (hi - lo);
+    const pctLoad = (v) => (v < 50 ? 0 : v < 75 ? 1 : v < 90 ? 2 : 3);
+    const rateLoad = (b) => (b < 5e6 ? 0 : b < 25e6 ? 1 : b < 1e8 ? 2 : 3);
+    const heatLoad = (c) => (c < 65 ? 0 : c < 80 ? 1 : c < 92 ? 2 : 3);
+    const diskLoad = (free) => { const f = free / DISK; return free < 5 || f < 0.05 ? 3 : free < 20 || f < 0.1 ? 2 : f < 0.25 ? 1 : 0; };
+    const loadOf = (m, r) => ({ cpu: pctLoad(r.cpu), gpu: pctLoad(r.gpu), memory: r.mem >= 85 ? 1 : 0, network: Math.max(rateLoad(r.in), rateLoad(r.out)), disk: diskLoad(r.free), temperature: heatLoad(r.temp) })[m];
+    const pct = (v) => Math.round(clamp(v, 0, 100)) + "%";
+    const scaled = (b, units, sep) => {
+      for (const [s, v] of units) if (b >= v) { const x = b / v; return (x < 10 ? x.toFixed(1) : Math.round(x)) + sep + s; }
+      return null;
+    };
+    const compact = (b) => scaled(b, [["G", 1e9], ["M", 1e6], ["K", 1e3]], "") || Math.round(b) + "B";
+    const rate = (b) => scaled(b, [["GB/s", 1e9], ["MB/s", 1e6], ["KB/s", 1e3]], " ") || Math.round(b) + " bytes/s";
+    const gb = (v) => v.toFixed(1) + " GB";
+    const deg = (v) => Math.round(v) + "°";
+    const valueOf = (m, r) => ({ cpu: r.cpu, gpu: r.gpu, memory: r.mem, network: r.in, disk: (1 - r.free / DISK) * 100, temperature: r.temp })[m];
+    const headline = (m, r) => ({ cpu: pct(r.cpu), gpu: pct(r.gpu), memory: pct(r.mem), network: compact(r.in), disk: gb(r.free), temperature: deg(r.temp) })[m];
+    const caption = (m, r) => ({ cpu: "12 cores", gpu: "Utilisation", memory: `of ${MEM} GB`, network: "Out " + compact(r.out), disk: "free", temperature: "Chip" })[m];
+    const procText = (s, v) => (s === "cpu" ? v.toFixed(1) + "%" : s === "memory" ? gb(v) : rate(v));
+    const procLoad = (s, v) => (s === "cpu" ? pctLoad(Math.min(v, 100)) : s === "memory" ? pctLoad(v / MEM * 300) : rateLoad(v));
+    const domain = (m, vals) => {
+      if (m === "network") return [0, Math.max(...vals, 1e4) * 1.15];
+      if (m === "temperature") return [Math.min(30, Math.min(...vals) - 5), Math.max(80, Math.max(...vals) + 5)];
+      return [0, 100];
+    };
+
+    function trace(vals, w, h, lo, hi, k) {
+      const step = w / (vals.length - 2), span = Math.max(hi - lo, 1e-4);
+      const pts = vals.map((v, i) => [((i - 1 + k) * step).toFixed(2), (1 + (h - 2) * (1 - clamp((v - lo) / span, 0, 1))).toFixed(2)]);
+      const line = "M" + pts.map((p) => p.join(",")).join("L");
+      return { line, area: `${line}L${pts[pts.length - 1][0]},${h}L${pts[0][0]},${h}Z` };
+    }
+    let gid = 0;
+    function series(color, filled, top = 0.24) {
+      const id = "plg" + ++gid;
+      return {
+        html: `${filled ? `<defs><linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${color}" stop-opacity="${top}"/><stop offset="1" stop-color="${color}" stop-opacity="0.02"/></linearGradient></defs><path class="f" fill="url(#${id})"/>` : ""}<path class="l" fill="none" stroke="${color}" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/>`,
+        draw(svgEl, n, vals, w, h, lo, hi, k) {
+          const t = trace(vals, w, h, lo, hi, k);
+          if (filled) $$("path.f", svgEl)[n].setAttribute("d", t.area);
+          $$("path.l", svgEl)[n].setAttribute("d", t.line);
+        }
+      };
+    }
+    const rules = (w, h, dashed) => [0.5, h / 2, h - 0.5].map((y) => `<path d="M0 ${y}H${w}" stroke="rgb(255 255 255 / 0.09)" stroke-width="1" vector-effect="non-scaling-stroke"${dashed ? ' stroke-dasharray="2 3"' : ""}/>`).join("");
+    function lines(svgEl, list, vals, lo, hi, k) {
+      const paths = $$("path.l", svgEl), fills = $$("path.f", svgEl);
+      let f = 0;
+      list.forEach(([color, filled], n) => {
+        const t = trace(vals[n], 300, 52, lo, hi, k);
+        paths[n].setAttribute("d", t.line);
+        if (filled) fills[f++].setAttribute("d", t.area);
+      });
+    }
+    const linesHTML = (list) => `<svg class="pls-lines" viewBox="0 0 300 52" preserveAspectRatio="none">${rules(300, 52, true)}${list.map(([c, filled, top]) => series(c, filled, top || 0.32).html).join("")}</svg>`;
+
+    let spike = 0, countdown = 4, burst = 0, amp = 1, gap = [9, 15];
+    function next(r) {
+      const n = JSON.parse(JSON.stringify(r));
+      if (spike > 0) { n.cpu = Math.max(PEAK[spike] * amp, 40) + rnd(-3, 3); spike--; }
+      else {
+        n.cpu = clamp(r.cpu + rnd(-5, 5) + (22 - r.cpu) * 0.35, 9, 36);
+        if (--countdown <= 0) { spike = 3; countdown = Math.floor(rnd(gap[0], gap[1])); amp = gap[0] < 9 ? rnd(0.5, 1) : 1; }
+      }
+      n.user = n.cpu * rnd(0.6, 0.7);
+      n.system = n.cpu - n.user;
+      n.p = n.p.map(() => clamp(n.cpu * rnd(0.5, 1.6), 1, 100));
+      n.e = n.e.map(() => clamp(n.cpu * rnd(0.15, 0.6) + 4, 1, 100));
+      n.gpu = clamp(r.gpu + rnd(-3, 3) + (12 - r.gpu) * 0.3, 4, 24);
+      n.mem = clamp(r.mem + rnd(-0.8, 0.8) + (n.cpu > 60 ? 0.6 : (65 - r.mem) * 0.2), 61, 72);
+      n.wired = clamp(r.wired + rnd(-0.08, 0.08), 3.1, 3.8);
+      n.comp = clamp(r.comp + rnd(-0.1, 0.1), 1.4, 2.4);
+      if (burst > 0) { n.in = rnd(7e6, 1.3e7); burst--; }
+      else {
+        n.in = Math.pow(10, clamp(Math.log10(r.in) + rnd(-0.25, 0.25) + (6 - Math.log10(r.in)) * 0.2, 4.8, 6.55));
+        if (Math.random() < 0.07) burst = 2;
+      }
+      n.out = Math.pow(10, clamp(Math.log10(r.out) + rnd(-0.2, 0.2) + (4.9 - Math.log10(r.out)) * 0.2, 4.2, 5.6));
+      n.free = clamp(r.free - rnd(-0.01, 0.03), 280, 290);
+      n.temp = clamp(r.temp + (48 + n.cpu * 0.3 - r.temp) * 0.4 + rnd(-0.8, 0.8), 44, 78);
+      const proc = n.procs;
+      proc.cpu = PROCS.cpu.base.map((b, i) => (i === 0 && n.cpu > 60 ? n.cpu * rnd(0.72, 0.8) : b * rnd(0.75, 1.25)));
+      proc.memory = PROCS.memory.base.map((b, i) => b * rnd(0.97, 1.03) + (i === 0 && n.cpu > 60 ? 0.6 : 0));
+      proc.network = PROCS.network.base.map((b, i) => (i === 0 ? n.in * 0.68 : b * rnd(0.6, 1.4)));
+      proc.disk = PROCS.disk.base.map((b, i) => b * rnd(0.5, 1.5) * (i === 0 && n.cpu > 60 ? 3 : 1));
+      return n;
+    }
+
+    let to = { cpu: 22, user: 14, system: 8, gpu: 11, mem: 66, wired: 3.4, comp: 1.9, swap: 0.4, in: 1.6e6, out: 9e4, free: 286.4, temp: 53, p: Array(8).fill(20), e: Array(4).fill(8), procs: {} };
+    const H = {}, HR = {};
+    const live = (key) => H[key] || (H[key] = []);
+    function record(r) {
+      [["cpu", r.cpu], ["gpu", r.gpu], ["memory", r.mem], ["network", r.in], ["disk", valueOf("disk", r)], ["temperature", r.temp], ["user", r.user], ["system", r.system], ["in", r.in], ["out", r.out]].forEach(([key, v]) => {
+        const a = live(key); a.push(v); if (a.length > LIVE + 1) a.shift();
+      });
+      TILES.forEach((m) => { const a = HR[m] || (HR[m] = []); a.push(valueOf(m, r)); if (a.length > HOUR + 1) a.shift(); });
+    }
+    countdown = 5; gap = [4, 22];
+    for (let i = 0; i <= Math.max(LIVE, HOUR); i++) { to = next(to); record(to); }
+    spike = 0; burst = 0; countdown = 2; amp = 1; gap = [9, 15];
+    to.cpu = 22; to.user = 14.5; to.system = 7.5; to.temp = 53; to.in = 1.6e6; to.out = 9e4; to.procs.cpu = PROCS.cpu.base.slice();
+    let from = to;
+    const k = new Spring(0, 0.55, 1);
+
+    function mix(a, b, t) {
+      if (Array.isArray(b)) return b.map((v, i) => mix(a[i], v, t));
+      if (b && typeof b === "object") { const o = {}; for (const key in b) o[key] = mix(a[key], b[key], t); return o; }
+      return b + (a - b) * t;
+    }
+
+    const tiles = {};
+    TILES.forEach((m) => {
+      const s = series(M[m].a, true, 0.22);
+      const el = document.createElement("div");
+      el.className = "pls-tile";
+      el.style.setProperty("--a", M[m].a);
+      el.innerHTML = `<div class="pls-th"><span class="pls-sym">${M[m].i}</span><span>${M[m].t}</span></div><b class="pls-tv"></b><svg class="spark" viewBox="0 0 100 18" preserveAspectRatio="none">${s.html}</svg><span class="pls-tc"></span>`;
+      el.addEventListener("click", () => pick(m));
+      tilesEl.appendChild(el);
+      tiles[m] = { el, s, v: $(".pls-tv", el), c: $(".pls-tc", el), svg: $(".spark", el) };
+    });
+    const segs = [["cpu", "CPU"], ["memory", "MEM"], ["temperature", "TEMP"]].map(([m, label]) => {
+      const el = document.createElement("span");
+      el.className = "pls-seg" + (m === "temperature" ? " opt" : "");
+      el.innerHTML = `<small>${label}</small><b></b>`;
+      item.appendChild(el);
+      return [m, $("b", el)];
+    });
+    const net = document.createElement("span");
+    net.className = "pls-seg pair opt";
+    net.innerHTML = "<small>IN</small><b></b><small>OUT</small><b></b>";
+    item.appendChild(net);
+    const netB = $$("b", net);
+
+    function paintTiles(v, t) {
+      TILES.forEach((m) => {
+        const tile = tiles[m], vals = live(m);
+        tile.v.textContent = headline(m, v);
+        tile.v.style.color = LOAD[loadOf(m, v)][1];
+        tile.c.textContent = caption(m, v);
+        const [lo, hi] = domain(m, vals);
+        tile.s.draw(tile.svg, 0, vals, 100, 18, lo, hi, t);
+      });
+      segs.forEach(([m, b]) => {
+        b.textContent = m === "temperature" ? deg(v.temp) : pct(valueOf(m, v));
+        b.style.color = LOAD[loadOf(m, v)][1];
+      });
+      [v.in, v.out].forEach((x, i) => { netB[i].textContent = compact(x); netB[i].style.color = LOAD[rateLoad(x)][1]; });
+    }
+
+    const clock = (min) => new Date(Date.now() - min * 60000).toLocaleTimeString("en-US", { hour: "numeric", minute: "2-digit" });
+    const row = (label, key, dot) => `<div class="pls-row"${dot ? ` style="--c:${dot}"` : ""}>${dot ? "<i></i>" : ""}${label}<b data-k="${key}"></b></div>`;
+    function procsHTML(s) {
+      const p = PROCS[s];
+      return `<div class="pls-procs" style="--a:${M[s].a}"><div class="pls-lab">${p.title}</div><ul>${p.apps.map((id) => {
+        const [n, g, a, b] = A[id];
+        return `<li><span class="pls-pico" style="background:linear-gradient(${a},${b})">${svg(g)}</span><span class="pls-pn"><span>${n}</span><i><s></s></i></span><b></b>${ico('<circle cx="12" cy="12" r="6.5"/><path d="M12 2.5v4M12 17.5v4M2.5 12h4M17.5 12h4"/>').replace("<svg", '<svg class="pls-scope"')}</li>`;
+      }).join("")}</ul></div>`;
+    }
+    function paintProcs(el, s, v) {
+      const vals = v.procs[s], peak = Math.max(...vals);
+      $$(".pls-procs li", el).forEach((li, i) => {
+        const b = $("b", li);
+        b.textContent = procText(s, vals[i]);
+        b.style.color = LOAD[procLoad(s, vals[i])][1];
+        $("s", li).style.setProperty("--v", (vals[i] / peak).toFixed(3));
+      });
+    }
+    const set = (el, key, text, color) => { const b = $(`[data-k="${key}"]`, el); b.textContent = text; if (color) b.style.color = color; };
+
+    function build(m) {
+      const el = document.createElement("div");
+      el.className = "pls-card";
+      el.style.setProperty("--a", M[m].a);
+      const chart = series(M[m].a, true);
+      let extra = "", paint = () => {};
+      const CPU_LINES = [[M.cpu.a + "80", true, 0.32], [C.system, false], [C.user, false]];
+      const NET_LINES = [[C.in, true], [C.out, true]];
+      if (m === "cpu") {
+        extra = `<div class="pls-x"><div class="pls-leg"><div style="--c:${C.user}"><small>User</small><b data-k="user"></b></div><div style="--c:${C.system}"><small>System</small><b data-k="system"></b></div><em>Last minute</em></div>${linesHTML(CPU_LINES)}
+          <div class="pls-gb" style="--c:${C.perf}"><div>Performance<small>8 cores</small><b data-k="pp"></b></div><span class="pls-meter"><s data-m="pp"></s></span></div>
+          <div class="pls-gb" style="--c:${C.eff}"><div>Efficiency<small>4 cores</small><b data-k="ep"></b></div><span class="pls-meter"><s data-m="ep"></s></span></div>
+          <div class="pls-procs"><div class="pls-lab">Cores</div><div class="pls-cores">${"<i><s></s></i>".repeat(12)}</div></div></div>${procsHTML("cpu")}`;
+        paint = (v, t) => {
+          set(el, "user", pct(v.user)); set(el, "system", pct(v.system));
+          lines($(".pls-lines", el), CPU_LINES, [live("cpu"), live("system"), live("user")], 0, 100, t);
+          const avg = (a) => a.reduce((x, y) => x + y, 0) / a.length;
+          [["pp", avg(v.p)], ["ep", avg(v.e)]].forEach(([key, x]) => { set(el, key, pct(x), LOAD[pctLoad(x)][1]); $(`[data-m="${key}"]`, el).style.setProperty("--v", (x / 100).toFixed(3)); });
+          $$(".pls-cores i", el).forEach((c, i) => {
+            const x = i < 8 ? v.p[i] : v.e[i - 8], s = $("s", c);
+            s.style.setProperty("--v", (x / 100).toFixed(3));
+            s.style.setProperty("--l", LOAD[pctLoad(x)][1]);
+            s.style.setProperty("--c", i < 8 ? C.perf : C.eff);
+          });
+          paintProcs(el, "cpu", v);
+        };
+      } else if (m === "network") {
+        extra = `<div class="pls-x"><div class="pls-leg"><div style="--c:${C.in}"><small>Download</small><b data-k="in"></b></div><div style="--c:${C.out}"><small>Upload</small><b data-k="out"></b></div><em>Last minute</em></div>${linesHTML(NET_LINES)}</div>${procsHTML("network")}`;
+        paint = (v, t) => {
+          set(el, "in", rate(v.in)); set(el, "out", rate(v.out));
+          const a = live("in"), b = live("out");
+          lines($(".pls-lines", el), NET_LINES, [a, b], 0, Math.max(...a, ...b, 1e4) * 1.15, t);
+          paintProcs(el, "network", v);
+        };
+      } else if (m === "memory") {
+        extra = `<div class="pls-x" style="gap:10px"><div class="pls-segbar"><s data-m="app" style="--c:${M.memory.a}"></s><s data-m="wired" style="--c:${C.wired}"></s><s data-m="comp" style="--c:${C.comp}"></s></div><div class="pls-rows">${row("App memory", "app", M.memory.a)}${row("Wired", "wired", C.wired)}${row("Compressed", "comp", C.comp)}${row("Free", "free", "rgb(255 255 255 / 0.1)")}${row("Swap", "swap", C.swap)}${row("Pressure", "pressure")}</div></div>${procsHTML("memory")}`;
+        paint = (v) => {
+          const used = v.mem / 100 * MEM, app = used - v.wired - v.comp;
+          [["app", app], ["wired", v.wired], ["comp", v.comp]].forEach(([key, x]) => { set(el, key, gb(x)); $(`[data-m="${key}"]`, el).style.setProperty("--v", (x / MEM).toFixed(4)); });
+          set(el, "free", gb(MEM - used)); set(el, "swap", gb(v.swap)); set(el, "pressure", "Normal", LOAD[0][1]);
+          paintProcs(el, "memory", v);
+        };
+      } else if (m === "disk") {
+        extra = `<div class="pls-disk"><div class="pls-ring"><svg viewBox="0 0 74 74"><circle cx="37" cy="37" r="32.5" fill="none" stroke="rgb(255 255 255 / 0.1)" stroke-width="9"/><circle class="arc" cx="37" cy="37" r="32.5" fill="none" stroke-width="9" stroke-linecap="round" pathLength="100"/></svg><span><b data-k="used"></b><small>used</small></span></div><div class="pls-rows">${row("Free", "free")}${row("Used", "usedgb")}${row("Capacity", "cap")}</div></div>${procsHTML("disk")}`;
+        paint = (v) => {
+          const used = DISK - v.free, color = LOAD[diskLoad(v.free)][1], arc = $(".arc", el);
+          arc.setAttribute("stroke", color);
+          arc.setAttribute("stroke-dasharray", `${(used / DISK * 100).toFixed(2)} 100`);
+          set(el, "used", pct(used / DISK * 100)); set(el, "free", gb(v.free), color); set(el, "usedgb", gb(used)); set(el, "cap", gb(DISK));
+          paintProcs(el, "disk", v);
+        };
+      } else if (m === "gpu") {
+        extra = `<div class="pls-gb" style="--c:${M.gpu.a}"><div>Utilisation<b data-k="gpu"></b></div><span class="pls-meter"><s data-m="gpu"></s></span></div>`;
+        paint = (v) => { set(el, "gpu", pct(v.gpu), LOAD[pctLoad(v.gpu)][1]); $('[data-m="gpu"]', el).style.setProperty("--v", (v.gpu / 100).toFixed(3)); };
+      } else {
+        extra = `<div class="pls-x" style="gap:10px"><div class="pls-heat"><i></i></div><div class="pls-rows">${row("Chip", "chip")}</div></div>`;
+        paint = (v) => { set(el, "chip", deg(v.temp), LOAD[heatLoad(v.temp)][1]); $(".pls-heat i", el).style.setProperty("--v", ((v.temp - 30) / 75).toFixed(3)); };
+      }
+      el.innerHTML = `<div class="pls-sum"><div><div class="pls-lab">${M[m].i}${M[m].t}</div><div class="pls-big"></div><div class="pls-now"><span class="pls-chip"></span>Now</div></div><div class="pls-range"><span>1 h</span><span>24 h</span><span>7 d</span></div></div>
+        <div class="pls-chart"><svg viewBox="0 0 300 92" preserveAspectRatio="none">${rules(300, 92)}${chart.html}</svg><div class="pls-yl"><span></span><span></span><span></span></div><div class="pls-xl"><span>${clock(45)}</span><span>${clock(30)}</span><span>${clock(15)}</span></div></div>${extra}`;
+      const big = $(".pls-big", el), chip = $(".pls-chip", el), plot = $(".pls-chart svg", el), yl = $$(".pls-yl span", el);
+      return {
+        el,
+        render(v, t) {
+          const load = LOAD[loadOf(m, v)];
+          big.textContent = headline(m, v);
+          big.style.color = load[1];
+          chip.textContent = load[0];
+          chip.style.setProperty("--c", load[1]);
+          const vals = HR[m], [lo, hi] = domain(m, vals);
+          chart.draw(plot, 0, vals, 300, 92, lo, hi, t);
+          const fmt = m === "network" ? compact : m === "temperature" ? deg : (x) => Math.round(x) + "%";
+          [hi, (hi + lo) / 2, lo].forEach((x, i) => { yl[i].textContent = m === "network" && !x ? "0" : fmt(x); });
+          paint(v, t);
+        }
+      };
+    }
+
+    let open = null, card = null;
+    function render() {
+      const v = mix(from, to, k.x);
+      paintTiles(v, k.x);
+      if (card) card.render(v, k.x);
+    }
+    const flow = { springs: [k], render };
+    const h = new Spring(0, 0.42, 1);
+    const morph = {
+      springs: [h],
+      render() {
+        panel.style.height = h.settled ? "" : h.x.toFixed(1) + "px";
+        if (h.settled) lock();
+      }
+    };
+    function lock() {
+      if (open !== "cpu") return;
+      stage.style.minHeight = "";
+      stage.style.minHeight = stage.offsetHeight + "px";
+    }
+
+    function expand(m, animate) {
+      if (m === open) return;
+      const start = panel.offsetHeight;
+      open = m;
+      TILES.forEach((id) => tiles[id].el.classList.toggle("sel", id === m));
+      $$(".pls-card.out", detail).forEach((el) => el.remove());
+      const prev = card;
+      card = build(m);
+      card.render(mix(from, to, k.x), k.x);
+      if (!animate || still.matches || !prev) {
+        detail.textContent = "";
+        detail.appendChild(card.el);
+        lock();
+        return;
+      }
+      prev.el.classList.add("out");
+      setTimeout(() => prev.el.remove(), 260);
+      card.el.classList.add("in");
+      detail.appendChild(card.el);
+      if (!tasks.has(morph)) h.jump(start);
+      h.to(body.offsetHeight);
+      panel.style.height = h.x.toFixed(1) + "px";
+      run(morph);
+      requestAnimationFrame(() => requestAnimationFrame(() => card.el.classList.remove("in")));
+    }
+
+    let ticker = 0, cycler = 0, resume = 0, inView = false, held = false;
+    function tick() {
+      clearTimeout(ticker);
+      if (!inView || still.matches) return;
+      from = mix(from, to, k.x);
+      to = next(to);
+      record(to);
+      const busy = to.cpu > 60;
+      if (busy !== win.classList.contains("busy")) {
+        win.classList.toggle("busy", busy);
+        buildLabel.textContent = busy ? "Building Hutch…" : "Build Succeeded";
+      }
+      k.jump(1).to(0);
+      run(flow);
+      ticker = setTimeout(tick, TICK);
+    }
+    function cycle() {
+      clearTimeout(cycler);
+      if (!inView || still.matches || held) return;
+      cycler = setTimeout(() => {
+        expand(TOUR[(TOUR.indexOf(open) + 1) % TOUR.length], true);
+        cycle();
+      }, CYCLE);
+    }
+    function pick(m) {
+      held = true;
+      clearTimeout(cycler);
+      clearTimeout(resume);
+      expand(m, true);
+      resume = setTimeout(() => { held = false; cycle(); }, IDLE);
+    }
+    function place() {
+      const s = pls.getBoundingClientRect(), it = item.getBoundingClientRect(), w = pop.offsetWidth;
+      const cx = it.left - s.left + it.width / 2;
+      const px = clamp(cx - w / 2, 8, Math.max(8, s.width - w - 8));
+      pop.style.setProperty("--px", px.toFixed(1) + "px");
+      pop.style.setProperty("--ax", clamp(cx - px, 26, w - 26).toFixed(1) + "px");
+      win.style.visibility = win.offsetLeft + win.offsetWidth > px - 24 ? "hidden" : "";
+    }
+
+    expand("cpu", false);
+    render();
+    place();
+    addEventListener("resize", () => { place(); lock(); });
+    if (document.fonts) document.fonts.ready.then(() => { place(); lock(); });
+    watch(pls, () => {
+      inView = true;
+      place();
+      if (still.matches) return;
+      ticker = setTimeout(tick, 700);
+      cycle();
+    }, () => {
+      inView = false;
+      clearTimeout(ticker);
+      clearTimeout(cycler);
+    }, 0.2);
+  })();
 })();

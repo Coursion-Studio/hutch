@@ -426,26 +426,36 @@
     <section id="pulse" class="sec sec-pulse reveal" aria-labelledby="pls-title">
       <div class="glow" aria-hidden="true"></div>
       <div class="container">
-        <div class="show pls rise">
+        <div class="show pls rise js-pls">
           <div class="mesh" aria-hidden="true"><i class="m1"></i><i class="m2"></i><i class="m3"></i><i class="m4"></i></div>
           <div class="pls-stage" aria-hidden="true">
-            <div class="pls-bar"><span>CPU 23%</span><span>RAM 61%</span><span>↓ 4.2 MB/s</span><span>58°</span></div>
-            <div class="rpr-panel pls-panel">
-              <div class="rpr-head">
-                <span class="rpr-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg></span>
-                <span class="rpr-title"><b>Pulse</b><small>Last hour</small></span>
+            <div class="pls-mb">
+              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16.4 12.6c0-2.3 1.9-3.4 2-3.5-1.1-1.6-2.8-1.8-3.4-1.8-1.4-.1-2.8.9-3.5.9-.7 0-1.8-.9-3-.8-1.5 0-3 .9-3.8 2.3-1.6 2.8-.4 7 1.2 9.3.8 1.1 1.7 2.4 2.9 2.3 1.2 0 1.6-.7 3-.7s1.8.7 3 .7c1.3 0 2.1-1.1 2.8-2.3.9-1.3 1.3-2.6 1.3-2.6s-2.5-1-2.5-3.8zM14.1 5.8c.6-.8 1.1-1.8 1-2.8-.9 0-2 .6-2.7 1.4-.6.7-1.1 1.7-1 2.7 1 .1 2-.5 2.7-1.3z"/></svg>
+              <b>Xcode</b><i style="width:24px"></i><i style="width:30px"></i><i style="width:22px"></i><i style="width:34px"></i>
+              <span class="sp"></span>
+              <span class="pls-item js-pls-item"></span>
+              <svg class="opt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 9.5a11.5 11.5 0 0 1 16 0M7 12.8a7.2 7.2 0 0 1 10 0M10 16a3 3 0 0 1 4 0"/><circle cx="12" cy="19" r="0.6" fill="currentColor"/></svg>
+              <svg class="opt" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="6"/><path d="m16 16 4 4"/></svg>
+              <span class="clock">Sun 9:41</span>
+            </div>
+            <div class="pls-win js-pls-win">
+              <div class="pls-win-bar"><i></i><i></i><i></i><span class="pls-build"><b class="js-pls-build">Hutch: Ready</b><s></s></span></div>
+              <div class="pls-win-body"><span class="pls-nav"><i style="width:62%"></i><i style="width:48%"></i><i style="width:70%"></i><i style="width:40%"></i><i style="width:56%"></i><i style="width:44%"></i></span><span class="pls-code"><i style="width:38%;--c:#FF7AB6"></i><i style="width:64%"></i><i style="width:52%;--c:#6BB8FF"></i><i style="width:72%"></i><i style="width:30%;--c:#FAD14D"></i><i style="width:58%"></i><i style="width:46%;--c:#6BB8FF"></i><i style="width:66%"></i><i style="width:24%;--c:#FF7AB6"></i><i style="width:54%"></i><i style="width:40%"></i></span></div>
+            </div>
+            <div class="pls-pop js-pls-pop">
+              <span class="pls-arrow"><svg viewBox="0 0 20 10"><path d="M0 9q2.5 0 6.7-6.3Q10-1.5 13.3 2.7 17.5 9 20 9v1H0z" fill="currentColor"/><path d="M0 9q2.5 0 6.7-6.3Q10-1.5 13.3 2.7 17.5 9 20 9" fill="none" stroke="rgb(255 255 255 / 0.1)"/></svg></span>
+              <div class="pls-panel js-pls-panel">
+                <div class="pls-body js-pls-body">
+                  <div class="pls-head">
+                    <span class="pls-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h4l2.5-6 5 12 2.5-6h4"/></svg></span>
+                    <span class="pls-ttl"><b>Pulse</b><span>Everything looks normal</span></span>
+                    <span class="pls-hb"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M10.3 2.5h3.4l.5 2.6c.6.2 1.2.5 1.7.9l2.5-.9 1.7 2.9-2 1.7c.1.6.1 1.3 0 1.9l2 1.7-1.7 2.9-2.5-.9c-.5.4-1.1.7-1.7.9l-.5 2.6h-3.4l-.5-2.6c-.6-.2-1.2-.5-1.7-.9l-2.5.9-1.7-2.9 2-1.7a6 6 0 0 1 0-1.9l-2-1.7 1.7-2.9 2.5.9c.5-.4 1.1-.7 1.7-.9zM12 9a3 3 0 1 0 0 6 3 3 0 0 0 0-6z" fill-rule="evenodd"/></svg></span>
+                    <span class="pls-hb"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg></span>
+                  </div>
+                  <div class="pls-tiles js-pls-tiles"></div>
+                  <div class="pls-detail js-pls-detail"></div>
+                </div>
               </div>
-              <div class="rpr-gauges pls-gauges">
-                <div class="rpr-g"><span>CPU</span><b>23%</b><i><s style="--v:.23"></s></i></div>
-                <div class="rpr-g"><span>Memory</span><b>9.8 GB</b><i><s style="--v:.61"></s></i></div>
-                <div class="rpr-g"><span>Disk</span><b>212 GB free</b><i><s style="--v:.42"></s></i></div>
-              </div>
-              <svg class="pls-spark" viewBox="0 0 300 64" preserveAspectRatio="none"><path d="M0 48 L20 44 L40 50 L60 38 L80 42 L100 30 L120 34 L140 20 L160 26 L180 40 L200 36 L220 24 L240 30 L260 18 L280 28 L300 22" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
-              <ul class="pls-apps">
-                <li><span>Xcode</span><b>41%</b></li>
-                <li><span>Safari</span><b>12%</b></li>
-                <li><span>Slack</span><b>6%</b></li>
-              </ul>
             </div>
           </div>
         </div>
