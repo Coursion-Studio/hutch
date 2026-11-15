@@ -11,7 +11,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.6.2</title>
+      <pubDate>Sun, 15 Nov 2026 16:07:58 +0300</pubDate>
+      <sparkle:version>78</sparkle:version>
+      <sparkle:shortVersionString>1.6.2</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Hutch notices lost access:</strong> After an update macOS can keep listing Hutch but stop trusting it. Hutch now tells you instead of snaps silently doing nothing.</li><li><strong>One click to fix it:</strong> Fix Permission resets Hutch&#x27;s entry, asks again and picks up where you left off. It&#x27;s also in Settings → Permissions.</li><li><strong>Pounce opens in more apps:</strong> With Accessibility on, Pounce opens over virtual machines, remote desktops and games that grab the keyboard.</li><li><strong>Shortcut clashes, spelled out:</strong> Pounce settings tell you when Spotlight or an input source still holds your shortcut.</li><li><strong>No jump when switching stats:</strong> The panel grows and shrinks in one smooth motion, and the header stays put.</li><li><strong>Clean graphs mid-switch:</strong> The card that&#x27;s fading out keeps its own graph instead of flashing the next one&#x27;s numbers.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.6.2/Hutch-1.6.2.dmg" type="application/octet-stream" sparkle:edSignature="kNGCWMO+BTO2sk1AVkgRBPDX4qokTB6ShuzJReLWgUETAMkM5iafDM90RcSemG5bB4+jOh/CoL2DMYDkqouvBw==" length="27024569" />
+    </item>
+<item>
       <title>Version 1.6.1</title>
       <pubDate>Thu, 12 Nov 2026 21:25:55 +0300</pubDate>
       <sparkle:version>77</sparkle:version>
