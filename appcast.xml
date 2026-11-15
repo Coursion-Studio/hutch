@@ -13,7 +13,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.6.4</title>
+      <pubDate>Mon, 16 Nov 2026 01:41:08 +0300</pubDate>
+      <sparkle:version>80</sparkle:version>
+      <sparkle:shortVersionString>1.6.4</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>A familiar Settings pane:</strong> Onboarding, Settings → Permissions and the Fix Permission window show the same Accessibility list you&#x27;ll see in System Settings.</li><li><strong>It turns green when it&#x27;s done:</strong> The moment macOS trusts Hutch, its switch flips on and a check appears, so you know snapping works again.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.6.4/Hutch-1.6.4.dmg" type="application/octet-stream" sparkle:edSignature="bAI83T21XLtI6097GBYZkplC4o0b4qwRpXKtcFcWOVsrbvIk5oqyehQgsf0zR9nYbQf03UJpsvRl0K0kT54jDw==" length="27836189" />
+    </item>
+<item>
       <title>Version 1.6.3</title>
       <pubDate>Sun, 15 Nov 2026 21:44:44 +0300</pubDate>
       <sparkle:version>79</sparkle:version>
