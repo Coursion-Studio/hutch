@@ -12,7 +12,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.6.3</title>
+      <pubDate>Sun, 15 Nov 2026 21:44:44 +0300</pubDate>
+      <sparkle:version>79</sparkle:version>
+      <sparkle:shortVersionString>1.6.3</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>A dot on the menu bar icon:</strong> A small dot appears on Hutch&#x27;s icon when an update is waiting. It pulses once, then stays quiet.</li><li><strong>An update pill in Toggles and Pounce:</strong> It shows the new version, fills up as it downloads and turns into Restart to update when it&#x27;s ready.</li><li><strong>A proper update window:</strong> See what&#x27;s new as cards, then watch one button go from Update to a progress ring to Restart Hutch.</li><li><strong>Your call, always:</strong> Choose Later or Skip this version, or let Hutch download updates on its own. Nothing installs until you click.</li><li><strong>Clear when something fails:</strong> Hutch says whether it was the connection or the download, and nothing changes until it works.</li><li><strong>Every corner translated:</strong> Pounce results and tips, Toggles, timers and this tour now follow your language, with proper plurals and your region&#x27;s number and time formats.</li><li><strong>Language switch that sticks:</strong> Changing Hutch&#x27;s language restarts it cleanly, and right-to-left languages lay out correctly.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.6.3/Hutch-1.6.3.dmg" type="application/octet-stream" sparkle:edSignature="ZSbi3XDZkgVUmUemu49zJFGLEsuEEn5zhEqVIN6UWBmaptJ13uSWXd/XGUtoycs1yN43K+7aU41vhi5kpsLJDQ==" length="27775548" />
+    </item>
+<item>
       <title>Version 1.6.2</title>
       <pubDate>Sun, 15 Nov 2026 16:07:58 +0300</pubDate>
       <sparkle:version>78</sparkle:version>
