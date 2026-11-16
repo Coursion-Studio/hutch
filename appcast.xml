@@ -14,7 +14,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.6.5</title>
+      <pubDate>Mon, 16 Nov 2026 11:58:28 +0300</pubDate>
+      <sparkle:version>81</sparkle:version>
+      <sparkle:shortVersionString>1.6.5</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>No more stuck on Installing:</strong> If Hutch doesn&#x27;t quit by itself when an update is ready, it now steps aside so the update can finish and reopen it.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.6.5/Hutch-1.6.5.dmg" type="application/octet-stream" sparkle:edSignature="Hkc8eWP3dwXvkzJGYWGULmIDGDdVednvtmHbEmNYvtVHJM0oA6Cqb/zWl9Oy1h44qNc5blGWP38DUKMKwwUBAQ==" length="27832418" />
+    </item>
+<item>
       <title>Version 1.6.4</title>
       <pubDate>Mon, 16 Nov 2026 01:41:08 +0300</pubDate>
       <sparkle:version>80</sparkle:version>
