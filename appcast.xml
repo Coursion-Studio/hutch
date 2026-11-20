@@ -15,7 +15,17 @@
     
     
     
+    
     <item>
+      <title>Version 1.7.0</title>
+      <pubDate>Fri, 20 Nov 2026 15:11:33 +0300</pubDate>
+      <sparkle:version>82</sparkle:version>
+      <sparkle:shortVersionString>1.7.0</sparkle:shortVersionString>
+      <sparkle:minimumSystemVersion>15.0</sparkle:minimumSystemVersion>
+      <description><![CDATA[<ul><li><strong>Once or every so often</strong> — Set a reminder for 45 minutes from now, for 17:30, or to repeat every hour. Each one shows a live countdown in its own row.</li><li><strong>Type it like you&#x27;d say it</strong> — Write &quot;push-ups every 1h&quot;, &quot;remind 45m stretch&quot; or &quot;call mum at 17:30&quot; and press Return. It starts counting that moment.</li><li><strong>Edit right in the row</strong> — Open a reminder to change its name, message, interval, sound and break without leaving the list.</li><li><strong>Active hours</strong> — Keep reminders to working hours, weekdays or weekends, or pause one for the rest of the day.</li><li><strong>A due card that stacks</strong> — When a reminder fires, a card slides in. Several due at once stack into a single card instead of covering your screen.</li><li><strong>Snooze it your way</strong> — Snooze 5 minutes with one click, or use the arrow for an hour or until tomorrow. A snoozed reminder waits as a small tab on the screen edge.</li><li><strong>A full-screen break on every display</strong> — Turn on Break and every display dims for the length you pick. It ends by itself, Esc skips it, and your apps keep running.</li><li><strong>A soft chime</strong> — A gentle sound when a reminder is due, which you can change or turn off per reminder.</li><li><strong>Create one from the launcher</strong> — Type `remind 45m stretch` or `every 1h pushups` and press Return. Press ⌘↩ to create it and open it in Toggles to fine-tune.</li><li><strong>See them all</strong> — Type `reminders` to list each one with its countdown, then fire, pause or delete it without leaving Pounce.</li><li><strong>More detail when something goes wrong</strong> — If Hutch ever stops unexpectedly, its report now names what failed, so problems get fixed faster.</li></ul>]]></description>
+      <enclosure url="https://github.com/Coursion-Studio/hutch/releases/download/v1.7.0/Hutch-1.7.0.dmg" type="application/octet-stream" sparkle:edSignature="V9d8LiisCwiERAfTIxrNyYHiUR6oyc9MveYe/053Tyf4IEx6GGjDVyjXT8ULcwVE6g0pcM8GDQ0eCCQCbqjICA==" length="28994133" />
+    </item>
+<item>
       <title>Version 1.6.5</title>
       <pubDate>Mon, 16 Nov 2026 11:58:28 +0300</pubDate>
       <sparkle:version>81</sparkle:version>
